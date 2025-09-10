@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Predicting Dimensional Symptoms of Psychopathology from Task-Based fMRI using Support Vector Regression</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/responsive_style.css">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+        
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-widescreen">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Predicting Dimensional Symptoms of Psychopathology from Task-Based fMRI using Support Vector Regression</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="index.html"><strong>Kathy Garcia</strong><sup>1</sup></a>,</span>&nbsp;
+            <span class="author-block">
+                Zach Anderson</a><sup>1</sup>,</span>&nbsp;
+            <span class="author-block">
+                Iris Ka-Yi Chat<sup>2</sup>,&nbsp;
+            </span>
+            <span class="author-block">
+                Katherine S.F. Damme<sup>1</sup>,&nbsp;
+            </span><br>
+            <span class="author-block">
+                Katherine Young<sup>3</sup>,&nbsp;
+            </span> 
+            <span class="author-block">
+                Susan Y. Bookheimer<sup>4</sup>,&nbsp;
+            </span> 
+            <span class="author-block">
+                Richard Zinbarg<sup>1</sup>,&nbsp;
+            </span> 
+            <span class="author-block">
+                Michelle Craske<sup>4</sup>,&nbsp;
+            </span> 
+            <span class="author-block">
+                Robin Nusslock<sup>1</sup>&nbsp;
+            </span> 
+          </div>
+          <br>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Northwestern University</span>&nbsp;&nbsp;
+            <span class="author-block"><sup>2</sup>Temple University</span>&nbsp;&nbsp;
+            <span class="author-block"><sup>3</sup>King's College London</span><br>
+            <span class="author-block"><sup>4</sup>University of California, Los Angeles</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Extensive research in psychiatry has highlighted the potential utility of machine learning (ML) automation for disease diagnosis. For many years, studies aimed at uncovering biomarkers for traditional 
+            DSM diagnostic categories of mood disorders, such as Major Depressive Disorder, have presented challenges for many researchers. Machine learning models have been successfully applied in the context of 
+            disease diagnosis and prediction for treatment prognosis, using both structural and functional neuroimaging data. Due to its computational complexity, which does not depend on input space dimensionality, 
+            Support Vector Regression (SVR) provides a supplementary approach for studying whole-brain data, providing a data- driven perspective with sensitivity to relatively small effect sizes and increased reliability 
+            offered by multivariate analytic techniques. However, few studies have examined the relationship between brain activation features from task-based functional Magnetic Resonance Imaging (fMRI) data and symptom 
+            dimensions of anxiety and depression. In this study, we develop a novel application of feature-based type of supervised machine learning, SVR, approach to detect potential biomarkers in fMRI data and dimensional 
+            symptoms of anxiety and depression on 209 subjects enrolled in the study for risk for anxiety and depression. We trained the SVR classifier on fMRI data collected during the well-established Monetary Incentive Delay 
+            (MID) task, which is a widely used task to measure neural activity in response to reward and loss in healthy and clinical populations. The MID datasets were preprocessed into multi-dimensional feature space using a 
+            264 regions of interest (ROI) mask, and the model was fit using ten fold cross validation on all 264 dimensions in order to identify patterns of activation associated with dimensional symptoms of depression and anxiety. 
+            We demonstrate MID task-fMRI data is not an accurate predictor of dimensional clinical symptoms. The results predicted dimensional symptoms with R<sup>2</sup> values ranging from -0.269 to -0.658 indicating poor model fit compared 
+            to a horizontal line fit denoting a null effect. The poor model fit of linear models reported in this study suggests that a non-reliable linear relationship between reward-related neural activation and dimensional clinical 
+            symptoms related to the experience of depression and anxiety. Future analysis will explor additional non-linear modeling methods and clustering to further explore the relationship between reward-related brain activation 
+            and dimensional symptoms.<br><br><br><br>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Project Workflow</h2>
+          <div class="content has-text-justified">
+            <div style="text-align: center;">
+              <br>
+              <img src="static/figures/proj2_fig1.png" style="display: block; margin-left: auto; margin-right: auto;">
+              <br>
+              <p class="caption"><em>Left to right: </em> 1. Screen for healthy adults/demographics, 2. Assessment questionnaires for Tri-level symptoms, 3. Standardized z-scores are calculated from questionnaires, 
+                4. Produce MID Task FMRI contrast images, 5.Transform data into 264 dimensions using a 264 ROI atlas, 6. Data is split into 20% training and 80% testing data, 7. Support Vector Regression model is fit on training data, 
+                8. SVR Model is cross validated using 10 fold cross validation, 9. RMSE and R<sup>2</sup> scores are calculated for each combination of contrast and tri-level symptom. </p>
+            </div>
+          </div>
+          <br><br>
+        </div>
+      </div>
+
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Tri-Level Model: General Distress, Fear, Anhedonia as Predictors</h2>
+          <div class="content has-text-justified">
+            <div style="text-align: center;">
+              <br>
+              <img src="static/figures/proj2_fig2.png" style="display: block; margin-left: auto; margin-right: auto;">
+              <br>
+              <p class="caption"> The figure adjacent shows the structural composition for the initial (baseline) tri-level model. In our project Fear, General Distress and Anhedonia are used as the predictors (y-values) for 
+                the SVR Regressor model. These z-scores were calculated from a set of scales derived from multiple questionnaires (branched underneath sub-categories of symptoms e.g. Social Anxiety, Specific Fears, Obsessive-Compulsive 
+                etc.)shown as the unlabelled boxes in the figure. </p>
+            </div>
+          </div>
+          <br><br>
+        </div>
+      </div>
+
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Monetary Incentive Delay Task</h2>
+          <div class="content has-text-justified">
+            <div style="text-align: center;">
+              <br>
+              <img src="static/figures/proj2_fig3.png" style="display: block; margin-left: auto; margin-right: auto;">
+              <br>
+              <p class="caption"> During the Anticipation stage an indication of a possible monetary reward/loss was presented. Subjects were required to respond by pressing a
+                button as quickly as possible and then during the Consumption stage were shown how much they won/lost. fMRI recorded at each stage. </p>
+            </div>
+          </div>
+          <br><br>
+        </div>
+      </div>
+
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Results: Model Fit and Errors</h2>
+          <div class="content has-text-justified">
+            <div style="text-align: center;">
+              <br>
+              <img src="static/figures/proj2_fig4.png" style="display: block; margin-left: auto; margin-right: auto;">
+              <br>
+              <p class="caption"> <b> Poor Model Fit:</b> Results indicate a poor model fit of linear models for our experiment design, this suggests a non-reliable linear relationship 
+                between reward-related neural activation and dimensional clinical symptoms. <br>
+                <b>Underfitting:</b> Due to the high dimensionality of the data, noise and unrelated brain activation, model is underfitting.<br><br> </p>
+              <img src="static/figures/proj2_fig5.png" style="display: block; margin-left: auto; margin-right: auto;">  
+              <p class="caption"> <b>R-squared and root mean squared errors (RMSE):</b> 12 tests were performed with the Cross-folded SVR model. RMSE and R<sup>2</sup> values were calculated for each of the 10 
+                folds and mean averaged to produce a final goodness of fit metric. <br>
+                R<sup>2</sup> values range from -4.24 to -0.65 for whole brain tests and slightly improve with fewer dimensions, -1.69 to -0.46 for only one feature deduced from the best p-value correlation across all ROIs.
+            </p>
+            </div>
+          </div>
+          <br><br>
+        </div>
+      </div>
+
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Conclusions: Poor Model Fit</h2>
+          <div class="content has-text-justified">
+            <div style="text-align: center;">
+              <br>
+              <img src="static/figures/proj2_fig6.png" style="display: block; margin-left: auto; margin-right: auto;">
+              <br>
+              <p class="caption"><b>Classifier Comparisons:</b> The results denotes a poor model fit due to the input variables, indicated by a normal distribution of residuals values. 
+                Thus, we would alternatively explore more targeted brain networks, like the default mode network, prior to assessing model fit of the machine learning classifier. <br>
+                <b>Goodness of Fit Evaluations:</b> The negative R<sup>2</sup> values out of regular R<sup>2</sup> bounds (1.0-0.0) imply that a horizontal line (mean) performs better 
+                at predicting the y values than the SVR model's fitted line. Also, high RMSE values show poor prediction of response.
+            </p>
+            </div>
+          </div>
+          <br><br>
+        </div>
+      </div>
+
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Where do we go from here?..</h2>
+          <div class="content has-text-justified">
+            <div style="text-align: center;">
+              <br>
+              <img src="static/figures/proj2_fig7.jpeg" style="display: block; margin-left: auto; margin-right: auto;">
+              <br>
+              <p class="caption"><b>Model-based approaches:</b> Theory derived known networks such as Default Mode Network, Cingulooperculur network, Frontoparietal or Salience networks 
+                could be analyzed to further reduce the dimensionality of the data and discard noise or unwanted activation affecting the results. <br>
+                <b>Non-linear Methods:</b> Future analysis could alternatively explore additional non-linear modeling methods, like clustering, to further explore the relationship between 
+                reward-related brain activation and dimensional symptoms.
+            </p>
+            </div>
+          </div>
+          <br><br>
+        </div>
+      </div>
+
+    </div>
+</section>
+
+
+
+</body>
+</html>

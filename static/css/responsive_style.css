@@ -1,0 +1,23 @@
+img.responsive {
+    max-width: 100%; /* Limit the image to not exceed the container width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensure it's block level for margin auto to work */
+    margin: 0 auto; /* Center the image */
+}
+  
+@media (min-width: 768px) {
+    img.responsive {
+        width: 110%; /* Allow the image to be slightly larger than the container */
+        position: relative; /* Use relative positioning */
+        left: 50%; /* Shift the image to the right */
+        transform: translateX(-50%); /* Pull it back to center */
+    }
+}
+
+@media (min-width: 1024px) {
+    img.responsive {
+        width: 120%; /* Even larger on bigger screens */
+    }
+}
+
+  

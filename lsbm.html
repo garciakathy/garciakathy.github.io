@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Large-Scale DNN Benchmarking for Dynamic Social Vision</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/responsive_style.css">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+        
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-widescreen">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Large-scale Deep Neural Network Benchmarking for Dynamic Social Vision</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="index.html"><strong>Kathy Garcia</strong></a>,</span>&nbsp;
+            <span class="author-block">
+              <a href="https://colinconwell.github.io">Colin Conwell</a>,</span>&nbsp;
+            <span class="author-block">
+              <a href="https://emaliemcmahon.github.io">Emalie McMahon</a>,&nbsp;
+            </span>
+            <span class="author-block">
+              <a href="https://bonnerlab.org">Michael F. Bonner</a>,&nbsp;
+            </span>
+            <span class="author-block">
+              <a href="https://www.isiklab.org">Leyla Isik</a>&nbsp;
+            </span> 
+          </div>
+          <br>
+
+          <div class="is-size-4 publication-authors">
+            <span class="author-block">Johns Hopkins University</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Many Deep Neural Networks (DNNs) with diverse architectures and learning objectives have yielded high brain similarity and hierarchical correspondence to ventral stream responses to static images. 
+            However, they have not been evaluated on dynamic social scenes, which are thought to be processed primarily in the recently proposed lateral visual stream. Here, we ask whether DNNs are similarly good 
+            models of processing in the lateral stream and superior temporal sulcus as they are of the ventral stream. To investigate this, we employ large-scale deep neural network benchmarking against fMRI responses 
+            to a curated dataset of 200 naturalistic social videos. We examine over 300 DNNs with diverse architectures, objectives, and training sets. Notably, we find a hierarchical correspondence between DNNs and lateral 
+            stream responses: earlier DNN layers correlate better with earlier visual areas (including early visual cortex and middle temporal cortex), middle layers match best with mid-level regions (extrastriate body area 
+            and lateral occipital cortex), and finally later layers in the most anterior regions (along the superior temporal sulcus). Pairwise permutation tests further confirm significant differences in average depth of the best 
+            layer match between each region of interest. Interestingly, we find no systematic differences between diverse network types in terms of either hierarchical correspondence or absolute correlation with neural data, 
+            suggesting drastically different network factors (like learning objective and training dataset) play little role in a network's representational match to the lateral stream. Finally, while the best DNNs provided a 
+            representational match to ventral stream responses near the level of the noise ceiling, DNN correlations were significantly lower in all lateral stream regions. Together, these results provide evidence for a 
+            feed-forward visual hierarchy in the lateral stream and underscore the need for further refinement in computational models to adeptly capture the nuances of dynamic, social visual processing.<br><br><br><br>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Social Interaction Perception in the Brain</h2>
+        <div class="content has-text-justified">
+          <div style="text-align: center;">
+            <img src="static/figures/fig1.png" alt="Fig1" style="display: block; margin-left: auto; margin-right: auto;" width="400" height="400">
+            <p class="caption"><b>Figure 1:</b> Lateral Stream and the Ventral Stream.</p>
+          </div>
+        </div>
+        <br><br>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Methodological Overview</h2>
+        <div class="content has-text-justified">
+          <div style="text-align: center;">
+            <img src="static/figures/fig2.png" alt="Methods Overview">
+
+            <p class="caption" style="width: 100%; text-align: center;"><b>Figure 2: From left to right -</b> Participants watch 3 sec naturalistic, social videos and collection of behavioral ratings of videos on predefined social interaction dimensions. 
+              Diverse range of DNN models and extraction of their feature activation in response to video stimuli (bottom). Next, these features are then structured into representational dissimilarity matrices (RDMs) by computing pairwise Pearson 
+              correlation distances across all pairs of stimuli (middle). ROI identification within the brain's lateral and ventral stream followed after standard preprocessing pipeline using GLM (top). The resultant RDMS for each model layer are 
+              compared against the neural RDMS derived from fMRI data (top), indicating the similarity between the model's representation of the stimuli and brain's response patterns. The veRSA approach (bottom, end) builds on the cRSA framework 
+              by incorporating a voxel-wise predictive modeling step (middle, bottom) by fitting the model features to the brain data using ridge regression. Predicted brain responses are then converted to RDMs, using Pearson correlation distances. 
+              These predicted RDMs are compared to the neural RDM to compute a weighted correlation score that reflects the model's predictive accuracy at the voxel level. <br><br><br></p>
+          </div>
+        </div>
+        <br><br>
+      </div>
+    </div>  
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Similarity of DNN with Social Features in Visual Scenes</h2>
+        <div class="content has-text-justified">
+          <div style="text-align: center;">
+            <br>
+            <img src="static/figures/fig3.png" style="display: block; margin-left: auto; margin-right: auto;">
+            <br>
+            <p class="caption"><b>Figure 3: Correlation Between AlexNet Layers and Behavioral Ratings</b> - Correlations based on cRSA between each convolutional layer of AlexNet and two behavioral ratings: <b>Expanse (left)</b> and <b>Communication (right)</b>. 
+              Bar height represents the Spearman correlation coefficient for each layer, numbered 1 through 5 along the horizontal axis, indicating the sequence of the convolutional layers from input to output within the network. Blue bars indicate 
+              statistically significant correlations (<em>p</em> &lt; 0.05 based on permutation test). Gray bars signify statistically insignificant results. </p>
+          </div>
+        </div>
+        <br><br>
+      </div>
+    </div>  
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">DNN Architecture Comparison Across Ventral & Lateral Stream ROIs</h2>
+        <div class="content has-text-justified">
+          <div style="text-align: center;">
+            <br>
+            <img src="static/figures/fig4a.png" style="display: block; margin-left: auto; margin-right: auto;">
+            <img src="static/figures/fig4b.png" style="display: block; margin-left: auto; margin-right: auto;">
+            <img src="static/figures/fig4c.png" style="display: block; margin-left: auto; margin-right: auto;">
+            <img src="static/figures/fig4d.png" style="display: block; margin-left: auto; margin-right: auto;">
+            <img src="static/figures/fig4e.png" style="display: block; margin-left: auto; margin-right: auto;">
+            <img src="static/figures/fig4f.png" style="display: block; margin-left: auto; margin-right: auto;">
+            <img src="static/figures/fig4g.png" style="display: block; margin-left: auto; margin-right: auto;">
+            <img src="static/figures/fig4h.png" style="display: block; margin-left: auto; margin-right: auto;">
+            <br>
+            <p class="caption"><b>Figure 4: veRSA ROI correlation with different DNN architectures</b> - veRSA results for each ROI, including: (a) early visual cortex (EVC), (b) middle temporal area (MT), (c) extrastriate body area (EBA), 
+              (d) lateral occipital complex (LOC), (e) posterior superior temporal sulcus (PSTS), (f) anterior superior temporal sulcus (ASTS), (g) parahippocampal place area (PPA), and (h) fusiform face area (FFA). The data points represent 
+              individual DNN models. The color coding of these points denotes the architecture type of each DNN model. The shape of the data points indicates the type of training each model has undergone. The gray bars across the graphs establish 
+              the lower and upper bounds of split-half reliability. </p>
+          </div>
+        </div>
+        <br><br>
+      </div>
+    </div>  
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Overall DNN-Brain Correspondence in the Lateral and Ventral ROIs</h2>
+        <div class="content has-text-justified">
+          <div style="text-align: center;">
+            <br>
+            <img src="static/figures/fig5.png" style="display: block; margin-left: auto; margin-right: auto;">
+
+            <p class="caption"><b>Figure 5: cRSA Correlation DNNs vs. ROIs</b> - The figure presents the overall correlation between DNNs and for lateral and ventral ROIs using classic RSA. The Spearman r correlation values, indicating the strength of the 
+              relationship between DNN model features and neural activity, are plotted for different brain regions within both the lateral and ventral streams. Each data point represents the cRSA Spearman r correlation for a specific DNN model within a particular 
+              Region of Interest (ROI). The colors of the dots correspond to the architectural type of the DNNs: blue for convolutional, orange for transformer, green for hybrid, and red for mixer. The black line across the plot indicates the average correlation 
+              across all DNNs for each ROI, providing a visual summary of the overall trend. From left to right, the ROIs within the lateral stream include the Early Visual Cortex (EVC), Middle Temporal area (MT), Lateral Occipital complex (LOC), 
+              Extrastriate Body Area (EBA), Posterior Superior Temporal Sulcus (PSTS), and Anterior Superior Temporal Sulcus (ASTS). For the ventral stream, the Parahippocampal Place Area (PPA) and Fusiform Face Area (FFA) are shown. </p>
+            
+            <br>
+            <img src="static/figures/fig6.png" style="display: block; margin-left: auto; margin-right: auto;">
+
+            <p class="caption"><b>Figure 6: veRSA Across Diverse DNN Architectures</b> - This figure illustrates the results from a voxel encoding Representational Similarity Analysis (veRSA) applied to the same DNNs in Figure 4. 
+              Plotting conventions follow those in Figure 5. </p>
+          </div>
+        </div>
+        <br><br>
+      </div>
+    </div>  
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Hierarchical Correspondence in the Lateral Stream</h2>
+        <div class="content has-text-justified">
+          <div style="text-align: center;">
+            <br>
+            <img src="static/figures/fig7a.png" style="display: block; margin-left: auto; margin-right: auto;">
+            <img src="static/figures/fig7a.png" style="display: block; margin-left: auto; margin-right: auto;">
+
+            <p class="caption"><b>Figure 7: DNN Layers and Brain ROIs</b> - These panels illustrate the relationship between the depth of the best fitting layer within various DNNs and specific brain ROIs in the lateral and ventral visual streams. 
+              The layer depth ranges from 0, representing the first layer of the DNN, to 1, denoting the last layer. The individual data points, color-coded by Architecture Type, indicate the normalized depth of the layer that best matches the activation 
+              pattern for each ROI. The black line represents the mean layer depth across all models for each ROI, providing a visual summary of the average hierarchical correspondence. The division of ROIs into Lateral and Ventral Streams facilitates a 
+              comparison of hierarchical processing patterns across these distinct pathways. </p>
+          </div>
+        </div>
+        <br><br>
+      </div>
+    </div>  
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">What's next?.. Image Size Tranformations on Hierarchical Representations!</h2>
+        <div class="content has-text-justified">
+          <div style="text-align: center;">
+            <br>
+            <img src="static/figures/fig8.png" style="display: block; margin-left: auto; margin-right: auto;">
+
+            <p class="caption"><b>Figure 8: Effect of transforming input images during model feature extraction</b> - This figure illustrates the results from a voxel encoding Representational Similarity Analysis (veRSA) applied to both CLIP RN50 and AlexNet. 
+              The two lines represent the results when transformations to the input images were applied vs no transformations (Standacrd). Follows the same plotting conventions as figure 6 and 7b, respectively. </p>
+          </div>
+        </div>
+        <br><br>
+      </div>
+    </div>  
+
+  </div>
+</section>
+
+
+
+</body>
+</html>

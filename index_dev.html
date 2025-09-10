@@ -1,0 +1,285 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Kathy Garcia</title>
+
+    <meta name="author" content="Kathy Garcia">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <style>
+      body {
+          -webkit-user-select: none; /* Safari */
+          -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Standard syntax */
+        }
+
+        .news {
+          margin-left: 20px;
+        }
+
+        .news .news-item {
+          display: flex;
+          align-items: flex-start;
+          margin: 10px 0;
+          text-align: justify;
+        }
+
+        .news .date {
+          flex: 0 0 120px; /* Adjust the width according to your needs */
+          display: inline-block;
+        }
+
+        .news .text {
+          flex: 1;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+          table {
+            width: 80%;
+          }
+
+          td {
+            display: block;
+            width: 90%;
+            padding: 10px 20px;
+          }
+
+          img {
+            width: 100%;
+            height: auto; /* Ensure images scale correctly */
+            object-fit: contain;
+          }
+
+          .news .date {
+            flex: 0 0 80px; /* Adjust date width for smaller screens */
+          }
+        }
+    </style>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        document.body.addEventListener('mousedown', function(e) {
+          e.preventDefault();
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+      <tbody>
+        <tr style="padding:0px">
+          <td style="padding:0px">
+            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+              <tbody>
+                <tr style="padding:0px">
+                  <td style="padding:2.5%;width:78%;vertical-align:center">
+                    <p class="name" style="text-align: left;">
+                      <b>Kathy Garcia</b>
+                    </p>
+                    <br>
+                    <p>
+                      I am currently a 3<sup>rd</sup> year Ph.D. student studying Computational Cognitive Science at <a href="https://cogsci.jhu.edu/people/graduate-students/">Johns Hopkins University</a>
+                      as a graduate researcher in the <a href="https://www.isiklab.org">Computational Cognitive Neuroscience Lab</a>, advised by <a href="https://cogsci.jhu.edu/directory/leyla-isik/">Professor Leyla Isik</a>.
+                    </p>
+                    <p style="text-align:center">
+                      <a href="mailto:kgarci18@jhu.edu"><img style="object-fit: cover; height:30px; width:30px;" src="images/resized/email.png"/></a> &nbsp;&nbsp;
+                      <a href="data/KATHY_CV.pdf"><img style="object-fit: cover;height:30px; width:30px;" src="images/resized/cv_logo.png"/></a></a> &nbsp;&nbsp
+                      <a href="https://www.linkedin.com/in/kathy-garcia-01/"><img style="object-fit: cover;height:30px; width:30px;" src="images/resized/linkedin.png"/></a></a> &nbsp;&nbsp
+                      <a href="https://twitter.com/NeuroKathyG"><img style="object-fit: cover; height:30px; width:30px;" src="images/resized/x_logo.png"/></a></a> &nbsp;&nbsp
+                      <a href="https://github.com/garciakathy/"><img style="object-fit: cover; height:30px; width:30px;" src="images/resized/github.png"/></a></a> &nbsp;&nbsp
+                      <a href="https://scholar.google.com/citations?user=AcxvrQEAAAAJ&hl=en&oi=sra"><img style="object-fit: cover; height:30px; width:30px;" src="images/resized/scholar.png"/></a></a> &nbsp;&nbsp
+                    </p>
+                  </td>
+                  <td style="width:100%;padding-top:30px;">
+                    <img style="width:146px;object-fit: cover;border-radius:5%; height:220px;" src="images/Garcia-Kathy-187x271.png"/>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto; text-align: justify;">
+              <tbody>
+                <tr>
+                  <td style="padding-top:10px;padding-left:20px;padding-right:20px;width:100%;vertical-align:top">
+                    <h2>Research</h2>
+                    <p>
+                      I'm interested in human vision, deep neural networks (DNNs), and dynamic social perception. My research aims to find biologically plausible computational models for dynamic and social visual perception.
+                      Therefore, most of my work thus far has been on large-scale benchmarking of DNNs for dynamic social perception, focusing on the recently proposed "lateral" visual stream.
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+              <tbody>
+                <tr>
+                  <td style="padding-left:20px;width:30%;vertical-align:middle">
+                    <img src="images/resized/neurips.png" height="100" width="180"/>
+                  </td>
+                  <td style="padding-top:10px;padding-right:20px;width:80%;vertical-align:middle; text-align: justify;">
+                    <p>
+                      <a href="modeling_dynamic.html">
+                        <span class="papertitle">Modeling Dynamic Social Vision Highlights Gaps Between Deep Learning and Humans</span>
+                      </a>
+                      <br>
+                      <strong><a href="index.html">Kathy Garcia</a></strong>,
+                      <a href="https://emaliemcmahon.github.io"> Emalie McMahon</a>,
+                      <a href="https://colinconwell.github.io"> Colin Conwell</a>,
+                      <a href="https://bonnerlab.org"> Michael F. Bonner</a>,
+                      <a href="https://www.isiklab.org"> Leyla Isik</a>
+                      <br>
+                      <em> Preprint</em>
+                      <br>
+                    </p>
+                    <div class="paper" id="">
+                      <a href="https://osf.io/preprints/psyarxiv/4mpd9">Paper</a> &nbsp;/&nbsp;
+                      <a href="modeling_dynamic.html">Project Page</a> &nbsp;/&nbsp;
+                      <a href="https://github.com/Isik-lab/SIfMRI_modeling">Code & Data</a>
+                    </div>
+                    <p>
+                      We present a dataset of natural videos and captions involving complex multi-agent interactions, and we benchmark 350+ image, video,
+                      and language models on behavioral and neural responses to the videos. Together these results identify a major gap in AI's ability
+                      to match the human brain and behavior and highlight the importance of studying vision in dynamic, natural contexts.
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-left:20px;padding-top:10px;width:30%;vertical-align:middle">
+                    <img src="images/resized/paper1fig1.jpg">
+                  </td>
+                  <td style="padding-top:10px;padding-right:20px;width:70%;vertical-align:middle; text-align: justify;">
+                    <a href="lsbm.html">
+                      <span class="papertitle">Large-scale Deep Neural Network Benchmarking in Dynamic Social Vision</span>
+                    </a>
+                    <br>
+                    <strong><a href="index.html">Kathy Garcia</a></strong>,
+                    <a href="https://colinconwell.github.io"> Colin Conwell</a>,
+                    <a href="https://emaliemcmahon.github.io"> Emalie McMahon</a>,
+                    <a href="https://bonnerlab.org"> Michael F. Bonner</a>,
+                    <a href="https://www.isiklab.org"> Leyla Isik</a>
+                    <br>
+                    <em> <a href="https://www.visionsciences.org/presentation/?id=716">VSS, 2024 (Talk presentation)</a></em>
+                    <br>
+                    <p></p>
+                    <p>
+                      Large-scale benchmarking of 300+ DNNs with diverse architectures, objectives, and training sets, against fMRI responses to a curated dataset of 200 naturalistic social videos, with a focus on the "lateral" visual stream.
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-left:20px;padding-top:10px;width:30%;vertical-align:middle">
+                    <img src="images/resized/proj2_fig2.jpg">
+                  </td>
+                  <td style="padding-top:10px;padding-right:20px;width:70%;vertical-align:middle; text-align: justify;">
+                    <a href="https://garciakathy.github.io/fmri_svr.html">
+                      <span class="papertitle">Predicting Dimensional Symptoms of Psychopathology from Task-Based fMRI using Support Vector Regression</span>
+                    </a>
+                    <p>
+                      <strong><a href="index.html">Kathy Garcia</a></strong>,
+                      Zach Anderson,&nbsp;
+                      Iris Ka-Yi Chat,&nbsp;
+                      Katherine S.F. Damme,&nbsp;
+                      Katherine Young,
+                      Susan Y. Bookheimer,&nbsp;
+                      Richard Zinbarg,&nbsp;
+                      Michelle Craske,&nbsp;
+                      Robin Nusslock&nbsp;
+                      <br>
+                      <em>SfN Global Connectome, 2021 (Virtual poster presentation)</em>
+                      <br>
+                    </p>
+                    <p>
+                      This study develops a novel machine learning approach using Support Vector Regression (SVR) to explore potential biomarkers in fMRI data for symptoms of anxiety and depression,
+                      finding that MID task-fMRI data does not accurately predict these symptoms, with results indicating a poor model fit.
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-top:20px;padding-left:20px;vertical-align:top">
+                    <h2>Miscellaneous</h2>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-top:20px;padding-left:20px;vertical-align:top">
+                    <img style="object-fit: cover; height:140px; width:140px;" src="images/resized/JHU.jpg">
+                  </td>
+                  <td style="padding-top:30px;padding-right:20px;vertical-align:top; text-align: justify;">
+                    <p>Teaching Assistant, Cognitive Neuropsychology of Visual Perception - Spring 2024</p>
+                    <p>Teaching Assistant, Neuroimaging Methods in High-Level Vision - Fall 2023</p>
+                    <p>Teaching Assistant, Computational Cognitive Neuroscience of Vision - Spring 2023</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+                      <tbody>
+                        <tr style="padding:0px">
+                          <td style="padding-top:20px;padding-left:20px;padding-right:20px;width:100%;vertical-align:top;text-align: justify;">
+                            <h2>News</h2> <br>
+                            <div class="news">
+                              <div class="news-item">
+                                <span class="date">[Feb 2025]</span>
+                                <span class="text">I have been awarded the John I. Yellott Travel Award for Vision Science for the 2025 meeting of the Vision Sciences Society</span>
+                              </div>
+                              <div class="news-item">
+                                <span class="date">[Feb 2025]</span>
+                                <span class="text">I have been awarded National Eye Institute Early Career Scientist Travel Grant!</span>
+                              </div>
+                              <div class="news-item">
+                                <span class="date">[Feb 2025]</span>
+                                <span class="text">My work <a href="https://www.visionsciences.org/talk-session/?id=416">Semantic and Social Features Drive Human Groupings of Dynamic, Visual Events in Large-Scale Similarity Judgements</a> has been accepted as a Talk at VSS 2025!</span>
+                              </div>
+                              <div class="news-item">
+                                <span class="date">[Jan 2025]</span>
+                                <span class="text">My paper <a href="https://openreview.net/pdf?id=wAXsx2MYgV">Modeling dynamic social vision highlights gaps between deep learning and humans</a> will be published at ICLR 2025 in Singapore!</span>
+                              </div>
+                              <div class="news-item">
+                                <span class="date">[Aug 2024]</span>
+                                <span class="text">I will be presenting my talk <a href="https://2024.ccneuro.org/contributed-talk/?id=32">Dynamic, social vision highlights gaps between deep learning and human behavior and neural responses</a> at CCN 2024</span>
+                              </div>
+                              <div class="news-item">
+                                <span class="date">[July 2024]</span>
+                                <span class="text">I am honored to be awarded Best Oral Presentation at the <a href="https://icml.cc/virtual/2024/affinity-workshop/29959">LatinX in AI Workshop at ICML 2024</a>.</span>
+                              </div>
+                              <div class="news-item">
+                                <span class="date">[July 2024]</span>
+                                <span class="text">I will be presenting my talk <a href="https://icml.cc/virtual/2024/38087">Modeling Dynamic Social Vision Highlights Gaps Between Deep Learning & Humans</a> at the LatinX in AI Workshop at ICML 2024.</span>
+                              </div>
+                              <div class="news-item">
+                                <span class="date">[June 2024]</span>
+                                <span class="text">Excited to announce our latest pre-print: <a href="https://icml.cc/virtual/2024/38087">Modeling dynamic social vision highlights gaps between deep learning and Humans</a>!</span>
+                              </div>
+                              <div class="news-item">
+                                <span class="date">[May 2024]</span>
+                                <span class="text">Awarded the FOVEA 2024 Travel and Networking Award</span>
+                              </div>
+                              <div class="news-item">
+                                <span class="date">[May 2024]</span>
+                                <span class="text">I will be presenting my talk <a href="https://www.visionsciences.org/talk-session/?id=249">Large-scale deep neural benchmarking of dynamic social vision</a> at VSS 2024</span>
+                              </div>
+                              <div class="news-item">
+                                <span class="date">[April 2024]</span>
+                                <span class="text">Awarded the NSF GRFP</span> <br><br><br>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <footer>
+      <p style="text-align: center;">&copy; 2024 Kathy Garcia | Template publicly provided by  <a href="https://jonbarron.info/">Jon Barron</a> | Hosted by <a href="https://pages.github.com/">GitHub Pages</a>. </p>
+    </footer>
+  </body>
+</html>
