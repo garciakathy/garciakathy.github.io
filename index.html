@@ -37,6 +37,48 @@
           flex: 1;
         }
 
+        /* Media section styles */
+        .media-section {
+          margin-left: 20px;
+        }
+
+        .media-item {
+          background: #f8f9fa;
+          border-left: 4px solid #007bff;
+          padding: 15px 20px;
+          margin: 15px 0;
+          border-radius: 4px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          transition: box-shadow 0.3s ease;
+        }
+
+        .media-item:hover {
+          box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .media-outlet {
+          font-weight: bold;
+          color: #007bff;
+          font-size: 1.1em;
+          margin-bottom: 5px;
+        }
+
+        .media-title {
+          font-style: italic;
+          color: #333;
+          margin-bottom: 8px;
+        }
+
+        .media-date {
+          color: #666;
+          font-size: 0.9em;
+        }
+
+        .media-description {
+          color: #555;
+          margin-top: 8px;
+        }
+
         /* Responsive styles */
         @media screen and (max-width: 768px) {
           table {
@@ -83,8 +125,9 @@
                     </p>
                     <br>
                     <p>
-                      I am currently a 3<sup>rd</sup> year Ph.D. student studying Computational Cognitive Science at <a href="https://cogsci.jhu.edu/people/graduate-students/">Johns Hopkins University</a>
+                      I am currently a 4<sup>th</sup> year Ph.D. student studying Computational Cognitive Science at <a href="https://cogsci.jhu.edu/people/graduate-students/">Johns Hopkins University</a>
                       as a graduate researcher in the <a href="https://www.isiklab.org">Computational Cognitive Neuroscience Lab</a>, advised by <a href="https://cogsci.jhu.edu/directory/leyla-isik/">Professor Leyla Isik</a>.
+                      I feel extremely fortunate to be supported by the <a href="https://www.nsfgrfp.org">NSF Graduate Research Fellowship</a> as well as the JHU Kelly Miller Fellowship. 
                     </p>
                     <p style="text-align:center">
                       <a href="mailto:kgarci18@jhu.edu"><img style="object-fit: cover; height:30px; width:30px;" src="images/resized/email.png"/></a> &nbsp;&nbsp;
@@ -107,8 +150,7 @@
                   <td style="padding-top:10px;padding-left:20px;padding-right:20px;width:100%;vertical-align:top">
                     <h2>Research</h2>
                     <p>
-                      I'm interested in human vision, deep neural networks (DNNs), and dynamic social perception. My research aims to find biologically plausible computational models for dynamic and social visual perception.
-                      Therefore, most of my work thus far has been on large-scale benchmarking of DNNs for dynamic social perception, focusing on the recently proposed "lateral" visual stream.
+                      My research lies at the intersection of human vision, neuroscience, and artificial intelligence. I study how people perceive and interpret dynamic social interactions, and I use behavioral and neural benchmarks to evaluate and improve computational models of social vision. This work has involved large-scale benchmarking of deep neural networks, the development of new training objectives, and the integration of multimodal cues such as vision, language, and audio. The broader goal of my research is to create socially intelligent AI systems — models that not only recognize people and actions, but also understand and predict the rich dynamics of social interaction.
                     </p>
                   </td>
                 </tr>
@@ -116,6 +158,30 @@
             </table>
             <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
               <tbody>
+                <tr>
+                  <td style="padding-left:20px;width:30%;vertical-align:middle">
+                    <img src="images/social_tokens_overview.png" height="150" width="190"/>
+                  </td>
+                  <td style="padding-top:10px;padding-right:20px;width:80%;vertical-align:middle; text-align: justify;">
+                    <p>
+                      <a href="social_tokens.html">
+                        <span class="papertitle" style="font-size: 1.15em;">Look, Then Speak: Social Tokens for Grounding LLMs in Visual Interactions</span>
+                        <span style="display: block; height: 0.5em;"></span>
+                      </a>
+                      <strong><a href="index.html">Kathy Garcia</a></strong>,
+                      <a href="https://vsubramaniam851.github.io">Vighnesh Subramaniam</a>,
+                      <a href="https://people.csail.mit.edu/boris/boris.html">Boris Katz</a>,
+                      <a href="https://briancheung.github.io">Brian Cheung</a> <br>
+                      <em> 
+                          Accepted at UniReps: Workshop on Unifying Representations in Neural Models, NeurIPS 2025
+                      </em>
+                      <br>
+                    </p>
+                    <p>
+                      We introduce <b>social tokens</b>: visual features extracted from video frames &amp; strategically inserted into language models to enhance their comprehension of social interactions. This method significantly improves LLM performance on social tasks by enabling richer integration of social cues. Our results demonstrate that social tokens help bridge the gap between human and model understanding of complex social dynamics.
+                    </p>
+                  </td>
+                </tr>
                 <tr>
                   <td style="padding-left:20px;width:30%;vertical-align:middle">
                     <img src="images/method_logo.png" height="150" width="190"/>
@@ -250,12 +316,18 @@
                             <h2>News</h2> <br>
                             <div class="news">
                               <div class="news-item">
+                                <span class="date">[Sept 2025]</span>
+                                <span class="text">
+                                  Our work on <a href="social_tokens.html">social tokens</a> has been accepted at UniReps: Workshop on Unifying Representations in Neural Models, NeurIPS 2025!
+                                </span>
+                              </div>
+                              <div class="news-item">
                                 <span class="date">[July 2025]</span>
                                 <span class="text">
                                   I am honored to become a member of the <a href="https://www.sigmaxi.org">Sigma Xi Scientific Research Honor Society</a>!
                                 </span>
                               </div>
-                              <div class="news-item">
+                              <!-- <div class="news-item">
                                 <span class="date">[May 2025]</span>
                                 <span class="text">
                                   Our benchmarking work on AI and social perception was highlighted in 
@@ -265,14 +337,14 @@
                                 </span>
                               </div>
                               <div class="news-item">
-                                <span class="date">[April 2025]</span>
+                                <span class="date">[Apr 2025]</span>
                                 <span class="text">
                                   Our benchmarking work on AI and social perception was highlighted in 
                                   <a href="https://hub.jhu.edu/2025/04/24/humans-better-than-ai-at-reading-the-room/" target="_blank" rel="noopener noreferrer">
                                     The Johns Hopkins Hub article "When It Comes To Reading The Room, Humans Are Still Better Than AI"
                                   </a>!
                                 </span>
-                              </div>
+                              </div> -->
                               <div class="news-item">
                                 <span class="date">[Feb 2025]</span>
                                 <span class="text">I have been awarded the John I. Yellott Travel Award for Vision Science for the 2025 meeting of the Vision Sciences Society</span>
@@ -314,8 +386,47 @@
                                 <span class="text">I will be presenting my talk <a href="https://www.visionsciences.org/talk-session/?id=249">Large-scale deep neural benchmarking of dynamic social vision</a> at VSS 2024</span>
                               </div>
                               <div class="news-item">
-                                <span class="date">[April 2024]</span>
+                                <span class="date">[Apr 2024]</span>
                                 <span class="text">Awarded the NSF GRFP</span> <br><br><br>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+                      <tbody>
+                        <tr style="padding:0px">
+                          <td style="padding-top:20px;padding-left:20px;padding-right:20px;width:100%;vertical-align:top;text-align: justify;">
+                            <h2>In the Media</h2> <br>
+                            <div class="media-section">
+                              <div class="media-item">
+                                <div class="media-outlet">The Wall Street Journal</div>
+                                <div class="media-title">
+                                  <a href="https://archive.is/wAcZZ" target="_blank" rel="noopener noreferrer">
+                                    "AI Can't Compete With Humans When It Comes to Reading the Room"
+                                  </a>
+                                </div>
+                                <div class="media-date">May 2025</div>
+                                <div class="media-description">
+                                  Our benchmarking work on AI and social perception was highlighted in this major news outlet.
+                                </div>
+                              </div>
+                              <div class="media-item">
+                                <div class="media-outlet">The Johns Hopkins Hub</div>
+                                <div class="media-title">
+                                  <a href="https://hub.jhu.edu/2025/04/24/humans-better-than-ai-at-reading-the-room/" target="_blank" rel="noopener noreferrer">
+                                    "When It Comes To Reading The Room, Humans Are Still Better Than AI"
+                                  </a>
+                                </div>
+                                <div class="media-date">April 2025</div>
+                                <div class="media-description">
+                                  Our benchmarking work on AI and social perception was highlighted in this university news feature.
+                                </div>
                               </div>
                             </div>
                           </td>
