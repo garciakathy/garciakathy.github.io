@@ -1,6 +1,16 @@
 <!DOCTYPE HTML>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVRXCHECS8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QVRXCHECS8');
+    </script>
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <title>Kathy Garcia</title>
@@ -170,13 +180,13 @@
       .mentorship-box {
           background-color: var(--section-bg);
           border-left: 3px solid var(--blue-accent);
-          padding: 5px 8px;
-          margin: 8px 0;
+          padding: 12px 15px;
+          margin: 20px 0;
           border-radius: 4px;
-          font-size: 0.7em;
-          line-height: 1.2em;
+          font-size: 0.85em;
+          line-height: 1.4em;
           color: var(--text-secondary);
-          width: 260px;
+          width: 350px;
           text-align: left;
           display: inline-block;
       }
@@ -296,12 +306,19 @@
           }
 
           .profile-image img {
-            width: 200px !important;
-            height: 250px !important;
+            width: 250px !important;
+            height: 320px !important;
             margin: 0 auto;
             display: block;
             object-fit: cover;
             object-position: center 10%;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+          }
+
+          .profile-image img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.25) !important;
           }
 
           /* Social icons mobile layout */
@@ -352,8 +369,15 @@
           }
 
           .publication-image img {
-            max-width: 200px;
+            max-width: 240px;
             height: auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+          }
+
+          .publication-image img:active {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
           }
 
           .publication-content {
@@ -466,7 +490,7 @@
           }
 
           .profile-image {
-            flex: 0 0 200px;
+            flex: 0 0 270px;
           }
 
           .publication-row {
@@ -477,7 +501,17 @@
           }
 
           .publication-image {
-            flex: 0 0 180px;
+            flex: 0 0 220px;
+          }
+
+          .publication-image img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+          }
+
+          .publication-image img:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.25) !important;
           }
 
           .publication-content {
@@ -515,6 +549,75 @@
           right: 0;
           z-index: 1000;
           transition: all 0.3s ease;
+        }
+
+        /* Dropdown menu styles */
+        .dropdown {
+          position: relative;
+          display: inline-block;
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: var(--navbar-bg);
+          min-width: 320px;
+          box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+          z-index: 1001;
+          border-radius: 8px;
+          margin-top: 8px;
+          padding: 8px 0;
+          border: 1px solid var(--border-color);
+          opacity: 0;
+          transform: translateY(-10px);
+          transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .dropdown-content.show {
+          display: block;
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .dropdown-content a {
+          color: var(--text-color);
+          padding: 14px 20px;
+          text-decoration: none;
+          display: block;
+          transition: all 0.2s ease;
+          font-size: 0.95em;
+          border-radius: 4px;
+          margin: 0 8px;
+        }
+
+        .dropdown-content a:hover {
+          background-color: var(--blue-accent);
+          color: white;
+          transform: translateX(5px);
+        }
+
+        .dropdown:hover .dropdown-content {
+          display: block;
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .dropdown .dropbtn {
+          cursor: pointer;
+          padding: 10px 15px;
+          display: inline-block;
+          transition: all 0.2s ease;
+        }
+
+        .dropdown .dropbtn:hover {
+          color: var(--blue-accent);
+        }
+
+        /* Click-based dropdown for better mobile support */
+        .dropdown.active .dropdown-content {
+          display: block;
+          opacity: 1;
+          transform: translateY(0);
         }
 
         .navbar-container {
@@ -931,6 +1034,23 @@
           50% { opacity: 0.3; }
         }
 
+        /* Highlight author name */
+        .author-highlight {
+          font-weight: bold;
+          color: #1e40af;
+        }
+
+        /* Smaller, more concise award boxes */
+        .award-badge {
+          background: #e8f5e9;
+          border-left: 3px solid #4caf50;
+          padding: 6px 10px;
+          margin-top: 8px;
+          border-radius: 4px;
+          font-size: 0.85em;
+          line-height: 1.3;
+        }
+
         /* Desktop styles - preserve original layout */
         @media screen and (min-width: 1025px) {
           .profile-section {
@@ -945,18 +1065,28 @@
           }
 
           .profile-image {
-            flex: 0 0 200px;
+            flex: 0 0 270px;
           }
 
           .publication-row {
             display: flex;
             flex-direction: row;
-            gap: 5px;
+            gap: 20px;
             align-items: flex-start;
           }
 
           .publication-image {
-            flex: 0 0 180px;
+            flex: 0 0 220px;
+          }
+
+          .publication-image img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+          }
+
+          .publication-image img:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.25) !important;
           }
 
           .publication-content {
@@ -998,9 +1128,9 @@
         en: {
           name: "Kathy Garcia",
           nav: {
-            research: "Research",
-            news: "News", 
-            publications: "Publications",
+            research: "About",
+            news: "News",
+            publications: "Research",
             honors: "Honors",
             cv: "CV"
           },
@@ -1044,9 +1174,9 @@
         es: {
           name: "Kathy García",
           nav: {
-            research: "Investigación",
+            research: "Acerca de",
             news: "Noticias",
-            publications: "Publicaciones", 
+            publications: "Investigación",
             honors: "Reconocimientos",
             cv: "CV"
           },
@@ -1265,6 +1395,38 @@
           e.preventDefault();
         });
 
+        // Enhanced dropdown functionality for both desktop and mobile
+        const dropdowns = document.querySelectorAll('.dropdown');
+
+        dropdowns.forEach(dropdown => {
+          const dropbtn = dropdown.querySelector('.dropbtn');
+
+          if (dropbtn) {
+            // Click to toggle dropdown (better for mobile)
+            dropbtn.addEventListener('click', function(e) {
+              e.preventDefault();
+              dropdown.classList.toggle('active');
+            });
+
+            // Close dropdown when clicking a link inside
+            const dropdownLinks = dropdown.querySelectorAll('.dropdown-content a');
+            dropdownLinks.forEach(link => {
+              link.addEventListener('click', function() {
+                dropdown.classList.remove('active');
+              });
+            });
+          }
+        });
+
+        // Close all dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+          if (!e.target.closest('.dropdown')) {
+            dropdowns.forEach(dropdown => {
+              dropdown.classList.remove('active');
+            });
+          }
+        });
+
         // Hidden easter egg for developers
         console.log(`
         🤖 Greetings, fellow developer! 🧠
@@ -1309,9 +1471,18 @@
         <!-- Desktop navigation -->
         <div style="display: flex; align-items: center; gap: 20px;">
           <ul class="navbar-nav">
-            <li><a href="#research">Research</a></li>
+            <li><a href="#research">About</a></li>
             <li><a href="#news">News</a></li>
-            <li><a href="#publications">Publications</a></li>
+            <li class="dropdown">
+              <a href="#publications" class="dropbtn">Research ▾</a>
+              <div class="dropdown-content">
+                <a href="video_alignment.html">Aligning Video Models with Human Social Judgments</a>
+                <a href="social_tokens.html">Social Tokens for Grounding LLMs</a>
+                <a href="similarity_judgments.html">Large-Scale Study of Social Scene Judgments</a>
+                <a href="modeling_dynamic.html">Modeling Dynamic Social Vision</a>
+                <a href="lsbm.html">Large-scale DNN Benchmarking</a>
+              </div>
+            </li>
             <li><a href="#honors">Honors</a></li>
             <li><a href="data/Kathy_CV (1).pdf" target="_blank">CV</a></li>
           </ul>
@@ -1328,9 +1499,18 @@
         <!-- Mobile navigation menu -->
         <div class="navbar-menu">
           <ul class="navbar-nav">
-            <li><a href="#research">Research</a></li>
+            <li><a href="#research">About</a></li>
             <li><a href="#news">News</a></li>
-            <li><a href="#publications">Publications</a></li>
+            <li class="dropdown mobile-dropdown">
+              <a href="#publications" class="dropbtn">Research ▾</a>
+              <div class="dropdown-content">
+                <a href="video_alignment.html">Aligning Video Models with Human Social Judgments</a>
+                <a href="social_tokens.html">Social Tokens for Grounding LLMs</a>
+                <a href="similarity_judgments.html">Large-Scale Study of Social Scene Judgments</a>
+                <a href="modeling_dynamic.html">Modeling Dynamic Social Vision</a>
+                <a href="lsbm.html">Large-scale DNN Benchmarking</a>
+              </div>
+            </li>
             <li><a href="#honors">Honors</a></li>
             <li><a href="data/Kathy_CV (1).pdf" target="_blank">CV</a></li>
           </ul>
@@ -1372,7 +1552,7 @@
                   <b>Kathy Garcia</b>
                 </p>
                 <p style="text-align: left; color: #666; font-size: 0.85em; margin-top: 3px; margin-bottom: 12px;">
-                  NSF Fellow (12%) • Published ICLR (25%) • Best Oral ICML LatinX • 2x VSS Talks (15%) • CCN Talk (25%) • WSJ, PopSci Features
+                  NSF Fellow (12%) • Published ICLR (25%) • Best Oral ICML LatinX • 2x VSS Talks (15%) • CCN Talk (25%) • 350+ models benchmarked  • WSJ, PopSci  Features
                 </p>
                 <p>
                   <strong>Building human-aligned AI through computational cognitive neuroscience.</strong>
@@ -1388,7 +1568,7 @@
                 </p>
               </div>
               <div class="profile-image" style="margin-top: 60px;">
-                <img style="width:180px;object-fit: cover;border-radius:8%; height:240px; box-shadow: 0 4px 12px var(--shadow-color);" src="images/Garcia-Kathy-187x271.png"/>
+                <img style="width:250px;object-fit: cover;border-radius:8%; height:320px; box-shadow: 0 4px 12px var(--shadow-color); transition: transform 0.4s ease, box-shadow 0.4s ease; cursor: pointer;" src="images/Garcia-Kathy-187x271.png" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 12px 32px rgba(0,0,0,0.25)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 12px var(--shadow-color)'"/>
               </div>
             </div>
             
@@ -1418,6 +1598,10 @@
                     <h2 id="news">News</h2>
                     <div class="news-container">
                       <div class="news">
+                        <div class="news-item">
+                          <span class="date">[Oct 2025]</span>
+                          <span class="text">📄 New preprint on <a href="video_alignment.html">aligning video models with human social judgments</a>!</span>
+                        </div>
                         <div class="news-item">
                           <span class="date">[Sept 2025]</span>
                           <span class="text">🎉 Paper accepted at <a href="social_tokens.html">NeurIPS 2025 UniReps Workshop</a> on social tokens for grounding LLMs!</span>
@@ -1510,8 +1694,8 @@
                       <div class="neural-decoration dark-only" style="top: 5px; left: 10px;">🧠⚡🤖</div>
                       <div class="neural-decoration dark-only" style="bottom: 5px; right: 10px;">💫⚙️🔮</div>
                       <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/MIT_logo.svg" alt="MIT" style="height: 40px; margin: 0 20px; opacity: 0.8;"/>
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Seal_of_Leland_Stanford_Junior_University.svg" alt="Stanford" style="height: 40px; margin: 0 20px; opacity: 0.8;"/>
-                      <img src="images/JHU.png" alt="Johns Hopkins" style="height: 40px; margin: 0 20px; opacity: 0.8;"/>
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Seal_of_Leland_Stanford_Junior_University.svg" alt="Stanford" style="height: 55px; margin: 0 20px; opacity: 0.8;"/>
+                      <img src="images/JHU.png" alt="Johns Hopkins" style="height: 55px; margin: 0 20px; opacity: 0.8;"/>
                     </div>
 
                   </td>
@@ -1520,7 +1704,12 @@
             </table>
             <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;" class="major-section">
               <tbody>
-                <tr id="publications">
+                <tr>
+                  <td style="padding-top:20px;padding-left:20px;padding-right:20px;width:100%;vertical-align:top">
+                    <h2 id="publications" style="margin-top: 20px;">Research Projects</h2>
+                  </td>
+                </tr>
+                <tr>
                   <td class="publication-row" style="padding:0;width:100%;vertical-align:top">
                     <div class="publication-image">
                       <div style="position: relative;">
@@ -1534,17 +1723,46 @@
                           <span class="papertitle" style="font-size: 1.15em;">Look, Then Speak: Social Tokens for Grounding LLMs in Visual Interactions</span>
                           <span style="display: block; height: 0.5em;"></span>
                         </a>
-                        <strong><a href="index.html">Kathy Garcia</a></strong>,
+                        <span class="author-highlight">Kathy Garcia</span>,
                         <a href="https://vsubramaniam851.github.io">Vighnesh Subramaniam</a>,
                         <a href="https://people.csail.mit.edu/boris/boris.html">Boris Katz</a>,
                         <a href="https://briancheung.github.io">Brian Cheung</a> <br>
-                        <em> 
+                        <em>
                             Accepted at UniReps Workshop, NeurIPS 2025
                         </em>
                         <br>
                       </p>
                       <p>
                         We introduce <b>social tokens</b>: visual features extracted from video frames &amp; strategically inserted into language models to enhance their comprehension of social interactions. This method significantly improves LLM performance on social tasks by enabling richer integration of social cues. Our results demonstrate that social tokens help bridge the gap between human and model understanding of complex social dynamics.
+                      </p>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="publication-row" style="padding:0;width:100%;vertical-align:top">
+                    <div class="publication-image">
+                      <div style="position: relative;">
+                        <img src="static/figures/video_align/figure1.png" height="150" width="190" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);"/>
+                        <div style="position: absolute; top: 5px; right: 5px; background: #ff6b6b; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.7em; font-weight: bold;">Preprint</div>
+                      </div>
+                    </div>
+                    <div class="publication-content">
+                      <p>
+                        <a href="video_alignment.html">
+                          <span class="papertitle" style="font-size: 1.15em;">Aligning Video Models with Human Social Judgments via Behavior-Guided Fine-Tuning</span>
+                          <span style="display: block; height: 0.5em;"></span>
+                        </a>
+                        <span class="author-highlight">Kathy Garcia</span>,
+                        <a href="https://www.isiklab.org">Leyla Isik</a> <br>
+                        <em>arXiv preprint, 2025</em>
+                        <br>
+                      </p>
+                      <div class="paper" id="">
+                        <a href="https://arxiv.org/abs/2510.01502">arXiv</a> &nbsp;/&nbsp;
+                        <a href="video_alignment.html">Project Page</a>
+                      </div>
+                      <p>
+                        We introduce <b>behavior-guided fine-tuning</b> to align video models with human social perception. Using 49,000+ human similarity judgments, we fine-tune video models via a hybrid triplet-RSA loss, significantly improving alignment with how humans perceive social interactions while maintaining performance on downstream tasks.
                       </p>
                     </div>
                   </td>
@@ -1560,17 +1778,20 @@
                           <span class="papertitle" style="font-size: 1.15em;">A Large-Scale Study of Social Scene Judgments: Alignment with Deep Neural Networks and Social-Affective Features</span>
                           <span style="display: block; height: 0.5em;"></span>
                         </a>
-                        <strong><a href="index.html">Kathy Garcia</a></strong>,
-                        <a href="https://www.isiklab.org"> Leyla Isik</a> <br>
-                        <em> 
+                        <span class="author-highlight">Kathy Garcia</span>,
+                        <a href="https://www.isiklab.org">Leyla Isik</a> <br>
+                        <em>
                           <a href="https://www.visionsciences.org/talk-session/?id=416#:~:text=Talk%204%2C%203,dynamic%20social%20scenes.">
                             Vision Sciences Society (VSS), 2025 (Talk Presentation)
                           </a>
                         </em>
                         <br>
                       </p>
+                      <div class="award-badge">
+                        🎤 VSS 2025 Talk (15% acceptance)
+                      </div>
                       <p>
-                        We benchmark how closely deep neural networks capture the social understanding reflected in human judgments and brain responses to real-world interactions. 
+                        We benchmark how closely deep neural networks capture the social understanding reflected in human judgments and brain responses to real-world interactions.
                         Our dataset and framework reveal that while AI models are closing the gap, humans still rely on uniquely social cues to interpret complex social scenes.
                       </p>
                     </div>
@@ -1590,11 +1811,11 @@
                           <span class="papertitle" style="font-size: 1.15em;">Modeling Dynamic Social Vision Highlights Gaps Between Deep Learning and Humans</span>
                         </a>
                         <span style="display: block; height: 0.5em;"></span>
-                        <strong><a href="index.html">Kathy Garcia</a></strong>,
-                        <a href="https://emaliemcmahon.github.io"> Emalie McMahon</a>,
-                        <a href="https://colinconwell.github.io"> Colin Conwell</a>,
-                        <a href="https://bonnerlab.org"> Michael F. Bonner</a>,
-                        <a href="https://www.isiklab.org"> Leyla Isik</a>
+                        <span class="author-highlight">Kathy Garcia</span>,
+                        <a href="https://emaliemcmahon.github.io">Emalie McMahon</a>,
+                        <a href="https://colinconwell.com">Colin Conwell</a>,
+                        <a href="https://www.bonnerlab.org">Michael F. Bonner</a>,
+                        <a href="https://www.isiklab.org">Leyla Isik</a>
                         <br>
                         <em>International Conference on Learning Representations (ICLR), 2025</em>
                       </p>
@@ -1603,6 +1824,9 @@
                         <a href="data/Garcia_ICLR_Poster.pdf">Poster</a> &nbsp;/&nbsp;
                         <a href="modeling_dynamic.html">Project Page</a> &nbsp;/&nbsp;
                         <a href="https://github.com/Isik-lab/SIfMRI_modeling">Code & Data</a>
+                      </div>
+                      <div class="award-badge">
+                        🏆 Best Oral @ ICML LatinX 2024 • 📰 WSJ, JHU Hub, PopSci, Marketplace
                       </div>
                       <p>
                         We present a dataset of natural videos and captions involving complex multi-agent interactions, and we benchmark 350+ image, video,
@@ -1622,19 +1846,19 @@
                        <span class="papertitle" style="font-size: 1.15em;">Large-scale Deep Neural Network Benchmarking in Dynamic Social Vision</span>
                       </a>
                       <span style="display: block; height: 0.5em;"></span>
-                      <strong><a href="index.html">Kathy Garcia</a></strong>,
-                      <a href="https://colinconwell.github.io"> Colin Conwell</a>,
-                      <a href="https://emaliemcmahon.github.io"> Emalie McMahon</a>,
-                      <a href="https://bonnerlab.org"> Michael F. Bonner</a>,
-                      <a href="https://www.isiklab.org"> Leyla Isik</a>
+                      <span class="author-highlight">Kathy Garcia</span>,
+                      <a href="https://colinconwell.com">Colin Conwell</a>,
+                      <a href="https://emaliemcmahon.github.io">Emalie McMahon</a>,
+                      <a href="https://www.bonnerlab.org">Michael F. Bonner</a>,
+                      <a href="https://www.isiklab.org">Leyla Isik</a>
                       <br>
-                      <em> 
-                        <a href="https://www.visionsciences.org/presentation/?id=716">
-                          Vision Sciences Society (VSS), 2024 (Talk Presentation)
-                        </a>
+                      <em>
+                        <a href="https://www.visionsciences.org/presentation/?id=716">Vision Sciences Society (VSS), 2024</a> • <a href="https://2024.ccneuro.org/contributed-talk/?id=32">Cognitive Computational Neuroscience (CCN), 2024</a>
                       </em>
                       <br>
-                      <p></p>
+                      <div class="award-badge">
+                        🎤 VSS 2024 Talk (15% acceptance) • CCN 2024 Contributed Talk (25% acceptance)
+                      </div>
                       <p>
                         Large-scale benchmarking of 300+ DNNs with diverse architectures, objectives, and training sets, against fMRI responses to a curated dataset of 200 naturalistic social videos, with a focus on the "lateral" visual stream.
                       </p>
@@ -1651,7 +1875,7 @@
                         <span class="papertitle" style="font-size: 1.15em;">Predicting Dimensional Symptoms of Psychopathology from Task-Based fMRI using Support Vector Regression</span>
                       </a>
                         <span style="display: block; height: 0.5em;"></span>
-                        <strong><a href="index.html">Kathy Garcia</a></strong>,
+                        <span class="author-highlight">Kathy Garcia</span>,
                         Zach Anderson,&nbsp;
                         Iris Ka-Yi Chat,&nbsp;
                         Katherine S.F. Damme,&nbsp;
@@ -1676,13 +1900,48 @@
               <tbody>
                 <tr>
                   <td style="padding-top:10px;padding-left:20px;padding-right:20px;width:100%;vertical-align:top">
+                    <h2 id="publications-list" class="section-accent">Publications</h2>
+                    <div style="margin-left: 20px; margin-bottom: 25px; font-size: 0.9em; line-height: 1.6;">
+                      <p style="margin: 15px 0;">
+                        <span class="author-highlight">Garcia, K.</span>, Subramaniam, V., Katz, B., & Cheung, B. (2025). Look, Then Speak: Social Tokens for Grounding LLMs in Visual Interactions. In <em>NeurIPS 2025 Workshop on Unifying Representations in Neural Models (UniReps)</em>.
+                      </p>
+                      <p style="margin: 15px 0;">
+                        <span class="author-highlight">Garcia, K.</span>, & Isik, L. (2025). Aligning Video Models with Human Social Judgments via Behavior-Guided Fine-Tuning. <em>arXiv preprint arXiv:2510.01502</em>.
+                      </p>
+                      <p style="margin: 15px 0;">
+                        <span class="author-highlight">Garcia, K.</span>, & Isik, L. (2025). Semantic and Social Features Drive Human Grouping of Dynamic, Visual Events in Large-Scale Similarity Judgements. <em>Journal of Vision, 25</em>(9), 2621.
+                      </p>
+                      <p style="margin: 15px 0;">
+                        <span class="author-highlight">Garcia, K.</span>, McMahon, E., Conwell, C., Bonner, M. F., & Isik, L. (2025). Modeling Dynamic Social Vision Highlights Gaps Between Deep Learning and Humans. In <em>International Conference on Learning Representations (ICLR)</em>.
+                      </p>
+                      <p style="margin: 15px 0;">
+                        <span class="author-highlight">Garcia, K.</span>, Conwell, C., McMahon, E., Bonner, M. F., & Isik, L. (2024). Large-scale Deep Neural Network Benchmarking in Dynamic Social Vision. <em>Journal of Vision, 24</em>(10), 716.
+                      </p>
+                      <p style="margin: 15px 0;">
+                        McMahon, E., Conwell, C., <span class="author-highlight">Garcia, K.</span>, Bonner, M. F., & Isik, L. (2024). Language model prediction of visual cortex responses to dynamic social scenes. <em>Journal of Vision, 24</em>(10), 904.
+                      </p>
+                      <p style="margin: 15px 0;">
+                        <span class="author-highlight">Garcia, K.</span>, Anderson, Z., Chat, I. K., Damme, K. S., Young, K., Bookheimer, S. Y., Zinbarg, R., Craske, M., & Nusslock, R. (2021). Predicting Dimensional Symptoms of Psychopathology from Task-Based fMRI using Support Vector Regression. <em>Society for Neuroscience (SfN) Global Connectome</em>.
+                      </p>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto; text-align: justify;" class="major-section">
+              <tbody>
+                <tr>
+                  <td style="padding-top:10px;padding-left:20px;padding-right:20px;width:100%;vertical-align:top">
                     <h2 id="honors" class="section-accent">Selected Honors</h2>
                     <div class="honors-list" style="margin-left: 20px; margin-bottom: 25px;">
-                      <p style="margin: 8px 0;"><strong>NSF Graduate Research Fellowship</strong> (2024) - 12% acceptance rate</p>
                       <p style="margin: 8px 0;"><strong>Best Oral Presentation Award</strong>, LatinX in AI Workshop, ICML (2024)</p>
                       <p style="margin: 8px 0;"><strong>Sigma Xi Scientific Research Honor Society</strong> (2025)</p>
+                      <p style="margin: 8px 0;"><strong>National Eye Institute Early Career Scientist Travel Grant</strong> (2025)</p>
                       <p style="margin: 8px 0;"><strong>John I. Yellott Travel Award for Vision Science</strong>, VSS (2025)</p>
+                      <p style="margin: 8px 0;"><strong>FoVea Travel and Networking Award</strong> (2024)</p>
                       <p style="margin: 8px 0;"><strong>Kelly Miller Fellowship</strong>, Johns Hopkins University (2021-2025)</p>
+                      <p style="margin: 8px 0;"><strong>Northwestern University Interdepartmental Neuroscience Research Fellowship</strong> (2020)</p>
+                      <p style="margin: 8px 0;"><strong>Stanford University El Centro Latino Acknowledgement</strong> (2017)</p>
                     </div>
                   </td>
                 </tr>
