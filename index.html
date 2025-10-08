@@ -235,6 +235,11 @@
           scroll-margin-top: 80px;
         }
 
+        /* Add scroll margin for about section */
+        #about {
+          scroll-margin-top: 80px;
+        }
+
         /* Better spacing between major sections */
         .major-section {
           margin-bottom: 15px;
@@ -555,6 +560,8 @@
         .dropdown {
           position: relative;
           display: inline-block;
+          margin: 0;
+          padding: 0;
         }
 
         .dropdown-content {
@@ -604,7 +611,7 @@
 
         .dropdown .dropbtn {
           cursor: pointer;
-          padding: 10px 15px;
+          padding: 0;
           display: inline-block;
           transition: all 0.2s ease;
         }
@@ -649,10 +656,11 @@
           margin: 0;
           padding: 0;
           align-items: center;
+          gap: 30px;
         }
 
         .navbar-nav li {
-          margin-left: 25px;
+          margin: 0;
         }
 
         .navbar-nav a {
@@ -1227,9 +1235,10 @@
         
         // Update navigation
         document.querySelector('.navbar-brand').textContent = lang.name;
-        document.querySelector('a[href="#research"]').textContent = lang.nav.research;
+        document.querySelector('a[href="#about"]').textContent = lang.nav.research;
         document.querySelector('a[href="#news"]').textContent = lang.nav.news;
-        document.querySelector('a[href="#publications"]').textContent = lang.nav.publications;
+        document.querySelector('a[href="#research"]').textContent = lang.nav.publications;
+        document.querySelector('a[href="#publications-list"]').textContent = "Publications";
         document.querySelector('a[href="#honors"]').textContent = lang.nav.honors;
         document.querySelector('a[href*="CV"]').textContent = lang.nav.cv;
         
@@ -1402,10 +1411,14 @@
           const dropbtn = dropdown.querySelector('.dropbtn');
 
           if (dropbtn) {
-            // Click to toggle dropdown (better for mobile)
+            // On mobile, allow dropdown toggle; on desktop, link navigates normally
             dropbtn.addEventListener('click', function(e) {
-              e.preventDefault();
-              dropdown.classList.toggle('active');
+              // Only prevent default and toggle dropdown on mobile
+              if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+              }
+              // On desktop, let the link navigate naturally (dropdown shows on hover)
             });
 
             // Close dropdown when clicking a link inside
@@ -1471,10 +1484,10 @@
         <!-- Desktop navigation -->
         <div style="display: flex; align-items: center; gap: 20px;">
           <ul class="navbar-nav">
-            <li><a href="#research">About</a></li>
+            <li><a href="#about">About</a></li>
             <li><a href="#news">News</a></li>
             <li class="dropdown">
-              <a href="#publications" class="dropbtn">Research ▾</a>
+              <a href="#research" class="dropbtn">Research ▾</a>
               <div class="dropdown-content">
                 <a href="video_alignment.html">Aligning Video Models with Human Social Judgments</a>
                 <a href="social_tokens.html">Social Tokens for Grounding LLMs</a>
@@ -1483,6 +1496,7 @@
                 <a href="lsbm.html">Large-scale DNN Benchmarking</a>
               </div>
             </li>
+            <li><a href="#publications-list">Publications</a></li>
             <li><a href="#honors">Honors</a></li>
             <li><a href="data/Kathy_CV (1).pdf" target="_blank">CV</a></li>
           </ul>
@@ -1499,10 +1513,10 @@
         <!-- Mobile navigation menu -->
         <div class="navbar-menu">
           <ul class="navbar-nav">
-            <li><a href="#research">About</a></li>
+            <li><a href="#about">About</a></li>
             <li><a href="#news">News</a></li>
             <li class="dropdown mobile-dropdown">
-              <a href="#publications" class="dropbtn">Research ▾</a>
+              <a href="#research" class="dropbtn">Research ▾</a>
               <div class="dropdown-content">
                 <a href="video_alignment.html">Aligning Video Models with Human Social Judgments</a>
                 <a href="social_tokens.html">Social Tokens for Grounding LLMs</a>
@@ -1511,6 +1525,7 @@
                 <a href="lsbm.html">Large-scale DNN Benchmarking</a>
               </div>
             </li>
+            <li><a href="#publications-list">Publications</a></li>
             <li><a href="#honors">Honors</a></li>
             <li><a href="data/Kathy_CV (1).pdf" target="_blank">CV</a></li>
           </ul>
@@ -1546,7 +1561,7 @@
         <tr style="padding:0px">
           <td style="padding:0px">
             <!-- Profile Section -->
-            <div class="profile-section">
+            <div class="profile-section" id="about">
               <div class="profile-text">
                 <p class="name" style="text-align: left;">
                   <b>Kathy Garcia</b>
@@ -1690,12 +1705,12 @@
                     <p>
                       Working with researchers across <strong>MIT, Stanford, and Johns Hopkins</strong>, I develop methods that enable AI systems to perceive, interpret, and predict complex social dynamics. This work spans computer vision, natural language processing, and cognitive neuroscience — positioning AI systems to become truly collaborative partners in human social environments.
                     </p>
-                    <div style="text-align: center; margin: 20px 0; padding: 15px; background: var(--section-bg); border-radius: 8px; position: relative;">
+                    <div style="text-align: center; margin: 20px 0; padding: 15px; position: relative;">
                       <div class="neural-decoration dark-only" style="top: 5px; left: 10px;">🧠⚡🤖</div>
                       <div class="neural-decoration dark-only" style="bottom: 5px; right: 10px;">💫⚙️🔮</div>
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/MIT_logo.svg" alt="MIT" style="height: 40px; margin: 0 20px; opacity: 0.8;"/>
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Seal_of_Leland_Stanford_Junior_University.svg" alt="Stanford" style="height: 55px; margin: 0 20px; opacity: 0.8;"/>
-                      <img src="images/JHU.png" alt="Johns Hopkins" style="height: 55px; margin: 0 20px; opacity: 0.8;"/>
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/MIT_logo.svg" alt="MIT" style="height: 50px; margin: 0 20px; opacity: 0.8; vertical-align: middle;"/>
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Seal_of_Leland_Stanford_Junior_University.svg" alt="Stanford" style="height: 55px; margin: 0 20px; opacity: 0.8; vertical-align: middle;"/>
+                      <img src="images/JHU.png" alt="Johns Hopkins" style="height: 55px; margin: 0 20px; opacity: 0.8; vertical-align: middle;"/>
                     </div>
 
                   </td>
@@ -1706,7 +1721,7 @@
               <tbody>
                 <tr>
                   <td style="padding-top:20px;padding-left:20px;padding-right:20px;width:100%;vertical-align:top">
-                    <h2 id="publications" style="margin-top: 20px;">Research Projects</h2>
+                    <h2 id="publications" style="margin-top: 20px; margin-bottom: 30px; font-size: 1.8em;">Research Projects</h2>
                   </td>
                 </tr>
                 <tr>

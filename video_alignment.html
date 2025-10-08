@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVRXCHECS8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-QVRXCHECS8');
+  </script>
+
+  <meta charset="utf-8">
+  <meta name="description"
+        content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aligning Video Models with Human Social Judgments via Behavior-Guided Fine-Tuning</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/responsive_style.css">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a href="index.html" style="font-weight: 600; font-size: 1.1em; color: #333; text-decoration: none; padding: 10px 20px;">Kathy Garcia</a>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-end">
+      <a href="index.html#about" class="navbar-item">About</a>
+      <a href="index.html#news" class="navbar-item">News</a>
+      <a href="index.html#research" class="navbar-item">Research</a>
+      <a href="index.html#publications-list" class="navbar-item">Publications</a>
+      <a href="index.html#honors" class="navbar-item">Honors</a>
+      <a href="data/Kathy_CV (1).pdf" class="navbar-item" target="_blank">CV</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e1e5e9;
+  }
+  .navbar-item {
+    color: #666;
+    font-weight: 500;
+    font-size: 0.9em;
+  }
+  .navbar-item:hover {
+    color: #4a90e2;
+    background-color: transparent;
+  }
+  .navbar-burger {
+    color: #333;
+  }
+</style>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-widescreen">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Aligning Video Models with Human Social Judgments via Behavior-Guided Fine-Tuning</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="index.html"><strong>Kathy Garcia</strong></a>,</span>&nbsp;
+            <span class="author-block">
+              <a href="https://www.isiklab.org">Leyla Isik</a>&nbsp;
+            </span>
+          </div>
+          <br>
+          <div class="is-size-4 publication-authors">
+            <span class="author-block">Johns Hopkins University</span>
+          </div>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2510.01502"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link (placeholder - update when available) -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/Isik-lab/video-alignment"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            How do AI models perceive social signals in visual scenes, and how closely do their representations align with human perceptions? While recent vision models have achieved remarkable performance on traditional computer vision benchmarks, their ability to capture human-like social understanding remains unclear. We investigate this question by collecting a large-scale benchmark of 49,000+ human similarity judgments on 250 video clips depicting diverse social interactions. Surprisingly, we find that language embeddings derived from human-written captions align better with human similarity judgments than state-of-the-art video models, suggesting a significant gap in how video models process social information.
+          </p>
+          <p>
+            To address this gap, we propose a behavior-guided fine-tuning approach that aligns video model representations with human social perception. Using a hybrid triplet-RSA objective with low-rank adaptation (LoRA), we fine-tune a TimeSformer video model to match human pairwise similarity judgments. Our results demonstrate that this targeted fine-tuning significantly improves alignment with human social perception while maintaining strong performance on downstream tasks. We further show that our approach enables better encoding of social-affective attributes and exhibits promising transfer learning capabilities.
+          </p>
+          <p>
+            This work establishes a new benchmark for evaluating and improving how AI systems understand social interactions, offering a path toward more human-aligned video understanding models.<br><br><br>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Overview</h2>
+        <br>
+        <div class="content has-text-justified">
+          <div style="text-align: justified;">
+            <img src="static/figures/video_align/figure1.png" alt="Method Overview" style="max-width: 100%; height: auto;">
+            <br>
+            <p class="caption" style="width: 100%; text-align: justify;">
+                <b>Behavior-Guided Fine-Tuning Framework.</b> We fine-tune a pre-trained video model (TimeSformer) using human similarity judgments as supervision. The model learns to align its pairwise video representations with human perceptual similarity through a hybrid triplet-RSA loss, using LoRA for efficient parameter updates.
+            </p>
+          </div>
+        </div>
+        <br><br>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Human Similarity Judgments</h2>
+        <br>
+        <div class="content has-text-justified">
+          <div style="text-align: justified;">
+            <img src="static/figures/video_align/figure2.png" alt="Similarity Task Design" style="max-width: 100%; height: auto;">
+            <br>
+            <p class="caption" style="width: 100%; text-align: justify;">
+                <b>Triplet Odd-One-Out Task.</b> We collected 49,000+ similarity judgments from human participants who viewed triplets of social videos and selected the odd-one-out. This large-scale dataset reveals how humans organize and perceive social interactions.
+            </p>
+          </div>
+        </div>
+        <br><br>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Model Alignment Results</h2>
+        <div class="content has-text-justified">
+          <div style="text-align: justified;">
+            <br>
+            <img src="static/figures/video_align/figure3.png" alt="Alignment Results" style="max-width: 100%; height: auto;">
+            <br>
+            <p class="caption" style="width: 100%; text-align: justify;">
+                <b>Improved Alignment with Human Perception.</b> Our behavior-guided fine-tuning significantly improves the correlation between video model representations and human similarity judgments. The fine-tuned model shows stronger alignment across multiple evaluation metrics compared to the baseline pre-trained model.
+            </p>
+          </div>
+        </div>
+        <br><br>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Fine-Tuning Methodology</h2>
+        <div class="content has-text-justified">
+          <div style="text-align: justified;">
+            <br>
+            <img src="static/figures/video_align/figure4.png" alt="Fine-tuning Method" style="max-width: 100%; height: auto;">
+            <br>
+            <p class="caption" style="width: 100%; text-align: justify;">
+                <b>Hybrid Triplet-RSA Loss.</b> We combine a triplet loss that encourages the model to match human odd-one-out choices with an RSA loss that aligns the full representational geometry. Low-rank adaptation (LoRA) enables efficient fine-tuning with minimal parameter updates.
+            </p>
+          </div>
+        </div>
+        <br><br>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Key Findings</h2>
+        <div class="content has-text-justified">
+          <div style="text-align: justified;">
+            <p class="caption">
+              Our work reveals several important insights:
+              <br><br>
+              <b>(1) Language models outperform video models:</b> Human-written captions processed by language models align better with human social perception than state-of-the-art video models, highlighting a critical gap in video understanding.
+              <br><br>
+              <b>(2) Behavior-guided fine-tuning improves alignment:</b> Targeted fine-tuning using human similarity judgments significantly improves video model alignment with human social perception, bridging the gap between AI and human understanding.
+              <br><br>
+              <b>(3) Transfer learning capabilities:</b> Models fine-tuned on human judgments show improved encoding of social-affective attributes and generalize to related social understanding tasks.
+              <br><br>
+              <b>(4) New benchmark for social video understanding:</b> Our dataset of 49,000+ similarity judgments provides a valuable resource for training and evaluating future models of social perception.
+            </p>
+          </div>
+        </div>
+        <br><br>
+      </div>
+    </div>
+
+    <!-- Citation Section -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Citation</h2>
+        <div class="content has-text-left">
+          <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; border-left: 4px solid #4a90e2;">
+            <p style="font-family: 'Courier New', monospace; font-size: 0.9em; margin: 0;">
+              Garcia, K., & Isik, L. (2025). Aligning Video Models with Human Social Judgments via Behavior-Guided Fine-Tuning. <em>arXiv preprint arXiv:2510.01502</em>.
+            </p>
+          </div>
+        </div>
+        <br><br>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+</body>
+</html>
