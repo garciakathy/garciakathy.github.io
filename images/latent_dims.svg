@@ -15,8 +15,8 @@
     <text x="62" y="118" fill="#2a6ab5">conversation</text>
     <text x="190" y="112" fill="#c0573d">caregiving</text>
     <text x="286" y="136" fill="#2f7d5a">cooking</text>
-    <text x="96" y="204" fill="#7a4fbf">outdoor play</text>
+    <text x="84" y="204" fill="#7a4fbf">outdoor activity</text>
     <text x="228" y="202" fill="#b27a1d">music</text>
   </g>
-  <text x="370" y="228" text-anchor="end" font-family="DM Mono, Menlo, monospace" font-size="10" fill="#7a8494">latent embedding of 54k judgments</text>
+  <text x="370" y="228" text-anchor="end" font-family="DM Mono, Menlo, monospace" font-size="10" fill="#7a8494">sparse embedding of 53k judgments</text>
 </svg>

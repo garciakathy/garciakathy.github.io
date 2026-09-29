@@ -13,10 +13,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Latent Dimensions of Social Scenes</title>
-  <meta name="description" content="The latent dimensions supporting dynamic social scene perception: 54,000 similarity judgments reveal a compact, interpretable map of social scenes that also predicts visual cortex. CCN 2026.">
-  <meta property="og:title" content="The Latent Dimensions Supporting Dynamic Social Scene Perception">
-  <meta property="og:description" content="Kathy Garcia & Leyla Isik · Preprint 2026 · CCN 2026">
-  <meta property="og:image" content="https://garciakathy.github.io/images/latent_dims.svg">
+  <meta name="description" content="53,223 odd-one-out judgments reveal 40 learned dimensions of dynamic social scenes that combine relationships and actions, explain twice the variance of pre-labeled annotations, and predict visual cortex.">
+  <meta property="og:title" content="Human similarity judgments reveal fine-grained representations of relationships and actions in dynamic social scenes">
+  <meta property="og:description" content="Kathy Garcia & Leyla Isik · PsyArXiv preprint 2026">
+  <meta property="og:image" content="https://garciakathy.github.io/static/figures/latent/fig3_dimensions.jpg">
   <link rel="icon" href="images/favicon.png">
 
   <script>
@@ -36,9 +36,42 @@
     .step b { display: block; color: var(--ink); font-size: 14.5px; margin: 4px 0 4px; }
     .step i { color: var(--accent); font-size: 18px; }
     .step:not(:last-child)::after { content: '→'; position: absolute; right: -10px; top: 50%; transform: translate(50%, -50%); color: var(--ink-3); z-index: 1; }
-    .dim-map { position: relative; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: #fff; }
-    .dim-map img { display: block; width: 100%; }
     @media (max-width: 720px) { .pipeline { grid-template-columns: 1fr 1fr; } .step:not(:last-child)::after { display: none; } }
+
+    /* dimension explorer */
+    .dim-chips .chip { font-size: 12.5px; padding: 5px 11px; }
+    .dim-chips .chip .n { font: 500 10.5px var(--mono); opacity: .7; margin-right: 4px; }
+    .dim-strip { margin-top: 12px; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 8px; }
+    .dim-strip img { display: block; width: 100%; border-radius: 6px; }
+    .words { display: flex; flex-wrap: wrap; gap: 5px; margin: 8px 0 4px; }
+    .word { padding: 2px 9px; border-radius: 999px; font: 500 12.5px var(--mono); background: var(--bg); border: 1px solid var(--line); }
+    .word.N { color: #2a6ab5; } .word.V { color: #2f7d5a; } .word.Adj { color: #c0573d; } .word.Adv { color: #7a4fbf; }
+    [data-theme="dark"] .word.N { color: #7db6f7; } [data-theme="dark"] .word.V { color: #6fcf9f; } [data-theme="dark"] .word.Adj { color: #f09a82; } [data-theme="dark"] .word.Adv { color: #b99af0; }
+    .dim-meta { font-size: 12.5px; color: var(--ink-3); }
+
+    /* fractionation pair */
+    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+    .pair figure { margin: 0; padding: 10px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
+    .pair img { width: 100%; display: block; border-radius: 6px; background: #fff; }
+    .pair figcaption { font-size: 13.5px; color: var(--ink-2); margin-top: 8px; }
+    .pair figcaption b { color: var(--ink); }
+    .vs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    @media (max-width: 700px) { .pair { grid-template-columns: 1fr; } .vs { grid-template-columns: 1fr 1fr; } }
+
+    /* heatmap */
+    .heat-wrap { overflow-x: auto; }
+    .heat { border-collapse: separate; border-spacing: 2px; font-size: 11.5px; margin: 4px auto; }
+    .heat th { font-weight: 700; color: var(--ink-2); padding: 2px 4px; }
+    .heat thead tr + tr th { height: 118px; vertical-align: bottom; }
+    .heat thead th span { display: inline-block; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; }
+    .heat thead th.grp { height: auto; font: 500 10px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); border-bottom: 1.5px solid var(--line); }
+    .heat tbody th { text-align: right; white-space: nowrap; cursor: pointer; }
+    .heat td { width: 38px; height: 26px; text-align: center; border-radius: 4px; font: 500 10.5px var(--mono); cursor: default; transition: transform .1s, box-shadow .1s; }
+    .heat td:hover { transform: scale(1.15); box-shadow: 0 2px 8px rgba(0,0,0,.25); position: relative; z-index: 1; }
+    .heat tr.dim td { opacity: .25; }
+    .heat-legend { display: flex; align-items: center; justify-content: center; gap: 8px; font: 500 11px var(--mono); color: var(--ink-3); margin-top: 8px; }
+    .heat-legend .bar { width: 180px; height: 10px; border-radius: 5px; background: linear-gradient(90deg, #2166ac, #f7f7f7, #b2182b); }
+    .heat-info { text-align: center; font-size: 13.5px; color: var(--ink-2); min-height: 22px; margin-top: 6px; }
   </style>
 </head>
 
@@ -53,7 +86,7 @@
           <button class="nav-btn" aria-expanded="false" aria-haspopup="true">Research <i class="fas fa-chevron-down" style="font-size:10px"></i></button>
           <div class="dropdown-menu">
             <a href="video_alignment.html">Behavioral Geometric Supervision <small>NeurIPS 2026 · Oral</small></a>
-            <a href="latent_dimensions.html">Latent Dimensions of Social Scenes <small>Preprint 2026 · CCN 2026</small></a>
+            <a href="latent_dimensions.html">Fine-Grained Social Scene Representations <small>PsyArXiv preprint 2026</small></a>
             <a href="social_tokens.html">Social Tokens for Grounding LLMs <small>NeurIPS 2025 UniReps</small></a>
             <a href="similarity_judgments.html">Large-Scale Social Scene Judgments <small>VSS 2025 talk</small></a>
             <a href="modeling_dynamic.html">Modeling Dynamic Social Vision <small>ICLR 2025</small></a>
@@ -73,24 +106,22 @@
   <main class="wrap">
     <section class="p-hero">
       <div class="p-kicker">
-        <span class="badge">📄 New preprint · 2026</span>
-        <span class="badge plain">CCN 2026 · Poster E90</span>
+        <span class="badge">📄 New preprint · PsyArXiv 2026</span>
       </div>
-      <h1 class="p-title">The <span class="accent">Latent Dimensions</span> Supporting Dynamic Social Scene Perception</h1>
+      <h1 class="p-title">Human Similarity Judgments Reveal <span class="accent">Fine-Grained Representations</span> of Relationships and Actions in Dynamic Social Scenes</h1>
       <div class="p-authors">
-        <a href="index.html">Kathy Garcia</a>
-        <a href="https://www.isiklab.org">Leyla Isik</a>
+        <a href="index.html">Kathy Garcia<sup>1</sup></a>
+        <a href="https://www.isiklab.org">Leyla Isik<sup>1,2</sup></a>
       </div>
-      <div class="p-affil">Johns Hopkins University</div>
+      <div class="p-affil"><sup>1</sup>Department of Cognitive Science · <sup>2</sup>Department of Biomedical Engineering · Johns Hopkins University</div>
       <div class="p-buttons">
-        <!-- TODO: replace with the preprint link once it is posted (Oct 2026) -->
-        <span class="pill disabled"><i class="fas fa-file-pdf"></i> Preprint (coming soon)</span>
-        <a class="pill solid" href="https://2026.ccneuro.org/poster/?id=X1NIOuzwZR"><i class="fas fa-brain"></i> CCN 2026 abstract</a>
+        <!-- TODO: replace with the PsyArXiv link once the preprint is posted -->
+        <span class="pill solid disabled"><i class="fas fa-file-pdf"></i> PsyArXiv preprint (coming soon)</span>
         <a class="pill" href="#bibtex"><i class="fas fa-quote-right"></i> BibTeX</a>
       </div>
-      <figure class="p-teaser" style="max-width:720px">
-        <img src="images/latent_dims.svg" alt="Illustration: social videos grouped along latent dimensions such as conversation, caregiving, cooking, outdoor play, and music">
-        <figcaption class="p-teaser-cap">Schematic: a data-driven embedding recovers a few interpretable social dimensions from triplet judgments.</figcaption>
+      <figure class="p-teaser">
+        <img src="static/figures/latent/fig3_dimensions.jpg" alt="The top 11 learned dimensions, each shown with the 8 highest-loading video frames and a word cloud of contrastive caption words">
+        <figcaption class="p-teaser-cap">The top 11 learned dimensions: the 8 highest-loading videos for each, next to the most contrastive words from human-written captions.</figcaption>
       </figure>
     </section>
 
@@ -104,32 +135,31 @@
       <div class="p-content">
         <section class="p-section" id="overview" data-toc="Overview">
           <h2><span class="num">00</span>Overview</h2>
-          <p class="tldr">People recognize a huge variety of social scenes at a glance. We asked what structure organizes that knowledge — and found a compact set of interpretable, data-driven dimensions that explains human judgments <b>and</b> neural responses better than features derived from established social-perception theories.</p>
+          <p class="tldr">How does the mind organize dynamic social scenes? Instead of assuming a taxonomy, we learned one from behavior. The resulting dimensions explain <b>twice as much variance</b> as theory-based annotations, <b>combine relationships with actions</b> (who is doing what with whom), and predict <b>visual cortex</b> — including the lateral pathway and STS — better than those annotations.</p>
           <div class="stats">
-            <div class="stat"><div class="stat-num" data-count="54000">54,000</div><div class="stat-label">odd-one-out triplet similarity judgments</div></div>
-            <div class="stat"><div class="stat-num">3 s</div><div class="stat-label">naturalistic social interaction videos</div></div>
-            <div class="stat"><div class="stat-num">fMRI</div><div class="stat-label">plus behavioral annotations for every video</div></div>
+            <div class="stat"><div class="stat-num" data-count="53223">53,223</div><div class="stat-label">odd-one-out triplet judgments</div></div>
+            <div class="stat"><div class="stat-num" data-count="232">232</div><div class="stat-label">participants</div></div>
+            <div class="stat"><div class="stat-num" data-count="40">40</div><div class="stat-label">learned sparse dimensions</div></div>
+            <div class="stat"><div class="stat-num" data-count="2" data-suffix="×">2×</div><div class="stat-label">variance explained vs. pre-labeled annotations</div></div>
           </div>
-          <p>
-            Humans rapidly recognize and understand a rich variety of social scenes, but how this information is organized in the human mind and brain is still
-            largely unknown. We collected <strong>54,000 odd-one-out similarity judgments</strong> on an existing dataset of short social-interaction videos that
-            already has behavioral annotations and fMRI data, and trained a <strong>data-driven embedding model</strong> to recover the latent dimensions structuring
-            human social-scene perception.
-          </p>
+          <p>Existing accounts organize social scenes along pre-defined dimensions: social-affective axes like warmth, dominance, valence, and arousal, or
+            action categories and action-related features. Both specify the candidate dimensions <em>before</em> measuring the representational space. We instead
+            collected odd-one-out similarity judgments on 250 naturalistic two-person videos and trained a <strong>sparse positive similarity embedding (SPoSE)</strong>
+            to recover the latent dimensions directly from behavior.</p>
         </section>
 
         <section class="p-section" id="approach" data-toc="Approach">
           <h2><span class="num">01</span>Approach</h2>
           <div class="pipeline">
-            <div class="step"><i class="fas fa-film"></i><b>Videos</b>Short clips of everyday social interactions with existing annotations and fMRI.</div>
-            <div class="step"><i class="fas fa-hand-pointer"></i><b>Judgments</b>54k triplet odd-one-out choices: which clip doesn't belong?</div>
-            <div class="step"><i class="fas fa-diagram-project"></i><b>Embedding</b>Learn a low-dimensional embedding that predicts every choice.</div>
-            <div class="step"><i class="fas fa-brain"></i><b>Test</b>Compare against theory-based ratings on held-out behavior and fMRI.</div>
+            <div class="step"><i class="fas fa-film"></i><b>250 videos</b>3-second clips of everyday two-person interactions, with existing annotations and fMRI.</div>
+            <div class="step"><i class="fas fa-hand-pointer"></i><b>Judgments</b>49,484 training triplets from 215 people; 3,739 held-out test triplets from 17 more.</div>
+            <div class="step"><i class="fas fa-diagram-project"></i><b>SPoSE</b>Each video is a sparse, non-negative vector trained to predict every odd-one-out choice.</div>
+            <div class="step"><i class="fas fa-brain"></i><b>Test</b>Multiple-regression RSA against held-out behavior and fMRI, vs. 13 pre-labeled annotations.</div>
           </div>
-          <p>Try a trial yourself — this is exactly what participants saw:</p>
-          <div class="ooo" data-videos="dynamic/intro_1.mp4, dynamic/intro_2.mp4, dynamic/intro_3.mp4, dynamic/methods_1.mp4, dynamic/methods_2.mp4, dynamic/methods_3.mp4, dynamic/methods_4.mp4, dynamic/methods_5.mp4, dynamic/methods_6.mp4">
+          <p>Try a trial yourself — this is what participants saw:</p>
+          <div class="ooo" data-total="53223" data-videos="dynamic/intro_1.mp4, dynamic/intro_2.mp4, dynamic/intro_3.mp4, dynamic/methods_1.mp4, dynamic/methods_2.mp4, dynamic/methods_3.mp4, dynamic/methods_4.mp4, dynamic/methods_5.mp4, dynamic/methods_6.mp4">
             <div class="ooo-prompt">Which clip is the odd-one-out?</div>
-            <div class="ooo-hint">Focus on what the people are doing.</div>
+            <div class="ooo-hint">There is no right answer; go with your intuition.</div>
             <div class="ooo-grid"></div>
             <div class="ooo-result"></div>
             <div class="ooo-foot">
@@ -137,65 +167,201 @@
               <button class="pill ooo-next"><i class="fas fa-shuffle"></i> New triplet</button>
             </div>
           </div>
+          <div class="tabs">
+            <div class="tab-list" role="tablist">
+              <button class="tab">How the model learns</button>
+              <button class="tab">Methods figure</button>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <div class="findings">
+                <div class="finding"><span>Each video starts as a point in a 90-dimensional non-negative space.</span></div>
+                <div class="finding"><span>For a triplet (i, j, k), each pair's similarity is the <b>dot product</b> of its vectors; a softmax over the three gives the probability each pair is “most similar.”</span></div>
+                <div class="finding"><span>The model minimizes the negative log-likelihood of human choices plus an <b>L1 sparsity penalty</b>. After training, near-empty dimensions are pruned, leaving <b>40</b>.</span></div>
+              </div>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/latent/fig1_methods.jpg" alt="Methods overview: odd-one-out task, SPoSE embedding model, and representational similarity analysis" loading="lazy"></div>
+                <figcaption><b>(a)</b> Triplet odd-one-out task. <b>(b)</b> The SPoSE model predicts the odd one out and is updated by backpropagation. <b>(c)</b> Pre-labeled annotations and learned embeddings are compared with the human similarity matrix using multiple-regression RSA.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-section" id="variance" data-toc="Twice the variance">
+          <h2><span class="num">02</span>Learned dimensions explain twice the variance</h2>
+          <p>All 13 pre-labeled annotations — scene, body configuration, action and interaction, and social-affective features — together explained only
+            <strong>r² = 0.25</strong> of held-out human similarity (split-half reliability 0.67). Individually, only dominance, spatial expanse, and intimacy were significant.</p>
+          <div class="chart-card" data-chart="variance-data">
+            <div class="chart-head"><div><div class="chart-title">Explained variance in held-out similarity judgments</div><div class="chart-sub">Cross-validated multiple-regression RSA · Spearman r²</div></div></div>
+            <div class="chart-legend"></div>
+            <div class="bars"></div>
+            <p class="chart-note"></p>
+          </div>
+          <h3>Variance partitioning</h3>
+          <p>Combining both sets shows the annotations add almost nothing beyond the learned dimensions, while the learned dimensions carry substantial unique variance.</p>
+          <div class="chart-card">
+            <div class="compare">
+              <div class="compare-row"><span class="name">Combined model (0.55)</span>
+                <div class="stack">
+                  <div style="width:4.5%;background:#8e5bc2" title="Unique pre-labeled: 0.03">.03</div>
+                  <div style="width:32.8%;background:#8a94a6" title="Shared: 0.22">shared 0.22</div>
+                  <div style="width:43.3%;background:var(--accent)" title="Unique learned: 0.29">unique learned 0.29</div>
+                </div>
+              </div>
+            </div>
+            <p class="chart-note">Bar length relative to the noise ceiling (0.67). Purple: unique to pre-labeled annotations (95% CI [−0.02, 0.06]). Gray: shared. Blue: unique to the 40 learned dimensions (95% CI [0.13, 0.38]).</p>
+          </div>
+          <figure class="fig">
+            <div class="fig-frame"><img src="static/figures/latent/fig2_variance.jpg" alt="Explained variance by each pre-labeled annotation, by learned dimensions, and variance partitioning" loading="lazy"></div>
+            <figcaption><b>Full results.</b> (a) Each annotation and all 13 together. (b) All 40 learned dimensions and the top 11. (c) Variance partitioning of the combined model. Error bars: 95% CIs from a video-level bootstrap.</figcaption>
+          </figure>
         </section>
 
         <section class="p-section" id="dimensions" data-toc="The dimensions">
-          <h2><span class="num">02</span>What the dimensions capture</h2>
-          <p>A compact set of relatively distinct dimensions captured most of the explainable variance. Rather than abstract axes, they reflect
-            <strong>interpretable social contexts and activities</strong>. Click a dimension:</p>
-          <div class="chips" data-panel="dim-panel">
-            <button class="chip" style="--c:#4a90e2" data-target="d-conv">Conversation</button>
-            <button class="chip" style="--c:#e07a5f" data-target="d-care">Caregiving</button>
-            <button class="chip" style="--c:#3d9970" data-target="d-cook">Cooking</button>
-            <button class="chip" style="--c:#9b6dd6" data-target="d-play">Outdoor play</button>
-            <button class="chip" style="--c:#e0a84a" data-target="d-music">Music performance</button>
-            <button class="chip" style="--c:#c0573d" data-target="d-infant">Infant interaction</button>
+          <h2><span class="num">03</span>Explore the dimensions</h2>
+          <p>A greedy forward-selection curve has an elbow at <strong>11 dimensions</strong>, which carry 79% of the full model's predictive power (r² ≈ 0.41).
+            Each is stable across retraining (mean reliability 0.60–0.88). Labels come from the top videos and a <strong>contrastive caption analysis</strong>: words
+            that appear in descriptions of high- but not low-loading videos. Pick a dimension:</p>
+          <div class="chips dim-chips" data-panel="dim-panel" data-img-target="dim-img">
+            <button class="chip" data-img="static/figures/latent/dim1.jpg" data-target="d1"><span class="n">1</span>Conversation</button>
+            <button class="chip" data-img="static/figures/latent/dim0.jpg" data-target="d0"><span class="n">0</span>Caregiving</button>
+            <button class="chip" data-img="static/figures/latent/dim13.jpg" data-target="d13"><span class="n">13</span>Outdoor activity</button>
+            <button class="chip" data-img="static/figures/latent/dim7.jpg" data-target="d7"><span class="n">7</span>Martial arts</button>
+            <button class="chip" data-img="static/figures/latent/dim9.jpg" data-target="d9"><span class="n">9</span>Infants crying</button>
+            <button class="chip" data-img="static/figures/latent/dim2.jpg" data-target="d2"><span class="n">2</span>Musical performance</button>
+            <button class="chip" data-img="static/figures/latent/dim4.jpg" data-target="d4"><span class="n">4</span>Infant play</button>
+            <button class="chip" data-img="static/figures/latent/dim3.jpg" data-target="d3"><span class="n">3</span>Children dancing</button>
+            <button class="chip" data-img="static/figures/latent/dim6.jpg" data-target="d6"><span class="n">6</span>Cooking / eating</button>
+            <button class="chip" data-img="static/figures/latent/dim17.jpg" data-target="d17"><span class="n">17</span>Action sport</button>
+            <button class="chip" data-img="static/figures/latent/dim8.jpg" data-target="d8"><span class="n">8</span>Infant bath / bed</button>
           </div>
           <div class="chip-panel" id="dim-panel" aria-live="polite"></div>
-          <template id="d-conv"><b>Conversation.</b> Scenes of people talking with one another.</template>
-          <template id="d-care"><b>Caregiving.</b> Scenes of one person caring for another. Notably, infant scenes split into caregiving, play, and crying rather than one “infant” dimension.</template>
-          <template id="d-cook"><b>Cooking.</b> Scenes of people cooking or preparing food.</template>
-          <template id="d-play"><b>Outdoor play.</b> People playing together outdoors.</template>
-          <template id="d-music"><b>Music performance.</b> People playing or performing music.</template>
-          <template id="d-infant"><b>Infant interaction.</b> The embedding splits broad categories into distinct contexts — infant scenes separate into caregiving, play, and crying instead of collapsing into a single dimension.</template>
-          <div class="callout">The embedding is <b>finer-grained than category labels</b>: it separates contexts that a single broad category (e.g., “infants”) would lump together.</div>
+          <div class="dim-strip"><img id="dim-img" src="static/figures/latent/dim1.jpg" alt="Conversation results"></div>
+          <p class="dim-meta">Word colors: <span class="word N">noun</span> <span class="word V">verb</span> <span class="word Adj">adjective</span> <span class="word Adv">adverb</span>. JS = Jensen–Shannon divergence between high- and low-loading caption vocabularies (chance 0.61 bits).</p>
+
+          <template id="d1"><b>Dim 1 · Conversation.</b> Adults talking, often in cars. <div class="words"><span class="word V">talk</span><span class="word N">car</span><span class="word N">passenger</span><span class="word N">person</span><span class="word V">drive</span><span class="word N">males</span><span class="word N">chef</span><span class="word N">wood</span><span class="word N">window</span><span class="word V">explaining</span></div><span class="dim-meta">JS 0.78 bits</span></template>
+          <template id="d0"><b>Dim 0 · Caregiving.</b> Infant caregiving routines such as feeding and brushing teeth. <div class="words"><span class="word N">baby</span><span class="word V">feed</span><span class="word V">brush</span><span class="word N">teeth</span><span class="word N">mother</span><span class="word N">child</span><span class="word N">bath</span><span class="word N">parent</span><span class="word V">eat</span><span class="word V">laugh</span></div><span class="dim-meta">JS 0.80 bits</span></template>
+          <template id="d13"><b>Dim 13 · Outdoor activity.</b> The one less social-centric dimension: it tracks scene annotations strongly (indoor/outdoor r = −0.61, spatial expanse r = 0.63). <div class="words"><span class="word V">fish</span><span class="word N">dog</span><span class="word N">fox</span><span class="word N">hunters</span><span class="word N">pole</span><span class="word V">walk</span><span class="word V">crouching</span><span class="word Adj">dead</span><span class="word V">hiking</span><span class="word N">kill</span></div><span class="dim-meta">JS 0.75 bits</span></template>
+          <template id="d7"><b>Dim 7 · Martial arts.</b> Martial arts and sports practice. Not significantly correlated with any pre-labeled annotation. <div class="words"><span class="word V">kick</span><span class="word N">balls</span><span class="word V">throw</span><span class="word Adj">martial</span><span class="word V">practicing</span><span class="word V">catch</span><span class="word V">dance</span><span class="word N">air</span><span class="word N">art</span><span class="word N">arts</span></div><span class="dim-meta">JS 0.78 bits</span></template>
+          <template id="d9"><b>Dim 9 · Infants crying.</b> Crying infants lying in beds and cots. <div class="words"><span class="word V">cry</span><span class="word N">baby</span><span class="word V">lie</span><span class="word N">side</span><span class="word N">bed</span><span class="word N">cot</span><span class="word Adj">next</span><span class="word N">backs</span><span class="word Adj">calm</span><span class="word V">laid</span></div><span class="dim-meta">JS 0.80 bits</span></template>
+          <template id="d2"><b>Dim 2 · Musical performance.</b> People playing music. <div class="words"><span class="word N">drum</span><span class="word V">sing</span><span class="word N">guitar</span><span class="word N">band</span><span class="word V">play</span><span class="word N">stage</span><span class="word N">drummer</span><span class="word N">keyboard</span><span class="word N">guitarist</span><span class="word N">guitars</span></div><span class="dim-meta">JS 0.76 bits</span></template>
+          <template id="d4"><b>Dim 4 · Infant play.</b> Playful parent–child interaction — separate from caregiving (Dim 0) even though both involve babies. <div class="words"><span class="word N">baby</span><span class="word N">bed</span><span class="word V">laugh</span><span class="word N">cat</span><span class="word N">mother</span><span class="word V">cry</span><span class="word V">lie</span><span class="word N">toddler</span><span class="word N">dad</span><span class="word N">fingers</span></div><span class="dim-meta">JS 0.73 bits</span></template>
+          <template id="d3"><b>Dim 3 · Children dancing.</b> Children dancing and playing. <div class="words"><span class="word V">dance</span><span class="word V">laugh</span><span class="word N">girl</span><span class="word N">tv</span><span class="word N">ballet</span><span class="word N">child</span><span class="word V">move</span><span class="word N">living</span><span class="word V">learning</span><span class="word N">room</span></div><span class="dim-meta">JS 0.77 bits</span></template>
+          <template id="d6"><b>Dim 6 · Cooking / eating.</b> Adults cooking and eating. <div class="words"><span class="word V">cook</span><span class="word N">food</span><span class="word N">kitchen</span><span class="word V">eat</span><span class="word N">plate</span><span class="word N">woman</span><span class="word N">friends</span><span class="word N">ingredients</span><span class="word N">pan</span><span class="word V">preparing</span></div><span class="dim-meta">JS 0.72 bits</span></template>
+          <template id="d17"><b>Dim 17 · Action sport.</b> Throwing, kicking, and skateboarding. Not significantly correlated with any pre-labeled annotation. <div class="words"><span class="word V">throw</span><span class="word V">kick</span><span class="word N">ramp</span><span class="word N">ball</span><span class="word V">catch</span><span class="word N">skateboard</span><span class="word N">balls</span><span class="word N">boy</span><span class="word Adv">away</span><span class="word N">bowling</span></div><span class="dim-meta">JS 0.74 bits</span></template>
+          <template id="d8"><b>Dim 8 · Infant bath / bed.</b> Infant play and bath contexts — child–child play, where Dim 4 is parent–child. <div class="words"><span class="word N">bath</span><span class="word V">cry</span><span class="word N">baby</span><span class="word N">bathroom</span><span class="word V">lie</span><span class="word N">balloon</span><span class="word N">tub</span><span class="word N">side</span><span class="word N">bed</span><span class="word N">bathtub</span></div><span class="dim-meta">JS 0.76 bits</span></template>
         </section>
 
-        <section class="p-section" id="results" data-toc="Results">
-          <h2><span class="num">03</span>Results</h2>
-          <div class="findings">
-            <div class="finding"><span><b>Better than theory-driven features on behavior.</b> The learned embedding predicted held-out similarity judgments substantially better than human-annotated ratings grounded in established theories of social perception.</span></div>
-            <div class="finding"><span><b>Compact and interpretable.</b> A small set of relatively distinct dimensions captured most of the explainable variance, each reflecting a recognizable social context or activity.</span></div>
-            <div class="finding"><span><b>They also predict the brain.</b> The same dimensions predicted neural representational geometry in fMRI significantly better than predefined behavioral features across visual cortex.</span></div>
+        <section class="p-section" id="fractionation" data-toc="Fractionation">
+          <h2><span class="num">04</span>Broad categories split into distinct social contexts</h2>
+          <p>Related content is often <strong>fractionated</strong> rather than lumped together. Infant scenes separate into caregiving routines, crying, and affectionate
+            play; “play” itself splits by who is playing — parent–child versus child–child — even though the top verb for both is “play.” Adult scenes separate into
+            conversation, cooking and eating, sport, and more.</p>
+          <div class="pair">
+            <figure><img src="static/figures/latent/dim0.jpg" alt="Caregiving dimension examples" loading="lazy"><figcaption><b>Dim 0 · Caregiving</b> — feeding, brushing</figcaption></figure>
+            <figure><img src="static/figures/latent/dim4.jpg" alt="Infant play dimension examples" loading="lazy"><figcaption><b>Dim 4 · Infant play</b> — laughing, playful parent–child</figcaption></figure>
           </div>
-          <p>Together, these results give an <strong>empirically derived, low-dimensional mapping</strong> linking behavioral similarity judgments to neural representations for social-scene perception.</p>
-          <!-- TODO: add figures from the preprint (embedding dimensions, behavior + fMRI comparisons) once it is posted. -->
-          <div class="callout"><b>Figures and full results</b> will be added here when the preprint is released in October 2026.</div>
+          <div class="vs">
+            <div class="stat"><div class="stat-num">0.97</div><div class="stat-label">correlation between their <b>annotation</b> profiles — near-identical</div></div>
+            <div class="stat"><div class="stat-num">0.76</div><div class="stat-label">correlation between the two learned dimensions</div></div>
+            <div class="stat"><div class="stat-num">3 / 20</div><div class="stat-label">top-20 videos shared</div></div>
+            <div class="stat"><div class="stat-num">19 / 20</div><div class="stat-label">retrains where fractionation recurs</div></div>
+          </div>
+          <p style="margin-top:14px">The annotations describe these scenes almost identically, yet the embedding learned from people's judgments treats them as different situations.</p>
         </section>
 
-        <section class="p-section" id="related" data-toc="Related work">
-          <h2><span class="num">04</span>How it fits together</h2>
-          <p>This project uses the same odd-one-out paradigm as our <a href="similarity_judgments.html">large-scale study of social scene judgments</a>, which
-            compared human similarity with predefined features and 350+ DNNs. Here, instead of testing predefined features, we let the dimensions emerge from the data.
-            The resulting human similarity structure is also what <a href="video_alignment.html">behavioral geometric supervision</a> uses to align video models.</p>
+        <section class="p-section" id="annotations" data-toc="vs. annotations">
+          <h2><span class="num">05</span>No dimension maps onto a single annotation</h2>
+          <p>Correlations between the top 11 dimensions and the 13 pre-labeled annotations. Hover a cell for details; click a dimension to focus on it.
+            Dimensions that correlate with annotations usually span several families (scene, body, action, social-affective), and three (7, 17, 8) match none.</p>
+          <div class="chart-card">
+            <div class="heat-wrap"><table class="heat" id="heat"></table></div>
+            <div class="heat-legend"><span>−1</span><span class="bar"></span><span>+1</span><span style="margin-left:10px">values shown where Bonferroni p ≤ 0.05</span></div>
+            <div class="heat-info" id="heat-info" aria-live="polite">&nbsp;</div>
+          </div>
+        </section>
+
+        <section class="p-section" id="brain" data-toc="The brain">
+          <h2><span class="num">06</span>The same dimensions predict visual cortex</h2>
+          <p>In fMRI from four people who passively watched the same 250 videos — never making similarity judgments — the learned dimensions explained more variance
+            than the annotations across occipitotemporal cortex in <strong>every participant</strong>. Effects were strongest on the lateral surface (overlapping EBA and pSTS)
+            and in ventral temporal cortex. The advantage held, reduced, even with only the 11 core dimensions — fewer predictors than the annotation model.</p>
+          <div class="tabs">
+            <div class="tab-list" role="tablist">
+              <button class="tab">Whole-brain searchlight</button>
+              <button class="tab">Lateral-stream ROIs</button>
+              <button class="tab">Which dimension wins where</button>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/latent/fig5_fmri.jpg" alt="Searchlight explained variance for annotations vs learned dimensions" loading="lazy"></div>
+                <figcaption><b>Searchlight RSA</b> in one representative participant: (a) 13 pre-labeled annotations vs. (b) 40 learned dimensions, with matched color scales.</figcaption>
+              </figure>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/latent/ed8_rois.jpg" alt="ROI results: learned dimensions vs annotations in EVC, MT, EBA, LOC, pSTS, aSTS" loading="lazy"></div>
+                <figcaption><b>Lateral-stream ROIs.</b> The learned dimensions (blue) beat the annotations (purple) in every region — largest in EVC, MT, and EBA (Δr² ≈ 0.2) and pSTS (≈ 0.18), smallest in aSTS (≈ 0.04), where both remain well below the noise ceiling (gray).</figcaption>
+              </figure>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/latent/ed9_winner.jpg" alt="Winner-take-all map of the best-predicting dimension per voxel" loading="lazy"></div>
+                <figcaption><b>Winner-take-all.</b> Each voxel is colored by the top-11 dimension that best matches its local neural geometry. Different regions align with different aspects of the learned space.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-section" id="robustness" data-toc="Robustness">
+          <h2><span class="num">07</span>Robustness</h2>
+          <div class="tabs">
+            <div class="tab-list" role="tablist">
+              <button class="tab">Choosing 11 dimensions</button>
+              <button class="tab">Recoverability</button>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/latent/ed1_greedy.jpg" alt="Greedy forward selection curve with a Kneedle elbow at 11 dimensions" loading="lazy"></div>
+                <figcaption><b>Greedy forward selection.</b> The elbow at 11 dimensions was fixed on the training data before any held-out evaluation. The 11 are a descriptive subset, not a claim that the representation has exactly 11 dimensions.</figcaption>
+              </figure>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/latent/ed2_recoverability.jpg" alt="Dimension recoverability across seed and bootstrap retrains" loading="lazy"></div>
+                <figcaption><b>Recoverability.</b> Reliability of the 11 dimensions across 20 seed and bootstrap retrains, against the r = 0.6 threshold (a permutation null never exceeds 0.26), and how often fractionation recurs.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-section" id="takeaways" data-toc="Takeaways">
+          <h2><span class="num">08</span>Takeaways</h2>
+          <div class="findings">
+            <div class="finding"><span><b>Relationships × actions.</b> Social-scene representations jointly specify who is involved and what they are doing — something trait axes (relationships without activities) and action categories (activities without relationships) each miss.</span></div>
+            <div class="finding"><span><b>Shared by behavior and brain.</b> Dimensions learned from judgments predict fMRI better than theory-based features — even in the lateral stream, which image-computable models struggle to predict.</span></div>
+            <div class="finding"><span><b>A target for models.</b> The dimensions give a behaviorally grounded target for social vision; fine-tuned video models can already learn this similarity structure (see <a href="video_alignment.html">BGS</a>).</span></div>
+          </div>
         </section>
 
         <section class="p-section" id="bibtex" data-toc="Citation">
-          <h2><span class="num">05</span>Citation</h2>
+          <h2><span class="num">09</span>Citation</h2>
           <div class="bibtex">
             <button class="copy-btn"><i class="far fa-copy"></i> Copy</button>
-<pre>@inproceedings{garcia2026latent,
-  title     = {The Latent Dimensions Supporting Dynamic Social
-               Scene Perception},
+<pre>@misc{garcia2026finegrained,
+  title     = {Human Similarity Judgments Reveal Fine-Grained Representations
+               of Relationships and Actions in Dynamic Social Scenes},
   author    = {Garcia, Kathy and Isik, Leyla},
-  booktitle = {Cognitive Computational Neuroscience (CCN)},
-  year      = {2026},
-  url       = {https://2026.ccneuro.org/poster/?id=X1NIOuzwZR}
+  publisher = {PsyArXiv},
+  note      = {Preprint},
+  year      = {2026}
 }</pre>
+          <p class="dim-meta" style="margin-top:10px">An earlier version of this work was presented as a non-archival poster at <a href="https://2026.ccneuro.org/poster/?id=X1NIOuzwZR">CCN 2026</a> (“The Latent Dimensions Supporting Dynamic Social Scene Perception”).</p>
           </div>
           <div class="share">Share:
-            <a href="https://bsky.app/intent/compose?text=The%20latent%20dimensions%20supporting%20dynamic%20social%20scene%20perception%20https://garciakathy.github.io/latent_dimensions.html" aria-label="Share on Bluesky"><i class="fab fa-bluesky"></i></a>
-            <a href="https://twitter.com/intent/tweet?url=https://garciakathy.github.io/latent_dimensions.html&text=The%20latent%20dimensions%20supporting%20dynamic%20social%20scene%20perception" aria-label="Share on X"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://bsky.app/intent/compose?text=Human%20similarity%20judgments%20reveal%20fine-grained%20representations%20of%20relationships%20and%20actions%20in%20dynamic%20social%20scenes%20https://garciakathy.github.io/latent_dimensions.html" aria-label="Share on Bluesky"><i class="fab fa-bluesky"></i></a>
+            <a href="https://twitter.com/intent/tweet?url=https://garciakathy.github.io/latent_dimensions.html&text=Human%20similarity%20judgments%20reveal%20fine-grained%20representations%20of%20social%20scenes" aria-label="Share on X"><i class="fab fa-x-twitter"></i></a>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://garciakathy.github.io/latent_dimensions.html" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
           </div>
           <div class="neighbours">
@@ -208,6 +374,83 @@
   </main>
 
   <footer class="site-footer"><div class="wrap">&copy; 2026 Kathy Garcia · <a href="index.html">garciakathy.github.io</a></div></footer>
+
+  <script type="application/json" id="variance-data">
+  {
+    "groups": {
+      "anno": {"label": "Pre-labeled annotations", "color": "#8e5bc2"},
+      "learned": {"label": "Learned dimensions", "color": "#4a90e2"},
+      "both": {"label": "Combined", "color": "#8a94a6"}
+    },
+    "metrics": {
+      "r2": {"label": "r²", "max": 0.75, "decimals": 2, "ref": {"value": 0.67, "label": "split-half reliability 0.67"}, "note": "Learned (40 dims): r² = 0.51, 95% CI [0.36, 0.59] — 0.26 more than the annotations (95% CI [0.10, 0.37])."}
+    },
+    "rows": [
+      {"label": "Combined (annotations + 40 dims)", "group": "both", "r2": 0.55},
+      {"label": "Learned — all 40 dimensions", "group": "learned", "r2": 0.51, "hl": true},
+      {"label": "Learned — top 11 dimensions", "group": "learned", "r2": 0.41},
+      {"label": "All 13 pre-labeled annotations", "group": "anno", "r2": 0.25, "hl": true}
+    ]
+  }
+  </script>
+  <script>
+    // Interactive version of Fig. 4 (Spearman r values from the preprint)
+    (function () {
+      var annos = ['Indoor/Outdoor', 'Spatial Expanse', 'Interagent Distance', 'Agents Facing', 'Action Categories', 'Object Directed',
+        'Communicating', 'Acting Jointly', 'Intimacy', 'Dominance', 'Cooperation', 'Valence', 'Arousal'];
+      var groups = [['Scene', 2], ['Bodies', 2], ['Action + Interaction', 4], ['Social-affective', 5]];
+      var dims = [[1, 'Conversation'], [0, 'Caregiving'], [13, 'Outdoor activity'], [7, 'Martial arts'], [9, 'Infants crying'], [2, 'Musical performance'],
+        [4, 'Infant play'], [3, 'Children dancing'], [6, 'Cooking / eating'], [17, 'Action sport'], [8, 'Infant bath / bed']];
+      var r = [[-0.22, 0.34, 0.34, 0.06, 0.17, 0.16, 0.47, 0.05, -0.6, -0.38, 0.07, -0.27, -0.27], [0.39, -0.66, -0.6, 0.05, 0.0, -0.21, -0.07, 0.17, 0.69, 0.54, 0.13, 0.23, -0.13],
+        [-0.61, 0.63, 0.51, -0.32, 0.11, 0.08, -0.21, -0.33, -0.41, -0.09, -0.12, -0.26, 0.09], [-0.26, 0.19, 0.14, 0.14, 0.07, -0.09, 0.11, 0.04, -0.22, -0.3, -0.01, -0.05, 0.25],
+        [0.35, -0.43, -0.24, -0.01, -0.04, -0.15, -0.21, 0.23, 0.45, -0.03, -0.05, 0.08, 0.26], [0.31, -0.15, 0.21, -0.23, 0.11, 0.34, 0.13, 0.34, -0.01, -0.24, 0.3, 0.5, 0.18],
+        [0.37, -0.63, -0.58, 0.26, 0.0, -0.23, 0.01, 0.16, 0.65, 0.39, 0.04, 0.18, -0.03], [0.41, -0.25, -0.02, 0.07, -0.04, -0.13, -0.05, 0.25, 0.47, -0.27, 0.04, 0.39, 0.11],
+        [0.17, -0.14, 0.19, -0.03, 0.14, 0.21, 0.44, 0.06, -0.11, 0.0, 0.08, 0.13, -0.36], [-0.11, 0.37, 0.3, -0.22, 0.03, 0.04, -0.18, -0.22, -0.12, -0.16, -0.22, -0.1, -0.03],
+        [0.27, -0.34, -0.2, 0.28, -0.02, -0.06, 0.06, 0.07, 0.39, -0.16, -0.09, -0.05, 0.19]];
+      var sig = [[0,0,0,0,1,0,1,0,1,0,0,0,0],[0,1,1,0,0,0,0,0,1,1,0,0,0],[1,1,1,0,1,0,0,0,1,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,0,0,0,0,0,0,1,0,0,0,0],
+        [0,0,0,0,1,0,0,0,0,0,0,1,0],[0,1,1,0,0,0,0,0,1,0,0,0,0],[1,0,0,0,0,0,0,0,1,0,0,0,0],[0,0,0,0,1,0,1,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0]];
+
+      function color(v) {
+        var a = Math.min(1, Math.abs(v));
+        var end = v < 0 ? [33, 102, 172] : [178, 24, 43];
+        return 'rgb(' + [247, 247, 247].map(function (w, i) { return Math.round(w + (end[i] - w) * a); }).join(',') + ')';
+      }
+      function fmt(v) { return (v < 0 ? '−' : '') + Math.abs(v).toFixed(2).replace(/^0/, ''); }
+      var table = document.getElementById('heat');
+      var info = document.getElementById('heat-info');
+      var html = '<thead><tr><th></th>';
+      groups.forEach(function (g) { html += '<th class="grp" colspan="' + g[1] + '">' + g[0] + '</th>'; });
+      html += '</tr><tr><th></th>';
+      annos.forEach(function (a) { html += '<th><span>' + a + '</span></th>'; });
+      html += '</tr></thead><tbody>';
+      dims.forEach(function (d, i) {
+        html += '<tr data-row="' + i + '"><th tabindex="0">' + d[1] + ' <span class="dim-meta">' + d[0] + '</span></th>';
+        r[i].forEach(function (v, j) {
+          html += '<td data-i="' + i + '" data-j="' + j + '" style="background:' + color(v) + ';color:' + (Math.abs(v) > 0.45 ? '#fff' : '#333') + '">' +
+            (sig[i][j] ? fmt(v) : '') + '</td>';
+        });
+        html += '</tr>';
+      });
+      table.innerHTML = html + '</tbody>';
+      table.addEventListener('mouseover', function (e) {
+        var td = e.target.closest('td');
+        if (!td) return;
+        var i = +td.dataset.i, j = +td.dataset.j;
+        info.innerHTML = '<b>Dim ' + dims[i][0] + ' · ' + dims[i][1] + '</b> × <b>' + annos[j] + '</b>: Spearman r = ' + fmt(r[i][j]) +
+          (sig[i][j] ? ' (significant)' : ' (not significant)');
+      });
+      var focused = null;
+      table.querySelectorAll('tbody th').forEach(function (th) {
+        function toggle() {
+          var idx = th.parentElement.dataset.row;
+          focused = focused === idx ? null : idx;
+          table.querySelectorAll('tbody tr').forEach(function (tr) { tr.classList.toggle('dim', focused !== null && tr.dataset.row !== focused); });
+        }
+        th.addEventListener('click', toggle);
+        th.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+      });
+    })();
+  </script>
   <script src="static/js/site.js"></script>
   <script src="static/js/project.js"></script>
 </body>

@@ -178,7 +178,7 @@
           bars.appendChild(row);
           var v = row._data[state.metric];
           $('.fill', row).style.width = drawn ? Math.max(0, (v - min) / span * 100) + '%' : 0;
-          $('.val', row).textContent = m.fmt === 'pct' ? v.toFixed(1) + '%' : v.toFixed(3);
+          $('.val', row).textContent = m.fmt === 'pct' ? v.toFixed(1) + '%' : v.toFixed(m.decimals || 3);
         });
         var track = $('.track', visible[0] || rows[0]);
         if (m.ref && track) {

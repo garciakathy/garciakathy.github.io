@@ -127,7 +127,7 @@
 .chart-legend input { accent-color: var(--accent); }
 .swatch { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
 
-.bars { position: relative; }
+.bars { position: relative; margin-top: 24px; }
 .bar-row { display: grid; grid-template-columns: 210px 1fr 58px; align-items: center; gap: 10px; height: 26px; font-size: 12.5px; }
 .bar-row .lbl { color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right; }
 .bar-row .track { position: relative; height: 16px; }
