@@ -30,6 +30,31 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/site.css">
   <link rel="stylesheet" href="static/css/project.css">
+  <style>
+    .scroll-cue { margin-top: 22px; font-size: 13px; color: var(--ink-3); animation: bob 2s ease-in-out infinite; }
+    @keyframes bob { 50% { transform: translateY(5px); } }
+    .ceil-line { position: absolute; top: -8px; bottom: -8px; left: calc(160px + (100% - 222px) * var(--x-num, 0)); border-left: 2px dashed var(--ink-3); pointer-events: none; }
+    .loss-svg { width: 100%; height: auto; max-height: 52vh; }
+    .loss-svg text { font: 700 12px var(--font); fill: var(--ink); }
+    .loss-svg .lbl-sm { font: 500 10.5px var(--mono); fill: var(--ink-3); }
+    .replay { align-self: flex-start; margin-top: 8px; font-size: 13px; padding: 5px 13px; }
+    .big-num { margin-top: 20px; font-size: 44px; font-weight: 900; color: var(--accent-ink); line-height: 1; }
+    .big-num small { font-size: 15px; font-weight: 700; color: var(--ink-2); }
+    .xfade { position: relative; aspect-ratio: 1 / 1; max-height: 58vh; border-radius: 12px; overflow: hidden; background: #000; }
+    .xfade img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .xfade img.b, .xfade .xf-tag.b { animation: xf 5s ease-in-out infinite; }
+    .xfade .xf-tag.a { animation: xf 5s ease-in-out infinite reverse; }
+    .xf-tag { position: absolute; top: 10px; left: 10px; padding: 3px 10px; border-radius: 999px; font: 700 12px var(--font); color: #fff; background: rgba(0,0,0,.6); }
+    .xf-tag.b { background: var(--accent); }
+    @keyframes xf { 0%, 30% { opacity: 0; } 50%, 80% { opacity: 1; } 100% { opacity: 0; } }
+    .attn-layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 22px; align-items: start; }
+    .attn-meta { font-size: 14px; color: var(--ink-2); margin-top: 10px; }
+    .time-label { display: block; font-size: 14px; color: var(--ink-2); margin-bottom: 6px; }
+    .time-range { width: 100%; accent-color: var(--accent); margin: 0 0 10px; }
+    .tsf-frame { margin-top: 12px; border-radius: 10px; overflow: hidden; max-width: 180px; }
+    .tsf-frame img { display: block; width: 100%; }
+    @media (max-width: 760px) { .attn-layout { grid-template-columns: 1fr; } .mbar { grid-template-columns: 110px 1fr 46px; } .ceil-line { left: calc(120px + (100% - 176px) * var(--x-num, 0)); } }
+  </style>
 </head>
 
 <body>
@@ -64,7 +89,7 @@
     <section class="p-hero">
       <div class="p-kicker">
         <span class="badge gold">🏆 NeurIPS 2026 · Oral</span>
-        <span class="badge gold">&lt;0.4% of submissions</span>
+        <span class="badge gold">top 1% of submissions</span>
         <span class="badge">First author</span>
         <span class="badge plain">VSS 2026 · Poster</span>
       </div>
@@ -82,10 +107,153 @@
         <span class="pill disabled"><i class="fab fa-github"></i> Code (coming soon)</span>
         <a class="pill" href="#bibtex"><i class="fas fa-quote-right"></i> BibTeX</a>
       </div>
-      <figure class="p-teaser">
-        <img src="static/figures/bgs/fig1.png" alt="BGS overview: triplet odd-one-out judgments build a human similarity matrix that supervises LoRA fine-tuning of a video backbone with a hybrid triplet + RSA loss">
-        <figcaption class="p-teaser-cap">Human odd-one-out judgments define a similarity geometry; BGS fine-tunes a video backbone so its embedding distances match it.</figcaption>
-      </figure>
+      <p class="tldr" style="max-width:820px;margin:26px auto 0;text-align:left">Today's best video models — including V-JEPA 2 — organize social scenes less like humans than a sentence embedding of a caption does. A compact behavioral signal fixes that: fine-tuning on human similarity geometry nearly <b>triples</b> alignment, beats language baselines, and transfers to abstract social interactions.</p>
+      <div class="stats" style="max-width:820px;margin:14px auto 0;text-align:left">
+        <div class="stat"><div class="stat-num" data-count="49484">49,484</div><div class="stat-label">odd-one-out judgments from 245 people</div></div>
+        <div class="stat"><div class="stat-num" data-count="250">250</div><div class="stat-label">naturalistic two-person video clips</div></div>
+        <div class="stat"><div class="stat-num" data-count="2.8" data-decimals="1" data-suffix="×">2.8×</div><div class="stat-label">R² gain for V-JEPA 2.1 after BGS</div></div>
+        <div class="stat"><div class="stat-num" data-count="81" data-suffix="%">81%</div><div class="stat-label">zero-shot accuracy on abstract PHASE interactions</div></div>
+      </div>
+      <div class="scroll-cue"><i class="fas fa-arrow-down"></i> Scroll for the story</div>
+    </section>
+
+    <!-- ── Scroll-driven story ───────────────────────── -->
+    <section class="p-section" id="story" data-toc="The story">
+      <h2><span class="num">00</span>The story in eight steps</h2>
+      <div class="story">
+        <div class="story-steps">
+          <div class="story-step" data-step="gap">
+            <div class="kicker">1 · The gap</div>
+            <h3>Video models miss social structure</h3>
+            <p>People watched 3-second clips of two-person interactions and judged which were alike. Across 14 pretrained vision encoders, <strong>none</strong> match that similarity structure as well as a sentence embedding of a one-line caption (MPNet) — even though participants never saw any text.</p>
+          </div>
+          <div class="story-step" data-step="signal">
+            <div class="kicker">2 · The human signal</div>
+            <h3>49,484 odd-one-out choices</h3>
+            <p>On each trial, 245 participants picked the odd-one-out of three videos, implicitly marking the other two as more similar. A greedy set-cover design guarantees every video pair appears in at least one triplet.</p>
+          </div>
+          <div class="story-step" data-step="triplet">
+            <div class="kicker">3 · Local geometry</div>
+            <h3>Triplet loss: pull and push</h3>
+            <p>At every step, the anchor clip (A) is pulled toward the clip humans judged similar (P) and pushed away from the odd-one-out (N). Only low-rank adapters (LoRA) and a small projector are updated.</p>
+          </div>
+          <div class="story-step" data-step="rsa">
+            <div class="kicker">4 · Global geometry</div>
+            <h3>RSA loss: match the whole map</h3>
+            <p>Six times per epoch, a differentiable RSA loss aligns the model's full pairwise-distance matrix on a 24-video subset with the human similarity matrix — shaping global structure that local constraints miss.</p>
+          </div>
+          <div class="story-step" data-step="hybrid">
+            <div class="kicker">5 · Better together</div>
+            <h3>The hybrid wins</h3>
+            <p>On V-JEPA 2.1, the hybrid beats each loss alone and a budget-matched triplet model — so RSA adds different information, not just more constraints. A control that distills MPNet's caption knowledge instead falls far short.</p>
+          </div>
+          <div class="story-step" data-step="result">
+            <div class="kicker">6 · The result</div>
+            <h3>Nearly triple the alignment</h3>
+            <p>V-JEPA 2.1 ViT-B goes from R² = 0.058 to <strong>0.165 — 78% of the noise ceiling</strong>, past MPNet. Every backbone improves, and fine-tuned models capture variance that caption embeddings can't.</p>
+          </div>
+          <div class="story-step" data-step="transfer">
+            <div class="kicker">7 · Generalization</div>
+            <h3>It transfers to moving shapes</h3>
+            <p>On PHASE — interactions between animated triangles with no faces or bodies — the frozen BGS encoder reaches <strong>81%</strong>, up from 55%, matching human agreement within sampling error. Action recognition is preserved.</p>
+          </div>
+          <div class="story-step" data-step="attn">
+            <div class="kicker">8 · Mechanism</div>
+            <h3>Attention moves to what matters</h3>
+            <p>The pretrained model fixates on one region. After BGS, attention spreads across both agents, faces, gaze, and interacting hands — with no spatial supervision. <a href="#attention">Explore it below ↓</a></p>
+          </div>
+        </div>
+
+        <div class="story-stage" aria-live="polite">
+          <div class="stage-panel" data-step="gap">
+            <div class="stage-title">Alignment with human similarity (R²)</div>
+            <div class="stage-sub">Pretrained models vs. a caption embedding · dashed: noise ceiling 0.213</div>
+            <div class="mbars-wrap">
+              <div class="mbars">
+                <div class="mbar hl"><span class="lbl">MPNet (captions)</span><span class="trk"><span class="fill" style="--w:58.3%;background:#e07a5f"></span></span><span class="val">0.134</span></div>
+                <div class="mbar"><span class="lbl">X3D-M (best video)</span><span class="trk"><span class="fill" style="--w:53.9%;background:#8a94a6"></span></span><span class="val">0.124</span></div>
+                <div class="mbar"><span class="lbl">V-JEPA 2 ViT-L</span><span class="trk"><span class="fill" style="--w:37.8%;background:#8a94a6"></span></span><span class="val">0.087</span></div>
+                <div class="mbar"><span class="lbl">V-JEPA 2.1 ViT-B</span><span class="trk"><span class="fill" style="--w:25.2%;background:#8a94a6"></span></span><span class="val">0.058</span></div>
+              </div>
+              <span class="ceil-line" style="--x-num:0.926"></span>
+            </div>
+            <p class="mbars-note">Participants saw only video, yet text of a caption predicts their judgments best.</p>
+          </div>
+
+          <div class="stage-panel" data-step="signal">
+            <div class="stage-title">One trial = three pairwise judgments</div>
+            <div class="stage-sub">“Focus on what the people are doing and choose the odd-one-out.”</div>
+            <div class="fig-frame"><img src="static/figures/sim_judg/task_design.png" alt="Odd-one-out trial: the unchosen pair is labeled similar, the chosen clip dissimilar to both" loading="lazy"></div>
+          </div>
+
+          <div class="stage-panel" data-step="triplet">
+            <div class="stage-title">Triplet loss · every optimizer step</div>
+            <div class="stage-sub">Schematic of the embedding space</div>
+            <svg class="loss-svg" id="tri-svg" viewBox="0 0 360 230" role="img" aria-label="Animation: anchor pulled toward positive and pushed away from negative"></svg>
+            <button class="pill replay" data-replay="tri-svg"><i class="fas fa-rotate-right"></i> Replay</button>
+          </div>
+
+          <div class="stage-panel" data-step="rsa">
+            <div class="stage-title">RSA loss · 6× per epoch</div>
+            <div class="stage-sub">Schematic: all pairwise distances nudged toward human similarity</div>
+            <svg class="loss-svg" id="rsa-svg" viewBox="0 0 360 230" role="img" aria-label="Animation: six videos rearrange so their distances match human similarity groups"></svg>
+            <button class="pill replay" data-replay="rsa-svg"><i class="fas fa-rotate-right"></i> Replay</button>
+          </div>
+
+          <div class="stage-panel" data-step="hybrid">
+            <div class="stage-title">V-JEPA 2.1 ViT-B · held-out R²</div>
+            <div class="stage-sub">ℒ<sub>hybrid</sub> = α·ℒ<sub>triplet</sub> + β·ℒ<sub>RSA</sub> · dashed: noise ceiling</div>
+            <div class="mbars-wrap">
+              <div class="mbars">
+                <div class="mbar hl"><span class="lbl">Hybrid (BGS)</span><span class="trk"><span class="fill" style="--w:71.7%;background:var(--accent)"></span></span><span class="val">0.165</span></div>
+                <div class="mbar"><span class="lbl">Triplet only</span><span class="trk"><span class="fill" style="--w:68.8%;background:#9bbfe8"></span></span><span class="val">0.158</span></div>
+                <div class="mbar"><span class="lbl">MPNet (captions)</span><span class="trk"><span class="fill" style="--w:58.3%;background:#e07a5f"></span></span><span class="val">0.134</span></div>
+                <div class="mbar"><span class="lbl">RSA only</span><span class="trk"><span class="fill" style="--w:57%;background:#9bbfe8"></span></span><span class="val">0.131</span></div>
+                <div class="mbar"><span class="lbl">Language-distilled</span><span class="trk"><span class="fill" style="--w:53.6%;background:#8a94a6"></span></span><span class="val">0.123</span></div>
+              </div>
+              <span class="ceil-line" style="--x-num:0.926"></span>
+            </div>
+          </div>
+
+          <div class="stage-panel" data-step="result">
+            <div class="stage-title">V-JEPA 2.1 ViT-B, before and after BGS</div>
+            <div class="stage-sub">Held-out R² · dashed: noise ceiling 0.213</div>
+            <div class="mbars-wrap">
+              <div class="mbars">
+                <div class="mbar"><span class="lbl">Pretrained</span><span class="trk"><span class="fill" style="--w:25.2%;background:#8a94a6"></span></span><span class="val">0.058</span></div>
+                <div class="mbar"><span class="lbl">MPNet (captions)</span><span class="trk"><span class="fill" style="--w:58.3%;background:#e07a5f"></span></span><span class="val">0.134</span></div>
+                <div class="mbar hl"><span class="lbl">+ BGS</span><span class="trk"><span class="fill" style="--w:71.7%;background:var(--accent)"></span></span><span class="val">0.165</span></div>
+              </div>
+              <span class="ceil-line" style="--x-num:0.926"></span>
+            </div>
+            <div class="big-num"><span data-count-on-enter="2.8">2.8</span>× <small>more variance explained</small></div>
+          </div>
+
+          <div class="stage-panel" data-step="transfer">
+            <div class="stage-title">PHASE: friendly / neutral / adversarial</div>
+            <div class="stage-sub">3-way accuracy on 100 held-out videos · dashed: chance (33%)</div>
+            <div class="mbars-wrap">
+              <div class="mbars">
+                <div class="mbar"><span class="lbl">Humans</span><span class="trk"><span class="fill" style="--w:83%;background:#e07a5f"></span></span><span class="val">83%</span></div>
+                <div class="mbar hl"><span class="lbl">V-JEPA 2.1 + BGS</span><span class="trk"><span class="fill" style="--w:81%;background:var(--accent)"></span></span><span class="val">81%</span></div>
+                <div class="mbar"><span class="lbl">V-JEPA 2.1 pretrained</span><span class="trk"><span class="fill" style="--w:55%;background:#8a94a6"></span></span><span class="val">55%</span></div>
+              </div>
+              <span class="ceil-line" style="--x-num:0.333"></span>
+            </div>
+            <div class="fig-frame" style="margin-top:14px"><img src="static/figures/bgs/phase.png" alt="PHASE stimuli: two triangle agents in a 2D world" loading="lazy" style="max-height:26vh;width:100%"></div>
+          </div>
+
+          <div class="stage-panel" data-step="attn">
+            <div class="stage-title">Attention rollout · V-JEPA 2.1</div>
+            <div class="stage-sub">Crossfading pretrained ↔ BGS on the same frame</div>
+            <div class="xfade">
+              <img src="static/figures/bgs/attn/vjepa_2_base.jpg" alt="Pretrained attention">
+              <img class="b" src="static/figures/bgs/attn/vjepa_2_ft.jpg" alt="BGS attention">
+              <span class="xf-tag a">Pretrained</span><span class="xf-tag b">+ BGS</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <div class="p-layout">
@@ -96,27 +264,9 @@
       </nav>
 
       <div class="p-content">
-        <section class="p-section" id="overview" data-toc="Overview">
-          <h2><span class="num">00</span>Overview</h2>
-          <p class="tldr">Today's best video models — including V-JEPA 2 — organize social scenes less like humans than a sentence embedding of a caption does. A compact behavioral signal fixes that: fine-tuning on human similarity geometry nearly <b>triples</b> alignment, beats language baselines, and transfers to abstract social interactions.</p>
-          <div class="stats">
-            <div class="stat"><div class="stat-num" data-count="49484">49,484</div><div class="stat-label">odd-one-out judgments from 245 people</div></div>
-            <div class="stat"><div class="stat-num" data-count="250">250</div><div class="stat-label">naturalistic two-person video clips</div></div>
-            <div class="stat"><div class="stat-num" data-count="2.8" data-decimals="1" data-suffix="×">2.8×</div><div class="stat-label">R² gain for V-JEPA 2.1 after BGS</div></div>
-            <div class="stat"><div class="stat-num" data-count="81" data-suffix="%">81%</div><div class="stat-label">zero-shot accuracy on abstract PHASE interactions</div></div>
-          </div>
-          <p>
-            We collect a new benchmark of human similarity judgments on dynamic social videos and find a <strong>representation gap</strong>: across 14 pretrained
-            vision encoders, none match human social similarity as well as MPNet embeddings of one-sentence captions — even though participants never saw any text.
-            We introduce <strong>behavioral geometric supervision (BGS)</strong>, a LoRA-based hybrid objective that constrains local (triplet) and global (RSA)
-            embedding geometry to match human relational similarity, and apply it across four ViT backbones: V-JEPA 2/2.1, TimeSformer, VideoMAE, and CLIP.
-          </p>
-        </section>
-
-        <section class="p-section" id="task" data-toc="The task">
+        <section class="p-section" id="task" data-toc="Try the task">
           <h2><span class="num">01</span>Try the task</h2>
-          <p>Every judgment in the dataset came from a trial like this one. Participants were told to <em>“focus on what the people are doing and choose the odd-one-out.”</em>
-            Each click implicitly says the other two clips are more similar, so one trial yields three pairwise constraints.</p>
+          <p>Every judgment in the dataset came from a trial like this one. Each click implicitly says the other two clips are more similar, so one trial yields three pairwise constraints.</p>
           <div class="ooo" data-total="49484" data-videos="dynamic/intro_1.mp4, dynamic/intro_2.mp4, dynamic/intro_3.mp4, dynamic/methods_1.mp4, dynamic/methods_2.mp4, dynamic/methods_3.mp4, dynamic/methods_4.mp4, dynamic/methods_5.mp4, dynamic/methods_6.mp4">
             <div class="ooo-prompt">Which clip is the odd-one-out?</div>
             <div class="ooo-hint">Focus on what the people are doing. There is no right answer; we want your intuition.</div>
@@ -127,13 +277,11 @@
               <button class="pill ooo-next"><i class="fas fa-shuffle"></i> New triplet</button>
             </div>
           </div>
-          <p>A greedy set-cover algorithm guarantees every video pair appears in at least one triplet, giving dense coverage of all 1,225 pairs with minimal participant load.</p>
         </section>
 
-        <section class="p-section" id="gap" data-toc="The gap">
-          <h2><span class="num">02</span>Pretrained video models miss social structure</h2>
-          <p>We compared layer-wise model similarity matrices with the human similarity matrix using Spearman RSA. Explore the full leaderboard — toggle model
-            families on and off, or switch to odd-one-out accuracy.</p>
+        <section class="p-section" id="leaderboard" data-toc="Leaderboard">
+          <h2><span class="num">02</span>Full leaderboard</h2>
+          <p>Every model we tested, compared with the human similarity matrix using Spearman RSA. Toggle model families on and off, or switch to odd-one-out accuracy.</p>
           <div class="chart-card" data-chart="leaderboard-data">
             <div class="chart-head">
               <div>
@@ -146,62 +294,87 @@
             <div class="bars"></div>
             <p class="chart-note"></p>
           </div>
-          <p>The best pretrained video model (X3D-M, R² = 0.124) and the strongest self-supervised backbones (V-JEPA 2 ViT-L, 0.087; V-JEPA 2.1 ViT-B, 0.058)
-            all fall below the best sentence encoder (<strong>MPNet, R² = 0.134</strong>). Language embeddings approximate human similarity well — but the task
-            was purely visual, exposing a gap in what video pretraining learns.</p>
         </section>
 
-        <section class="p-section" id="bgs" data-toc="Method: BGS">
-          <h2><span class="num">03</span>Behavioral geometric supervision</h2>
-          <p>BGS updates only low-rank adapters on the video backbone and a small projector. Two complementary losses shape the embedding space:</p>
-          <div class="tabs">
-            <div class="tab-list" role="tablist">
-              <button class="tab">Triplet loss · local</button>
-              <button class="tab">RSA loss · global</button>
-              <button class="tab">Hybrid</button>
+        <section class="p-section" id="backbones" data-toc="Pick a backbone">
+          <h2><span class="num">03</span>Pick a backbone</h2>
+          <p>BGS works across four families of pretraining — self-supervised prediction, supervised classification, masked reconstruction, and contrastive vision-language. Choose one to see how it changes:</p>
+          <div class="picker" id="picker">
+            <div class="chips" role="group" aria-label="Backbone">
+              <button class="chip" data-bb="vjepa2">V-JEPA 2 ViT-L</button>
+              <button class="chip" data-bb="vjepa21">V-JEPA 2.1 ViT-B</button>
+              <button class="chip" data-bb="tsf">TimeSformer</button>
+              <button class="chip" data-bb="clip">CLIP ViT-B/32</button>
+              <button class="chip" data-bb="vmae">VideoMAE</button>
             </div>
-            <div class="tab-panel" role="tabpanel">
-              <div class="callout"><b>Every optimizer step.</b> For each human triplet, the anchor (A) is pulled toward the clip judged similar (P) and pushed away from the odd-one-out (N). This enforces thousands of local ordering constraints — 12,240 pairwise constraints per epoch.</div>
+            <div class="picker-grid">
+              <div class="picker-metric" id="pk-r2"></div>
+              <div class="picker-metric" id="pk-ooo"></div>
+              <div class="picker-metric" id="pk-ucf" hidden></div>
             </div>
-            <div class="tab-panel" role="tabpanel">
-              <div class="callout"><b>Six times per epoch.</b> A differentiable RSA loss aligns the model's full pairwise distance matrix on a 24-video subset with triplet-derived human similarities, shaping the global geometry that local constraints miss (≈738 extra constraints per epoch).</div>
-            </div>
-            <div class="tab-panel" role="tabpanel">
-              <div class="callout"><b>ℒ<sub>hybrid</sub> = α·ℒ<sub>triplet</sub> + β·ℒ<sub>RSA</sub>.</b> The hybrid beats both parts alone (V-JEPA 2.1: triplet-only R² = 0.158, RSA-only 0.131, hybrid 0.165) and a budget-matched triplet model given the same number of extra constraints — so the RSA term adds qualitatively different information, not just more data.</div>
-            </div>
-          </div>
-        </section>
-
-        <section class="p-section" id="results" data-toc="Closing the gap">
-          <h2><span class="num">04</span>BGS closes the gap</h2>
-          <p>After fine-tuning, every backbone improves. V-JEPA 2 ViT-L reaches <strong>R² = 0.172</strong> and the distilled V-JEPA 2.1 ViT-B reaches
-            <strong>0.165 — 78% of the split-half noise ceiling</strong> (0.213), both above MPNet.</p>
-          <div class="chart-card" data-compare data-autoplay>
-            <div class="chart-head">
-              <div>
-                <div class="chart-title">Explained variance before vs. after BGS</div>
-                <div class="chart-sub">Bar length relative to the noise ceiling (R² = 0.213)</div>
-              </div>
-              <div class="seg" role="group" aria-label="Model state">
-                <button data-state="before">Pretrained</button>
-                <button data-state="after">+ BGS</button>
-              </div>
-            </div>
-            <div class="compare">
-              <div class="compare-row"><span class="name">V-JEPA 2 ViT-L</span><div class="stack"><div style="background:var(--accent)" data-before="40.7" data-after="80.8" data-label-before="0.087" data-label-after="0.172"></div></div></div>
-              <div class="compare-row"><span class="name">V-JEPA 2.1 ViT-B</span><div class="stack"><div style="background:var(--accent)" data-before="27.4" data-after="77.4" data-label-before="0.058" data-label-after="0.165"></div></div></div>
-              <div class="compare-row"><span class="name">TimeSformer</span><div class="stack"><div style="background:var(--accent)" data-before="48.1" data-after="76.1" data-label-before="0.102" data-label-after="0.162"></div></div></div>
-              <div class="compare-row"><span class="name">CLIP ViT-B/32</span><div class="stack"><div style="background:var(--accent)" data-before="59.4" data-after="73.2" data-label-before="0.127" data-label-after="0.156"></div></div></div>
-              <div class="compare-row"><span class="name">VideoMAE</span><div class="stack"><div style="background:var(--accent)" data-before="40.7" data-after="58.0" data-label-before="0.087" data-label-after="0.124"></div></div></div>
-              <div class="compare-row"><span class="name">MPNet (captions)</span><div class="stack"><div style="background:#e07a5f" data-before="62.9" data-after="62.9" data-label-before="0.134" data-label-after="0.134"></div></div></div>
-            </div>
-            <p class="chart-note">Bootstrap over the 637 observed test pairs: V-JEPA 2.1 ViT-B rises from 0.043 [0.016, 0.080] to 0.160 [0.109, 0.216]; ΔR² = +0.118 [+0.065, +0.173].</p>
+            <p class="picker-desc" id="pk-desc"></p>
           </div>
           <h3>Not just caption knowledge</h3>
           <p>Variance partitioning against MPNet shows two shifts after fine-tuning: structure that only the language model captured collapses into the
             <strong>shared</strong> component, and <strong>video-unique variance doubles</strong> (R² 0.02 → 0.04) — social-visual structure that even an idealized
-            caption embedding cannot reach. A matched <strong>language-distillation control</strong> (training V-JEPA 2.1 to mimic MPNet) reaches only R² = 0.123,
-            ruling out caption transfer as the mechanism.</p>
+            caption embedding cannot reach. Bootstrapping the 637 observed test pairs, V-JEPA 2.1 ViT-B rises from 0.043 [0.016, 0.080] to 0.160 [0.109, 0.216].</p>
+        </section>
+
+        <section class="p-section" id="attention" data-toc="Where models look">
+          <h2><span class="num">04</span>Where the model looks</h2>
+          <p>Drag across each frame to compare attention rollout before and after BGS. Across all 250 videos, the mean attention divergence is
+            1 − r̄ = 0.18 ± 0.03: a systematic reweighting toward faces, gaze, hands, and both agents rather than isolated shifts.</p>
+          <div class="tabs">
+            <div class="tab-list" role="tablist">
+              <button class="tab">V-JEPA 2.1 · 5 videos</button>
+              <button class="tab">TimeSformer · across time</button>
+              <button class="tab">Human vs. model choices</button>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <div class="attn-layout">
+                <div class="wipe" id="wipe-vj">
+                  <img class="bottom" src="static/figures/bgs/attn/vjepa_0_base.jpg" alt="Pretrained attention">
+                  <img class="top" src="static/figures/bgs/attn/vjepa_0_ft.jpg" alt="BGS attention">
+                  <span class="tag l">Pretrained</span><span class="tag r">+ BGS</span>
+                  <span class="handle"></span>
+                  <input type="range" min="0" max="100" value="50" aria-label="Wipe between pretrained and BGS attention">
+                </div>
+                <div>
+                  <div class="seg" role="group" aria-label="Left image" id="vj-left">
+                    <button data-left="base" aria-pressed="true">Pretrained ↔ BGS</button>
+                    <button data-left="frame" aria-pressed="false">Frame ↔ BGS</button>
+                  </div>
+                  <div class="thumbs" id="vj-thumbs"></div>
+                  <p class="attn-meta" id="vj-meta"></p>
+                  <p class="chart-note">The five most-divergent videos. <a href="static/figures/bgs/attention_rollout_grid_top5.jpg">Full figure</a></p>
+                </div>
+              </div>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <div class="attn-layout">
+                <div class="wipe" id="wipe-tsf">
+                  <img class="bottom" src="static/figures/bgs/attn/tsf_0_base.jpg" alt="Pretrained attention">
+                  <img class="top" src="static/figures/bgs/attn/tsf_0_ft.jpg" alt="BGS attention">
+                  <span class="tag l">Pretrained</span><span class="tag r">+ BGS</span>
+                  <span class="handle"></span>
+                  <input type="range" min="0" max="100" value="50" aria-label="Wipe between pretrained and BGS attention">
+                </div>
+                <div>
+                  <label class="time-label" for="tsf-time">Time slice <b id="tsf-slice">1</b> / 7 · 1 − r = <b id="tsf-r">0.30</b></label>
+                  <input type="range" id="tsf-time" min="0" max="6" value="0" class="time-range">
+                  <button class="pill" id="tsf-play"><i class="fas fa-play"></i> Play</button>
+                  <div class="tsf-frame"><img id="tsf-frame" src="static/figures/bgs/attn/tsf_0_frame.jpg" alt="Original frame"></div>
+                  <p class="chart-note">One video across its temporal slices: two people in a car. <a href="static/figures/bgs/attention_timesformer.jpg">Full figure</a></p>
+                </div>
+              </div>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/bgs/updated_human_model_disagreement_figure.jpg" alt="Examples of human-model agreement on odd-one-out triplets" loading="lazy"></div>
+                <figcaption><b>Triplet examples.</b> Cases where the fine-tuned model agrees with the human odd-one-out choice while the pretrained model and MPNet do not.</figcaption>
+              </figure>
+            </div>
+          </div>
         </section>
 
         <section class="p-section" id="generalization" data-toc="Generalization">
@@ -241,38 +414,6 @@
                 <div class="stat"><div class="stat-num">78.2 → 80.3%</div><div class="stat-label">V-JEPA 2.1 top-1 (+2.1 pp)</div></div>
                 <div class="stat"><div class="stat-num">95.8 → 95.7%</div><div class="stat-label">TimeSformer top-1 (unchanged)</div></div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="p-section" id="attention" data-toc="Where models look">
-          <h2><span class="num">06</span>Attention moves to what matters socially</h2>
-          <p>Attention rollout shows that the pretrained model fixates on a single region — often one agent's torso. After BGS, attention spreads across
-            <strong>both agents, faces, gaze, and interacting hands</strong>, without any spatial supervision. Across all 250 videos the mean attention divergence
-            is 1 − r̄ = 0.18 ± 0.03: a systematic reweighting, not isolated shifts.</p>
-          <div class="tabs">
-            <div class="tab-list" role="tablist">
-              <button class="tab">V-JEPA 2.1</button>
-              <button class="tab">TimeSformer</button>
-              <button class="tab">Human vs. model choices</button>
-            </div>
-            <div class="tab-panel" role="tabpanel">
-              <figure class="fig">
-                <div class="fig-frame"><img src="static/figures/bgs/attention_rollout_grid_top5.jpg" alt="Attention rollout for V-JEPA 2.1 before and after BGS" loading="lazy"></div>
-                <figcaption><b>V-JEPA 2.1 ViT-B.</b> Left: frame. Center: pretrained. Right: after BGS. The five most-divergent videos (1 − r̄ = 0.30, 0.29, 0.61, 0.29, 0.37).</figcaption>
-              </figure>
-            </div>
-            <div class="tab-panel" role="tabpanel">
-              <figure class="fig">
-                <div class="fig-frame"><img src="static/figures/bgs/attention_timesformer.jpg" alt="Attention rollout for TimeSformer before and after BGS" loading="lazy"></div>
-                <figcaption><b>TimeSformer.</b> The same redistribution of spatial attention toward socially informative regions.</figcaption>
-              </figure>
-            </div>
-            <div class="tab-panel" role="tabpanel">
-              <figure class="fig">
-                <div class="fig-frame"><img src="static/figures/bgs/updated_human_model_disagreement_figure.jpg" alt="Examples of human-model agreement on odd-one-out triplets" loading="lazy"></div>
-                <figcaption><b>Triplet examples.</b> Cases where the fine-tuned model agrees with the human odd-one-out choice while the pretrained model and MPNet do not.</figcaption>
-              </figure>
             </div>
           </div>
         </section>
@@ -379,6 +520,190 @@
       {"label": "VisualRNN", "group": "px", "acc": 48}
     ]
   }
+  </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var NS = 'http://www.w3.org/2000/svg';
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function el(tag, attrs, parent) {
+      var e = document.createElementNS(NS, tag);
+      for (var k in attrs) e.setAttribute(k, attrs[k]);
+      if (parent) parent.appendChild(e);
+      return e;
+    }
+    function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+    function tween(dur, fn, done) {
+      if (reduce) { fn(1); if (done) done(); return; }
+      var t0 = null;
+      function step(t) { if (!t0) t0 = t; var p = Math.min(1, (t - t0) / dur); fn(ease(p)); if (p < 1) requestAnimationFrame(step); else if (done) done(); }
+      requestAnimationFrame(step);
+    }
+    function lerp(a, b, t) { return a + (b - a) * t; }
+    var css = getComputedStyle(document.documentElement);
+
+    // ── Triplet loss animation (schematic) ────────────────────────
+    var tri = document.getElementById('tri-svg');
+    function drawTriplet() {
+      tri.innerHTML = '';
+      var A = { x: 110, y: 118 }, P0 = { x: 280, y: 50 }, P1 = { x: 172, y: 92 }, N0 = { x: 200, y: 178 }, N1 = { x: 318, y: 200 };
+      var lp = el('line', { stroke: '#4a90e2', 'stroke-width': 3, 'stroke-linecap': 'round' }, tri);
+      var ln = el('line', { stroke: '#e07a5f', 'stroke-width': 3, 'stroke-dasharray': '6 6', 'stroke-linecap': 'round' }, tri);
+      function node(c, fill, letter, sub) {
+        var g = el('g', {}, tri);
+        el('circle', { r: 24, fill: fill, stroke: '#fff', 'stroke-width': 3 }, g);
+        var t = el('text', { 'text-anchor': 'middle', dy: 5, style: 'fill:#fff;font-size:16px;font-weight:900' }, g); t.textContent = letter;
+        var s = el('text', { 'text-anchor': 'middle', dy: 44, class: 'lbl-sm' }, g); s.textContent = sub;
+        return g;
+      }
+      var gA = node(A, '#2a6ab5', 'A', 'anchor');
+      var gP = node(P0, '#3d9970', 'P', 'judged similar');
+      var gN = node(N0, '#e07a5f', 'N', 'odd-one-out');
+      var pull = el('text', { class: 'lbl-sm', opacity: 0 }, tri); pull.textContent = 'pull ←';
+      var push = el('text', { class: 'lbl-sm', opacity: 0 }, tri); push.textContent = 'push →';
+      function place(t) {
+        var P = { x: lerp(P0.x, P1.x, t), y: lerp(P0.y, P1.y, t) }, N = { x: lerp(N0.x, N1.x, t), y: lerp(N0.y, N1.y, t) };
+        gA.setAttribute('transform', 'translate(' + A.x + ',' + A.y + ')');
+        gP.setAttribute('transform', 'translate(' + P.x + ',' + P.y + ')');
+        gN.setAttribute('transform', 'translate(' + N.x + ',' + N.y + ')');
+        lp.setAttribute('x1', A.x); lp.setAttribute('y1', A.y); lp.setAttribute('x2', P.x); lp.setAttribute('y2', P.y);
+        ln.setAttribute('x1', A.x); ln.setAttribute('y1', A.y); ln.setAttribute('x2', N.x); ln.setAttribute('y2', N.y);
+        pull.setAttribute('x', (A.x + P.x) / 2 + 6); pull.setAttribute('y', (A.y + P.y) / 2 - 10); pull.setAttribute('opacity', t);
+        push.setAttribute('x', (A.x + N.x) / 2 + 4); push.setAttribute('y', (A.y + N.y) / 2 + 22); push.setAttribute('opacity', t);
+      }
+      place(0);
+      setTimeout(function () { tween(1600, place); }, 350);
+    }
+
+    // ── RSA loss animation (schematic) ────────────────────────────
+    var rsa = document.getElementById('rsa-svg');
+    function drawRSA() {
+      rsa.innerHTML = '';
+      var cols = ['#4a90e2', '#4a90e2', '#e07a5f', '#e07a5f', '#3d9970', '#3d9970'];
+      var start = [[70, 60], [290, 170], [180, 40], [110, 185], [250, 70], [190, 150]];
+      var end = [[80, 70], [120, 60], [270, 60], [305, 100], [165, 175], [210, 190]];
+      var lines = [];
+      for (var i = 0; i < 6; i++) for (var j = i + 1; j < 6; j++) {
+        lines.push({ i: i, j: j, e: el('line', { stroke: css.getPropertyValue('--ink-3').trim() || '#7a8494', 'stroke-width': 1.5, 'stroke-dasharray': '3 4' }, rsa) });
+      }
+      var nodes = cols.map(function (c) { return el('circle', { r: 15, fill: c, stroke: '#fff', 'stroke-width': 3 }, rsa); });
+      var cap = el('text', { x: 180, y: 222, 'text-anchor': 'middle', class: 'lbl-sm' }, rsa);
+      cap.textContent = 'before: distances ignore human similarity';
+      function place(t) {
+        var pos = start.map(function (s, k) { return [lerp(s[0], end[k][0], t), lerp(s[1], end[k][1], t)]; });
+        nodes.forEach(function (n, k) { n.setAttribute('cx', pos[k][0]); n.setAttribute('cy', pos[k][1]); });
+        lines.forEach(function (l) {
+          var a = pos[l.i], b = pos[l.j], d = Math.hypot(a[0] - b[0], a[1] - b[1]);
+          l.e.setAttribute('x1', a[0]); l.e.setAttribute('y1', a[1]); l.e.setAttribute('x2', b[0]); l.e.setAttribute('y2', b[1]);
+          l.e.setAttribute('opacity', Math.max(.08, 1 - d / 170).toFixed(2));
+        });
+      }
+      place(0);
+      setTimeout(function () { tween(1900, place, function () { cap.textContent = 'after: videos humans group together sit close together'; }); }, 350);
+    }
+
+    var anims = { 'tri-svg': drawTriplet, 'rsa-svg': drawRSA };
+    document.querySelectorAll('.stage-panel').forEach(function (panel) {
+      panel.addEventListener('stageenter', function () {
+        var svg = panel.querySelector('.loss-svg');
+        if (svg) anims[svg.id]();
+        var big = panel.querySelector('[data-count-on-enter]');
+        if (big) { var target = parseFloat(big.getAttribute('data-count-on-enter')); tween(1100, function (t) { big.textContent = (target * t).toFixed(1); }); }
+      });
+    });
+    document.querySelectorAll('[data-replay]').forEach(function (b) { b.addEventListener('click', function () { anims[b.getAttribute('data-replay')](); }); });
+    drawTriplet(); drawRSA();
+
+    // ── Backbone picker (Table 1 and Table 2 of the paper) ────────
+    var BB = {
+      vjepa2: { name: 'V-JEPA 2 ViT-L', obj: 'self-supervised predictive pretraining', r2: [0.087, 0.172], ooo: [60.05, 71.67] },
+      vjepa21: { name: 'V-JEPA 2.1 ViT-B (distilled)', obj: 'self-supervised predictive pretraining', r2: [0.058, 0.165], ooo: [63.85, 70.65], ucf: [78.17, 80.31] },
+      tsf: { name: 'TimeSformer', obj: 'supervised action classification', r2: [0.102, 0.162], ooo: [63.59, 74.46], ucf: [95.75, 95.70] },
+      clip: { name: 'CLIP ViT-B/32', obj: 'contrastive vision-language pretraining (an image model)', r2: [0.127, 0.156], ooo: [69.38, 67.84] },
+      vmae: { name: 'VideoMAE', obj: 'masked video reconstruction', r2: [0.087, 0.124], ooo: [66.75, 64.56] }
+    };
+    function metric(box, title, pair, fmt, lo, hi, marks, unit) {
+      function pct(v) { return Math.max(0, Math.min(100, (v - lo) / (hi - lo) * 100)); }
+      var d = pair[1] - pair[0];
+      var html = '<div class="name">' + title + '</div><div class="nums">' + fmt(pair[0]) + '<span class="arrow">→</span><span class="after">' + fmt(pair[1]) + '</span></div>' +
+        '<div class="delta ' + (d >= 0 ? 'up' : 'down') + '">' + (d >= 0 ? '▲ +' : '▼ −') + fmt(Math.abs(d)) + unit + '</div>' +
+        '<div class="pbar"><span class="seg-after" style="width:0"></span><span class="seg-before" style="width:0"></span>';
+      marks.forEach(function (m) { html += '<span class="mark" style="left:' + pct(m[1]) + '%;border-color:' + m[2] + '"></span>'; });
+      html += '</div><div class="pbar-legend"><span><i style="border-color:#8a94a6;border-top-style:solid;border-top-width:5px"></i>pretrained</span><span><i style="border-color:var(--accent);border-top-style:solid;border-top-width:5px"></i>+ BGS</span>';
+      marks.forEach(function (m) { html += '<span><i style="border-color:' + m[2] + '"></i>' + m[0] + '</span>'; });
+      box.innerHTML = html + '</div>';
+      requestAnimationFrame(function () { requestAnimationFrame(function () {
+        box.querySelector('.seg-before').style.width = pct(pair[0]) + '%';
+        box.querySelector('.seg-after').style.width = pct(pair[1]) + '%';
+      }); });
+    }
+    var picker = document.getElementById('picker');
+    function pick(key) {
+      var b = BB[key];
+      picker.querySelectorAll('.chip').forEach(function (c) { c.setAttribute('aria-pressed', c.getAttribute('data-bb') === key); });
+      metric(document.getElementById('pk-r2'), 'Explained variance (R²)', b.r2, function (v) { return v.toFixed(3); }, 0, 0.23,
+        [['MPNet 0.134', 0.134, '#e07a5f'], ['noise ceiling 0.213', 0.213, '#7a8494']], '');
+      metric(document.getElementById('pk-ooo'), 'Odd-one-out accuracy', b.ooo, function (v) { return v.toFixed(1); }, 33.3, 80,
+        [['MPNet 70.4%', 70.38, '#e07a5f']], ' pp');
+      var ucf = document.getElementById('pk-ucf');
+      if (b.ucf) { ucf.hidden = false; metric(ucf, 'UCF101 action recognition (top-1)', b.ucf, function (v) { return v.toFixed(1); }, 0, 100, [], ' pp'); }
+      else ucf.hidden = true;
+      var gain = b.r2[1] / b.r2[0];
+      document.getElementById('pk-desc').innerHTML = '<b>' + b.name + '</b> — ' + b.obj + '. BGS multiplies its R² by <b>' + gain.toFixed(1) + '×</b>' +
+        (b.r2[1] > 0.134 ? ', surpassing the MPNet caption baseline.' : '.') +
+        (b.ooo[1] < b.ooo[0] ? ' Odd-one-out accuracy dips slightly even as the overall similarity structure improves.' : '') +
+        (b.ucf ? ' Action recognition is preserved.' : '');
+    }
+    picker.querySelectorAll('.chip').forEach(function (c) { c.addEventListener('click', function () { pick(c.getAttribute('data-bb')); }); });
+    pick('vjepa21');
+
+    // ── Attention explorer ────────────────────────────────────────
+    var VJ = [0.30, 0.29, 0.61, 0.29, 0.37];
+    var vjWipe = document.getElementById('wipe-vj'), vjIdx = 0, vjLeft = 'base';
+    var thumbs = document.getElementById('vj-thumbs');
+    function setVJ(i) {
+      vjIdx = i;
+      vjWipe.querySelector('.bottom').src = 'static/figures/bgs/attn/vjepa_' + i + '_' + vjLeft + '.jpg';
+      vjWipe.querySelector('.top').src = 'static/figures/bgs/attn/vjepa_' + i + '_ft.jpg';
+      vjWipe.querySelector('.tag.l').textContent = vjLeft === 'base' ? 'Pretrained' : 'Frame';
+      thumbs.querySelectorAll('button').forEach(function (b, k) { b.setAttribute('aria-pressed', k === i); });
+      document.getElementById('vj-meta').innerHTML = 'Attention divergence for this video: <b>1 − r̄ = ' + VJ[i].toFixed(2) + '</b> (dataset mean 0.18).';
+    }
+    VJ.forEach(function (r, i) {
+      var b = document.createElement('button');
+      b.className = 'thumb-btn';
+      b.setAttribute('aria-label', 'Video ' + (i + 1));
+      b.innerHTML = '<img src="static/figures/bgs/attn/vjepa_' + i + '_frame.jpg" alt=""><span>' + r.toFixed(2) + '</span>';
+      b.addEventListener('click', function () { setVJ(i); });
+      thumbs.appendChild(b);
+    });
+    document.querySelectorAll('#vj-left button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        vjLeft = b.getAttribute('data-left');
+        document.querySelectorAll('#vj-left button').forEach(function (o) { o.setAttribute('aria-pressed', o === b); });
+        setVJ(vjIdx);
+      });
+    });
+    setVJ(0);
+
+    var TS = [0.30, 0.33, 0.29, 0.34, 0.33, 0.30, 0.24];
+    var tsWipe = document.getElementById('wipe-tsf'), tsRange = document.getElementById('tsf-time'), playBtn = document.getElementById('tsf-play'), timer = null;
+    function setTS(i) {
+      tsRange.value = i;
+      tsWipe.querySelector('.bottom').src = 'static/figures/bgs/attn/tsf_' + i + '_base.jpg';
+      tsWipe.querySelector('.top').src = 'static/figures/bgs/attn/tsf_' + i + '_ft.jpg';
+      document.getElementById('tsf-frame').src = 'static/figures/bgs/attn/tsf_' + i + '_frame.jpg';
+      document.getElementById('tsf-slice').textContent = i + 1;
+      document.getElementById('tsf-r').textContent = TS[i].toFixed(2);
+    }
+    tsRange.addEventListener('input', function () { setTS(+tsRange.value); });
+    playBtn.addEventListener('click', function () {
+      if (timer) { clearInterval(timer); timer = null; playBtn.innerHTML = '<i class="fas fa-play"></i> Play'; return; }
+      playBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+      timer = setInterval(function () { setTS((+tsRange.value + 1) % TS.length); }, 900);
+    });
+    // preload attention images
+    for (var i = 0; i < 7; i++) ['base', 'ft', 'frame'].forEach(function (k) { new Image().src = 'static/figures/bgs/attn/tsf_' + i + '_' + k + '.jpg'; if (i < 5) new Image().src = 'static/figures/bgs/attn/vjepa_' + i + '_' + k + '.jpg'; });
+  });
   </script>
   <script src="static/js/site.js"></script>
   <script src="static/js/project.js"></script>

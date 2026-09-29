@@ -292,6 +292,70 @@
     });
   }
 
+
+  // ── Scroll-driven story ───────────────────────────────────────────
+  function initStory() {
+    $$('.story').forEach(function (story) {
+      var steps = $$('.story-step', story);
+      var stage = $('.story-stage', story);
+      var panels = $$('.stage-panel', story);
+      var narrow = window.matchMedia('(max-width: 900px)');
+      function panelFor(step) { return panels.filter(function (p) { return p.getAttribute('data-step') === step.getAttribute('data-step'); })[0]; }
+      function layout() {
+        steps.forEach(function (step) {
+          var panel = panelFor(step);
+          if (!panel) return;
+          if (narrow.matches) { panel.classList.add('inline-panel', 'active'); step.appendChild(panel); }
+          else { panel.classList.remove('inline-panel', 'active'); stage.appendChild(panel); }
+        });
+        if (!narrow.matches) { activate(steps[0]); onScroll(); }
+      }
+      var current = null;
+      function activate(step) {
+        if (!step || step === current) return;
+        current = step;
+        steps.forEach(function (s) { s.classList.toggle('active', s === step); });
+        var panel = panelFor(step);
+        panels.forEach(function (p) { if (!p.classList.contains('inline-panel')) p.classList.toggle('active', p === panel); });
+        if (panel) panel.dispatchEvent(new CustomEvent('stageenter'));
+      }
+      // Activate the step whose center is closest to the middle of the viewport
+      var ticking = false;
+      function onScroll() {
+        if (ticking || narrow.matches) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          ticking = false;
+          var mid = window.innerHeight / 2, best = null, bestD = Infinity;
+          steps.forEach(function (s) {
+            var r = s.getBoundingClientRect(), d = Math.abs(r.top + r.height / 2 - mid);
+            if (d < bestD) { bestD = d; best = s; }
+          });
+          activate(best);
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      layout();
+      if (narrow.addEventListener) narrow.addEventListener('change', function () { current = null; layout(); });
+      // Inline (mobile) panels still fire their enter event when scrolled into view
+      panels.forEach(function (p) {
+        onVisible(p, function () { if (p.classList.contains('inline-panel')) p.dispatchEvent(new CustomEvent('stageenter')); });
+      });
+    });
+  }
+
+  // ── Before/after wipe ─────────────────────────────────────────────
+  function initWipes() {
+    $$('.wipe').forEach(function (w) {
+      var range = $('input[type=range]', w);
+      if (!range) return;
+      function set() { w.style.setProperty('--pos', range.value + '%'); }
+      range.addEventListener('input', set);
+      set();
+    });
+  }
+
   // ── BibTeX copy ───────────────────────────────────────────────────
   function initCopy() {
     $$('.copy-btn').forEach(function (btn) {
@@ -320,5 +384,7 @@
     initChips();
     initOddOneOut();
     initCopy();
+    initStory();
+    initWipes();
   });
 })();
