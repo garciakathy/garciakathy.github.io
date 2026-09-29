@@ -72,6 +72,13 @@
     }
     .news-list li:hover { background: var(--surface); }
     .news-list li.hidden { display: none; }
+    .news-list li.star { background: var(--gold-soft); border: 1px solid color-mix(in srgb, var(--gold) 35%, transparent); }
+    .news-list li.star .news-date { color: var(--gold); }
+    .star-badge { font-size: 12.5px; padding: 3px 11px; font-weight: 900; }
+    .oral-mark { color: var(--gold); }
+    details.abstract { margin-top: 6px; }
+    details.abstract summary { cursor: pointer; color: var(--accent-ink); font-weight: 700; font-size: 13.5px; }
+    details.abstract p { font-size: 14px; line-height: 1.6; margin: 8px 0 0; padding: 12px 14px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); }
     .news-date { font: 500 12.5px/1.9 var(--mono); color: var(--ink-3); white-space: nowrap; }
     .news-list li.hot .news-date { color: var(--accent-ink); }
     .news-new {
@@ -310,10 +317,11 @@
           Robin Nusslock, Dr. Zachary Anderson, and Dr. Cassandra VanDunk.
         </p>
         <div class="highlights">
-          <span class="badge gold">🏆 NeurIPS 2026 Oral</span>
+          <span class="badge gold star-badge">🏆 NeurIPS 2026 Oral · first author · &lt;0.4% of submissions</span>
           <span class="badge">NSF GRFP Fellow</span>
           <span class="badge">ICLR 2025</span>
           <span class="badge">Best Oral · LatinX in AI @ ICML</span>
+          <span class="badge">Invited talks · Stanford NeuroAI · Cusack Lab</span>
           <span class="badge">2× VSS talks · CCN talk</span>
           <span class="badge plain">350+ models benchmarked</span>
           <span class="badge plain">WSJ · PopSci · Marketplace</span>
@@ -338,14 +346,16 @@
           <h2 class="section-title" data-i18n="news_title">news</h2>
           <ul class="news-list" id="news-list">
             <li class="hot"><span class="news-date">Oct 2026</span><span>📄 New preprint on PsyArXiv: <a href="latent_dimensions.html">human similarity judgments reveal fine-grained representations of relationships and actions in dynamic social scenes</a>!<span class="news-new">new</span></span></li>
-            <li class="hot"><span class="news-date">Sep 2026</span><span>🏆 <a href="video_alignment.html">Behavioral Geometric Supervision (BGS)</a> accepted as an <b>Oral at NeurIPS 2026</b> — fewer than 0.4% of all submissions!</span></li>
-            <li class="hot"><span class="news-date">Aug 2026</span><span>🧠 Presented my work on the <a href="https://2026.ccneuro.org/poster/?id=X1NIOuzwZR">latent dimensions underlying dynamic social vision</a> at CCN 2026 in New York.</span></li>
-            <li class="hot"><span class="news-date">May 2026</span><span>🎤 Presented <a href="https://www.visionsciences.org/presentation/?id=4148">behavior-guided fine-tuning of video models</a> (BGS) at VSS 2026.</span></li>
+            <li class="hot"><span class="news-date">Sep 2026</span><span>🎤 Invited talk at the <a href="https://neuroailab.stanford.edu/">Stanford NeuroAI Lab</a> (hosted by Dan Yamins): <a href="#talks"><em>A Computational Account of Dynamic Social Perception</em></a>.</span></li>
+            <li class="hot star"><span class="news-date">Sep 2026</span><span>🏆 My first-author paper <a href="video_alignment.html">Behavioral Geometric Supervision (BGS)</a> was accepted as an <b>Oral at NeurIPS 2026</b> — <b>fewer than 0.4% of all submissions</b>!</span></li>
+            <li class="hot"><span class="news-date">Aug 2026</span><span>🎤 Invited talk at the <a href="https://www.cusacklab.org/">Cusack Lab</a>.</span></li>
+            <li class="hot"><span class="news-date">Aug 2026</span><span>🧠 Presented a poster on the <a href="https://2026.ccneuro.org/poster/?id=X1NIOuzwZR">latent dimensions underlying dynamic social vision</a> at CCN 2026 in New York.</span></li>
+            <li class="hot"><span class="news-date">May 2026</span><span>🪧 Presented a poster on <a href="https://www.visionsciences.org/presentation/?id=4148">behavior-guided fine-tuning of video models</a> (BGS) at VSS 2026.</span></li>
             <li><span class="news-date">Oct 2025</span><span>📄 New preprint on <a href="video_alignment.html">aligning video models with human social judgments</a>!</span></li>
             <li><span class="news-date">Sep 2025</span><span>🎉 Paper accepted at the <a href="social_tokens.html">NeurIPS 2025 UniReps Workshop</a> on social tokens for grounding LLMs!</span></li>
             <li><span class="news-date">Aug 2025</span><span>🧠 Selected for the <a href="https://bmm.mit.edu/2025-2/">MIT Brains, Minds &amp; Machines Summer Course</a> — research led to a new paper!</span></li>
             <li><span class="news-date">Jul 2025</span><span>🏆 Inducted into the <a href="https://www.sigmaxi.org">Sigma Xi Scientific Research Honor Society</a>!</span></li>
-            <li><span class="news-date">May 2025</span><span>📰 Featured in <a href="https://archive.is/wAcZZ">The Wall Street Journal</a> on AI and social perception!</span></li>
+            <li><span class="news-date">May 2025</span><span>📰 Featured in <a href="https://www.wsj.com/tech/ai/ai-body-language-analysis-johns-hopkins-2f11362a">The Wall Street Journal</a> on AI and social perception!</span></li>
             <li><span class="news-date">Apr 2025</span><span>📰 Featured in <a href="https://hub.jhu.edu/2025/04/24/humans-better-than-ai-at-reading-the-room/">Johns Hopkins Hub</a> on reading social cues!</span></li>
             <li><span class="news-date">Feb 2025</span><span>🏆 Awarded the <a href="https://www.visionsciences.org">John I. Yellott Travel Award</a> for VSS 2025!</span></li>
             <li><span class="news-date">Feb 2025</span><span>🏆 Received the <a href="https://www.nei.nih.gov">NEI Early Career Scientist Travel Grant</a>!</span></li>
@@ -473,7 +483,7 @@
         <div>
           <a class="pub-title" href="video_alignment.html">Behavioral Geometric Supervision Aligns Video Foundation Models with Human Social Perception</a>
           <div class="pub-authors"><span class="me">Kathy Garcia</span>, <a href="https://www.isiklab.org">Leyla Isik</a></div>
-          <div class="pub-venue"><b>NeurIPS</b> 2026 <span class="badge gold">Oral · &lt;0.4% of submissions</span> <span class="badge plain">VSS 2026</span></div>
+          <div class="pub-venue"><b>NeurIPS 2026</b> <span class="badge gold star-badge">🏆 Oral · &lt;0.4% of submissions</span> <span class="badge">First author</span> <span class="badge plain">VSS 2026 poster</span></div>
           <p class="pub-tldr">A compact human signal — 49,484 odd-one-out judgments — reshapes video-model geometry: V-JEPA 2.1 nearly triples its alignment with human social perception, beats caption-based language models, and transfers zero-shot to abstract social interactions.</p>
           <div class="pub-links"><a href="video_alignment.html">Project</a><a href="https://arxiv.org/abs/2510.01502">arXiv</a><a href="https://arxiv.org/pdf/2510.01502">PDF</a><a href="video_alignment.html#bibtex">BibTeX</a></div>
         </div>
@@ -550,15 +560,13 @@
     <section class="section" id="publications-list">
       <h2 class="section-title" data-i18n="cites_title">all publications</h2>
       <ol class="cite-list">
-        <li><span class="me">Garcia, K.</span>, &amp; Isik, L. (2026). Behavioral Geometric Supervision Aligns Video Foundation Models with Human Social Perception. <em>Advances in Neural Information Processing Systems (NeurIPS)</em>. <b>Oral.</b> <a class="tiny" href="https://arxiv.org/abs/2510.01502">arXiv</a></li>
+        <li><span class="me">Garcia, K.</span>, &amp; Isik, L. (2026). Behavioral Geometric Supervision Aligns Video Foundation Models with Human Social Perception. <em>Advances in Neural Information Processing Systems (NeurIPS)</em>. <b class="oral-mark">Oral (&lt;0.4% of submissions).</b> <a class="tiny" href="https://arxiv.org/abs/2510.01502">arXiv</a></li>
         <li><span class="me">Garcia, K.</span>, &amp; Isik, L. (2026). Human Similarity Judgments Reveal Fine-Grained Representations of Relationships and Actions in Dynamic Social Scenes. <em>PsyArXiv preprint</em>.</li>
-        <li><span class="me">Garcia, K.</span>, &amp; Isik, L. (2026). Behavior-Guided Fine-Tuning Makes Vision Models More Human-Like in Social Perception. <em>Vision Sciences Society (VSS)</em>. <a class="tiny" href="https://www.visionsciences.org/presentation/?id=4148">VSS</a></li>
         <li><span class="me">Garcia, K.</span>, Subramaniam, V., Katz, B., &amp; Cheung, B. (2025). Look, Then Speak: Social Tokens for Grounding LLMs in Visual Interactions. <em>NeurIPS 2025 Workshop on Unifying Representations in Neural Models (UniReps)</em>. <a class="tiny" href="https://openreview.net/pdf?id=tdz8HrfthW">PDF</a></li>
         <li><span class="me">Garcia, K.</span>, &amp; Isik, L. (2025). Semantic and Social Features Drive Human Grouping of Dynamic, Visual Events in Large-Scale Similarity Judgements. <em>Journal of Vision, 25</em>(9), 2621. <a class="tiny" href="https://doi.org/10.1167/jov.25.9.2621">DOI</a></li>
         <li><span class="me">Garcia, K.</span>, McMahon, E., Conwell, C., Bonner, M. F., &amp; Isik, L. (2025). Modeling Dynamic Social Vision Highlights Gaps Between Deep Learning and Humans. <em>International Conference on Learning Representations (ICLR)</em>. <a class="tiny" href="https://openreview.net/pdf?id=wAXsx2MYgV">PDF</a></li>
         <li><span class="me">Garcia, K.</span>, Conwell, C., McMahon, E., Bonner, M. F., &amp; Isik, L. (2024). Large-scale Deep Neural Network Benchmarking in Dynamic Social Vision. <em>Journal of Vision, 24</em>(10), 716. <a class="tiny" href="https://doi.org/10.1167/jov.24.10.716">DOI</a></li>
         <li>McMahon, E., Conwell, C., <span class="me">Garcia, K.</span>, Bonner, M. F., &amp; Isik, L. (2024). Language model prediction of visual cortex responses to dynamic social scenes. <em>Journal of Vision, 24</em>(10), 904. <a class="tiny" href="https://doi.org/10.1167/jov.24.10.904">DOI</a></li>
-        <li><span class="me">Garcia, K.</span>, McMahon, E., Conwell, C., Bonner, M. F., &amp; Isik, L. (2024). Dynamic, social vision highlights gaps between deep learning and human behavior and neural responses. <em>Cognitive Computational Neuroscience (CCN)</em>. <a class="tiny" href="https://2024.ccneuro.org/pdf/417_Paper_authored_Garcia_CCN2024.pdf">PDF</a></li>
       </ol>
     </section>
 
@@ -566,9 +574,12 @@
     <section class="section" id="talks">
       <h2 class="section-title" data-i18n="talks_title">talks &amp; presentations</h2>
       <ol class="timeline">
-        <li class="star"><span class="when">Dec 2026</span><b>NeurIPS 2026 — Oral.</b> Behavioral geometric supervision for social video alignment.</li>
-        <li><span class="when">Aug 2026</span><b>CCN 2026</b>, New York. <a href="https://2026.ccneuro.org/poster/?id=X1NIOuzwZR">The latent dimensions supporting dynamic social scene perception</a>.</li>
-        <li><span class="when">May 2026</span><b>VSS 2026.</b> <a href="https://www.visionsciences.org/presentation/?id=4148">Behavior-guided fine-tuning makes vision models more human-like in social perception</a>.</li>
+        <li class="star"><span class="when">Dec 2026</span><b>NeurIPS 2026 — Oral.</b> <a href="video_alignment.html">Behavioral geometric supervision aligns video foundation models with human social perception</a>.</li>
+        <li class="star"><span class="when">Sep 30, 2026</span><b>Invited talk — <a href="https://neuroailab.stanford.edu/">Stanford NeuroAI Lab</a></b> (host: Dan Yamins). <em>A Computational Account of Dynamic Social Perception.</em>
+          <details class="abstract"><summary>Abstract</summary><p>Deep neural networks have become powerful models of human object recognition. Can they also explain how humans perceive people interacting? I will present several studies from my doctoral work to identify a gap in existing models, characterize human social visual representations, and test how behavioral supervision can improve model alignment. First, I benchmark over 350 image, video, and language models against human behavioral ratings and fMRI responses to natural social videos. I find that models that approach the noise ceiling in ventral visual regions leave substantial variance unexplained in the lateral pathway, including superior temporal sulcus. Video models improve predictions in several mid-level lateral regions, while language models given human captions best predict social ratings. These results reveal a challenge for models that aim to explain both the brain and behavior for social vision. Then, in a complementary study, to understand the underlying representations of social perception in humans, we collect approximately 50,000 judgments of 250 social videos and identify dimensions of human social structure that combine relationships and actions and are able to predict representational structure in the human brain and behavior. Finally, I introduce behavioral geometric supervision (BGS), which uses these human similarity judgments to guide the learning of video models by combining local triplet constraints with a global RSA objective, updating fewer than 2% of model parameters. Across all models fine-tuned with BGS, human alignment is improved; particularly in V-JEPA 2.1, this nearly triples the variance explained in held-out human similarity judgments, reaching 78% of the estimated noise ceiling and surpassing the strongest caption embedding baseline. The resulting representations capture behavioral variance beyond caption embeddings, improve the readout of social-affective attributes without explicit attribute supervision, and, surprisingly, are even able generalize to out-of-distribution abstract social interactions. Together, these findings identify a behavioral target and demonstrate an effective path toward models of human social vision.</p></details></li>
+        <li class="star"><span class="when">Aug 18, 2026</span><b>Invited talk — <a href="https://www.cusacklab.org/">Cusack Lab</a>.</b></li>
+        <li><span class="when">Aug 2026</span><b>CCN 2026 — Poster</b>, New York. <a href="https://2026.ccneuro.org/poster/?id=X1NIOuzwZR">The latent dimensions supporting dynamic social scene perception</a>.</li>
+        <li><span class="when">May 2026</span><b>VSS 2026 — Poster.</b> <a href="https://www.visionsciences.org/presentation/?id=4148">Behavior-guided fine-tuning makes vision models more human-like in social perception</a>.</li>
         <li class="star"><span class="when">May 2025</span><b>VSS 2025 — Talk.</b> <a href="https://www.visionsciences.org/talk-session/?id=416">Semantic and social features drive human grouping of dynamic visual events</a>.</li>
         <li><span class="when">Apr 2025</span><b>ICLR 2025 — Poster.</b> <a href="data/Garcia_ICLR_Poster.pdf">Modeling dynamic social vision</a>.</li>
         <li class="star"><span class="when">Aug 2024</span><b>CCN 2024 — Contributed talk.</b> <a href="https://2024.ccneuro.org/contributed-talk/?id=32">Dynamic, social vision highlights gaps between deep learning and humans</a>.</li>
