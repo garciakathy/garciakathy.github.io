@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVRXCHECS8"></script>
@@ -7,277 +7,379 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-QVRXCHECS8');
   </script>
 
-  <meta charset="utf-8">
-  <meta name="description"
-        content="">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aligning Video Models with Human Social Judgments via Behavior-Guided Fine-Tuning</title>
+  <title>BGS: Aligning Video Models with Human Social Perception</title>
+  <meta name="description" content="Behavioral Geometric Supervision (BGS) aligns video foundation models with human social perception using 49,484 odd-one-out judgments. NeurIPS 2026 Oral.">
+  <meta property="og:title" content="Behavioral Geometric Supervision Aligns Video Foundation Models with Human Social Perception">
+  <meta property="og:description" content="NeurIPS 2026 Oral · Kathy Garcia & Leyla Isik">
+  <meta property="og:image" content="https://garciakathy.github.io/static/figures/bgs/fig1.png">
+  <link rel="icon" href="images/favicon.png">
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
-
-  <link rel="stylesheet" href="./static/css/responsive_style.css">
-
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
+  <script>
+    document.documentElement.classList.add('js');
+    try { document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'light'); } catch (e) {}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/site.css">
+  <link rel="stylesheet" href="static/css/project.css">
 </head>
+
 <body>
-
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a href="index.html" style="font-weight: 600; font-size: 1.1em; color: #333; text-decoration: none; padding: 10px 20px;">Kathy Garcia</a>
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-end">
-      <a href="index.html#about" class="navbar-item">About</a>
-      <a href="index.html#news" class="navbar-item">News</a>
-      <a href="index.html#research" class="navbar-item">Research</a>
-      <a href="index.html#publications-list" class="navbar-item">Publications</a>
-      <a href="index.html#media" class="navbar-item">Media</a>
-      <a href="index.html#honors" class="navbar-item">Honors</a>
-      <a href="data/Kathy_CV (1).pdf" class="navbar-item" target="_blank">CV</a>
-    </div>
-  </div>
-</nav>
-
-<style>
-  .navbar {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid #e1e5e9;
-  }
-  .navbar-item {
-    color: #666;
-    font-weight: 500;
-    font-size: 0.9em;
-  }
-  .navbar-item:hover {
-    color: #4a90e2;
-    background-color: transparent;
-  }
-  .navbar-burger {
-    color: #333;
-  }
-</style>
-
-
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-widescreen">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Aligning Video Models with Human Social Judgments via Behavior-Guided Fine-Tuning</h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="index.html"><strong>Kathy Garcia</strong></a>,</span>&nbsp;
-            <span class="author-block">
-              <a href="https://www.isiklab.org">Leyla Isik</a>&nbsp;
-            </span>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">Kathy Garcia</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#news">News</a></li>
+        <li class="dropdown">
+          <button class="nav-btn" aria-expanded="false" aria-haspopup="true">Research <i class="fas fa-chevron-down" style="font-size:10px"></i></button>
+          <div class="dropdown-menu">
+            <a href="video_alignment.html">Behavioral Geometric Supervision <small>NeurIPS 2026 · Oral</small></a>
+            <a href="latent_dimensions.html">Latent Dimensions of Social Scenes <small>Preprint 2026 · CCN 2026</small></a>
+            <a href="social_tokens.html">Social Tokens for Grounding LLMs <small>NeurIPS 2025 UniReps</small></a>
+            <a href="similarity_judgments.html">Large-Scale Social Scene Judgments <small>VSS 2025 talk</small></a>
+            <a href="modeling_dynamic.html">Modeling Dynamic Social Vision <small>ICLR 2025</small></a>
+            <a href="lsbm.html">Large-Scale DNN Benchmarking <small>VSS &amp; CCN 2024 talks</small></a>
           </div>
-          <br>
-          <div class="is-size-4 publication-authors">
-            <span class="author-block">Johns Hopkins University</span>
-          </div>
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2510.01502"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <!-- Code Link (placeholder - update when available) -->
-              <!-- <span class="link-block">
-                <a href="https://github.com/Isik-lab/video-alignment"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span> -->
-        </div>
+        </li>
+        <li><a href="index.html#publications">Publications</a></li>
+        <li><a href="data/Kathy_CV%20(1).pdf" target="_blank" rel="noopener">CV</a></li>
+      </ul>
+      <div class="nav-tools">
+        <button class="icon-btn" data-theme-toggle aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+        <button class="icon-btn burger" aria-label="Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Share Section -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column">
-        <h3 style="font-size: 0.75em; margin-bottom: 8px; color: #666;">SHARE ON</h3>
-        <div style="display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;">
-          <a href="https://twitter.com/intent/tweet?url=https://garciakathy.github.io/video_alignment.html&text=Aligning%20Video%20Models%20with%20Human%20Social%20Judgments" target="_blank" style="display: inline-block; padding: 4px 8px; background: #1DA1F2; color: white; text-decoration: none; border-radius: 3px; font-size: 0.7em;">
-            <i class="fab fa-twitter"></i> Twitter
-          </a>
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https://garciakathy.github.io/video_alignment.html" target="_blank" style="display: inline-block; padding: 4px 8px; background: #4267B2; color: white; text-decoration: none; border-radius: 3px; font-size: 0.7em;">
-            <i class="fab fa-facebook"></i> Facebook
-          </a>
-          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://garciakathy.github.io/video_alignment.html" target="_blank" style="display: inline-block; padding: 4px 8px; background: #0077B5; color: white; text-decoration: none; border-radius: 3px; font-size: 0.7em;">
-            <i class="fab fa-linkedin"></i> LinkedIn
-          </a>
-          <a href="https://bsky.app/intent/compose?text=Aligning%20Video%20Models%20with%20Human%20Social%20Judgments%20https://garciakathy.github.io/video_alignment.html" target="_blank" style="display: inline-block; padding: 4px 8px; background: #0085ff; color: white; text-decoration: none; border-radius: 3px; font-size: 0.7em;">
-            <i class="fas fa-cloud"></i> Bluesky
-          </a>
-        </div>
+  <main class="wrap">
+    <section class="p-hero">
+      <div class="p-kicker">
+        <span class="badge gold">🏆 NeurIPS 2026 · Oral</span>
+        <span class="badge">&lt;0.4% of submissions</span>
+        <span class="badge plain">VSS 2026</span>
       </div>
-    </div>
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
+      <h1 class="p-title">Behavioral Geometric Supervision Aligns <span class="accent">Video Foundation Models</span> with Human Social Perception</h1>
+      <div class="p-authors">
+        <a href="index.html">Kathy Garcia</a>
+        <a href="https://www.isiklab.org">Leyla Isik</a>
+      </div>
+      <div class="p-affil">Johns Hopkins University</div>
+      <div class="p-buttons">
+        <a class="pill solid" href="https://arxiv.org/pdf/2510.01502"><i class="fas fa-file-pdf"></i> Paper</a>
+        <a class="pill" href="https://arxiv.org/abs/2510.01502"><i class="ai ai-arxiv"></i> arXiv</a>
+        <a class="pill" href="https://www.visionsciences.org/presentation/?id=4148"><i class="fas fa-person-chalkboard"></i> VSS 2026</a>
+        <!-- TODO: link the code/data release once public -->
+        <span class="pill disabled"><i class="fab fa-github"></i> Code (coming soon)</span>
+        <a class="pill" href="#bibtex"><i class="fas fa-quote-right"></i> BibTeX</a>
+      </div>
+      <figure class="p-teaser">
+        <img src="static/figures/bgs/fig1.png" alt="BGS overview: triplet odd-one-out judgments build a human similarity matrix that supervises LoRA fine-tuning of a video backbone with a hybrid triplet + RSA loss">
+        <figcaption class="p-teaser-cap">Human odd-one-out judgments define a similarity geometry; BGS fine-tunes a video backbone so its embedding distances match it.</figcaption>
+      </figure>
+    </section>
+
+    <div class="p-layout">
+      <nav class="toc" aria-label="On this page">
+        <div class="toc-title">On this page</div>
+        <ol></ol>
+        <a class="back" href="index.html#publications"><i class="fas fa-arrow-left"></i> All projects</a>
+      </nav>
+
+      <div class="p-content">
+        <section class="p-section" id="overview" data-toc="Overview">
+          <h2><span class="num">00</span>Overview</h2>
+          <p class="tldr">Today's best video models — including V-JEPA 2 — organize social scenes less like humans than a sentence embedding of a caption does. A compact behavioral signal fixes that: fine-tuning on human similarity geometry nearly <b>triples</b> alignment, beats language baselines, and transfers to abstract social interactions.</p>
+          <div class="stats">
+            <div class="stat"><div class="stat-num" data-count="49484">49,484</div><div class="stat-label">odd-one-out judgments from 245 people</div></div>
+            <div class="stat"><div class="stat-num" data-count="250">250</div><div class="stat-label">naturalistic two-person video clips</div></div>
+            <div class="stat"><div class="stat-num" data-count="2.8" data-decimals="1" data-suffix="×">2.8×</div><div class="stat-label">R² gain for V-JEPA 2.1 after BGS</div></div>
+            <div class="stat"><div class="stat-num" data-count="81" data-suffix="%">81%</div><div class="stat-label">zero-shot accuracy on abstract PHASE interactions</div></div>
+          </div>
           <p>
-            How do AI models perceive social signals in visual scenes, and how closely do their representations align with human perceptions? While recent vision models have achieved remarkable performance on traditional computer vision benchmarks, their ability to capture human-like social understanding remains unclear. We investigate this question by collecting a large-scale benchmark of 49,000+ human similarity judgments on 250 video clips depicting diverse social interactions. Surprisingly, we find that language embeddings derived from human-written captions align better with human similarity judgments than state-of-the-art video models, suggesting a significant gap in how video models process social information.
+            We collect a new benchmark of human similarity judgments on dynamic social videos and find a <strong>representation gap</strong>: across 14 pretrained
+            vision encoders, none match human social similarity as well as MPNet embeddings of one-sentence captions — even though participants never saw any text.
+            We introduce <strong>behavioral geometric supervision (BGS)</strong>, a LoRA-based hybrid objective that constrains local (triplet) and global (RSA)
+            embedding geometry to match human relational similarity, and apply it across four ViT backbones: V-JEPA 2/2.1, TimeSformer, VideoMAE, and CLIP.
           </p>
-          <p>
-            To address this gap, we propose a behavior-guided fine-tuning approach that aligns video model representations with human social perception. Using a hybrid triplet-RSA objective with low-rank adaptation (LoRA), we fine-tune a TimeSformer video model to match human pairwise similarity judgments. Our results demonstrate that this targeted fine-tuning significantly improves alignment with human social perception while maintaining strong performance on downstream tasks. We further show that our approach enables better encoding of social-affective attributes and exhibits promising transfer learning capabilities.
-          </p>
-          <p>
-            This work establishes a new benchmark for evaluating and improving how AI systems understand social interactions, offering a path toward more human-aligned video understanding models.<br><br><br>
-          </p>
-        </div>
-      </div>
-    </div>
-    <!--/ Abstract. -->
+        </section>
 
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Overview</h2>
-        <br>
-        <div class="content has-text-justified">
-          <div style="text-align: justified;">
-            <img src="static/figures/video_align/figure1.png" alt="Method Overview" style="max-width: 100%; height: auto;">
-            <br>
-            <p class="caption" style="width: 100%; text-align: justify;">
-                <b>Behavior-Guided Fine-Tuning Framework.</b> We fine-tune a pre-trained video model (TimeSformer) using human similarity judgments as supervision. The model learns to align its pairwise video representations with human perceptual similarity through a hybrid triplet-RSA loss, using LoRA for efficient parameter updates.
-            </p>
+        <section class="p-section" id="task" data-toc="The task">
+          <h2><span class="num">01</span>Try the task</h2>
+          <p>Every judgment in the dataset came from a trial like this one. Participants were told to <em>“focus on what the people are doing and choose the odd-one-out.”</em>
+            Each click implicitly says the other two clips are more similar, so one trial yields three pairwise constraints.</p>
+          <div class="ooo" data-total="49484" data-videos="dynamic/intro_1.mp4, dynamic/intro_2.mp4, dynamic/intro_3.mp4, dynamic/methods_1.mp4, dynamic/methods_2.mp4, dynamic/methods_3.mp4, dynamic/methods_4.mp4, dynamic/methods_5.mp4, dynamic/methods_6.mp4">
+            <div class="ooo-prompt">Which clip is the odd-one-out?</div>
+            <div class="ooo-hint">Focus on what the people are doing. There is no right answer; we want your intuition.</div>
+            <div class="ooo-grid"></div>
+            <div class="ooo-result"></div>
+            <div class="ooo-foot">
+              <span class="ooo-count"></span>
+              <button class="pill ooo-next"><i class="fas fa-shuffle"></i> New triplet</button>
+            </div>
           </div>
-        </div>
-        <br><br>
-      </div>
-    </div>
+          <p>A greedy set-cover algorithm guarantees every video pair appears in at least one triplet, giving dense coverage of all 1,225 pairs with minimal participant load.</p>
+        </section>
 
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Human Similarity Judgments</h2>
-        <br>
-        <div class="content has-text-justified">
-          <div style="text-align: justified;">
-            <img src="static/figures/video_align/figure2.png" alt="Similarity Task Design" style="max-width: 100%; height: auto;">
-            <br>
-            <p class="caption" style="width: 100%; text-align: justify;">
-                <b>Triplet Odd-One-Out Task.</b> We collected 49,000+ similarity judgments from human participants who viewed triplets of social videos and selected the odd-one-out. This large-scale dataset reveals how humans organize and perceive social interactions.
-            </p>
+        <section class="p-section" id="gap" data-toc="The gap">
+          <h2><span class="num">02</span>Pretrained video models miss social structure</h2>
+          <p>We compared layer-wise model similarity matrices with the human similarity matrix using Spearman RSA. Explore the full leaderboard — toggle model
+            families on and off, or switch to odd-one-out accuracy.</p>
+          <div class="chart-card" data-chart="leaderboard-data">
+            <div class="chart-head">
+              <div>
+                <div class="chart-title">Alignment with human social similarity</div>
+                <div class="chart-sub">Held-out test videos · higher is better</div>
+              </div>
+              <div class="seg" role="group" aria-label="Metric"></div>
+            </div>
+            <div class="chart-legend"></div>
+            <div class="bars"></div>
+            <p class="chart-note"></p>
           </div>
-        </div>
-        <br><br>
-      </div>
-    </div>
+          <p>The best pretrained video model (X3D-M, R² = 0.124) and the strongest self-supervised backbones (V-JEPA 2 ViT-L, 0.087; V-JEPA 2.1 ViT-B, 0.058)
+            all fall below the best sentence encoder (<strong>MPNet, R² = 0.134</strong>). Language embeddings approximate human similarity well — but the task
+            was purely visual, exposing a gap in what video pretraining learns.</p>
+        </section>
 
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Model Alignment Results</h2>
-        <div class="content has-text-justified">
-          <div style="text-align: justified;">
-            <br>
-            <img src="static/figures/video_align/figure3.png" alt="Alignment Results" style="max-width: 100%; height: auto;">
-            <br>
-            <p class="caption" style="width: 100%; text-align: justify;">
-                <b>Improved Alignment with Human Perception.</b> Our behavior-guided fine-tuning significantly improves the correlation between video model representations and human similarity judgments. The fine-tuned model shows stronger alignment across multiple evaluation metrics compared to the baseline pre-trained model.
-            </p>
+        <section class="p-section" id="bgs" data-toc="Method: BGS">
+          <h2><span class="num">03</span>Behavioral geometric supervision</h2>
+          <p>BGS updates only low-rank adapters on the video backbone and a small projector. Two complementary losses shape the embedding space:</p>
+          <div class="tabs">
+            <div class="tab-list" role="tablist">
+              <button class="tab">Triplet loss · local</button>
+              <button class="tab">RSA loss · global</button>
+              <button class="tab">Hybrid</button>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <div class="callout"><b>Every optimizer step.</b> For each human triplet, the anchor (A) is pulled toward the clip judged similar (P) and pushed away from the odd-one-out (N). This enforces thousands of local ordering constraints — 12,240 pairwise constraints per epoch.</div>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <div class="callout"><b>Six times per epoch.</b> A differentiable RSA loss aligns the model's full pairwise distance matrix on a 24-video subset with triplet-derived human similarities, shaping the global geometry that local constraints miss (≈738 extra constraints per epoch).</div>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <div class="callout"><b>ℒ<sub>hybrid</sub> = α·ℒ<sub>triplet</sub> + β·ℒ<sub>RSA</sub>.</b> The hybrid beats both parts alone (V-JEPA 2.1: triplet-only R² = 0.158, RSA-only 0.131, hybrid 0.165) and a budget-matched triplet model given the same number of extra constraints — so the RSA term adds qualitatively different information, not just more data.</div>
+            </div>
           </div>
-        </div>
-        <br><br>
-      </div>
-    </div>
+        </section>
 
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Fine-Tuning Methodology</h2>
-        <div class="content has-text-justified">
-          <div style="text-align: justified;">
-            <br>
-            <img src="static/figures/video_align/figure4.png" alt="Fine-tuning Method" style="max-width: 100%; height: auto;">
-            <br>
-            <p class="caption" style="width: 100%; text-align: justify;">
-                <b>Hybrid Triplet-RSA Loss.</b> We combine a triplet loss that encourages the model to match human odd-one-out choices with an RSA loss that aligns the full representational geometry. Low-rank adaptation (LoRA) enables efficient fine-tuning with minimal parameter updates.
-            </p>
+        <section class="p-section" id="results" data-toc="Closing the gap">
+          <h2><span class="num">04</span>BGS closes the gap</h2>
+          <p>After fine-tuning, every backbone improves. V-JEPA 2 ViT-L reaches <strong>R² = 0.172</strong> and the distilled V-JEPA 2.1 ViT-B reaches
+            <strong>0.165 — 78% of the split-half noise ceiling</strong> (0.213), both above MPNet.</p>
+          <div class="chart-card" data-compare data-autoplay>
+            <div class="chart-head">
+              <div>
+                <div class="chart-title">Explained variance before vs. after BGS</div>
+                <div class="chart-sub">Bar length relative to the noise ceiling (R² = 0.213)</div>
+              </div>
+              <div class="seg" role="group" aria-label="Model state">
+                <button data-state="before">Pretrained</button>
+                <button data-state="after">+ BGS</button>
+              </div>
+            </div>
+            <div class="compare">
+              <div class="compare-row"><span class="name">V-JEPA 2 ViT-L</span><div class="stack"><div style="background:var(--accent)" data-before="40.7" data-after="80.8" data-label-before="0.087" data-label-after="0.172"></div></div></div>
+              <div class="compare-row"><span class="name">V-JEPA 2.1 ViT-B</span><div class="stack"><div style="background:var(--accent)" data-before="27.4" data-after="77.4" data-label-before="0.058" data-label-after="0.165"></div></div></div>
+              <div class="compare-row"><span class="name">TimeSformer</span><div class="stack"><div style="background:var(--accent)" data-before="48.1" data-after="76.1" data-label-before="0.102" data-label-after="0.162"></div></div></div>
+              <div class="compare-row"><span class="name">CLIP ViT-B/32</span><div class="stack"><div style="background:var(--accent)" data-before="59.4" data-after="73.2" data-label-before="0.127" data-label-after="0.156"></div></div></div>
+              <div class="compare-row"><span class="name">VideoMAE</span><div class="stack"><div style="background:var(--accent)" data-before="40.7" data-after="58.0" data-label-before="0.087" data-label-after="0.124"></div></div></div>
+              <div class="compare-row"><span class="name">MPNet (captions)</span><div class="stack"><div style="background:#e07a5f" data-before="62.9" data-after="62.9" data-label-before="0.134" data-label-after="0.134"></div></div></div>
+            </div>
+            <p class="chart-note">Bootstrap over the 637 observed test pairs: V-JEPA 2.1 ViT-B rises from 0.043 [0.016, 0.080] to 0.160 [0.109, 0.216]; ΔR² = +0.118 [+0.065, +0.173].</p>
           </div>
-        </div>
-        <br><br>
-      </div>
-    </div>
+          <h3>Not just caption knowledge</h3>
+          <p>Variance partitioning against MPNet shows two shifts after fine-tuning: structure that only the language model captured collapses into the
+            <strong>shared</strong> component, and <strong>video-unique variance doubles</strong> (R² 0.02 → 0.04) — social-visual structure that even an idealized
+            caption embedding cannot reach. A matched <strong>language-distillation control</strong> (training V-JEPA 2.1 to mimic MPNet) reaches only R² = 0.123,
+            ruling out caption transfer as the mechanism.</p>
+        </section>
 
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Key Findings</h2>
-        <div class="content has-text-justified">
-          <div style="text-align: justified;">
-            <p class="caption">
-              Our work reveals several important insights:
-              <br><br>
-              <b>(1) Language models outperform video models:</b> Human-written captions processed by language models align better with human social perception than state-of-the-art video models, highlighting a critical gap in video understanding.
-              <br><br>
-              <b>(2) Behavior-guided fine-tuning improves alignment:</b> Targeted fine-tuning using human similarity judgments significantly improves video model alignment with human social perception, bridging the gap between AI and human understanding.
-              <br><br>
-              <b>(3) Transfer learning capabilities:</b> Models fine-tuned on human judgments show improved encoding of social-affective attributes and generalize to related social understanding tasks.
-              <br><br>
-              <b>(4) New benchmark for social video understanding:</b> Our dataset of 49,000+ similarity judgments provides a valuable resource for training and evaluating future models of social perception.
-            </p>
+        <section class="p-section" id="generalization" data-toc="Generalization">
+          <h2><span class="num">05</span>What BGS learns generalizes</h2>
+          <div class="tabs">
+            <div class="tab-list" role="tablist">
+              <button class="tab">Abstract interactions (PHASE)</button>
+              <button class="tab">Social-affective attributes</button>
+              <button class="tab">Action recognition</button>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <p>We froze the BGS-aligned V-JEPA 2.1 ViT-B encoder and tested it on <strong>PHASE</strong>: two-agent interactions rendered as moving shapes, with no faces, bodies, or scene context.
+                A linear probe on 400 videos, evaluated on the 100-video generalization set, classifies friendly / neutral / adversarial interactions:</p>
+              <div class="chart-card" data-chart="phase-data">
+                <div class="chart-head"><div><div class="chart-title">3-way social interaction accuracy on PHASE</div><div class="chart-sub">Bars start at chance (33%)</div></div></div>
+                <div class="chart-legend"></div>
+                <div class="bars"></div>
+                <p class="chart-note"></p>
+              </div>
+              <figure class="fig narrow">
+                <div class="fig-frame"><img src="static/figures/bgs/phase.png" alt="PHASE stimuli: two triangle agents interacting in a 2D world" loading="lazy"></div>
+                <figcaption><b>PHASE stimuli.</b> Two agents (triangles) move in a 2D physical world with walls, obstacles and goals, in interactions such as collaborate, help, hinder, follow, and chase.</figcaption>
+              </figure>
+              <p>To our knowledge, this is the first demonstration that <strong>pixel-level video representations</strong> reach prior baselines on this benchmark — matching a hand-designed inverse-planning model and human agreement within sampling error.</p>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <p>Ridge-regression probes on five densely annotated attributes show that BGS makes an interpretable social-affective geometry linearly accessible — although no attribute labels were ever used in training.</p>
+              <div class="findings">
+                <div class="finding"><span><b>Arousal, dominance, and valence</b> improve substantially over the pretrained baseline.</span></div>
+                <div class="finding"><span><b>Intimacy</b> improves modestly; <b>communication</b> declines slightly.</span></div>
+                <div class="finding"><span>The <b>language-distilled control</b> fails to reproduce the gains on 4 of 5 attributes — the exception is communication, where caption words like “talking” carry the answer.</span></div>
+              </div>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <p>Linear probes on UCF101 (split 1, frozen backbones, 3 seeds) show <strong>no catastrophic forgetting</strong>:</p>
+              <div class="stats">
+                <div class="stat"><div class="stat-num">78.2 → 80.3%</div><div class="stat-label">V-JEPA 2.1 top-1 (+2.1 pp)</div></div>
+                <div class="stat"><div class="stat-num">95.8 → 95.7%</div><div class="stat-label">TimeSformer top-1 (unchanged)</div></div>
+              </div>
+            </div>
           </div>
-        </div>
-        <br><br>
-      </div>
-    </div>
+        </section>
 
-    <!-- Citation Section -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Citation</h2>
-        <div class="content has-text-left">
-          <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; border-left: 4px solid #4a90e2;">
-            <p style="font-family: 'Courier New', monospace; font-size: 0.9em; margin: 0;">
-              Garcia, K., & Isik, L. (2025). Aligning Video Models with Human Social Judgments via Behavior-Guided Fine-Tuning. <em>arXiv preprint arXiv:2510.01502</em>.
-            </p>
+        <section class="p-section" id="attention" data-toc="Where models look">
+          <h2><span class="num">06</span>Attention moves to what matters socially</h2>
+          <p>Attention rollout shows that the pretrained model fixates on a single region — often one agent's torso. After BGS, attention spreads across
+            <strong>both agents, faces, gaze, and interacting hands</strong>, without any spatial supervision. Across all 250 videos the mean attention divergence
+            is 1 − r̄ = 0.18 ± 0.03: a systematic reweighting, not isolated shifts.</p>
+          <div class="tabs">
+            <div class="tab-list" role="tablist">
+              <button class="tab">V-JEPA 2.1</button>
+              <button class="tab">TimeSformer</button>
+              <button class="tab">Human vs. model choices</button>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/bgs/attention_rollout_grid_top5.jpg" alt="Attention rollout for V-JEPA 2.1 before and after BGS" loading="lazy"></div>
+                <figcaption><b>V-JEPA 2.1 ViT-B.</b> Left: frame. Center: pretrained. Right: after BGS. The five most-divergent videos (1 − r̄ = 0.30, 0.29, 0.61, 0.29, 0.37).</figcaption>
+              </figure>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/bgs/attention_timesformer.jpg" alt="Attention rollout for TimeSformer before and after BGS" loading="lazy"></div>
+                <figcaption><b>TimeSformer.</b> The same redistribution of spatial attention toward socially informative regions.</figcaption>
+              </figure>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/bgs/updated_human_model_disagreement_figure.jpg" alt="Examples of human-model agreement on odd-one-out triplets" loading="lazy"></div>
+                <figcaption><b>Triplet examples.</b> Cases where the fine-tuned model agrees with the human odd-one-out choice while the pretrained model and MPNet do not.</figcaption>
+              </figure>
+            </div>
           </div>
-        </div>
-        <br><br>
+        </section>
+
+        <section class="p-section" id="takeaways" data-toc="Takeaways">
+          <h2><span class="num">07</span>Takeaways</h2>
+          <div class="findings">
+            <div class="finding"><span><b>Social perception is latent in video models.</b> Pretrained backbones carry enough information about the social world; a compact behavioral signal makes it usable.</span></div>
+            <div class="finding"><span><b>Relational judgments are an efficient supervision signal.</b> Unlike preference learning they shape representations, not outputs; unlike attribute labels they capture the integrated structure of human judgment.</span></div>
+            <div class="finding"><span><b>Gains are general.</b> Consistent across four backbones and pretraining objectives, with zero-shot transfer and no loss of action recognition.</span></div>
+          </div>
+        </section>
+
+        <section class="p-section" id="bibtex" data-toc="Citation">
+          <h2><span class="num">08</span>Citation</h2>
+          <div class="bibtex">
+            <button class="copy-btn"><i class="far fa-copy"></i> Copy</button>
+<pre>@inproceedings{garcia2026bgs,
+  title     = {Behavioral Geometric Supervision Aligns Video Foundation
+               Models with Human Social Perception},
+  author    = {Garcia, Kathy and Isik, Leyla},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2026},
+  note      = {Oral},
+  url       = {https://arxiv.org/abs/2510.01502}
+}</pre>
+          </div>
+          <div class="share">Share:
+            <a href="https://bsky.app/intent/compose?text=Behavioral%20Geometric%20Supervision%20aligns%20video%20models%20with%20human%20social%20perception%20https://garciakathy.github.io/video_alignment.html" aria-label="Share on Bluesky"><i class="fab fa-bluesky"></i></a>
+            <a href="https://twitter.com/intent/tweet?url=https://garciakathy.github.io/video_alignment.html&text=Behavioral%20Geometric%20Supervision%20(NeurIPS%202026%20Oral)" aria-label="Share on X"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://garciakathy.github.io/video_alignment.html" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <div class="neighbours">
+            <a href="index.html#publications"><small>← Back</small>All projects</a>
+            <a class="next" href="latent_dimensions.html"><small>Next project →</small>Latent Dimensions of Social Scenes</a>
+          </div>
+        </section>
       </div>
     </div>
+  </main>
 
-  </div>
-</section>
+  <footer class="site-footer"><div class="wrap">&copy; 2026 Kathy Garcia · <a href="index.html">garciakathy.github.io</a></div></footer>
 
-
-
+  <script type="application/json" id="leaderboard-data">
+  {
+    "groups": {
+      "bgs": {"label": "BGS fine-tuned", "color": "#4a90e2"},
+      "ctrl": {"label": "Ablations & controls", "color": "#9bbfe8"},
+      "lang": {"label": "Language (captions)", "color": "#e07a5f"},
+      "img": {"label": "Image / vision-language", "color": "#3d9970"},
+      "video": {"label": "Pretrained video", "color": "#8a94a6"}
+    },
+    "metrics": {
+      "r2": {"label": "R²", "max": 0.23, "ref": {"value": 0.213, "label": "noise ceiling 0.213"}, "note": "Spearman RSA between model and human similarity matrices, reported as R²; dashed line is the split-half noise ceiling."},
+      "ooo": {"label": "Odd-one-out acc.", "min": 33.3, "max": 80, "fmt": "pct", "note": "Share of held-out human odd-one-out choices the model reproduces. Bars start at chance (33.3%)."}
+    },
+    "rows": [
+      {"label": "V-JEPA 2 ViT-L + BGS", "group": "bgs", "r2": 0.172, "ooo": 71.67, "hl": true},
+      {"label": "V-JEPA 2.1 ViT-B + BGS", "group": "bgs", "r2": 0.165, "ooo": 70.65, "hl": true},
+      {"label": "TimeSformer + BGS", "group": "bgs", "r2": 0.162, "ooo": 74.46},
+      {"label": "CLIP ViT-B/32 + BGS", "group": "bgs", "r2": 0.156, "ooo": 67.84},
+      {"label": "VideoMAE + BGS", "group": "bgs", "r2": 0.124, "ooo": 64.56},
+      {"label": "V-JEPA 2.1 triplet only", "group": "ctrl", "r2": 0.158, "ooo": 69.29},
+      {"label": "TimeSformer triplet (matched)", "group": "ctrl", "r2": 0.157, "ooo": 66.58},
+      {"label": "TimeSformer triplet only", "group": "ctrl", "r2": 0.146, "ooo": 70.65},
+      {"label": "V-JEPA 2.1 RSA only", "group": "ctrl", "r2": 0.131, "ooo": 65.48},
+      {"label": "V-JEPA 2.1 language-distilled", "group": "ctrl", "r2": 0.123, "ooo": 67.21},
+      {"label": "TimeSformer RSA only", "group": "ctrl", "r2": 0.121, "ooo": 63.86},
+      {"label": "MPNet (multilingual)", "group": "lang", "r2": 0.134, "ooo": 70.38, "hl": true},
+      {"label": "mxbai-embed-2d-large", "group": "lang", "r2": 0.122, "ooo": 66.58},
+      {"label": "MiniLM-L12 (multilingual)", "group": "lang", "r2": 0.121, "ooo": 67.39},
+      {"label": "DistilUSE (multilingual)", "group": "lang", "r2": 0.111, "ooo": 64.95},
+      {"label": "Qwen3-VL-2B", "group": "img", "r2": 0.128, "ooo": 68.75},
+      {"label": "CLIP ViT-B/32", "group": "img", "r2": 0.127, "ooo": 69.38},
+      {"label": "X3D-M", "group": "video", "r2": 0.124, "ooo": 68.48},
+      {"label": "X3D-S", "group": "video", "r2": 0.105, "ooo": 64.67},
+      {"label": "TimeSformer", "group": "video", "r2": 0.102, "ooo": 63.59},
+      {"label": "I3D-R50", "group": "video", "r2": 0.095, "ooo": 67.66},
+      {"label": "V-JEPA 2 ViT-L", "group": "video", "r2": 0.087, "ooo": 60.05},
+      {"label": "VideoMAE", "group": "video", "r2": 0.087, "ooo": 66.75},
+      {"label": "SlowFast-R50", "group": "video", "r2": 0.085, "ooo": 64.95},
+      {"label": "V-JEPA 2.1 ViT-B", "group": "video", "r2": 0.058, "ooo": 63.85},
+      {"label": "V-JEPA 1 ViT-L", "group": "video", "r2": 0.052, "ooo": 57.60}
+    ]
+  }
+  </script>
+  <script type="application/json" id="phase-data">
+  {
+    "groups": {
+      "bgs": {"label": "BGS (pixels)", "color": "#4a90e2"},
+      "px": {"label": "Other pixel models", "color": "#8a94a6"},
+      "priv": {"label": "Privileged / hand-designed", "color": "#e0a84a"},
+      "human": {"label": "Humans", "color": "#e07a5f"}
+    },
+    "metrics": {
+      "acc": {"label": "Accuracy", "min": 33.3, "max": 90, "fmt": "pct", "note": "BGS: 81% (Wilson 95% CI 72–87%). SocialGNN uses ground-truth scene graphs; SiMPLE is a physics-grounded inverse-planning model."}
+    },
+    "rows": [
+      {"label": "Humans (agreement)", "group": "human", "acc": 83},
+      {"label": "SiMPLE (inverse planning)", "group": "priv", "acc": 83},
+      {"label": "V-JEPA 2.1 + BGS", "group": "bgs", "acc": 81, "hl": true},
+      {"label": "SocialGNN (scene graph)", "group": "priv", "acc": 76},
+      {"label": "V-JEPA 2.1 pretrained", "group": "px", "acc": 55},
+      {"label": "VisualRNN", "group": "px", "acc": 48}
+    ]
+  }
+  </script>
+  <script src="static/js/site.js"></script>
+  <script src="static/js/project.js"></script>
 </body>
 </html>

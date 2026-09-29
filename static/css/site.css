@@ -1,0 +1,200 @@
+/* ==========================================================================
+   Shared design system for garciakathy.github.io
+   Used by index.html and every project page.
+   ========================================================================== */
+
+:root {
+  --accent: #4a90e2;          /* signature blue (decorative, fills, borders) */
+  --accent-ink: #2a6ab5;      /* blue for text links on light backgrounds */
+  --accent-soft: #eef5fd;     /* tinted surface */
+  --accent-line: #cfe2f8;
+
+  --bg: #ffffff;
+  --surface: #f7f9fc;
+  --surface-2: #eef2f7;
+  --ink: #1d2330;
+  --ink-2: #4b5565;
+  --ink-3: #7a8494;
+  --line: #e4e9f0;
+  --shadow: 0 2px 14px rgba(20, 40, 80, .08);
+  --shadow-lg: 0 10px 30px rgba(20, 40, 80, .14);
+
+  --gold: #b7791f;
+  --gold-soft: #fdf5e6;
+
+  --radius: 10px;
+  --maxw: 1040px;
+  --font: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --mono: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+[data-theme="dark"] {
+  --accent: #5ba3f5;
+  --accent-ink: #7db6f7;
+  --accent-soft: #16263b;
+  --accent-line: #24466f;
+
+  --bg: #12151b;
+  --surface: #191d25;
+  --surface-2: #212733;
+  --ink: #e6e9ef;
+  --ink-2: #b3bbc8;
+  --ink-3: #8691a2;
+  --line: #2b313d;
+  --shadow: 0 2px 14px rgba(0, 0, 0, .35);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, .5);
+
+  --gold: #e0a84a;
+  --gold-soft: #2c2415;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  /* Text selection is disabled site-wide on purpose. */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  transition: background .25s, color .25s;
+  overflow-x: clip;
+}
+
+a { color: var(--accent-ink); text-decoration: none; transition: color .15s; }
+a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+img { max-width: 100%; }
+
+h1, h2, h3, h4 { color: var(--ink); line-height: 1.25; margin: 0; }
+
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+/* ── Top bar / navigation ─────────────────────────────────────────────── */
+.topbar {
+  position: sticky; top: 0; z-index: 100;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(160%) blur(10px);
+  -webkit-backdrop-filter: saturate(160%) blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.topbar::before {
+  content: ''; display: block; height: 4px; background: var(--accent);
+}
+.topbar-inner {
+  max-width: var(--maxw); margin: 0 auto; padding: 0 24px;
+  height: 56px; display: flex; align-items: center; gap: 20px;
+}
+.brand {
+  font-weight: 900; font-size: 18px; letter-spacing: -.01em; color: var(--ink);
+  white-space: nowrap;
+}
+.brand:hover { color: var(--accent); text-decoration: none; }
+
+.nav-links {
+  display: flex; align-items: center; gap: 4px; margin: 0 0 0 auto; padding: 0; list-style: none;
+}
+.nav-links > li { position: relative; }
+.nav-links a, .nav-links button.nav-btn {
+  display: block; padding: 7px 11px; border-radius: 7px;
+  color: var(--ink-2); font-size: 14.5px; font-weight: 700;
+  background: none; border: 0; font-family: inherit; cursor: pointer;
+}
+.nav-links a:hover, .nav-links button.nav-btn:hover {
+  color: var(--accent-ink); background: var(--accent-soft); text-decoration: none;
+}
+
+/* Research dropdown */
+.dropdown-menu {
+  position: absolute; top: calc(100% + 6px); left: 50%; transform: translateX(-50%) translateY(-4px);
+  min-width: 330px; padding: 8px;
+  background: var(--bg); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow-lg);
+  opacity: 0; visibility: hidden; transition: opacity .15s, transform .15s, visibility .15s;
+}
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu,
+.dropdown.open .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.dropdown-menu a { display: flex; flex-direction: column; padding: 9px 12px; font-weight: 700; color: var(--ink); }
+.dropdown-menu a small { font-weight: 400; color: var(--ink-3); font-size: 12.5px; }
+
+.nav-tools { display: flex; gap: 6px; }
+.icon-btn {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--line); background: var(--bg); color: var(--ink-2);
+  font: 700 12px var(--font); cursor: pointer; transition: border-color .15s, color .15s, background .15s;
+}
+.icon-btn:hover { border-color: var(--accent); color: var(--accent-ink); background: var(--accent-soft); }
+
+.burger { display: none; }
+
+@media (max-width: 860px) {
+  .burger { display: inline-flex; margin-left: auto; }
+  .nav-links {
+    display: none; position: absolute; top: 60px; left: 12px; right: 12px;
+    flex-direction: column; align-items: stretch; gap: 2px; padding: 10px;
+    background: var(--bg); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow-lg);
+  }
+  .topbar.menu-open .nav-links { display: flex; }
+  .dropdown-menu {
+    position: static; transform: none; opacity: 1; visibility: visible; box-shadow: none;
+    border: 0; min-width: 0; padding: 0 0 0 12px; display: none;
+  }
+  .dropdown.open .dropdown-menu { display: block; transform: none; }
+  .dropdown:hover .dropdown-menu { transform: none; }
+}
+
+/* ── Pills / chips / buttons ──────────────────────────────────────────── */
+.pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 6px 15px; border: 1.5px solid var(--line); border-radius: 999px;
+  color: var(--ink-2); font-size: 14px; font-weight: 700; background: var(--bg);
+  transition: border-color .2s, color .2s, background .2s, transform .2s;
+}
+.pill:hover { border-color: var(--accent); color: var(--accent-ink); background: var(--accent-soft); text-decoration: none; transform: translateY(-1px); }
+.pill i { font-size: 14px; }
+.pill.solid { background: var(--accent); border-color: var(--accent); color: #fff; }
+.pill.solid:hover { background: var(--accent-ink); border-color: var(--accent-ink); color: #fff; }
+
+.badge {
+  display: inline-block; padding: 2px 9px; border-radius: 999px;
+  font: 700 11.5px/1.6 var(--font); letter-spacing: .02em;
+  background: var(--accent-soft); color: var(--accent-ink); border: 1px solid var(--accent-line);
+  white-space: nowrap;
+}
+.badge.gold { background: var(--gold-soft); color: var(--gold); border-color: color-mix(in srgb, var(--gold) 35%, transparent); }
+.badge.plain { background: var(--surface-2); color: var(--ink-2); border-color: var(--line); }
+
+/* ── Section headings ─────────────────────────────────────────────────── */
+.section { padding: 34px 0 10px; }
+.section-title {
+  display: inline-block; font-size: 19px; font-weight: 700; color: var(--accent-ink);
+  text-transform: lowercase; letter-spacing: .01em;
+  border-bottom: 2.5px solid var(--accent); padding-bottom: 3px; margin-bottom: 16px;
+}
+
+/* ── Footer ───────────────────────────────────────────────────────────── */
+.site-footer {
+  margin-top: 60px; padding: 26px 0 34px; border-top: 1px solid var(--line);
+  color: var(--ink-3); font-size: 13.5px; text-align: center;
+}
+
+/* ── Reveal on scroll ─────────────────────────────────────────────────── */
+.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+.js .reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .reveal { opacity: 1; transform: none; }
+}
+
+/* Keyboard focus */
+:focus-visible { outline: 2.5px solid var(--accent); outline-offset: 2px; border-radius: 6px; }

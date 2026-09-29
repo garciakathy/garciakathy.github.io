@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVRXCHECS8"></script>
@@ -7,407 +7,286 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-QVRXCHECS8');
   </script>
 
-  <meta charset="utf-8">
-  <meta name="description"
-        content="">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Modeling Dynamic Social Vision Highlights Gaps Between Deep Learning and Humans</title>
+  <title>Modeling Dynamic Social Vision</title>
+  <meta name="description" content="Benchmarking 350+ image, video, and language models on human behavior and fMRI responses to social videos reveals a gap in AI's social vision. ICLR 2025.">
+  <meta property="og:title" content="Modeling Dynamic Social Vision Highlights Gaps Between Deep Learning and Humans">
+  <meta property="og:description" content="ICLR 2025 · Garcia*, McMahon*, Conwell, Bonner, Isik">
+  <meta property="og:image" content="https://garciakathy.github.io/static/figures/neurips/neurips_fig1.jpeg">
+  <link rel="icon" href="images/favicon.png">
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
-
-  <link rel="stylesheet" href="./static/css/responsive_style.css">
-
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
+  <script>
+    document.documentElement.classList.add('js');
+    try { document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'light'); } catch (e) {}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/site.css">
+  <link rel="stylesheet" href="static/css/project.css">
+  <style>
+    .scorecard { width: 100%; border-collapse: separate; border-spacing: 0; margin: 12px 0 20px; font-size: 14px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+    .scorecard th, .scorecard td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); }
+    .scorecard th { background: var(--surface); color: var(--ink-3); font: 500 11.5px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .scorecard tr:last-child td { border-bottom: 0; }
+    .scorecard td:first-child { color: var(--ink); font-weight: 700; }
+    .scorecard td { color: var(--ink-2); }
+    .scorecard .win { color: var(--accent-ink); font-weight: 700; }
+    .press { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  </style>
 </head>
+
 <body>
-
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a href="index.html" style="font-weight: 600; font-size: 1.1em; color: #333; text-decoration: none; padding: 10px 20px;">Kathy Garcia</a>
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-end">
-      <a href="index.html#about" class="navbar-item">About</a>
-      <a href="index.html#news" class="navbar-item">News</a>
-      <a href="index.html#research" class="navbar-item">Research</a>
-      <a href="index.html#publications-list" class="navbar-item">Publications</a>
-      <a href="index.html#media" class="navbar-item">Media</a>
-      <a href="index.html#honors" class="navbar-item">Honors</a>
-      <a href="data/Kathy_CV (1).pdf" class="navbar-item" target="_blank">CV</a>
-    </div>
-  </div>
-</nav>
-
-<style>
-  .navbar {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid #e1e5e9;
-  }
-  .navbar-item {
-    color: #666;
-    font-weight: 500;
-    font-size: 0.9em;
-  }
-  .navbar-item:hover {
-    color: #4a90e2;
-    background-color: transparent;
-  }
-  .navbar-burger {
-    color: #333;
-  }
-</style>
-        
-
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-widescreen">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Modeling Dynamic Social Vision Highlights Gaps Between Deep Learning and Humans</h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="index.html"><strong>Kathy Garcia</strong><sup>*</sup></a>,</span>&nbsp;
-            <span class="author-block">
-                <a href="https://emaliemcmahon.github.io">Emalie McMahon</a><sup>*</sup>,&nbsp;
-            </span>
-            <span class="author-block">
-              <a href="https://colinconwell.github.io">Colin Conwell</a>,</span>&nbsp;
-            <span class="author-block">
-              <a href="https://bonnerlab.org">Michael F. Bonner</a>,&nbsp;
-            </span>
-            <span class="author-block">
-              <a href="https://www.isiklab.org">Leyla Isik</a>&nbsp;
-            </span> 
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">Kathy Garcia</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#news">News</a></li>
+        <li class="dropdown">
+          <button class="nav-btn" aria-expanded="false" aria-haspopup="true">Research <i class="fas fa-chevron-down" style="font-size:10px"></i></button>
+          <div class="dropdown-menu">
+            <a href="video_alignment.html">Behavioral Geometric Supervision <small>NeurIPS 2026 · Oral</small></a>
+            <a href="latent_dimensions.html">Latent Dimensions of Social Scenes <small>Preprint 2026 · CCN 2026</small></a>
+            <a href="social_tokens.html">Social Tokens for Grounding LLMs <small>NeurIPS 2025 UniReps</small></a>
+            <a href="similarity_judgments.html">Large-Scale Social Scene Judgments <small>VSS 2025 talk</small></a>
+            <a href="modeling_dynamic.html">Modeling Dynamic Social Vision <small>ICLR 2025</small></a>
+            <a href="lsbm.html">Large-Scale DNN Benchmarking <small>VSS &amp; CCN 2024 talks</small></a>
           </div>
-          <div class="is-size-6 contributions">
-            <span class="author-block">*authors contributed equally</span>
-          </div>
-          <br>
-          <div class="is-size-4 publication-authors">
-            <span class="author-block">Johns Hopkins University</span>
-          </div>
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <a href="https://openreview.net/pdf?id=wAXsx2MYgV"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <img src="images/ICLR-logo.svg" style="height: 1.2em";>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              </span>
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href="https://github.com/Isik-lab/SIfMRI_modeling"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-        </div>
+        </li>
+        <li><a href="index.html#publications">Publications</a></li>
+        <li><a href="data/Kathy_CV%20(1).pdf" target="_blank" rel="noopener">CV</a></li>
+      </ul>
+      <div class="nav-tools">
+        <button class="icon-btn" data-theme-toggle aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+        <button class="icon-btn burger" aria-label="Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Share Section -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column">
-        <h3 style="font-size: 0.75em; margin-bottom: 8px; color: #666;">SHARE ON</h3>
-        <div style="display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;">
-          <a href="https://twitter.com/intent/tweet?url=https://garciakathy.github.io/modeling_dynamic.html&text=Modeling%20Dynamic%20Social%20Vision%20Highlights%20Gaps%20Between%20Deep%20Learning%20and%20Humans" target="_blank" style="display: inline-block; padding: 4px 8px; background: #1DA1F2; color: white; text-decoration: none; border-radius: 3px; font-size: 0.7em;">
-            <i class="fab fa-twitter"></i> Twitter
-          </a>
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https://garciakathy.github.io/modeling_dynamic.html" target="_blank" style="display: inline-block; padding: 4px 8px; background: #4267B2; color: white; text-decoration: none; border-radius: 3px; font-size: 0.7em;">
-            <i class="fab fa-facebook"></i> Facebook
-          </a>
-          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://garciakathy.github.io/modeling_dynamic.html" target="_blank" style="display: inline-block; padding: 4px 8px; background: #0077B5; color: white; text-decoration: none; border-radius: 3px; font-size: 0.7em;">
-            <i class="fab fa-linkedin"></i> LinkedIn
-          </a>
-          <a href="https://bsky.app/intent/compose?text=Modeling%20Dynamic%20Social%20Vision%20Highlights%20Gaps%20Between%20Deep%20Learning%20and%20Humans%20https://garciakathy.github.io/modeling_dynamic.html" target="_blank" style="display: inline-block; padding: 4px 8px; background: #0085ff; color: white; text-decoration: none; border-radius: 3px; font-size: 0.7em;">
-            <i class="fas fa-cloud"></i> Bluesky
-          </a>
-        </div>
+  <main class="wrap">
+    <section class="p-hero">
+      <div class="p-kicker">
+        <span class="badge">ICLR 2025</span>
+        <span class="badge gold">🥇 Best Oral · LatinX in AI @ ICML 2024</span>
+        <span class="badge plain">📰 WSJ · PopSci · Marketplace</span>
+      </div>
+      <h1 class="p-title">Modeling Dynamic Social Vision Highlights <span class="accent">Gaps</span> Between Deep Learning and Humans</h1>
+      <div class="p-authors">
+        <a href="index.html">Kathy Garcia<sup>*</sup></a>
+        <a href="https://emaliemcmahon.github.io">Emalie McMahon<sup>*</sup></a>
+        <a href="https://colinconwell.com">Colin Conwell</a>
+        <a href="https://www.bonnerlab.org">Michael F. Bonner</a>
+        <a href="https://www.isiklab.org">Leyla Isik</a>
+      </div>
+      <div class="p-affil">Johns Hopkins University &nbsp;·&nbsp; <sup>*</sup>equal contribution</div>
+      <div class="p-buttons">
+        <a class="pill solid" href="https://openreview.net/pdf?id=wAXsx2MYgV"><i class="fas fa-file-pdf"></i> Paper</a>
+        <a class="pill" href="https://openreview.net/forum?id=wAXsx2MYgV"><i class="ai ai-open-access"></i> OpenReview</a>
+        <a class="pill" href="data/Garcia_ICLR_Poster.pdf"><i class="fas fa-image"></i> Poster</a>
+        <a class="pill" href="https://github.com/Isik-lab/SIfMRI_modeling"><i class="fab fa-github"></i> Code &amp; data</a>
+        <a class="pill" href="#bibtex"><i class="fas fa-quote-right"></i> BibTeX</a>
+      </div>
+      <figure class="p-teaser">
+        <img src="static/figures/neurips/neurips_fig1.jpeg" alt="Method overview: 350+ models predict behavioral ratings and fMRI responses to 3-second social videos">
+        <figcaption class="p-teaser-cap">Representations from 350+ image, video, and language models predict human ratings and fMRI responses to 3-second social videos.</figcaption>
+      </figure>
+    </section>
+
+    <div class="p-layout">
+      <nav class="toc" aria-label="On this page">
+        <div class="toc-title">On this page</div>
+        <ol></ol>
+        <a class="back" href="index.html#publications"><i class="fas fa-arrow-left"></i> All projects</a>
+      </nav>
+
+      <div class="p-content">
+        <section class="p-section" id="overview" data-toc="Overview">
+          <h2><span class="num">00</span>Overview</h2>
+          <p class="tldr">Vision models are great models of how we recognize objects and scenes — but real vision is dynamic and social. Benchmarking <b>350+ models</b> on social videos reveals a major gap: no model class matches human social vision, and each fails in a different way.</p>
+          <div class="stats">
+            <div class="stat"><div class="stat-num" data-count="350" data-suffix="+">350+</div><div class="stat-label">image, video &amp; language models</div></div>
+            <div class="stat"><div class="stat-num">3</div><div class="stat-label">model modalities compared head-to-head</div></div>
+            <div class="stat"><div class="stat-num">fMRI</div><div class="stat-label">+ behavioral ratings as benchmarks</div></div>
+          </div>
+          <p>Most evidence that deep networks are good models of human vision comes from <strong>static images</strong> of objects and scenes. We present a dataset of
+            natural videos and captions of multi-agent interactions and benchmark models on behavioral and neural responses. As in prior work, many vision models
+            reach the noise ceiling for visual scene features and the <strong>ventral stream</strong>. But image models poorly predict action and social-interaction
+            ratings and responses in the <strong>lateral stream</strong>, a pathway increasingly thought to specialize in dynamic, social vision.</p>
+        </section>
+
+        <section class="p-section" id="scorecard" data-toc="Who wins where">
+          <h2><span class="num">01</span>Who wins where?</h2>
+          <p>Each model family has a different profile. Pick one:</p>
+          <div class="chips" data-panel="family-panel">
+            <button class="chip" data-target="m-img">Image models</button>
+            <button class="chip" style="--c:#3d9970" data-target="m-vid">Video models</button>
+            <button class="chip" style="--c:#e07a5f" data-target="m-lang">Language models</button>
+          </div>
+          <div class="chip-panel" id="family-panel" aria-live="polite"></div>
+          <template id="m-img"><b>Image models</b> reach the noise ceiling for visual scene features and ventral-stream responses, and top each visuospatial rating (spatial expanse, interagent distance, agents facing). But they poorly predict action and social-interaction ratings and lateral-stream responses. Architecture (convolutional vs. transformer) and objective (supervised vs. self-supervised) make little difference.</template>
+          <template id="m-vid"><b>Video models</b> dramatically outperform image models in mid-level lateral regions — MT, EBA, and LOC (ps &lt; 0.001). In early visual cortex and high-level lateral regions (pSTS, aSTS) the gain is moderate and not significant (ps &gt; 0.05).</template>
+          <template id="m-lang"><b>Language models</b>, given human sentence captions, predict action and social ratings better than image or video models — but still perform poorly at predicting lateral-stream neural responses.</template>
+          <table class="scorecard">
+            <thead><tr><th>Benchmark</th><th>Image</th><th>Video</th><th>Language</th></tr></thead>
+            <tbody>
+              <tr><td>Visuospatial ratings</td><td class="win">top model per rating</td><td>similar on average</td><td>similar on average</td></tr>
+              <tr><td>Action &amp; social ratings</td><td>poor</td><td>below language</td><td class="win">best</td></tr>
+              <tr><td>Ventral stream</td><td class="win">many models near ceiling</td><td class="win">many models near ceiling</td><td>—</td></tr>
+              <tr><td>Lateral mid-level (MT, EBA, LOC)</td><td>poor</td><td class="win">best (p &lt; 0.001)</td><td>poor</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="p-section" id="results" data-toc="Results">
+          <h2><span class="num">02</span>Results</h2>
+          <div class="tabs">
+            <div class="tab-list" role="tablist">
+              <button class="tab">Behavior</button>
+              <button class="tab">Brain ROIs</button>
+              <button class="tab">Cortical maps</button>
+              <button class="tab">Architecture &amp; objective</button>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/web/neurips_fig2.png" data-full="static/figures/neurips/neurips_fig2.png" alt="Prediction of behavioral ratings by model class" loading="lazy"></div>
+                <figcaption><b>Behavioral ratings.</b> Average performance of image, video, and language models on each rating. More image models were tested, so the single best model is biased toward images; for visuospatial ratings no class is better on average (p &gt; 0.05).</figcaption>
+              </figure>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/web/neurips_fig4.png" data-full="static/figures/neurips/neurips_fig4.png" alt="Prediction of neural responses by ROI and model class" loading="lazy"></div>
+                <figcaption><b>Neural responses by ROI.</b> Video models dramatically outperform image models in MT, EBA, and LOC (ps &lt; 0.001); differences in EVC, pSTS, and aSTS are not significant.</figcaption>
+              </figure>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/web/neurips_fig5.jpg" data-full="static/figures/neurips/neurips_fig5.jpeg" alt="Voxel-wise encoding performance maps for image, video, and language models" loading="lazy"></div>
+                <figcaption><b>Test-set encoding performance.</b> Best-layer performance per voxel for (A) image, (B) video, and (C) language models on the lateral and ventral surface of one participant.</figcaption>
+              </figure>
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/web/neurips_fig6.jpg" data-full="static/figures/neurips/neurips_fig6.jpeg" alt="Whole-brain hierarchical alignment" loading="lazy"></div>
+                <figcaption><b>Whole-brain hierarchical alignment.</b> Relative depth of the best-performing layer across vision models.</figcaption>
+              </figure>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/web/neurips_fig7.png" data-full="static/figures/neurips/neurips_fig7.png" alt="Performance by architecture and training objective" loading="lazy"></div>
+                <figcaption><b>Architecture and training.</b> Within image models, convolutional vs. transformer and supervised vs. self-supervised make no notable difference.</figcaption>
+              </figure>
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/web/neurips_fig8.png" data-full="static/figures/neurips/neurips_fig8.png" alt="Performance by learning objective on behavioral ratings" loading="lazy"></div>
+                <figcaption><b>Learning objective (ResNet-50 models).</b> Supervised vs. self-supervised on behavioral ratings; gray bars show the noise ceiling.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-section" id="language" data-toc="Language probes">
+          <h2><span class="num">03</span>What language models rely on</h2>
+          <p>We selectively perturbed the sentence captions to test which parts of a description drive alignment with behavior and the brain.</p>
+          <div class="tabs">
+            <div class="tab-list" role="tablist">
+              <button class="tab">Behavior</button>
+              <button class="tab">Brain ROIs</button>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/web/neurips_fig3.jpg" data-full="static/figures/neurips/neurips_fig3.jpeg" alt="Sentence perturbations and effect on behavioral alignment" loading="lazy"></div>
+                <figcaption><b>(A)</b> Example perturbations. <b>(B)</b> Each language model's performance on behavioral ratings after perturbation; asterisks mark significant degradation relative to the unperturbed sentence.</figcaption>
+              </figure>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/web/neurips_fig9.png" data-full="static/figures/neurips/neurips_fig9.png" alt="Effect of caption perturbations on neural prediction" loading="lazy"></div>
+                <figcaption><b>Neural alignment after perturbation.</b> Average ROI performance of each language model; asterisks mark significant degradation.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-section" id="hierarchy" data-toc="Hierarchy">
+          <h2><span class="num">04</span>Hierarchy, architecture &amp; objective across ROIs</h2>
+          <div class="tabs">
+            <div class="tab-list" role="tablist">
+              <button class="tab">Layer depth</button>
+              <button class="tab">Architecture</button>
+              <button class="tab">Objective</button>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/web/neurips_fig10.png" data-full="static/figures/neurips/neurips_fig10.png" alt="Relative layer depth of best layer per lateral ROI" loading="lazy"></div>
+                <figcaption><b>Hierarchical alignment.</b> Relative depth (0 = input, 1 = output) of each model's best layer per lateral ROI, suggesting a lack of hierarchical alignment in lateral regions.</figcaption>
+              </figure>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/web/neurips_fig11.png" data-full="static/figures/neurips/neurips_fig11.png" alt="Performance by architecture across ROIs" loading="lazy"></div>
+                <figcaption><b>Architecture across ROIs.</b> Convolutional and transformer models perform similarly in both ventral and lateral ROIs.</figcaption>
+              </figure>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/web/neurips_fig12.png" data-full="static/figures/neurips/neurips_fig12.png" alt="Performance by learning objective across ROIs" loading="lazy"></div>
+                <figcaption><b>Learning objective across ROIs.</b> Supervised vs. self-supervised training.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-section" id="takeaways" data-toc="Takeaways">
+          <h2><span class="num">05</span>Takeaways</h2>
+          <div class="findings">
+            <div class="finding"><span><b>A major gap.</b> All model classes fall short of human responses to dynamic social scenes.</span></div>
+            <div class="finding"><span><b>Brain ≠ behavior.</b> Language models best predict human behavioral ratings, while video models best predict lateral brain regions.</span></div>
+            <div class="finding"><span><b>Study vision in motion.</b> These results highlight the importance of studying vision in dynamic, natural contexts.</span></div>
+          </div>
+          <h3>In the press</h3>
+          <div class="press">
+            <a class="pill" href="https://www.wsj.com/tech/ai/ai-body-language-analysis-johns-hopkins-2f11362a">The Wall Street Journal</a>
+            <a class="pill" href="https://hub.jhu.edu/2025/04/24/humans-better-than-ai-at-reading-the-room/">JHU Hub</a>
+            <a class="pill" href="https://www.popsci.com/technology/ai-vs-human-social-cues-study/">Popular Science</a>
+            <a class="pill" href="https://www.marketplace.org/episode/2025/04/28/ai-cant-read-the-room">Marketplace</a>
+            <a class="pill" href="https://www.fastcompany.com/91324372/ai-is-really-bad-at-picking-up-on-social-cues-artificial-intelligence-study">Fast Company</a>
+          </div>
+        </section>
+
+        <section class="p-section" id="bibtex" data-toc="Citation">
+          <h2><span class="num">06</span>Citation</h2>
+          <div class="bibtex">
+            <button class="copy-btn"><i class="far fa-copy"></i> Copy</button>
+<pre>@inproceedings{garcia2025modeling,
+  title     = {Modeling Dynamic Social Vision Highlights Gaps Between
+               Deep Learning and Humans},
+  author    = {Garcia, Kathy and McMahon, Emalie and Conwell, Colin
+               and Bonner, Michael F. and Isik, Leyla},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2025},
+  url       = {https://openreview.net/forum?id=wAXsx2MYgV}
+}</pre>
+          </div>
+          <div class="share">Share:
+            <a href="https://bsky.app/intent/compose?text=Modeling%20Dynamic%20Social%20Vision%20Highlights%20Gaps%20Between%20Deep%20Learning%20and%20Humans%20https://garciakathy.github.io/modeling_dynamic.html" aria-label="Share on Bluesky"><i class="fab fa-bluesky"></i></a>
+            <a href="https://twitter.com/intent/tweet?url=https://garciakathy.github.io/modeling_dynamic.html&text=Modeling%20Dynamic%20Social%20Vision%20Highlights%20Gaps%20Between%20Deep%20Learning%20and%20Humans" aria-label="Share on X"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://garciakathy.github.io/modeling_dynamic.html" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <div class="neighbours">
+            <a href="similarity_judgments.html"><small>← Previous</small>Large-Scale Social Scene Judgments</a>
+            <a class="next" href="lsbm.html"><small>Next project →</small>Large-Scale DNN Benchmarking</a>
+          </div>
+        </section>
       </div>
     </div>
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Deep learning models trained on computer vision tasks are widely considered the most successful models of human vision to date. The majority of work that supports this idea evaluates how accurately 
-            these models predict brain and behavioral responses to static images of objects and natural scenes. Real-world vision, however, is highly dynamic, and far less work has focused on evaluating the 
-            accuracy of deep learning models in predicting responses to stimuli that move, and that involve more complicated, higher-order phenomena like social interactions. Here, we present a dataset of natural 
-            videos and captions involving complex multi-agent interactions, and we benchmark 350+ image, video, and language models on behavioral and neural responses to the videos. As with prior work, we find that 
-            many vision models reach the noise ceiling in predicting visual scene features and responses along the ventral visual stream (often considered the primary neural substrate of object and scene recognition). 
-            In contrast, image models poorly predict human action and social interaction ratings and neural responses in the lateral stream (a neural pathway increasingly theorized as specializing in dynamic, social vision). 
-            Language models (given human sentence captions of the videos) predict action and social ratings better than either image or video models, but they still perform poorly at predicting neural responses in the 
-            lateral stream. Together these results identify a major gap in AI's ability to match human social vision and highlight the importance of studying vision in dynamic, natural contexts.<br><br><br><br><br>
-          </p>
-        </div>
-      </div>
-    </div>
-    <!--/ Abstract. -->
+  </main>
 
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Methodological Overview</h2>
-        <br>
-        <div class="content has-text-justified">
-          <div style="text-align: justified;">
-            <img src="static/figures/neurips/neurips_fig1.png" alt="Methods Overview">
-            <br>
-            <p class="caption" style="width: 100%; text-align: justify;">We extract representations from over 350 image, video,
-                and language Deep Neural Network (DNN) models based on 3-second video inputs of human social actions or their captions. We then use model representations from each layer of the DNN's to predict human behavioral ratings and the neural
-                responses recorded using fMRI of the subjects watching the videos.</p>
-          </div>
-        </div>
-        <br><br>
-      </div>
-    </div>  
-
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Prediction Performance for human behavioral ratings and neural responses</h2>
-        <div class="content has-text-justified">
-          <div style="text-align: justified;">
-            <br>
-            <img src="static/figures/neurips/neurips_fig2.png" style="display: block; margin-left: auto; margin-right: auto;">
-            <br>
-            <p class="caption">In evaluating the benchmark of models, we compared how the different model classes (image, video, or language)
-              performed on average at predicting behavioral ratings. We note that due to the larger number of image models tested,the best performing model is
-              biased towards the image models. Despite this, we see a large amount of similarity between the different modalities. We find that for the visuospatial ratings
-              (spatial expanse, interagent distance, and agents facing), no model class is substantially better on average (p>0.05), but for each rating the top performing model is an image model.
-            </p>
-            <img src="static/figures/neurips/neurips_fig4.png" style="display: block; margin-left: auto; margin-right: auto;">
-            <br>
-            <p class="caption">As in behavior, we can compare the average performance of the models across modalities. We evaluate performance in Regions of Interest (ROIs).
-              We find that for several mid-level ROIs (MT, EBA, and LOC), video models dramatically outperform image models (ps<0.001).
-              In both early visual cortex and high-level lateral regions(pSTS and aSTS), the quantitative performance gain is moderate and not significantly different (ps>0.05),
-              and the best performing model is an image model.
-            </p>
-            <br>
-            <img src="static/figures/neurips/neurips_fig5.jpeg" style="display: block; margin-left: auto; margin-right: auto;">
-            <br>
-            <p class="caption">We further compared the models on other factors such as architecture and training. Within the image models, we do not find a notable difference in performance for models with either
-              convolutional or transformer architectures or trained through supervised or self-supervision objectives.
-            </p>
-            <br>
-            <img src="static/figures/neurips/neurips_fig7.png" style="display: block; margin-left: auto; margin-right: auto;">
-            <br>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Conclusion</h2>
-        <div class="content has-text-justified">
-          <div style="text-align: justified;">
-            <p class="caption">Overall, we found a notable gap in all models’ ability to predict human responses. However, there are differences in the models that are best able to predict thebrain versus behavior.
-              In particular, language models tend to be the best models of human behavioral ratings, while videos models best predict responses in lateral brain regions.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--    <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Human-Language Model Alignment</h2>
-          <br>
-          <div class="content has-text-justified">
-            <div style="text-align: center;">
-              <img src="static/figures/neurips/neurips_fig3.jpeg" alt="Methods Overview">
-              <br>
-              <p class="caption" style="width: 100%; text-align: center;"><b>Figure 3: (A) Example sentence perturbations. (B) The performance of each language model (dots) in predicting human behavioral
-                ratings following selective perturbation of the sentence captions.</b> The bars indicate the mean performance across models for each condition and rating. Asterisks indicate that there is a
-                significant degradation in model-behavioral alignment following perturbation relative to the unperturbed sentence.<br><br><br></p>
-            </div>
-          </div>
-          <br><br>
-        </div>
-      </div>
--->
-
-<!--      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Vision Models Capture Neural Responses Better Than Language Models</h2>
-          <div class="content has-text-justified">
-            <div style="text-align: center;">
-              <br>
-              <img src="static/figures/neurips/neurips_fig5.jpeg" style="display: block; margin-left: auto; margin-right: auto;">
-              <br>
-              <p class="caption"><b>Figure 5: Test set encoding performance. </b>Visualization of the test set encoding performance of the best performing layer in the training set for each voxel from any (A) image, 
-                (B) video, and (C) language model. This is shown on the lateral and ventral surface in right hemisphere of one representative participant. </p>
-            </div>
-          </div>
-          <br><br>
-        </div>
-      </div>
-
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Hierarchical Alignment Between Models and Brains</h2>
-          <div class="content has-text-justified">
-            <div style="text-align: justified;">
-              <br>
-              <img src="static/figures/neurips/neurips_fig6.jpeg" style="display: block; margin-left: auto; margin-right: auto;">
-              <br>
-              <p class="caption"><b>Figure 6: Whole-brain hierarchical alignment. </b>Relative depth of the best performing model layer across all vision models (image and video models) 
-                in the whole brain of one representative subject. </p>
-            </div>
-          </div>
-          <br><br>
-        </div>
-      </div>
-
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Model Performance Difference by Learning Objective</h2>
-          <div class="content has-text-justified">
-            <div style="text-align: center;">
-              <br>
-              <img src="static/figures/neurips/neurips_fig8.png" style="display: block; margin-left: auto; margin-right: auto;">
-              <br>
-              <p class="caption"><b>Figure 8: Model performance by learning objective. </b>Here, we compare the predictive performance of models trained under different learning 
-                objectives (supervised vs. self-supervised) across behavioral ratings. To control for model architecture we select only ResNet50 based models. Each dot represents 
-                the best fitting layer of a model, with solid bars denoting mean encoding score for a given cluster per behavioral rating. In gray bars, we plot the reliability as 
-                a noise ceiling for our data. This analysis indicates whether the learning objective influences behavior-model alignment.</p>
-            </div>
-          </div>
-          <br><br>
-        </div>
-      </div>
-
-
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Language Model Performance Differences Based On Selective Perturbation Across Brain ROIs</h2>
-          <div class="content has-text-justified">
-            <div style="text-align: center;">
-              <br>
-              <img src="static/figures/neurips/neurips_fig9.png" style="display: block; margin-left: auto; margin-right: auto;">
-              <br>
-              <p class="caption"><b>Figure 9: The average performance in ROIs of each language model (dots) in predicting neural responses following selective 
-                perturbation of the sentence captions. </b>The bars indicate the mean performance across models for each condition and rating. Asterisks indicate 
-                that there is a significant degradation in model-neural alignment following perturbation relative to the unperturbed sentence.</p>
-            </div>
-          </div>
-          <br><br>
-        </div>
-      </div>
-
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Hierarchical Alignment of Model Layers with Brain ROIs</h2>
-          <div class="content has-text-justified">
-            <div style="text-align: center;">
-              <br>
-              <img src="static/figures/neurips/neurips_fig10.png" style="display: block; margin-left: auto; margin-right: auto;">
-              <br>
-              <p class="caption"><b>Figure 10: Hierarchical alignment of model layers with brain responses.</b> We calculate the relative layer depth of the best performing 
-                layer per model in each lateral stream ROI. On the y-axis, 0 represents the input model layer and 1 represents the output layer. The graph shows the relative 
-                prediction strength of model layers for each ROI, suggesting a lack of hierarchical alignment in lateral visual regions.</p>
-            </div>
-          </div>
-          <br><br>
-        </div>
-      </div>
-
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Model Performance by Architecture Across Brain ROIs</h2>
-          <div class="content has-text-justified">
-            <div style="text-align: center;">
-              <br>
-              <img src="static/figures/neurips/neurips_fig11.png" style="display: block; margin-left: auto; margin-right: auto;">
-              <br>
-              <p class="caption"><b>Figure 11: Model performance by architecture across ROIs. </b>We compare the performances of convolutional and transformer architectures in 
-                predicting neural responses across various brain regions. Each dot represents the best fitting layer of a model, with solid bars denoting mean encoding score for 
-                a given cluster per ROI. The graph shows that architectural differences do not significantly impact the models' predictive capabilities for both ventral and lateral ROIs.</p>
-            </div>
-          </div>
-          <br><br>
-        </div>
-      </div>
-
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Model Performance by Learning Objective Across Brain ROIs</h2>
-          <div class="content has-text-justified">
-            <div style="text-align: center;">
-              <br>
-              <img src="static/figures/neurips/neurips_fig12.png" style="display: block; margin-left: auto; margin-right: auto;">
-              <br>
-              <p class="caption"><b>Figure 12: Model performance by learning objective across ROIs. </b>Here, we evaluate the impact of training objectives (supervised vs. self-supervised) 
-                on predicting neural responses across different brain regions. To control for model architecture we select only ResNet50 based models. Each dot represents the best fitting 
-                layer of a model, with solid bars denoting mean encoding score for a given cluster per ROI. This analysis illustrates that differences in training objective do not significantly 
-                impact the models' predictive capabilities for both ventral and lateral ROIs.</p>
-            </div>
-          </div>
-          <br><br>
-        </div>
-      </div>
--->
-
-    <!-- Citation Section -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Citation</h2>
-        <div class="content has-text-left">
-          <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; border-left: 4px solid #4a90e2;">
-            <p style="font-family: 'Courier New', monospace; font-size: 0.9em; margin: 0;">
-              Garcia, K., McMahon, E., Conwell, C., Bonner, M. F., & Isik, L. (2025). Modeling Dynamic Social Vision Highlights Gaps Between Deep Learning and Humans. In <em>International Conference on Learning Representations (ICLR)</em>.
-            </p>
-          </div>
-          <br>
-          <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; border-radius: 4px;">
-            <p style="margin: 0;">
-              <strong>🏆 Best Oral Presentation Award</strong>, LatinX in AI Workshop @ ICML 2024<br>
-              <strong>📰 Featured in Media:</strong> <a href="https://archive.is/wAcZZ">The Wall Street Journal</a>, <a href="https://hub.jhu.edu/2025/04/24/humans-better-than-ai-at-reading-the-room/">JHU Hub</a>, <a href="https://www.popsci.com/technology/ai-vs-human-social-cues-study/">Popular Science</a>, <a href="https://www.marketplace.org/episode/2025/04/28/ai-cant-read-the-room">Marketplace</a>
-            </p>
-          </div>
-        </div>
-        <br><br>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-
+  <footer class="site-footer"><div class="wrap">&copy; 2026 Kathy Garcia · <a href="index.html">garciakathy.github.io</a></div></footer>
+  <script src="static/js/site.js"></script>
+  <script src="static/js/project.js"></script>
 </body>
 </html>

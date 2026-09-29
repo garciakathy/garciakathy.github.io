@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVRXCHECS8"></script>
@@ -7,333 +7,254 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-QVRXCHECS8');
   </script>
 
-  <meta charset="utf-8">
-  <meta name="description"
-        content="">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>A Large-Scale Study of Social Scene Judgments</title>
+  <title>Social Scene Judgments</title>
+  <meta name="description" content="A large-scale study of human similarity judgments for dynamic social scenes, compared with social-affective features, 350+ DNNs, and fMRI. VSS 2025 talk.">
+  <meta property="og:title" content="A Large-Scale Study of Social Scene Judgments">
+  <meta property="og:description" content="VSS 2025 talk · Kathy Garcia & Leyla Isik">
+  <meta property="og:image" content="https://garciakathy.github.io/static/figures/sim_judg/task_design.png">
+  <link rel="icon" href="images/favicon.png">
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
-
-  <link rel="stylesheet" href="./static/css/responsive_style.css">
-
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
+  <script>
+    document.documentElement.classList.add('js');
+    try { document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'light'); } catch (e) {}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/site.css">
+  <link rel="stylesheet" href="static/css/project.css">
 </head>
+
 <body>
-
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a href="index.html" style="font-weight: 600; font-size: 1.1em; color: #333; text-decoration: none; padding: 10px 20px;">Kathy Garcia</a>
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-end">
-      <a href="index.html#about" class="navbar-item">About</a>
-      <a href="index.html#news" class="navbar-item">News</a>
-      <a href="index.html#research" class="navbar-item">Research</a>
-      <a href="index.html#publications-list" class="navbar-item">Publications</a>
-      <a href="index.html#media" class="navbar-item">Media</a>
-      <a href="index.html#honors" class="navbar-item">Honors</a>
-      <a href="data/Kathy_CV (1).pdf" class="navbar-item" target="_blank">CV</a>
-    </div>
-  </div>
-</nav>
-        
-
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-widescreen">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">A Large-Scale Study of Social Scene Judgments</h1>
-          <h2 class="subtitle is-3 publication-subtitle">Alignment with Deep Neural Networks, and Social-Affective Features</h2>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="index.html"><strong>Kathy Garcia</strong></a>,</span>&nbsp;
-            <span class="author-block">
-              <a href="https://www.isiklab.org">Leyla Isik</a>&nbsp;
-            </span> 
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">Kathy Garcia</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#news">News</a></li>
+        <li class="dropdown">
+          <button class="nav-btn" aria-expanded="false" aria-haspopup="true">Research <i class="fas fa-chevron-down" style="font-size:10px"></i></button>
+          <div class="dropdown-menu">
+            <a href="video_alignment.html">Behavioral Geometric Supervision <small>NeurIPS 2026 · Oral</small></a>
+            <a href="latent_dimensions.html">Latent Dimensions of Social Scenes <small>Preprint 2026 · CCN 2026</small></a>
+            <a href="social_tokens.html">Social Tokens for Grounding LLMs <small>NeurIPS 2025 UniReps</small></a>
+            <a href="similarity_judgments.html">Large-Scale Social Scene Judgments <small>VSS 2025 talk</small></a>
+            <a href="modeling_dynamic.html">Modeling Dynamic Social Vision <small>ICLR 2025</small></a>
+            <a href="lsbm.html">Large-Scale DNN Benchmarking <small>VSS &amp; CCN 2024 talks</small></a>
           </div>
-          <br>
-          <div class="is-size-4 publication-authors">
-            <span class="author-block">Johns Hopkins University</span>
+        </li>
+        <li><a href="index.html#publications">Publications</a></li>
+        <li><a href="data/Kathy_CV%20(1).pdf" target="_blank" rel="noopener">CV</a></li>
+      </ul>
+      <div class="nav-tools">
+        <button class="icon-btn" data-theme-toggle aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+        <button class="icon-btn burger" aria-label="Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="p-hero">
+      <div class="p-kicker">
+        <span class="badge">🎤 VSS 2025 · Talk</span>
+        <span class="badge plain">15% acceptance</span>
+      </div>
+      <h1 class="p-title">A Large-Scale Study of <span class="accent">Social Scene Judgments</span></h1>
+      <p class="p-subtitle">Alignment with deep neural networks and social-affective features</p>
+      <div class="p-authors">
+        <a href="index.html">Kathy Garcia</a>
+        <a href="https://www.isiklab.org">Leyla Isik</a>
+      </div>
+      <div class="p-affil">Johns Hopkins University</div>
+      <div class="p-buttons">
+        <a class="pill solid" href="https://doi.org/10.1167/jov.25.9.2621"><i class="fas fa-file-lines"></i> Abstract (JOV)</a>
+        <a class="pill" href="https://www.visionsciences.org/talk-session/?id=416"><i class="fas fa-person-chalkboard"></i> VSS talk</a>
+        <a class="pill" href="#bibtex"><i class="fas fa-quote-right"></i> BibTeX</a>
+      </div>
+      <figure class="p-teaser" style="max-width:860px">
+        <img src="static/figures/sim_judg/task_design.png" alt="Triplet odd-one-out task: participants choose which of three videos is the odd-one-out">
+        <figcaption class="p-teaser-cap">One odd-one-out choice labels one pair as similar and two pairs as dissimilar.</figcaption>
+      </figure>
+    </section>
+
+    <div class="p-layout">
+      <nav class="toc" aria-label="On this page">
+        <div class="toc-title">On this page</div>
+        <ol></ol>
+        <a class="back" href="index.html#publications"><i class="fas fa-arrow-left"></i> All projects</a>
+      </nav>
+
+      <div class="p-content">
+        <section class="p-section" id="overview" data-toc="Overview">
+          <h2><span class="num">00</span>Overview</h2>
+          <p class="tldr">How people <b>describe</b> social videos predicts how they <b>group</b> them. Caption embeddings best match human similarity judgments, followed by ratings of intimacy; the judgments align with body- and object-selective cortex, not early visual or scene areas.</p>
+          <div class="stats">
+            <div class="stat"><div class="stat-num" data-count="65000" data-suffix="+">65,000+</div><div class="stat-label">triplet similarity judgments</div></div>
+            <div class="stat"><div class="stat-num" data-count="250">250</div><div class="stat-label">3-second videos of everyday actions</div></div>
+            <div class="stat"><div class="stat-num" data-count="350" data-suffix="+">350+</div><div class="stat-label">language, image &amp; video DNNs compared</div></div>
+            <div class="stat"><div class="stat-num" data-count="0.252" data-decimals="3">0.252</div><div class="stat-label">split-half reliability (noise ceiling)</div></div>
           </div>
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <!-- <span class="link-block">
-                <a href="https://openreview.net/pdf?id=wAXsx2MYgV"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <img src="images/ICLR-logo.svg" style="height: 1.2em";>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              </span> -->
-              <!-- Code Link. -->
-              <!-- <span class="link-block">
-                <a href="https://github.com/Isik-lab/SIfMRI_modeling"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span> -->
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+          <p>Similarity judgments offer insight into the mental representations humans use to perceive actions, form categories, and predict behavior. While prior
+            research has focused on static scenes, less is known about what drives similarity in <strong>dynamic</strong> settings and how it aligns with deep neural networks.
+            We built a similarity matrix for all 250 videos — \(p(i, j)\), the likelihood of choosing \(i\) and \(j\) as similar when paired with different third videos —
+            and compared it with human feature ratings, fMRI, video DNNs, and word embeddings of human-written captions using representational similarity analysis (RSA).</p>
+        </section>
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Share Section -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column">
-        <h3 style="font-size: 0.75em; margin-bottom: 8px; color: #666;">SHARE ON</h3>
-        <div style="display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;">
-          <a href="https://twitter.com/intent/tweet?url=https://garciakathy.github.io/similarity_judgments.html&text=A%20Large-Scale%20Study%20of%20Social%20Scene%20Judgments" target="_blank" style="display: inline-block; padding: 4px 8px; background: #1DA1F2; color: white; text-decoration: none; border-radius: 3px; font-size: 0.7em;">
-            <i class="fab fa-twitter"></i> Twitter
-          </a>
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https://garciakathy.github.io/similarity_judgments.html" target="_blank" style="display: inline-block; padding: 4px 8px; background: #4267B2; color: white; text-decoration: none; border-radius: 3px; font-size: 0.7em;">
-            <i class="fab fa-facebook"></i> Facebook
-          </a>
-          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://garciakathy.github.io/similarity_judgments.html" target="_blank" style="display: inline-block; padding: 4px 8px; background: #0077B5; color: white; text-decoration: none; border-radius: 3px; font-size: 0.7em;">
-            <i class="fab fa-linkedin"></i> LinkedIn
-          </a>
-          <a href="https://bsky.app/intent/compose?text=A%20Large-Scale%20Study%20of%20Social%20Scene%20Judgments%20https://garciakathy.github.io/similarity_judgments.html" target="_blank" style="display: inline-block; padding: 4px 8px; background: #0085ff; color: white; text-decoration: none; border-radius: 3px; font-size: 0.7em;">
-            <i class="fas fa-cloud"></i> Bluesky
-          </a>
-        </div>
-      </div>
-    </div>
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            How do humans perceive naturalistic social scenes, especially in dynamic contexts? Similarity judgments offer critical insight into the mental representations humans use to perceive actions, form categories, 
-            and predict behavior. Real-world perception is complex and dynamic, involving features that static representations fully cannot capture. While prior research has focused on static scenes, less is understood about 
-            the features driving human similarity judgments in dynamic settings and their alignment with representations learned by deep neural networks (DNNs). To address this, we collected ~65,000+ similarity 
-            judgments with a triplet odd-one-out task generated from a curated dataset of 250 three-second videos depicting everyday human actions—a scale far exceeding comparable studies. We then constructed a similarity 
-            matrix for all 250 videos, computing <em>p(i, j)</em>, the likelihood of participants selecting stimuli <i>i</i> and <i>j</i> as similar when paired with different third videos. Finally, these similarity judgments were compared to human ratings 
-            across visual and social scene features, fMRI responses, video DNN extractions, and word embeddings derived from human-written captions, using representational similarity analysis (RSA). The results reveal striking patterns 
-            in human perception: word embeddings of video captions, reflecting how humans choose to describe the videos, showed the strongest correlation with overall similarity judgments, followed by ratings of “intimacy” 
-            (relational closeness) and video DNN embeddings. Similarity judgements correlated significantly with neural responses in regions, including EBA, LOC, STS (lateral stream) and FFA (ventral stream), but not early visual 
-            (EVC) or scene-specific (PPA) areas, underscoring the dominance of social over scene features. Together, these findings highlight the alignment between linguistic descriptions and cognitive strategies, revealing how verbal 
-            encodings of social features capture key mental processes shaping our understanding of dynamic social scenes.<br><br><br><br><br>
-          </p>
-        </div>
-      </div>
-    </div>
-    <!--/ Abstract. -->
-
-    <style>
-    .video-row {
-        display: flex;
-        gap: 32px;
-    justify-content: center;
-    }
-    .video-row video {
-        width: 32%;
-        height: auto;
-    }
-    </style>
-    
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <br>
-        <div class="video-row">
-            <video src="dynamic/intro_1.mp4" autoplay muted loop></video>
-            <video src="dynamic/intro_2.mp4" autoplay muted loop></video>
-            <video src="dynamic/intro_3.mp4" autoplay muted loop></video>
-        </div>
-        <br>
-        <div class="video-row">
-            <video src="dynamic/methods_1.mp4" autoplay muted loop></video>
-            <video src="dynamic/methods_2.mp4" autoplay muted loop></video>
-            <video src="dynamic/methods_3.mp4" autoplay muted loop></video>
-        </div>
-        <br>
-        <div class="video-row">
-            <video src="dynamic/methods_4.mp4" autoplay muted loop></video>
-            <video src="dynamic/methods_5.mp4" autoplay muted loop></video>
-            <video src="dynamic/methods_6.mp4" autoplay muted loop></video>
-        </div>
-        <br><br><br>
-      </div>
-    </div>
-
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Behavioral Feature Dimensions</h2>
-        <br>
-        <div class="content has-text-justified">
-          <div style="text-align: justified;">
-            <img src="static/figures/sim_judg/methods_behavior.png" alt="Behavioral Feature Dimensions">
-            <br>
-            <p class="caption" style="width: 100%; text-align: justify;">
-                <b>Left:</b> Features are grouped into five domains: scene and object features (yellow), social primitive features (purple), social interaction features (blue), affective features (pink), and social appraisal features (orange).
-                <b>Right:</b> Example frames from two videos are shown alongside their behavioral feature ratings, as indicated by the bar graphs. The colored bars correspond to the feature domains at left. Arrows highlight the dominant feature for each video, illustrating how different types of social events are distinguished by their behavioral profiles.
-            </p>
-            <br>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Triplet Odd-One-Out Task</h2>
-        <br>
-        <div class="content has-text-justified">
-          <div style="text-align: justified;">
-            <img src="static/figures/sim_judg/task_design.png" alt="Triplet Odd-One-Out Task">
-            <br>
-            <p class="caption" style="width: 100%; text-align: justify;">
-                Participants were presented with three videos and asked to select the odd-one-out while focusing on what people are doing. 
-                The two videos not chosen are labeled as "similar" and the odd-one-out selection is labeled as dissimilar to both others. With this method, we collected 3 pairwise similaritty judgments for each triplet.
-            </p>
-            <br>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">RSA Overview</h2>
-        <br>
-        <div class="content has-text-justified">
-          <div style="text-align: justified;">
-            <img src="static/figures/sim_judg/rsa_methods.png" alt="RSA Overview">
-            <br><br>
-            <p class="caption" style="width: 100%; text-align: justify;">
-                To reveal the representations that best align with human perception of social events, we began with a set of 3-second social videos from the MiT dataset. For each video, we extracted behavioral features 
-                (e.g., ratings of positivity and interaction type) and deep neural network (DNN) features from prior benchmarking work. Each of these sources was used to generate a representational similarity matrix (RSM) 
-                that quantified how similarly the videos were represented by each source. In parallel, we collected human similarity judgments using a triplet odd-one-out task, where participants viewed sets of three videos 
-                and selected the one least similar to the others. Aggregating over thousands of such choices, we constructed a similarity probability: the similarity probability for each video pair was computed as the proportion 
-                of times that pair was judged as similar when presented together. This resulted in a 200 x 200 matrix capturing perceived similarity among all video pairs in the train set. Finally, we performed representational
-                similarity analysis (RSA) to directly compare the human-derived similarity probability matrix with RSMs derived from behavioral features and DNNs. This framework allowed us to systematically assess which source 
-                best captures the structure of human social perception.
-            </p>
-          </div>
-        </div>
-        <br><br>
-      </div>
-    </div>  
-
-    <div class="columns is-centered has-text-centered">
-    <div class="column is-four-fifths">
-        <h2 class="title is-3">Behavioral and DNN Model Alignment with Human Similarity Judgments</h2>
-        <br>
-        <div class="content has-text-justified">
-        <div style="text-align: justified;">
-            <img src="static/figures/sim_judg/results_rsa.png" alt="Explained variance by behavioral features and DNN models">
-            <br><br>
-            <p class="caption" style="width: 100%; text-align: justify;">
-            <b>Left:</b> Explained variance (R²) in human similarity judgments for individual behavioral features. Asterisks indicate features that reached statistical significance (<i>p</i> &lt; 0.05). The dashed horizontal line denotes the split-half reliability (0.252), representing the noise ceiling. The feature "intimacy" (a higher-order social-affective construct) explains the most variance, followed by "dominance," while lower-level perceptual and social interaction features explain less variance.
-            <b>Right:</b> Explained variance for over 350 deep neural network models, grouped by modality (language, image, and video). Each dot represents the best-performing layer of a model. Language models exhibited the strongest overall alignment with human similarity judgments, with Multilingual MPNet-v2 as the top-performing language model. Among image models, CLIP (ViT-B/32) performed best, while for video models, X3D-M achieved the highest alignment with human judgments.
-            </p>
-        </div>
-        </div>
-        <br><br>
-    </div>
-    </div>
-
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Variance Partitioning</h2>
-        <div class="content has-text-justified">
-          <div style="text-align: justified;">
-            <br>
-            <img src="static/figures/sim_judg/methods_variance_part.png" alt="Variance Partitioning Methods" style="display: block; margin-left: auto; margin-right: auto;">
-            <br>
-            <p class="caption"><b>Variance Paritioning Methods.</b> We used variance partitioning to quantify the unique and shared contributions of different feature sets to explaining human similarity judgments.
-                (Left) Explained variance when including all feature sets: behavioral attributes (intimacy, dominance, indoor/outdoor, valence, arousal) and model-derived representations (language, image, video DNNs).
-                (Center) Explained variance by all behavioral attributes, excluding DNN features, highlights the variance captured by interpretable features alone.
-                (Right) Unique variance explained by DNN models, after accounting for all other features, reveals the distinct contribution of language, image, and video DNNs to human similarity judgments.
-            </p>
-            <br>
-            <img src="static/figures/sim_judg/variance_part.png" style="display: block; margin-left: auto; margin-right: auto;">
-            <br>
-            <p class="caption">
-                <b>(a) Variance partitioning for behavioral features, showing the unique variance (UV; purple)</b> explained by each feature and the shared variance (gray) across all features. Intimacy provides the largest unique contribution among behavioral features.
-                <b>(b) Unique and shared variance explained by language, image, and video DNN models</b>, with language models accounting for the most unique variance among DNNs. Together, DNNs explain a greater total variance than behavioral features alone.
-                <b>(c) Partitioning of variance explained when combining behavioral features and DNNs.</b> While a substantial portion of variance is shared between the two sources (gray), DNNs explain meaningful unique variance not captured by behavioral features, and vice versa. 
-                The combined total approaches the split-half reliability ceiling (dashed line), indicating that together, DNN and behavioral features provide a comprehensive account of the explainable variance in human similarity judgments for social videos.
-            </p>
-            <br><br>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-            <h2 class="title is-3">Neural Variance Explained by Social Similarity Judgments</h2>
-            <br>
-            <div class="content has-text-justified">
-                <div style="text-align: justified;">
-                    <img src="static/figures/sim_judg/neural.png" alt="Explained Variance by Neural ROIs">
-                    <br><br>
-                    <p class="caption" style="width: 100%; text-align: justify;">
-                    <b>(a) Neural RSA.</b> Bar plot showing the proportion of variance (R²) in human similarity judgments explained by different lateral (left) and ventral (right) brain regions of interest (ROIs). 
-                    Mid-level lateral ROIs, particularly EBA (extrastriate body area) and LOC (lateral occipital complex), explain the greatest variance, followed by MT and pSTS regions, indicating that mid- and high-level social perception areas are most strongly aligned with behavioral similarity structure. 
-                    Early visual cortex (EVC) and the scene-selective PPA (parahippocampal place area) show little to no alignment, suggesting low-level visual and scene features are not major drivers of social similarity judgments. 
-                    The face-selective FFA (fusiform face area) in the ventral pathway also explains significant variance, highlighting the importance of face processing in social perception.
-                    <b>(b) Searchlight RSA.</b> Surface maps illustrating the distribution of explained variance across the cortex, with color indicating R² values. 
-                    Regions in the lateral temporal and occipital cortex show the highest alignment with human similarity judgments.
-                    </p>
-                </div>
+        <section class="p-section" id="task" data-toc="Try the task">
+          <h2><span class="num">01</span>Try the task</h2>
+          <p>Participants saw three videos and chose the odd-one-out while focusing on what the people are doing. The two videos not chosen count as “similar”;
+            the odd-one-out counts as dissimilar to both.</p>
+          <div class="ooo" data-videos="dynamic/intro_1.mp4, dynamic/intro_2.mp4, dynamic/intro_3.mp4, dynamic/methods_1.mp4, dynamic/methods_2.mp4, dynamic/methods_3.mp4, dynamic/methods_4.mp4, dynamic/methods_5.mp4, dynamic/methods_6.mp4">
+            <div class="ooo-prompt">Which clip is the odd-one-out?</div>
+            <div class="ooo-hint">Focus on what the people are doing.</div>
+            <div class="ooo-grid"></div>
+            <div class="ooo-result"></div>
+            <div class="ooo-foot">
+              <span class="ooo-count"></span>
+              <button class="pill ooo-next"><i class="fas fa-shuffle"></i> New triplet</button>
             </div>
-            <br><br>
-        </div>
+          </div>
+        </section>
+
+        <section class="p-section" id="features" data-toc="Features">
+          <h2><span class="num">02</span>What could drive similarity?</h2>
+          <p>Every video comes with human ratings grouped into five domains. Each is a candidate explanation for how people group social scenes.</p>
+          <div class="chips" data-panel="feat-panel">
+            <button class="chip" style="--c:#d8a31a" data-target="f-scene">Scene &amp; object</button>
+            <button class="chip" style="--c:#9b6dd6" data-target="f-prim">Social primitives</button>
+            <button class="chip" style="--c:#4a90e2" data-target="f-inter">Social interaction</button>
+            <button class="chip" style="--c:#e0679a" data-target="f-aff">Affective</button>
+            <button class="chip" style="--c:#e07a5f" data-target="f-appr">Social appraisal</button>
+          </div>
+          <div class="chip-panel" id="feat-panel" aria-live="polite"></div>
+          <template id="f-scene"><b>Scene &amp; object features</b> (yellow) — properties of the setting and objects, such as indoor vs. outdoor, spatial expanse, and object-directedness.</template>
+          <template id="f-prim"><b>Social primitive features</b> (purple) — low-level cues about the agents, such as how far apart they are and whether they face each other.</template>
+          <template id="f-inter"><b>Social interaction features</b> (blue) — whether and how the people are interacting and communicating.</template>
+          <template id="f-aff"><b>Affective features</b> (pink) — the emotional tone of the scene, such as valence and arousal.</template>
+          <template id="f-appr"><b>Social appraisal features</b> (orange) — higher-order judgments about relationships, such as intimacy and dominance. These turned out to matter most.</template>
+          <figure class="fig">
+            <div class="fig-frame"><img src="static/figures/sim_judg/methods_behavior.png" alt="Behavioral feature domains and example ratings" loading="lazy"></div>
+            <figcaption><b>Left:</b> the five feature domains. <b>Right:</b> two example videos with their feature profiles; arrows mark each video's dominant feature, showing how different social events are distinguished.</figcaption>
+          </figure>
+        </section>
+
+        <section class="p-section" id="approach" data-toc="Approach">
+          <h2><span class="num">03</span>Approach</h2>
+          <figure class="fig">
+            <div class="fig-frame"><img src="static/figures/sim_judg/rsa_methods.png" alt="RSA overview comparing human similarity with behavioral features and DNNs" loading="lazy"></div>
+            <figcaption><b>RSA framework.</b> Behavioral features and DNN activations each yield a representational similarity matrix (RSM) that we compare with the human similarity-probability matrix (200 × 200 in the train set).</figcaption>
+          </figure>
+        </section>
+
+        <section class="p-section" id="results" data-toc="Results">
+          <h2><span class="num">04</span>Results</h2>
+          <div class="tabs">
+            <div class="tab-list" role="tablist">
+              <button class="tab">Features &amp; DNNs</button>
+              <button class="tab">Variance partitioning</button>
+              <button class="tab">Similarity matrix</button>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/sim_judg/results_rsa.png" alt="Explained variance by behavioral features and by 350+ DNNs" loading="lazy"></div>
+                <figcaption><b>Left:</b> “intimacy” explains the most variance among behavioral features, followed by “dominance”; lower-level perceptual and interaction features explain less. <b>Right:</b> language models align best overall (top: multilingual MPNet-v2); CLIP ViT-B/32 leads image models and X3D-M leads video models. Dashed line: split-half reliability (0.252).</figcaption>
+              </figure>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/sim_judg/methods_variance_part.png" alt="Variance partitioning method" loading="lazy"></div>
+                <figcaption><b>Method.</b> Unique and shared contributions of behavioral attributes and DNN families.</figcaption>
+              </figure>
+              <figure class="fig">
+                <div class="fig-frame"><img src="static/figures/web/sim_judg_variance_part.png" data-full="static/figures/sim_judg/variance_part.png" alt="Variance partitioning results" loading="lazy"></div>
+                <figcaption><b>(a)</b> Intimacy gives the largest unique contribution among behavioral features. <b>(b)</b> Language models account for the most unique variance among DNNs. <b>(c)</b> Behavioral features and DNNs share much variance, but each explains variance the other misses; together they approach the noise ceiling.</figcaption>
+              </figure>
+            </div>
+            <div class="tab-panel" role="tabpanel">
+              <figure class="fig narrow">
+                <div class="fig-frame"><img src="static/figures/sim_judg/sim_matrix.png" alt="Human similarity matrix for all videos" loading="lazy"></div>
+                <figcaption><b>Human similarity matrix</b> across all video pairs.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-section" id="brain" data-toc="The brain">
+          <h2><span class="num">05</span>Where judgments live in the brain</h2>
+          <p>Click a region to see how well it aligns with human similarity judgments:</p>
+          <div class="chips" data-panel="roi-panel">
+            <button class="chip" data-target="r-eba">EBA</button>
+            <button class="chip" data-target="r-loc">LOC</button>
+            <button class="chip" data-target="r-mt">MT</button>
+            <button class="chip" data-target="r-psts">pSTS</button>
+            <button class="chip" data-target="r-ffa">FFA</button>
+            <button class="chip" style="--c:#8a94a6" data-target="r-evc">EVC</button>
+            <button class="chip" style="--c:#8a94a6" data-target="r-ppa">PPA</button>
+          </div>
+          <div class="chip-panel" id="roi-panel" aria-live="polite"></div>
+          <template id="r-eba"><b>Extrastriate body area (EBA)</b> · lateral stream — among the strongest alignment with similarity judgments.</template>
+          <template id="r-loc"><b>Lateral occipital complex (LOC)</b> · lateral stream — among the strongest alignment, alongside EBA.</template>
+          <template id="r-mt"><b>Middle temporal area (MT)</b> · lateral stream — next strongest after EBA and LOC.</template>
+          <template id="r-psts"><b>Posterior superior temporal sulcus (pSTS)</b> · lateral stream — significant alignment; mid- and high-level social perception areas track similarity structure most.</template>
+          <template id="r-ffa"><b>Fusiform face area (FFA)</b> · ventral stream — explains significant variance, highlighting face processing in social perception.</template>
+          <template id="r-evc"><b>Early visual cortex (EVC)</b> — little to no alignment: low-level visual features are not major drivers of social similarity.</template>
+          <template id="r-ppa"><b>Parahippocampal place area (PPA)</b> · scene-selective — little to no alignment, underscoring social over scene features.</template>
+          <figure class="fig">
+            <div class="fig-frame"><img src="static/figures/sim_judg/neural.png" alt="Neural RSA by ROI and searchlight maps" loading="lazy"></div>
+            <figcaption><b>(a)</b> Neural RSA by lateral and ventral ROIs. <b>(b)</b> Searchlight RSA: lateral temporal and occipital cortex align most with human similarity judgments.</figcaption>
+          </figure>
+        </section>
+
+        <section class="p-section" id="takeaways" data-toc="Takeaways">
+          <h2><span class="num">06</span>Takeaways</h2>
+          <div class="findings">
+            <div class="finding"><span><b>Higher-order appraisals matter most.</b> Judgments rely on social appraisals like intimacy and dominance rather than low-level visual cues.</span></div>
+            <div class="finding"><span><b>Language models explain a lot — but not everything.</b> Some variance is uniquely captured by behavioral features, so DNNs and humans attend to overlapping but distinct aspects of social scenes.</span></div>
+            <div class="finding"><span><b>A benchmark for social perception.</b> Behavioral annotations, similarity judgments, and brain data enable rigorous evaluation of future models — the foundation for <a href="video_alignment.html">BGS</a> and the <a href="latent_dimensions.html">latent dimensions</a> project.</span></div>
+          </div>
+        </section>
+
+        <section class="p-section" id="bibtex" data-toc="Citation">
+          <h2><span class="num">07</span>Citation</h2>
+          <div class="bibtex">
+            <button class="copy-btn"><i class="far fa-copy"></i> Copy</button>
+<pre>@article{garcia2025semantic,
+  title   = {Semantic and Social Features Drive Human Grouping of Dynamic,
+             Visual Events in Large-Scale Similarity Judgements},
+  author  = {Garcia, Kathy and Isik, Leyla},
+  journal = {Journal of Vision},
+  volume  = {25},
+  number  = {9},
+  pages   = {2621},
+  year    = {2025},
+  doi     = {10.1167/jov.25.9.2621}
+}</pre>
+          </div>
+          <div class="share">Share:
+            <a href="https://bsky.app/intent/compose?text=A%20Large-Scale%20Study%20of%20Social%20Scene%20Judgments%20https://garciakathy.github.io/similarity_judgments.html" aria-label="Share on Bluesky"><i class="fab fa-bluesky"></i></a>
+            <a href="https://twitter.com/intent/tweet?url=https://garciakathy.github.io/similarity_judgments.html&text=A%20Large-Scale%20Study%20of%20Social%20Scene%20Judgments" aria-label="Share on X"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://garciakathy.github.io/similarity_judgments.html" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <div class="neighbours">
+            <a href="social_tokens.html"><small>← Previous</small>Social Tokens for Grounding LLMs</a>
+            <a class="next" href="modeling_dynamic.html"><small>Next project →</small>Modeling Dynamic Social Vision</a>
+          </div>
+        </section>
+      </div>
     </div>
+  </main>
 
-    <div class="columns is-centered has-text-centered">
-    <div class="column is-four-fifths">
-        <h2 class="title is-3">Conclusion</h2>
-        <div class="content has-text-justified">
-        <div style="text-align: justified;">
-            <p class="caption">
-            Our findings highlight three key conclusions: 
-            <b>(1)</b> human judgments of social interactions rely most strongly on higher-order social appraisal features, such as intimacy and dominance, rather than on lower-level visual cues.
-            <b>(2)</b> deep neural networks—especially language models—explain a substantial portion of variance in human similarity judgments. However, some variance is uniquely captured by behavioral features, suggesting that DNNs and humans focus on overlapping but distinct aspects of social scenes.
-            <b>(3)</b> we introduce a comprehensive dataset and framework for benchmarking models of social perception, providing behavioral annotations, similarity judgments, and brain data to enable rigorous evaluation of future models.
-            </p>
-        </div>
-        </div>
-    </div>
-    </div>
-
-</section>
-
-
-
+  <footer class="site-footer"><div class="wrap">&copy; 2026 Kathy Garcia · <a href="index.html">garciakathy.github.io</a></div></footer>
+  <script>window.MathJax = { chtml: { scale: 0.95 } };</script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="static/js/site.js"></script>
+  <script src="static/js/project.js"></script>
 </body>
 </html>

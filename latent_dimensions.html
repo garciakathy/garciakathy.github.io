@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVRXCHECS8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-QVRXCHECS8');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Latent Dimensions of Social Scenes</title>
+  <meta name="description" content="The latent dimensions supporting dynamic social scene perception: 54,000 similarity judgments reveal a compact, interpretable map of social scenes that also predicts visual cortex. CCN 2026.">
+  <meta property="og:title" content="The Latent Dimensions Supporting Dynamic Social Scene Perception">
+  <meta property="og:description" content="Kathy Garcia & Leyla Isik · Preprint 2026 · CCN 2026">
+  <meta property="og:image" content="https://garciakathy.github.io/images/latent_dims.svg">
+  <link rel="icon" href="images/favicon.png">
+
+  <script>
+    document.documentElement.classList.add('js');
+    try { document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'light'); } catch (e) {}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/site.css">
+  <link rel="stylesheet" href="static/css/project.css">
+  <style>
+    .pipeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 16px 0 22px; }
+    .step { position: relative; padding: 14px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); font-size: 13.5px; color: var(--ink-2); }
+    .step b { display: block; color: var(--ink); font-size: 14.5px; margin: 4px 0 4px; }
+    .step i { color: var(--accent); font-size: 18px; }
+    .step:not(:last-child)::after { content: '→'; position: absolute; right: -10px; top: 50%; transform: translate(50%, -50%); color: var(--ink-3); z-index: 1; }
+    .dim-map { position: relative; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: #fff; }
+    .dim-map img { display: block; width: 100%; }
+    @media (max-width: 720px) { .pipeline { grid-template-columns: 1fr 1fr; } .step:not(:last-child)::after { display: none; } }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">Kathy Garcia</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#news">News</a></li>
+        <li class="dropdown">
+          <button class="nav-btn" aria-expanded="false" aria-haspopup="true">Research <i class="fas fa-chevron-down" style="font-size:10px"></i></button>
+          <div class="dropdown-menu">
+            <a href="video_alignment.html">Behavioral Geometric Supervision <small>NeurIPS 2026 · Oral</small></a>
+            <a href="latent_dimensions.html">Latent Dimensions of Social Scenes <small>Preprint 2026 · CCN 2026</small></a>
+            <a href="social_tokens.html">Social Tokens for Grounding LLMs <small>NeurIPS 2025 UniReps</small></a>
+            <a href="similarity_judgments.html">Large-Scale Social Scene Judgments <small>VSS 2025 talk</small></a>
+            <a href="modeling_dynamic.html">Modeling Dynamic Social Vision <small>ICLR 2025</small></a>
+            <a href="lsbm.html">Large-Scale DNN Benchmarking <small>VSS &amp; CCN 2024 talks</small></a>
+          </div>
+        </li>
+        <li><a href="index.html#publications">Publications</a></li>
+        <li><a href="data/Kathy_CV%20(1).pdf" target="_blank" rel="noopener">CV</a></li>
+      </ul>
+      <div class="nav-tools">
+        <button class="icon-btn" data-theme-toggle aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+        <button class="icon-btn burger" aria-label="Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="p-hero">
+      <div class="p-kicker">
+        <span class="badge">📄 New preprint · 2026</span>
+        <span class="badge plain">CCN 2026 · Poster E90</span>
+      </div>
+      <h1 class="p-title">The <span class="accent">Latent Dimensions</span> Supporting Dynamic Social Scene Perception</h1>
+      <div class="p-authors">
+        <a href="index.html">Kathy Garcia</a>
+        <a href="https://www.isiklab.org">Leyla Isik</a>
+      </div>
+      <div class="p-affil">Johns Hopkins University</div>
+      <div class="p-buttons">
+        <!-- TODO: replace with the preprint link once it is posted (Oct 2026) -->
+        <span class="pill disabled"><i class="fas fa-file-pdf"></i> Preprint (coming soon)</span>
+        <a class="pill solid" href="https://2026.ccneuro.org/poster/?id=X1NIOuzwZR"><i class="fas fa-brain"></i> CCN 2026 abstract</a>
+        <a class="pill" href="#bibtex"><i class="fas fa-quote-right"></i> BibTeX</a>
+      </div>
+      <figure class="p-teaser" style="max-width:720px">
+        <img src="images/latent_dims.svg" alt="Illustration: social videos grouped along latent dimensions such as conversation, caregiving, cooking, outdoor play, and music">
+        <figcaption class="p-teaser-cap">Schematic: a data-driven embedding recovers a few interpretable social dimensions from triplet judgments.</figcaption>
+      </figure>
+    </section>
+
+    <div class="p-layout">
+      <nav class="toc" aria-label="On this page">
+        <div class="toc-title">On this page</div>
+        <ol></ol>
+        <a class="back" href="index.html#publications"><i class="fas fa-arrow-left"></i> All projects</a>
+      </nav>
+
+      <div class="p-content">
+        <section class="p-section" id="overview" data-toc="Overview">
+          <h2><span class="num">00</span>Overview</h2>
+          <p class="tldr">People recognize a huge variety of social scenes at a glance. We asked what structure organizes that knowledge — and found a compact set of interpretable, data-driven dimensions that explains human judgments <b>and</b> neural responses better than features derived from established social-perception theories.</p>
+          <div class="stats">
+            <div class="stat"><div class="stat-num" data-count="54000">54,000</div><div class="stat-label">odd-one-out triplet similarity judgments</div></div>
+            <div class="stat"><div class="stat-num">3 s</div><div class="stat-label">naturalistic social interaction videos</div></div>
+            <div class="stat"><div class="stat-num">fMRI</div><div class="stat-label">plus behavioral annotations for every video</div></div>
+          </div>
+          <p>
+            Humans rapidly recognize and understand a rich variety of social scenes, but how this information is organized in the human mind and brain is still
+            largely unknown. We collected <strong>54,000 odd-one-out similarity judgments</strong> on an existing dataset of short social-interaction videos that
+            already has behavioral annotations and fMRI data, and trained a <strong>data-driven embedding model</strong> to recover the latent dimensions structuring
+            human social-scene perception.
+          </p>
+        </section>
+
+        <section class="p-section" id="approach" data-toc="Approach">
+          <h2><span class="num">01</span>Approach</h2>
+          <div class="pipeline">
+            <div class="step"><i class="fas fa-film"></i><b>Videos</b>Short clips of everyday social interactions with existing annotations and fMRI.</div>
+            <div class="step"><i class="fas fa-hand-pointer"></i><b>Judgments</b>54k triplet odd-one-out choices: which clip doesn't belong?</div>
+            <div class="step"><i class="fas fa-diagram-project"></i><b>Embedding</b>Learn a low-dimensional embedding that predicts every choice.</div>
+            <div class="step"><i class="fas fa-brain"></i><b>Test</b>Compare against theory-based ratings on held-out behavior and fMRI.</div>
+          </div>
+          <p>Try a trial yourself — this is exactly what participants saw:</p>
+          <div class="ooo" data-videos="dynamic/intro_1.mp4, dynamic/intro_2.mp4, dynamic/intro_3.mp4, dynamic/methods_1.mp4, dynamic/methods_2.mp4, dynamic/methods_3.mp4, dynamic/methods_4.mp4, dynamic/methods_5.mp4, dynamic/methods_6.mp4">
+            <div class="ooo-prompt">Which clip is the odd-one-out?</div>
+            <div class="ooo-hint">Focus on what the people are doing.</div>
+            <div class="ooo-grid"></div>
+            <div class="ooo-result"></div>
+            <div class="ooo-foot">
+              <span class="ooo-count"></span>
+              <button class="pill ooo-next"><i class="fas fa-shuffle"></i> New triplet</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-section" id="dimensions" data-toc="The dimensions">
+          <h2><span class="num">02</span>What the dimensions capture</h2>
+          <p>A compact set of relatively distinct dimensions captured most of the explainable variance. Rather than abstract axes, they reflect
+            <strong>interpretable social contexts and activities</strong>. Click a dimension:</p>
+          <div class="chips" data-panel="dim-panel">
+            <button class="chip" style="--c:#4a90e2" data-target="d-conv">Conversation</button>
+            <button class="chip" style="--c:#e07a5f" data-target="d-care">Caregiving</button>
+            <button class="chip" style="--c:#3d9970" data-target="d-cook">Cooking</button>
+            <button class="chip" style="--c:#9b6dd6" data-target="d-play">Outdoor play</button>
+            <button class="chip" style="--c:#e0a84a" data-target="d-music">Music performance</button>
+            <button class="chip" style="--c:#c0573d" data-target="d-infant">Infant interaction</button>
+          </div>
+          <div class="chip-panel" id="dim-panel" aria-live="polite"></div>
+          <template id="d-conv"><b>Conversation.</b> Scenes of people talking with one another.</template>
+          <template id="d-care"><b>Caregiving.</b> Scenes of one person caring for another. Notably, infant scenes split into caregiving, play, and crying rather than one “infant” dimension.</template>
+          <template id="d-cook"><b>Cooking.</b> Scenes of people cooking or preparing food.</template>
+          <template id="d-play"><b>Outdoor play.</b> People playing together outdoors.</template>
+          <template id="d-music"><b>Music performance.</b> People playing or performing music.</template>
+          <template id="d-infant"><b>Infant interaction.</b> The embedding splits broad categories into distinct contexts — infant scenes separate into caregiving, play, and crying instead of collapsing into a single dimension.</template>
+          <div class="callout">The embedding is <b>finer-grained than category labels</b>: it separates contexts that a single broad category (e.g., “infants”) would lump together.</div>
+        </section>
+
+        <section class="p-section" id="results" data-toc="Results">
+          <h2><span class="num">03</span>Results</h2>
+          <div class="findings">
+            <div class="finding"><span><b>Better than theory-driven features on behavior.</b> The learned embedding predicted held-out similarity judgments substantially better than human-annotated ratings grounded in established theories of social perception.</span></div>
+            <div class="finding"><span><b>Compact and interpretable.</b> A small set of relatively distinct dimensions captured most of the explainable variance, each reflecting a recognizable social context or activity.</span></div>
+            <div class="finding"><span><b>They also predict the brain.</b> The same dimensions predicted neural representational geometry in fMRI significantly better than predefined behavioral features across visual cortex.</span></div>
+          </div>
+          <p>Together, these results give an <strong>empirically derived, low-dimensional mapping</strong> linking behavioral similarity judgments to neural representations for social-scene perception.</p>
+          <!-- TODO: add figures from the preprint (embedding dimensions, behavior + fMRI comparisons) once it is posted. -->
+          <div class="callout"><b>Figures and full results</b> will be added here when the preprint is released in October 2026.</div>
+        </section>
+
+        <section class="p-section" id="related" data-toc="Related work">
+          <h2><span class="num">04</span>How it fits together</h2>
+          <p>This project uses the same odd-one-out paradigm as our <a href="similarity_judgments.html">large-scale study of social scene judgments</a>, which
+            compared human similarity with predefined features and 350+ DNNs. Here, instead of testing predefined features, we let the dimensions emerge from the data.
+            The resulting human similarity structure is also what <a href="video_alignment.html">behavioral geometric supervision</a> uses to align video models.</p>
+        </section>
+
+        <section class="p-section" id="bibtex" data-toc="Citation">
+          <h2><span class="num">05</span>Citation</h2>
+          <div class="bibtex">
+            <button class="copy-btn"><i class="far fa-copy"></i> Copy</button>
+<pre>@inproceedings{garcia2026latent,
+  title     = {The Latent Dimensions Supporting Dynamic Social
+               Scene Perception},
+  author    = {Garcia, Kathy and Isik, Leyla},
+  booktitle = {Cognitive Computational Neuroscience (CCN)},
+  year      = {2026},
+  url       = {https://2026.ccneuro.org/poster/?id=X1NIOuzwZR}
+}</pre>
+          </div>
+          <div class="share">Share:
+            <a href="https://bsky.app/intent/compose?text=The%20latent%20dimensions%20supporting%20dynamic%20social%20scene%20perception%20https://garciakathy.github.io/latent_dimensions.html" aria-label="Share on Bluesky"><i class="fab fa-bluesky"></i></a>
+            <a href="https://twitter.com/intent/tweet?url=https://garciakathy.github.io/latent_dimensions.html&text=The%20latent%20dimensions%20supporting%20dynamic%20social%20scene%20perception" aria-label="Share on X"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://garciakathy.github.io/latent_dimensions.html" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <div class="neighbours">
+            <a href="video_alignment.html"><small>← Previous</small>Behavioral Geometric Supervision</a>
+            <a class="next" href="social_tokens.html"><small>Next project →</small>Social Tokens for Grounding LLMs</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="wrap">&copy; 2026 Kathy Garcia · <a href="index.html">garciakathy.github.io</a></div></footer>
+  <script src="static/js/site.js"></script>
+  <script src="static/js/project.js"></script>
+</body>
+</html>

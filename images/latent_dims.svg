@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" role="img" aria-label="Illustration: social videos organized into a few latent dimensions">
+  <rect width="400" height="250" rx="14" fill="#f3f8fe"/>
+  <g stroke="#cfe2f8" stroke-width="1">
+    <path d="M40 210 H370 M40 210 V30"/>
+  </g>
+  <!-- clusters -->
+  <g opacity=".9">
+    <g fill="#4a90e2"><circle cx="92" cy="72" r="6"/><circle cx="106" cy="62" r="5"/><circle cx="80" cy="86" r="4.5"/><circle cx="110" cy="84" r="5.5"/><circle cx="96" cy="95" r="4"/></g>
+    <g fill="#e07a5f"><circle cx="210" cy="60" r="5.5"/><circle cx="226" cy="72" r="6"/><circle cx="198" cy="76" r="4.5"/><circle cx="232" cy="52" r="4"/><circle cx="214" cy="88" r="5"/></g>
+    <g fill="#3d9970"><circle cx="318" cy="96" r="6"/><circle cx="332" cy="110" r="4.5"/><circle cx="304" cy="110" r="5"/><circle cx="326" cy="82" r="4"/></g>
+    <g fill="#9b6dd6"><circle cx="126" cy="164" r="5.5"/><circle cx="142" cy="176" r="6"/><circle cx="110" cy="178" r="4.5"/><circle cx="136" cy="150" r="4"/></g>
+    <g fill="#e0a84a"><circle cx="252" cy="160" r="6"/><circle cx="268" cy="172" r="5"/><circle cx="238" cy="176" r="4.5"/><circle cx="262" cy="148" r="4"/><circle cx="278" cy="158" r="4"/></g>
+  </g>
+  <g font-family="Lato, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700">
+    <text x="62" y="118" fill="#2a6ab5">conversation</text>
+    <text x="190" y="112" fill="#c0573d">caregiving</text>
+    <text x="286" y="136" fill="#2f7d5a">cooking</text>
+    <text x="96" y="204" fill="#7a4fbf">outdoor play</text>
+    <text x="228" y="202" fill="#b27a1d">music</text>
+  </g>
+  <text x="370" y="228" text-anchor="end" font-family="DM Mono, Menlo, monospace" font-size="10" fill="#7a8494">latent embedding of 54k judgments</text>
+</svg>

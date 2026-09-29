@@ -1,2072 +1,694 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVRXCHECS8"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-QVRXCHECS8');
-    </script>
-
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-    <title>Kathy Garcia</title>
-
-    <meta name="author" content="Kathy Garcia">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Bulma CSS Framework for responsive design -->
-    <link rel="stylesheet" href="./static/css/bulma.min.css">
-    <link rel="stylesheet" href="./static/css/responsive_style.css">
-    <style>
-      :root {
-        /* Light mode colors */
-        --bg-color: #ffffff;
-        --text-color: #333333;
-        --text-secondary: #666666;
-        --border-color: #e1e5e9;
-        --news-bg: #f9f9f9;
-        --section-bg: #f8f9fa;
-        --blue-accent: #4a90e2;
-        --blue-hover: #357abd;
-        --navbar-bg: rgba(255, 255, 255, 0.95);
-        --shadow-color: rgba(0,0,0,0.1);
-      }
-
-      [data-theme="dark"] {
-        /* Dark mode colors */
-        --bg-color: #1a1a1a;
-        --text-color: #e0e0e0;
-        --text-secondary: #b0b0b0;
-        --border-color: #404040;
-        --news-bg: #2a2a2a;
-        --section-bg: #252525;
-        --blue-accent: #5ba3f5;
-        --blue-hover: #4a90e2;
-        --navbar-bg: rgba(26, 26, 26, 0.95);
-        --shadow-color: rgba(0,0,0,0.3);
-      }
-
-      body {
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        transition: background-color 0.3s ease, color 0.3s ease;
-          -webkit-user-select: none; /* Safari */
-          -moz-user-select: none; /* Firefox */
-          -ms-user-select: none; /* Internet Explorer/Edge */
-          user-select: none; /* Standard syntax */
-        }
-
-        .news-container {
-          background: var(--news-bg);
-          border-radius: 8px;
-          padding: 12px 10px;
-          margin: 10px 15px;
-          max-height: 160px;
-          overflow-y: auto;
-          position: relative;
-        }
-
-        .news-container::-webkit-scrollbar {
-          width: 6px;
-        }
-
-        .news-container::-webkit-scrollbar-track {
-          background: #f1f1f1;
-          border-radius: 3px;
-        }
-
-        .news-container::-webkit-scrollbar-thumb {
-          background: var(--blue-accent);
-          border-radius: 3px;
-        }
-
-        .news-container::-webkit-scrollbar-thumb:hover {
-          background: var(--blue-hover);
-        }
-
-        .news {
-          margin: 0;
-        }
-
-        .news .news-item {
-          display: flex;
-          align-items: flex-start;
-          margin: 12px 0;
-          padding-bottom: 12px;
-          border-bottom: 1px solid #e0e0e0;
-          text-align: justify;
-        }
-
-        .news .news-item:last-child {
-          border-bottom: none;
-          padding-bottom: 0;
-        }
-
-        .news .date {
-          flex: 0 0 100px;
-          display: inline-block;
-          color: var(--text-secondary);
-          font-weight: 500;
-          font-size: 0.9em;
-        }
-
-        .news .text {
-          flex: 1;
-          font-size: 0.95em;
-          line-height: 1.4;
-        }
-
-        .expand-news {
-          text-align: center;
-          margin-top: 10px;
-          color: var(--blue-accent);
-          cursor: pointer;
-          font-size: 0.9em;
-          display: none;
-        }
-
-        .media-callout {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          color: white;
-          padding: 5px 8px;
-          margin: 8px 20px;
-          border-radius: 4px;
-          text-align: center;
-          box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-        }
-
-        .media-callout h3 {
-          margin: 0 0 3px 0;
-          font-size: 0.8em;
-          font-weight: 600;
-        }
-
-        .media-callout p {
-          margin: 0;
-          font-size: 0.7em;
-        }
-
-        .media-callout a {
-          color: white;
-          text-decoration: underline;
-          font-weight: 500;
-        }
-
-        /* Media section styles */
-        .media-section {
-          margin-left: 20px;
-        }
-
-        .media-item {
-          background: #f8f9fa;
-          border-left: 4px solid #007bff;
-          padding: 15px 20px;
-          margin: 15px 0;
-          border-radius: 4px;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-          transition: box-shadow 0.3s ease;
-        }
-
-        .media-item:hover {
-          box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-
-      .mentorship-box {
-          background-color: var(--section-bg);
-          border-left: 3px solid var(--blue-accent);
-          padding: 12px 15px;
-          margin: 20px 0;
-          border-radius: 4px;
-          font-size: 0.85em;
-          line-height: 1.4em;
-          color: var(--text-secondary);
-          width: 350px;
-          text-align: left;
-          display: inline-block;
-      }
-      
-      .mentorship-box strong {
-          font-size: 1em;
-          color: var(--blue-accent);
-      }
-
-
-        .media-outlet {
-          font-weight: bold;
-          color: #007bff;
-          font-size: 1.1em;
-          margin-bottom: 5px;
-        }
-
-        .media-title {
-          font-style: italic;
-          color: #333;
-          margin-bottom: 8px;
-        }
-
-        .media-date {
-          color: #666;
-          font-size: 0.9em;
-        }
-
-        .media-description {
-          color: #555;
-          margin-top: 8px;
-        }
-
-        /* Smooth scrolling */
-        html {
-          scroll-behavior: smooth;
-        }
-
-        /* Ensure headers are visible when scrolled to */
-        h2#news, h2#research, h2#honors, h2#publications {
-          scroll-margin-top: 80px;
-        }
-
-        /* Add scroll margin for publications section */
-        #publications {
-          scroll-margin-top: 80px;
-        }
-
-        /* Add scroll margin for about section */
-        #about {
-          scroll-margin-top: 80px;
-        }
-
-        /* Better spacing between major sections */
-        .major-section {
-          margin-bottom: 15px;
-          padding-bottom: 5px;
-        }
-
-        /* Reduce excessive spacing before News section */
-        .major-section:first-of-type {
-          margin-top: -40px;
-        }
-        h2#news {
-          margin-top: 10px !important;
-        }
-
-
-        /* Responsive styles */
-        @media screen and (max-width: 768px) {
-          .content-wrapper {
-            margin-top: 70px;
-            font-size: 15px;
-            padding: 0 15px;
-          }
-
-          /* Mobile-first table conversion */
-          .main-table {
-            display: block;
-            width: 100%;
-          }
-
-          .main-table tbody {
-            display: block;
-          }
-
-          .main-table tr {
-            display: block;
-            width: 100%;
-            margin-bottom: 20px;
-          }
-
-          .main-table td {
-            display: block;
-            width: 100% !important;
-            padding: 10px 0;
-            text-align: left !important;
-          }
-
-          /* Profile section mobile layout */
-          .profile-section {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            text-align: left;
-            margin-bottom: 30px;
-          }
-
-          .profile-text {
-            order: 2;
-            width: 100%;
-            margin-bottom: 20px;
-            text-align: left;
-          }
-
-          .profile-image {
-            order: 1;
-            width: 100%;
-            text-align: center;
-            margin-bottom: 20px;
-            margin-top: 20px;
-          }
-
-          .profile-image img {
-            width: 250px !important;
-            height: 320px !important;
-            margin: 0 auto;
-            display: block;
-            object-fit: cover;
-            object-position: center 10%;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            cursor: pointer;
-          }
-
-          .profile-image img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 32px rgba(0,0,0,0.25) !important;
-          }
-
-          /* Social icons mobile layout */
-          .social-icons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            gap: 10px;
-            margin: 20px 0;
-          }
-
-          .social-icons a {
-            display: inline-block;
-            margin: 0 10px;
-          }
-
-          /* News section mobile optimization */
-          .news-container {
-            margin: 10px 0;
-            max-height: 200px;
-            padding: 15px;
-          }
-
-          .news .date {
-            flex: 0 0 70px;
-            font-size: 0.8em;
-          }
-
-          .news .text {
-            font-size: 0.9em;
-            line-height: 1.3;
-          }
-
-          /* Publications mobile layout */
-          .publication-row {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 40px;
-            padding: 20px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-          }
-
-          .publication-image {
-            width: 100%;
-            text-align: center;
-            margin-bottom: 15px;
-          }
-
-          .publication-image img {
-            max-width: 240px;
-            height: auto;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-          }
-
-          .publication-image img:active {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-          }
-
-          .publication-content {
-            width: 100%;
-          }
-
-          /* Honors section mobile layout */
-          .honors-list {
-            margin-left: 0;
-            padding-left: 0;
-          }
-
-          .honors-list p {
-            margin: 10px 0;
-            padding: 8px 0;
-            border-bottom: 1px solid var(--border-color);
-          }
-
-          /* Miscellaneous section mobile layout */
-          .misc-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-          }
-
-          .misc-image {
-            width: 100%;
-            text-align: center;
-            margin-bottom: 15px;
-          }
-
-          .misc-image img {
-            width: 100px;
-            height: 100px;
-            object-fit: contain;
-            border-radius: 8px;
-          }
-
-          .misc-content {
-            width: 100%;
-            text-align: left;
-            padding-left: 20px;
-            padding-right: 20px;
-          }
-
-          /* Typography adjustments */
-          h2 {
-            font-size: 1.4em;
-            margin-top: 25px;
-            margin-bottom: 15px;
-            text-align: left;
-          }
-
-          p {
-            text-align: left;
-          }
-
-          .papertitle {
-            font-size: 1em;
-            line-height: 1.4;
-          }
-
-          .name {
-            font-size: 28px;
-            margin-bottom: 10px;
-            text-align: left;
-          }
-
-          /* Mentorship box mobile */
-          .mentorship-box {
-            width: 100%;
-            max-width: none;
-            margin: 15px 0;
-            padding: 10px;
-            font-size: 0.8em;
-          }
-
-          /* Media callout mobile */
-          .media-callout {
-            margin: 15px 10px;
-            padding: 10px;
-          }
-
-          .media-callout h3 {
-            font-size: 0.9em;
-            margin-bottom: 5px;
-          }
-
-          .media-callout p {
-            font-size: 0.8em;
-          }
-        }
-
-        /* Tablet styles */
-        @media screen and (min-width: 769px) and (max-width: 1024px) {
-          .content-wrapper {
-            padding: 0 20px;
-          }
-
-          .profile-section {
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            gap: 30px;
-          }
-
-          .profile-text {
-            flex: 1;
-          }
-
-          .profile-image {
-            flex: 0 0 270px;
-          }
-
-          .publication-row {
-            display: flex;
-            flex-direction: row;
-            gap: 20px;
-            align-items: flex-start;
-          }
-
-          .publication-image {
-            flex: 0 0 220px;
-          }
-
-          .publication-image img {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-          }
-
-          .publication-image img:hover {
-            transform: scale(1.08);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.25) !important;
-          }
-
-          .publication-content {
-            flex: 1;
-          }
-
-          .misc-section {
-            display: flex;
-            flex-direction: row;
-            gap: 20px;
-            align-items: flex-start;
-          }
-
-          .misc-image {
-            flex: 0 0 160px;
-            padding-left: 40px;
-          }
-
-          .misc-content {
-            flex: 1;
-            padding-left: 10px;
-            padding-right: 0;
-          }
-        }
-
-        /* Navigation styles */
-        .navbar {
-          background: var(--navbar-bg);
-          backdrop-filter: blur(10px);
-          border-bottom: 1px solid var(--border-color);
-          padding: 10px 0;
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 1000;
-          transition: all 0.3s ease;
-        }
-
-        /* Dropdown menu styles */
-        .dropdown {
-          position: relative;
-          display: inline-block;
-          margin: 0;
-          padding: 0;
-        }
-
-        .dropdown-content {
-          display: none;
-          position: absolute;
-          background-color: var(--navbar-bg);
-          min-width: 320px;
-          box-shadow: 0 12px 28px rgba(0,0,0,0.25);
-          z-index: 1001;
-          border-radius: 8px;
-          margin-top: 8px;
-          padding: 8px 0;
-          border: 1px solid var(--border-color);
-          opacity: 0;
-          transform: translateY(-10px);
-          transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .dropdown-content.show {
-          display: block;
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        .dropdown-content a {
-          color: var(--text-color);
-          padding: 14px 20px;
-          text-decoration: none;
-          display: block;
-          transition: all 0.2s ease;
-          font-size: 0.95em;
-          border-radius: 4px;
-          margin: 0 8px;
-        }
-
-        .dropdown-content a:hover {
-          background-color: var(--blue-accent);
-          color: white;
-          transform: translateX(5px);
-        }
-
-        .dropdown:hover .dropdown-content {
-          display: block;
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        .dropdown .dropbtn {
-          cursor: pointer;
-          padding: 0;
-          display: inline-block;
-          transition: all 0.2s ease;
-        }
-
-        .dropdown .dropbtn:hover {
-          color: var(--blue-accent);
-        }
-
-        /* Click-based dropdown for better mobile support */
-        .dropdown.active .dropdown-content {
-          display: block;
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        .navbar-container {
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 0 20px;
-          height: 60px;
-          text-align: left;
-        }
-
-        .navbar-brand {
-          font-weight: 600;
-          font-size: 1.1em;
-          color: var(--text-color);
-          text-decoration: none;
-          display: flex;
-          align-items: center;
-          height: 100%;
-          text-align: left;
-          justify-content: flex-start;
-          padding-left: 20px;
-        }
-
-        .navbar-nav {
-          display: flex;
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          align-items: center;
-          gap: 30px;
-        }
-
-        .navbar-nav li {
-          margin: 0;
-        }
-
-        .navbar-nav a {
-          color: var(--text-secondary);
-          text-decoration: none;
-          font-weight: 500;
-          font-size: 0.9em;
-          transition: color 0.3s ease;
-          display: flex;
-          align-items: center;
-          height: 100%;
-        }
-
-        .navbar-nav a:hover {
-          color: var(--blue-accent);
-        }
-
-        .content-wrapper {
-          margin-top: 60px;
-          line-height: 1.4;
-          font-size: 14px;
-          max-width: 800px;
-          margin-left: auto;
-          margin-right: auto;
-          padding: 0 20px;
-        }
-
-        /* Improved readability */
-        p {
-          line-height: 1.5;
-          margin-bottom: 12px;
-        }
-
-        h2 {
-          margin-top: 15px;
-          margin-bottom: 10px;
-          font-size: 1.6em;
-          color: var(--blue-accent);
-        }
-
-        /* Extra spacing for News and Research sections */
-        h2#news {
-          margin-top: 40px !important;
-          margin-left: -20px;
-        }
-
-        h2#research {
-          margin-top: 40px !important;
-          margin-left: -20px;
-        }
-
-        h2#honors {
-          margin-left: -20px;
-          margin-top: 10px !important;
-        }
-
-        /* Target the Miscellaneous header specifically */
-        h2:last-of-type {
-          margin-left: -20px;
-          margin-top: 10px !important;
-        }
-
-        /* Alternative approach - target by text content */
-        h2 {
-          margin-left: -20px;
-        }
-
-        /* Reset for specific headers that shouldn't have this */
-        h2#news, h2#research, h2#honors {
-          margin-left: -20px;
-        }
-
-        /* Align content below headers with the headers */
-        .news-container {
-          margin-left: -20px;
-        }
-
-        .media-callout {
-          margin-left: -20px;
-        }
-
-        /* Research section content alignment */
-        #research + p {
-          margin-left: -20px;
-        }
-
-        #research + p + p {
-          margin-left: -20px;
-        }
-
-        /* Honors section content alignment */
-        .honors-list {
-          margin-left: -20px;
-        }
-
-        /* Miscellaneous section content alignment */
-        .misc-section {
-          margin-left: -20px;
-        }
-
-        /* Better spacing for sections */
-        table {
-          margin-bottom: 30px;
-        }
-
-        .papertitle {
-          font-size: 1.1em;
-          line-height: 1.5;
-        }
-
-        @media screen and (max-width: 768px) {
-          .navbar-nav {
-            display: none;
-          }
-
-          /* Mobile navigation */
-          .navbar-burger {
-            display: flex;
-            background: none;
-            border: none;
-            color: var(--text-color);
-            font-size: 1em;
-            cursor: pointer;
-            padding: 15px 10px;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            box-sizing: border-box;
-            margin-right: 15px;
-          }
-
-          .navbar-burger span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background: var(--text-color);
-            margin: 0 0;
-            transition: 0.3s;
-            transform-origin: 50% 50%;
-          }
-
-          /* .navbar-burger.is-active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-2px, 2.4px);
-          }
-
-          .navbar-burger.is-active span:nth-child(2) {
-            opacity: 0;
-          }
-
-          .navbar-burger.is-active span:nth-child(3) {
-            transform: rotate(45deg) translate(-2px, -2.4px);
-          } */
-          /* make a clean X */
-          .navbar-burger.is-active span:nth-child(1){
-            /* move top bar to the middle, then rotate */
-            transform: translateY(5px) rotate(45deg);
-          }
-
-          .navbar-burger.is-active span:nth-child(2){
-            opacity: 0;
-          }
-
-          .navbar-burger.is-active span:nth-child(3){
-            /* move bottom bar to the middle, then rotate */
-            transform: translateY(-5px) rotate(-45deg);
-          }          
-
-          .navbar-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: var(--navbar-bg);
-            border-top: 1px solid var(--border-color);
-            display: none;
-            flex-direction: column;
-            padding: 20px;
-            box-shadow: 0 2px 10px var(--shadow-color);
-          }
-
-          .navbar-menu.is-active {
-            display: flex;
-          }
-
-          .navbar-menu .navbar-nav {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-          }
-
-          .navbar-menu .navbar-nav li {
-            margin: 10px 0;
-            text-align: center;
-          }
-
-          .navbar-menu .navbar-nav a {
-            font-size: 1.1em;
-            padding: 10px;
-            display: block;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-          }
-
-          .navbar-menu .navbar-nav a:hover {
-            background: var(--section-bg);
-          }
-
-          /* Mobile toggle buttons alignment */
-          .toggle-buttons {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            height: 100%;
-            margin-left: 10px;
-          }
-
-          .toggle-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            padding: 8px 12px;
-            min-width: 40px;
-          }
-        }
-
-        /* Social icons desktop styling */
-        .social-icons {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          align-items: center;
-          gap: 10px;
-          margin: 10px 0;
-          text-align: center;
-        }
-
-        .social-icons a {
-          display: inline-block;
-          margin: 0 10px;
-          text-align: center;
-        }
-
-        .social-icons {
-          margin-bottom: 15px;
-        }
-
-        /* Publications desktop styling */
-        .publication-row {
-          margin-bottom: 20px;
-          padding: 10px;
-          border: 0 solid var(--border-color);
-          border-radius: 8px;
-        }
-
-        /* Toggle buttons */
-        .toggle-buttons {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          height: 100%;
-        }
-
-        .toggle-btn {
-          background: none;
-          border: 1px solid var(--border-color);
-          color: var(--text-secondary);
-          padding: 6px 10px;
-          border-radius: 20px;
-          cursor: pointer;
-          font-size: 0.8em;
-          transition: all 0.3s ease;
-        }
-
-        .toggle-btn:hover {
-          background: var(--blue-accent);
-          color: white;
-          border-color: var(--blue-accent);
-        }
-
-        .toggle-btn.active {
-          background: var(--blue-accent);
-          color: white;
-          border-color: var(--blue-accent);
-        }
-
-        /* Dark mode specific adjustments */
-        [data-theme="dark"] .news-container::-webkit-scrollbar-track {
-          background: #404040;
-        }
-
-        [data-theme="dark"] table {
-          border-color: var(--border-color);
-        }
-
-        [data-theme="dark"] a {
-          color: var(--blue-accent);
-        }
-
-        [data-theme="dark"] .media-callout {
-          background: linear-gradient(135deg, #5a7bc8 0%, #6b5b95 100%);
-        }
-
-        @media screen and (max-width: 768px) {
-          .toggle-buttons {
-            gap: 5px;
-          }
-          .toggle-btn {
-            padding: 4px 8px;
-            font-size: 0.7em;
-          }
-        }
-
-        /* Hidden easter eggs */
-        .neural-decoration {
-          position: absolute;
-          opacity: 0.05;
-          font-size: 12px;
-          pointer-events: none;
-          user-select: none;
-          z-index: -1;
-        }
-
-        .floating-icon {
-          position: fixed;
-          opacity: 0;
-          font-size: 18px;
-          pointer-events: none;
-          animation: float 6s ease-in-out infinite;
-          z-index: -1;
-          transition: opacity 0.3s ease;
-        }
-
-        /* Only show floating icons in dark mode */
-        [data-theme="dark"] .floating-icon.dark-only {
-          opacity: 0.15;
-        }
-
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-10px) rotate(2deg); }
-        }
-
-        .section-accent::before {
-          content: '🧠';
-          position: absolute;
-          top: -5px;
-          right: -5px;
-          opacity: 0.1;
-          font-size: 10px;
-        }
-
-        .research-accent {
-          position: relative;
-        }
-
-        .research-accent::after {
-          content: '⚡';
-          position: absolute;
-          top: 2px;
-          right: -15px;
-          opacity: 0.15;
-          font-size: 8px;
-        }
-
-        /* Hidden easter egg for tech-savvy visitors */
-        .navbar:hover::after {
-          content: '🧠';
-          position: absolute;
-          top: -20px;
-          right: 10px;
-          opacity: 0.1;
-          font-size: 12px;
-          animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-          0%, 100% { opacity: 0.1; }
-          50% { opacity: 0.3; }
-        }
-
-        /* Highlight author name */
-        .author-highlight {
-          font-weight: bold;
-          color: #1e40af;
-        }
-
-        /* Smaller, more concise award boxes */
-        .award-badge {
-          background: #e8f5e9;
-          border-left: 3px solid #4caf50;
-          padding: 6px 10px;
-          margin-top: 8px;
-          border-radius: 4px;
-          font-size: 0.85em;
-          line-height: 1.3;
-        }
-
-        /* Desktop styles - preserve original layout */
-        @media screen and (min-width: 1025px) {
-          .profile-section {
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            gap: 30px;
-          }
-
-          .profile-text {
-            flex: 1;
-          }
-
-          .profile-image {
-            flex: 0 0 270px;
-          }
-
-          .publication-row {
-            display: flex;
-            flex-direction: row;
-            gap: 20px;
-            align-items: flex-start;
-          }
-
-          .publication-image {
-            flex: 0 0 220px;
-          }
-
-          .publication-image img {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-          }
-
-          .publication-image img:hover {
-            transform: scale(1.08);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.25) !important;
-          }
-
-          .publication-content {
-            flex: 1;
-          }
-
-          .misc-section {
-            display: flex;
-            flex-direction: row;
-            gap: 20px;
-            align-items: flex-start;
-          }
-
-          .misc-image {
-            flex: 0 0 140px;
-          }
-
-          .misc-content {
-            flex: 1;
-            padding-left: 0;
-            padding-right: 0;
-          }
-        }
-
-        /* Ensure navbar burger is hidden on desktop */
-        @media screen and (min-width: 769px) {
-          .navbar-burger {
-            display: none;
-          }
-          
-          .navbar-menu {
-            display: none;
-          }
-        }
-    </style>
-    <script>
-      // Content in both languages
-      const content = {
-        en: {
-          name: "Kathy Garcia",
-          nav: {
-            research: "About",
-            news: "News",
-            publications: "Research",
-            honors: "Honors",
-            cv: "CV"
-          },
-          intro: "I am a 4<sup>th</sup> year <a href='https://cogsci.jhu.edu/2024/04/25/two-cogsci-students-receive-nsf-grfs/'>NSF Fellow</a> pursing my Ph.D in Computational Cognitive Science at <a href=\"https://cogsci.jhu.edu/people/graduate-students/\">Johns Hopkins University</a>, where I investigate how humans and machines understand social interactions in the <a href=\"https://www.isiklab.org\">Computational Cognitive Neuroscience Lab</a> with <a href=\"https://cogsci.jhu.edu/directory/leyla-isik/\">Professor Leyla Isik</a>.",
-          research: {
-            title: "Research Vision",
-            description: "<strong>Building the next generation of socially intelligent AI systems.</strong> I bridge human cognition and artificial intelligence by developing computational models that understand social interactions the way humans do. My research agenda focuses on closing the gap between human social perception and AI capabilities through neural benchmarking, multimodal learning, and cognitively-inspired architectures.",
-            collaboration: "Working with researchers across <strong>MIT, Stanford, and Johns Hopkins</strong>, I develop methods that enable AI systems to perceive, interpret, and predict complex social dynamics. This work spans computer vision, natural language processing, and cognitive neuroscience — positioning AI systems to become truly collaborative partners in human social environments.",
-            summary: "I am fortunate enough to have had my research published at top-tier venues including at ICLR and featured in <em>The Wall Street Journal</em>. I develop computational models that bridge human vision and artificial intelligence, with a focus on creating socially intelligent systems that understand dynamic human behavior.",
-            background: "Previously, I earned my B.S. at <a href=\"#\">Stanford University</a>, worked as a fintech data scientist for Fortune 500 companies, and completed an NIH Postbac Fellowship in affective neuroscience and machine learning at <a href=\"#\">Northwestern University</a>, mentored by Professor Robin Nusslock, Dr. Zachary Anderson, and Dr. Cassandra VanDunk."
-          },
-          news: {
-            title: "News"
-          },
-          honors: {
-            title: "Selected Honors",
-            items: {
-              nsf: "<strong>NSF Graduate Research Fellowship</strong> (2024) - 12% acceptance rate",
-              best_oral: "<strong>Best Oral Presentation Award</strong>, LatinX in AI Workshop, ICML (2024)",
-              sigma_xi: "<strong>Sigma Xi Scientific Research Honor Society</strong> (2025)",
-              fovea: "<strong>FOVEA 2024 Travel and Networking Award</strong> (2024)",
-              yellott: "<strong>John I. Yellott Travel Award for Vision Science</strong> (2025)",
-              nei: "<strong>National Eye Institute Early Career Scientist Travel Grant</strong> (2025)",
-              kelly: "<strong>Kelly Miller Fellowship</strong>, Johns Hopkins University (2021)"
-            }
-          },
-          mentorship: "<strong>🎓 Mentorship</strong> – First-gen Latina | Happy to chat about research, grad school, or careers!",
-          media: {
-            title: "📰 Featured in Media"
-          },
-          misc: {
-            title: "Miscellaneous",
-            teaching: {
-              spring2024: "Teaching Assistant, Cognitive Neuropsychology of Visual Perception - Spring 2024",
-              fall2023: "Teaching Assistant, Neuroimaging Methods in High-Level Vision - Fall 2023", 
-              spring2023: "Teaching Assistant, Computational Cognitive Neuroscience of Vision - Spring 2023"
-            }
-          },
-          footer: "&copy; 2024 Kathy Garcia | Hosted by <a href=\"https://pages.github.com/\">GitHub Pages</a>."
-        },
-        es: {
-          name: "Kathy García",
-          nav: {
-            research: "Acerca de",
-            news: "Noticias",
-            publications: "Investigación",
-            honors: "Reconocimientos",
-            cv: "CV"
-          },
-          intro: "Actualmente soy <a href=\'https://cogsci.jhu.edu/2024/04/25/two-cogsci-students-receive-nsf-grfs/\'>becaria NSF</a> y estudiante de doctorado de 4<sup>º</sup> año en Ciencias Cognitivas Computacionales en <a href=\"https://cogsci.jhu.edu/people/graduate-students/\">Johns Hopkins University</a>, donde investigo cómo los humanos y las máquinas entienden las interacciones sociales en el <a href=\"https://www.isiklab.org\">Laboratorio de Neurociencia Cognitiva Computacional</a>, bajo la supervisión de la <a href=\"https://cogsci.jhu.edu/directory/leyla-isik/\">Profesora Leyla Isik</a>.",
-          research: {
-            title: "Investigación",
-            description: "<strong>Construyendo la próxima generación de sistemas de IA socialmente inteligentes.</strong> Conecto la cognición humana y la inteligencia artificial desarrollando modelos computacionales que entienden las interacciones sociales como lo hacen los humanos. Mi agenda de investigación se centra en cerrar la brecha entre la percepción social humana y las capacidades de IA a través de benchmarking neural, aprendizaje multimodal y arquitecturas inspiradas cognitivamente.",
-            collaboration: "Trabajando con investigadores de <strong>MIT, Stanford y Johns Hopkins</strong>, desarrollo métodos que permiten a los sistemas de IA percibir, interpretar y predecir dinámicas sociales complejas. Este trabajo abarca visión por computadora, procesamiento de lenguaje natural y neurociencia cognitiva — posicionando a los sistemas de IA para convertirse en verdaderos socios colaborativos en entornos sociales humanos.",
-            summary: "Mi investigación ha sido publicada en venues de primer nivel incluyendo ICLR y destacada en <em>The Wall Street Journal</em>. Desarrollo modelos computacionales que conectan la visión humana y la inteligencia artificial, con un enfoque en crear sistemas socialmente inteligentes que entienden el comportamiento humano dinámico.",
-            background: "Anteriormente, obtuve mi B.S. en <a href=\"#\">Stanford University</a> y completé una Beca Postbac del NIH en neurociencia afectiva en <a href=\"#\">Northwestern University</a>, bajo la mentoría del Profesor Robin Nusslock, Dr. Zachary Anderson, y Dr. Cassandra VanDunk."
-          },
-          news: {
-            title: "Noticias"
-          },
-          honors: {
-            title: "Reconocimientos Selectos",
-            items: {
-              nsf: "<strong>Beca de Investigación Graduada NSF</strong> (2024) - 12% tasa de aceptación",
-              best_oral: "<strong>Premio a la Mejor Presentación Oral</strong>, Taller LatinX en IA, ICML (2024)",
-              sigma_xi: "<strong>Sociedad de Honor de Investigación Científica Sigma Xi</strong> (2025)",
-              fovea: "<strong>Premio de Viaje y Networking FOVEA 2024</strong> (2024)",
-              yellott: "<strong>Premio de Viaje John I. Yellott para Ciencias de la Visión</strong> (2025)",
-              nei: "<strong>Beca de Viaje para Científicos de Carrera Temprana del Instituto Nacional del Ojo</strong> (2025)",
-              kelly: "<strong>Beca Kelly Miller</strong>, Johns Hopkins University (2021)"
-            }
-          },
-          mentorship: "<strong>🎓 Mentoría</strong> – Primera generación Latina | ¡Encantada de platicar sobre investigación, posgrado o carreras!",
-          media: {
-            title: "📰 Destacado en Medios"
-          },
-          misc: {
-            title: "Misceláneo",
-            teaching: {
-              spring2024: "Asistente de Cátedra, Neuropsicología Cognitiva de la Percepción Visual - Primavera 2024",
-              fall2023: "Asistente de Cátedra, Métodos de Neuroimagen en Visión de Alto Nivel - Otoño 2023",
-              spring2023: "Asistente de Cátedra, Neurociencia Cognitiva Computacional de la Visión - Primavera 2023"
-            }
-          },
-          footer: "&copy; 2024 Kathy García | Hospedado por <a href=\"https://pages.github.com/\">GitHub Pages</a>."
-        }
-      };
-
-      let currentLang = 'en';
-      let currentTheme = 'light';
-
-      function updateContent() {
-        const lang = content[currentLang];
-        
-        // Update navigation
-        document.querySelector('.navbar-brand').textContent = lang.name;
-        document.querySelector('a[href="#about"]').textContent = lang.nav.research;
-        document.querySelector('a[href="#news"]').textContent = lang.nav.news;
-        document.querySelector('a[href="#research"]').textContent = lang.nav.publications;
-        document.querySelector('a[href="#publications-list"]').textContent = "Publications";
-        document.querySelector('a[href="#honors"]').textContent = lang.nav.honors;
-        document.querySelector('a[href*="CV"]').textContent = lang.nav.cv;
-        
-        // Update main name in header
-        const mainNameElement = document.querySelector('.name b');
-        if (mainNameElement) {
-          mainNameElement.textContent = lang.name;
-        }
-        
-        // Update intro paragraph
-        const introElements = document.querySelectorAll('p');
-        for (let p of introElements) {
-          if (p.innerHTML.includes('cogsci.jhu.edu')) {
-            p.innerHTML = lang.intro;
-            break;
-          }
-        }
-        
-        // Update main content sections
-        document.querySelector('h2#research').textContent = lang.research.title;
-        document.querySelector('h2#news').textContent = lang.news.title;
-        document.querySelector('h2#honors').textContent = lang.honors.title;
-        
-        // Update research description
-        const researchSection = document.querySelector('#research').parentElement;
-        const researchParagraphs = researchSection.querySelectorAll('p');
-        if (researchParagraphs[1]) researchParagraphs[1].innerHTML = lang.research.description;
-        if (researchParagraphs[2]) researchParagraphs[2].innerHTML = lang.research.collaboration;
-        
-        // Update research summary and background (the sections you mentioned)
-        const allParagraphs = document.querySelectorAll('p');
-        for (let p of allParagraphs) {
-          if (p.innerHTML.includes('top-tier venues including ICLR') || p.innerHTML.includes('venues de primer nivel incluyendo ICLR')) {
-            p.innerHTML = lang.research.summary;
-          }
-          if (p.innerHTML.includes('Previously, I earned my B.S. at') || p.innerHTML.includes('Anteriormente, obtuve mi B.S. en')) {
-            p.innerHTML = lang.research.background;
-          }
-        }
-        
-        // Update mentorship section
-        const mentorshipElement = document.querySelector('.mentorship-box');
-        if (mentorshipElement) {
-          mentorshipElement.innerHTML = lang.mentorship;
-        }
-        
-        // Update media section
-        const mediaElement = document.querySelector('.media-callout h3');
-        if (mediaElement) {
-          mediaElement.innerHTML = lang.media.title;
-        }
-        
-        // Update honors section
-        const honorsSection = document.querySelector('#honors').parentElement;
-        const honorItems = honorsSection.querySelectorAll('p');
-        if (honorItems.length >= 7) {
-          honorItems[1].innerHTML = lang.honors.items.nsf;
-          honorItems[2].innerHTML = lang.honors.items.best_oral;
-          honorItems[3].innerHTML = lang.honors.items.sigma_xi;
-          honorItems[4].innerHTML = lang.honors.items.fovea;
-          honorItems[5].innerHTML = lang.honors.items.yellott;
-          honorItems[6].innerHTML = lang.honors.items.nei;
-          honorItems[7].innerHTML = lang.honors.items.kelly;
-        }
-        
-        // Update miscellaneous section
-        const allH2s = document.querySelectorAll('h2');
-        for (let h2 of allH2s) {
-          if (h2.textContent.includes('Miscellaneous') || h2.textContent.includes('Misceláneo')) {
-            h2.textContent = lang.misc.title;
-            break;
-          }
-        }
-        
-        // Update teaching items
-        const allPs = document.querySelectorAll('p');
-        const teachingPs = [];
-        for (let p of allPs) {
-          if (p.textContent.includes('Teaching Assistant') || p.textContent.includes('Asistente de Cátedra')) {
-            teachingPs.push(p);
-          }
-        }
-        if (teachingPs.length >= 3) {
-          teachingPs[0].textContent = lang.misc.teaching.spring2024;
-          teachingPs[1].textContent = lang.misc.teaching.fall2023;
-          teachingPs[2].textContent = lang.misc.teaching.spring2023;
-        }
-        
-        // Update footer
-        const footerElement = document.querySelector('footer p');
-        if (footerElement) {
-          footerElement.innerHTML = lang.footer;
-        }
-      }
-
-      function toggleTheme() {
-        currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', currentTheme);
-        
-        // Update button states
-        document.querySelector('.theme-toggle').classList.toggle('active');
-        localStorage.setItem('theme', currentTheme);
-      }
-
-      function toggleLanguage() {
-        currentLang = currentLang === 'en' ? 'es' : 'en';
-        updateContent();
-        
-        // Update button states  
-        document.querySelector('.lang-toggle').classList.toggle('active');
-        localStorage.setItem('language', currentLang);
-      }
-
-      document.addEventListener('DOMContentLoaded', function() {
-        // Restore saved preferences
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        const savedLang = localStorage.getItem('language') || 'en';
-        
-        currentTheme = savedTheme;
-        currentLang = savedLang;
-        
-        document.documentElement.setAttribute('data-theme', currentTheme);
-        updateContent();
-        
-        // Set button states
-        if (currentTheme === 'dark') {
-          document.querySelector('.theme-toggle').classList.add('active');
-        }
-        if (currentLang === 'es') {
-          document.querySelector('.lang-toggle').classList.add('active');
-        }
-        
-        // Mobile navigation toggle
-        const navbarBurger = document.querySelector('.navbar-burger');
-        const navbarMenu = document.querySelector('.navbar-menu');
-        
-        if (navbarBurger && navbarMenu) {
-          navbarBurger.addEventListener('click', function() {
-            navbarBurger.classList.toggle('is-active');
-            navbarMenu.classList.toggle('is-active');
-          });
-
-          // Close mobile menu when clicking on a link
-          const navbarLinks = navbarMenu.querySelectorAll('a');
-          navbarLinks.forEach(link => {
-            link.addEventListener('click', function() {
-              navbarBurger.classList.remove('is-active');
-              navbarMenu.classList.remove('is-active');
-            });
-          });
-
-          // Close mobile menu when clicking outside
-          document.addEventListener('click', function(e) {
-            if (!navbarBurger.contains(e.target) && !navbarMenu.contains(e.target)) {
-              navbarBurger.classList.remove('is-active');
-              navbarMenu.classList.remove('is-active');
-            }
-          });
-        }
-        
-        // Existing mousedown prevention
-        document.body.addEventListener('mousedown', function(e) {
-          e.preventDefault();
-        });
-
-        // Enhanced dropdown functionality for both desktop and mobile
-        const dropdowns = document.querySelectorAll('.dropdown');
-
-        dropdowns.forEach(dropdown => {
-          const dropbtn = dropdown.querySelector('.dropbtn');
-
-          if (dropbtn) {
-            // On mobile, allow dropdown toggle; on desktop, link navigates normally
-            dropbtn.addEventListener('click', function(e) {
-              // Only prevent default and toggle dropdown on mobile
-              if (window.innerWidth <= 768) {
-                e.preventDefault();
-                dropdown.classList.toggle('active');
-              }
-              // On desktop, let the link navigate naturally (dropdown shows on hover)
-            });
-
-            // Close dropdown when clicking a link inside
-            const dropdownLinks = dropdown.querySelectorAll('.dropdown-content a');
-            dropdownLinks.forEach(link => {
-              link.addEventListener('click', function() {
-                dropdown.classList.remove('active');
-              });
-            });
-          }
-        });
-
-        // Close all dropdowns when clicking outside
-        document.addEventListener('click', function(e) {
-          if (!e.target.closest('.dropdown')) {
-            dropdowns.forEach(dropdown => {
-              dropdown.classList.remove('active');
-            });
-          }
-        });
-
-        // Hidden easter egg for developers
-        console.log(`
-        🤖 Greetings, fellow developer! 🧠
-        
-        You've discovered Kathy's secret message!
-        
-        ╔══════════════════════════════════════╗
-        ║   NEURAL NETWORK DETECTED            ║
-        ║   AI + Human Collaboration Active    ║
-        ║   Research Mode: ON                  ║
-        ║   Social Intelligence Level: MAX     ║
-        ╚══════════════════════════════════════╝
-        
-        Fun fact: This website contains hidden 🧠 and 🤖 
-        elements throughout. Can you find them all?
-        
-        - 12 floating AI/brain icons (dark mode only!)
-        - Hidden decorations near research content  
-        - Hover effects on the navbar
-        - Section accent marks
-        
-        Tip: Toggle dark mode (🌙) to see the floating icons!
-        
-        Thanks for exploring! 🚀
-        `);
-      });
-    </script>
-  </head>
-
-  <body>
-    <nav class="navbar">
-      <div class="navbar-container">
-        <a href="#" class="navbar-brand">Kathy Garcia</a>
-        
-        <!-- Mobile hamburger menu -->
-        <button class="navbar-burger" aria-label="menu" aria-expanded="false">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </button>
-        
-        <!-- Desktop navigation -->
-        <div style="display: flex; align-items: center; gap: 20px;">
-          <ul class="navbar-nav">
-            <li><a href="#about">About</a></li>
-            <li><a href="#news">News</a></li>
-            <li class="dropdown">
-              <a href="#research" class="dropbtn">Research ▾</a>
-              <div class="dropdown-content">
-                <a href="video_alignment.html">Aligning Video Models with Human Social Judgments</a>
-                <a href="social_tokens.html">Social Tokens for Grounding LLMs</a>
-                <a href="similarity_judgments.html">Large-Scale Study of Social Scene Judgments</a>
-                <a href="modeling_dynamic.html">Modeling Dynamic Social Vision</a>
-                <a href="lsbm.html">Large-scale DNN Benchmarking</a>
-              </div>
-            </li>
-            <li><a href="#publications-list">Publications</a></li>
-            <li><a href="#media">Media</a></li>
-            <li><a href="#honors">Honors</a></li>
-            <li><a href="data/Kathy_CV (1).pdf" target="_blank">CV</a></li>
-          </ul>
-          <div class="toggle-buttons">
-            <button class="toggle-btn theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">
-              🌙
-            </button>
-            <button class="toggle-btn lang-toggle" onclick="toggleLanguage()" title="Toggle English/Spanish">
-              ES
-            </button>
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVRXCHECS8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-QVRXCHECS8');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kathy Garcia</title>
+  <meta name="author" content="Kathy Garcia">
+  <meta name="description" content="Kathy Garcia — NSF Fellow and Ph.D. student in Computational Cognitive Science at Johns Hopkins University, building human-aligned AI for social vision.">
+  <meta property="og:title" content="Kathy Garcia">
+  <meta property="og:description" content="Building human-aligned AI through computational cognitive neuroscience.">
+  <meta property="og:image" content="https://garciakathy.github.io/images/profile.jpg">
+  <link rel="icon" href="images/favicon.png">
+
+  <script>
+    document.documentElement.classList.add('js');
+    try { document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'light'); } catch (e) {}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/site.css">
+
+  <style>
+    /* ── Bio ─────────────────────────────────────────── */
+    .bio { display: flex; gap: 42px; align-items: center; padding: 44px 0 18px; }
+    .bio-photo { flex: 0 0 220px; position: relative; }
+    .bio-photo img {
+      width: 220px; height: 290px; object-fit: cover; object-position: 50% 25%;
+      border-radius: 14px; box-shadow: var(--shadow-lg); display: block;
+      transition: transform .4s ease;
+    }
+    .bio-photo:hover img { transform: rotate(-1.2deg) scale(1.02); }
+    .bio-photo::after {
+      content: ''; position: absolute; inset: 14px -14px -14px 14px; z-index: -1;
+      border-radius: 14px; background: var(--accent-soft); border: 1.5px solid var(--accent-line);
+    }
+    .bio-body { flex: 1; min-width: 0; }
+    .bio-name { font-size: 40px; font-weight: 900; letter-spacing: -.02em; color: var(--ink); }
+    .bio-name span { color: var(--accent); }
+    .bio-sub { margin: 4px 0 14px; color: var(--ink-3); font-size: 14.5px; }
+    .bio-tagline { font-size: 18px; font-weight: 700; color: var(--accent-ink); margin: 0 0 10px; }
+    .bio-body p { margin: 0 0 11px; color: var(--ink-2); }
+    .bio-body p strong { color: var(--ink); }
+    .highlights { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 16px; }
+    .links { display: flex; flex-wrap: wrap; gap: 7px; }
+    .mentor-note {
+      margin-top: 16px; display: inline-flex; align-items: center; gap: 10px;
+      padding: 8px 14px; border-radius: 10px; background: var(--surface); border: 1px dashed var(--accent-line);
+      font-size: 14px; color: var(--ink-2);
+    }
+    .mentor-note a { font-weight: 700; }
+
+    /* ── News ────────────────────────────────────────── */
+    .news-wrap { display: flex; gap: 34px; align-items: flex-start; }
+    .news-main { flex: 1; min-width: 0; }
+    .news-list { list-style: none; margin: 0; padding: 0; }
+    .news-list li {
+      display: grid; grid-template-columns: 88px 1fr; gap: 12px;
+      padding: 7px 10px; margin: 0 -10px; border-radius: 8px; line-height: 1.55;
+      transition: background .15s;
+    }
+    .news-list li:hover { background: var(--surface); }
+    .news-list li.hidden { display: none; }
+    .news-date { font: 500 12.5px/1.9 var(--mono); color: var(--ink-3); white-space: nowrap; }
+    .news-list li.hot .news-date { color: var(--accent-ink); }
+    .news-new {
+      display: inline-block; margin-left: 6px; padding: 0 6px; border-radius: 4px;
+      font: 700 10px/1.7 var(--font); letter-spacing: .06em; text-transform: uppercase;
+      color: #fff; background: var(--accent); vertical-align: 2px;
+    }
+    .more-btn {
+      margin-top: 8px; background: none; border: 0; padding: 4px 0; cursor: pointer;
+      color: var(--accent-ink); font: 700 14px var(--font);
+    }
+    .more-btn:hover { text-decoration: underline; }
+    .news-media { flex: 0 0 230px; display: flex; flex-direction: column; gap: 16px; padding-top: 52px; }
+    .media-card { display: block; border-radius: 12px; overflow: hidden; background: var(--bg);
+      border: 1px solid var(--line); box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s; }
+    .media-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); text-decoration: none; }
+    .media-card .thumb { background: #fff; aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; }
+    .media-card .thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .media-card figcaption { padding: 8px 12px 10px; font-size: 12.5px; color: var(--ink-3); line-height: 1.4; }
+    .media-card figcaption b { display: block; color: var(--ink); font-size: 13px; margin-bottom: 2px; }
+    .media-card figure { margin: 0; }
+
+    /* ── Research pillars ───────────────────────────── */
+    .statement p { color: var(--ink-2); max-width: 860px; }
+    .statement .hl { color: var(--accent-ink); font-weight: 700; }
+    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0 6px; }
+    .pillar { position: relative; padding: 18px 18px 16px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
+    .pillar-num { font: 500 12px var(--mono); color: var(--accent-ink); letter-spacing: .08em; }
+    .pillar h3 { font-size: 16px; margin: 4px 0 6px; }
+    .pillar p { font-size: 14px; color: var(--ink-2); margin: 0 0 10px; line-height: 1.55; }
+    .pillar ul { margin: 0; padding: 0; list-style: none; font-size: 13.5px; }
+    .pillar li { padding: 3px 0 3px 16px; position: relative; }
+    .pillar li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
+    .pillar-arrow { text-align: center; color: var(--ink-3); font-size: 13px; margin-top: 10px; letter-spacing: .02em; }
+
+    /* ── Project strip (auto-scrolling) ─────────────── */
+    .strip {
+      position: relative; margin: 22px 0 8px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .strip::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 3;
+      background: linear-gradient(90deg, var(--accent), #8ec0f5, var(--accent), #2a6ab5, var(--accent));
+      background-size: 200% 100%; animation: shimmer 8s linear infinite;
+    }
+    @keyframes shimmer { to { background-position: 200% 0; } }
+    .strip-label {
+      position: absolute; left: 0; top: 0; bottom: 0; z-index: 2; width: 44px;
+      display: flex; align-items: center; justify-content: center; gap: 7px;
+      background: var(--bg); border-right: 1px solid var(--line);
+      font: 500 10px var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3);
+      writing-mode: vertical-rl; transform: rotate(180deg);
+    }
+    .strip-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: pulse 2.2s ease-in-out infinite; }
+    @keyframes pulse { 50% { opacity: .3; transform: scale(.6); } }
+    .strip-fade { position: absolute; right: 0; top: 0; bottom: 0; width: 60px; z-index: 2; pointer-events: none;
+      background: linear-gradient(270deg, var(--bg), transparent); }
+    .strip-viewport { overflow: hidden; margin-left: 44px; }
+    .strip-track { display: flex; gap: 12px; padding: 16px 0 16px 12px; width: max-content; animation: scroll 55s linear infinite; }
+    .strip:hover .strip-track, .strip:focus-within .strip-track { animation-play-state: paused; }
+    @keyframes scroll { to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) {
+      .strip-viewport { overflow-x: auto; }
+    }
+    .p-card {
+      width: 210px; flex-shrink: 0; border-radius: 12px; overflow: hidden; background: var(--surface);
+      border: 1.5px solid var(--line); display: flex; flex-direction: column; color: var(--ink);
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+    }
+    .p-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: var(--shadow-lg); text-decoration: none; }
+    .p-thumb { position: relative; height: 118px; background: #fff; overflow: hidden; }
+    .p-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .5s; }
+    .p-card:hover .p-thumb img { transform: scale(1.06); }
+    .p-tag { position: absolute; top: 8px; left: 8px; }
+    .p-body { padding: 10px 12px 12px; }
+    .p-name { font-weight: 900; font-size: 14px; line-height: 1.3; display: block; }
+    .p-desc { font-size: 12.5px; color: var(--ink-3); margin: 4px 0 0; line-height: 1.4; }
+
+    /* ── Publications ───────────────────────────────── */
+    .filters { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+    .filter {
+      padding: 5px 13px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--bg);
+      color: var(--ink-2); font: 700 13px var(--font); cursor: pointer; transition: all .15s;
+    }
+    .filter:hover { border-color: var(--accent); color: var(--accent-ink); }
+    .filter[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .filter .count { opacity: .7; font-weight: 400; margin-left: 3px; }
+    .pub {
+      display: grid; grid-template-columns: 220px 1fr; gap: 24px; padding: 18px 14px; margin: 0 -14px;
+      border-radius: 12px; transition: background .2s;
+    }
+    .pub:hover { background: var(--surface); }
+    .pub.is-hidden { display: none; }
+    .pub.featured { background: linear-gradient(90deg, var(--accent-soft), transparent 70%); }
+    .pub-thumb { position: relative; display: block; border-radius: 10px; overflow: hidden; background: #fff;
+      border: 1px solid var(--line); aspect-ratio: 16 / 10; }
+    .pub-thumb img { width: 100%; height: 100%; object-fit: contain; transition: transform .4s; }
+    .pub:hover .pub-thumb img { transform: scale(1.04); }
+    .pub-title { font-size: 16.5px; font-weight: 900; color: var(--ink); line-height: 1.35; }
+    a.pub-title:hover { color: var(--accent-ink); }
+    .pub-authors { font-size: 14px; color: var(--ink-3); margin: 4px 0; }
+    .pub-authors a { color: var(--ink-3); }
+    .pub-authors a:hover { color: var(--accent-ink); }
+    .me { color: var(--ink); font-weight: 700; }
+    .pub-venue { font-size: 14px; margin: 4px 0 6px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+    .pub-venue b { color: var(--ink); }
+    .pub-tldr { font-size: 14.5px; color: var(--ink-2); margin: 4px 0 8px; line-height: 1.55; }
+    .pub-links { font-size: 14px; font-weight: 700; }
+    .pub-links a + a::before, .pub-links span + a::before, .pub-links a + span::before { content: '|'; color: var(--line); margin: 0 8px; font-weight: 400; }
+    .pub-links .soon { color: var(--ink-3); font-weight: 400; font-style: italic; }
+
+    .cite-list { list-style: none; padding: 0; margin: 0; counter-reset: cite; }
+    .cite-list li {
+      position: relative; padding: 9px 0 9px 36px; border-bottom: 1px dashed var(--line);
+      font-size: 14.5px; color: var(--ink-2); line-height: 1.55;
+    }
+    .cite-list li::before {
+      counter-increment: cite; content: counter(cite, decimal-leading-zero);
+      position: absolute; left: 0; top: 11px; font: 500 12px var(--mono); color: var(--accent-ink);
+    }
+    .cite-list li a.tiny { font-size: 12.5px; font-weight: 700; margin-left: 6px; }
+
+    /* ── Lists: talks / honors / media ─────────────── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; }
+    ul.clean { list-style: none; margin: 0; padding: 0; }
+    ul.clean li { position: relative; padding: 5px 0 5px 18px; font-size: 14.5px; color: var(--ink-2); line-height: 1.55; }
+    ul.clean li::before { content: '–'; position: absolute; left: 0; color: var(--ink-3); }
+    ul.clean li b { color: var(--ink); }
+    .meta { color: var(--ink-3); font-size: 13px; }
+    .timeline { list-style: none; margin: 0; padding: 0 0 0 18px; border-left: 2px solid var(--accent-line); }
+    .timeline li { position: relative; padding: 6px 0 8px 14px; font-size: 14.5px; color: var(--ink-2); }
+    .timeline li::before {
+      content: ''; position: absolute; left: -25px; top: 13px; width: 10px; height: 10px; border-radius: 50%;
+      background: var(--bg); border: 2.5px solid var(--accent);
+    }
+    .timeline li.star::before { background: var(--accent); }
+    .timeline .when { font: 500 12px var(--mono); color: var(--ink-3); display: block; }
+    .timeline b { color: var(--ink); }
+
+    .logos { display: flex; justify-content: center; align-items: center; gap: 44px; margin: 26px 0 0; flex-wrap: wrap; opacity: .75; }
+    .logos img { height: 46px; }
+    [data-theme="dark"] .logos img { background: #fff; padding: 6px 10px; border-radius: 10px; }
+
+    /* Dark-mode easter egg */
+    .floating-icon { position: fixed; font-size: 20px; opacity: 0; pointer-events: none; z-index: 0; animation: float 7s ease-in-out infinite; }
+    [data-theme="dark"] .floating-icon { opacity: .14; }
+    @keyframes float { 50% { transform: translateY(-16px) rotate(8deg); } }
+
+    @media (max-width: 860px) {
+      .bio { flex-direction: column; align-items: flex-start; gap: 26px; padding-top: 30px; }
+      .bio-photo img { width: 160px; height: 200px; }
+      .bio-name { font-size: 32px; }
+      .news-wrap { flex-direction: column; gap: 10px; }
+      .news-media { flex-direction: row; padding-top: 0; width: 100%; }
+      .news-media > * { flex: 1; min-width: 0; }
+      .pillars { grid-template-columns: 1fr; }
+      .pub { grid-template-columns: 1fr; gap: 12px; }
+      .pub-thumb { max-width: 360px; }
+      .two-col { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      .wrap { padding: 0 16px; }
+      .news-list li { grid-template-columns: 1fr; gap: 0; }
+      .news-media { flex-direction: column; }
+      .strip-label { display: none; }
+      .strip-viewport { margin-left: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#about">Kathy Garcia</a>
+      <ul class="nav-links">
+        <li><a href="#about" data-i18n="nav_about">About</a></li>
+        <li><a href="#news" data-i18n="nav_news">News</a></li>
+        <li class="dropdown">
+          <button class="nav-btn" aria-expanded="false" aria-haspopup="true"><span data-i18n="nav_research">Research</span> <i class="fas fa-chevron-down" style="font-size:10px"></i></button>
+          <div class="dropdown-menu">
+            <a href="video_alignment.html">Behavioral Geometric Supervision <small>NeurIPS 2026 · Oral</small></a>
+            <a href="latent_dimensions.html">Latent Dimensions of Social Scenes <small>Preprint 2026 · CCN 2026</small></a>
+            <a href="social_tokens.html">Social Tokens for Grounding LLMs <small>NeurIPS 2025 UniReps</small></a>
+            <a href="similarity_judgments.html">Large-Scale Social Scene Judgments <small>VSS 2025 talk</small></a>
+            <a href="modeling_dynamic.html">Modeling Dynamic Social Vision <small>ICLR 2025</small></a>
+            <a href="lsbm.html">Large-Scale DNN Benchmarking <small>VSS &amp; CCN 2024 talks</small></a>
           </div>
+        </li>
+        <li><a href="#publications" data-i18n="nav_pubs">Publications</a></li>
+        <li><a href="#talks" data-i18n="nav_talks">Talks</a></li>
+        <li><a href="#honors" data-i18n="nav_honors">Honors</a></li>
+        <li><a href="data/Kathy_CV%20(1).pdf" target="_blank" rel="noopener">CV</a></li>
+      </ul>
+      <div class="nav-tools">
+        <button class="icon-btn" data-theme-toggle aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+        <button class="icon-btn" data-lang-toggle aria-label="Cambiar a español">ES</button>
+        <button class="icon-btn burger" aria-label="Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dark-mode easter egg -->
+  <div aria-hidden="true">
+    <div class="floating-icon" style="top:18%;left:3%">🧠</div>
+    <div class="floating-icon" style="top:46%;right:4%;animation-delay:2s">🤖</div>
+    <div class="floating-icon" style="top:74%;left:5%;animation-delay:4s">⚡</div>
+    <div class="floating-icon" style="top:28%;right:6%;animation-delay:1s">🔮</div>
+    <div class="floating-icon" style="top:86%;right:8%;animation-delay:3s">🧠</div>
+  </div>
+
+  <main class="wrap">
+    <!-- ── Bio ──────────────────────────────────────── -->
+    <section class="bio" id="about">
+      <div class="bio-photo">
+        <img src="images/profile.jpg" alt="Portrait of Kathy Garcia" width="220" height="290">
+      </div>
+      <div class="bio-body">
+        <h1 class="bio-name">Kathy Garcia<span>.</span></h1>
+        <p class="bio-sub">Ph.D. student · Johns Hopkins University · kgarci18 [at] jhu.edu</p>
+        <p class="bio-tagline" data-i18n="tagline">Building human-aligned AI through computational cognitive neuroscience.</p>
+        <p data-i18n="bio1">
+          I am an <a href="https://cogsci.jhu.edu/2024/04/25/two-cogsci-students-receive-nsf-grfs/">NSF Fellow</a> pursuing my Ph.D. in Computational Cognitive Science at
+          <a href="https://cogsci.jhu.edu/people/graduate-students/">Johns Hopkins University</a>, where I study how humans and machines understand
+          social interactions in the <a href="https://www.isiklab.org">Computational Cognitive Neuroscience Lab</a> with
+          <a href="https://cogsci.jhu.edu/directory/leyla-isik/">Professor Leyla Isik</a>.
+        </p>
+        <p data-i18n="bio2">
+          I measure how people perceive dynamic social scenes, benchmark AI models against human <strong>brain and behavior</strong>, and use that
+          human data to <strong>align video and language models</strong> with human social perception. My work has been published at
+          <strong>NeurIPS</strong> (oral) and <strong>ICLR</strong>, and featured in <em>The Wall Street Journal</em>.
+        </p>
+        <p data-i18n="bio3">
+          Previously, I earned my B.S. at <a href="https://www.stanford.edu/">Stanford University</a>, worked as a fintech data scientist for Fortune 500
+          companies, and completed an NIH Postbac Fellowship in affective neuroscience and machine learning at
+          <a href="https://www.feinberg.northwestern.edu/sites/nu-prep/scholars/alumni.html">Northwestern University</a>, mentored by Professor
+          Robin Nusslock, Dr. Zachary Anderson, and Dr. Cassandra VanDunk.
+        </p>
+        <div class="highlights">
+          <span class="badge gold">🏆 NeurIPS 2026 Oral</span>
+          <span class="badge">NSF GRFP Fellow</span>
+          <span class="badge">ICLR 2025</span>
+          <span class="badge">Best Oral · LatinX in AI @ ICML</span>
+          <span class="badge">2× VSS talks · CCN talk</span>
+          <span class="badge plain">350+ models benchmarked</span>
+          <span class="badge plain">WSJ · PopSci · Marketplace</span>
         </div>
-        
-        <!-- Mobile navigation menu -->
-        <div class="navbar-menu">
-          <ul class="navbar-nav">
-            <li><a href="#about">About</a></li>
-            <li><a href="#news">News</a></li>
-            <li class="dropdown mobile-dropdown">
-              <a href="#research" class="dropbtn">Research ▾</a>
-              <div class="dropdown-content">
-                <a href="video_alignment.html">Aligning Video Models with Human Social Judgments</a>
-                <a href="social_tokens.html">Social Tokens for Grounding LLMs</a>
-                <a href="similarity_judgments.html">Large-Scale Study of Social Scene Judgments</a>
-                <a href="modeling_dynamic.html">Modeling Dynamic Social Vision</a>
-                <a href="lsbm.html">Large-scale DNN Benchmarking</a>
-              </div>
-            </li>
-            <li><a href="#publications-list">Publications</a></li>
-            <li><a href="#media">Media</a></li>
-            <li><a href="#honors">Honors</a></li>
-            <li><a href="data/Kathy_CV (1).pdf" target="_blank">CV</a></li>
+        <div class="links">
+          <a class="pill solid" href="mailto:kgarci18@jhu.edu"><i class="fas fa-envelope"></i> Email</a>
+          <a class="pill" href="data/Kathy_CV%20(1).pdf" target="_blank" rel="noopener"><i class="fas fa-file-lines"></i> CV</a>
+          <a class="pill" href="https://scholar.google.com/citations?user=AcxvrQEAAAAJ&hl=en"><i class="ai ai-google-scholar"></i> Scholar</a>
+          <a class="pill" href="https://github.com/garciakathy/"><i class="fab fa-github"></i> GitHub</a>
+          <a class="pill" href="https://www.linkedin.com/in/kathy-garcia-01/"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a class="pill" href="https://twitter.com/NeuroKathyG"><i class="fab fa-x-twitter"></i> X</a>
+          <a class="pill" href="https://bsky.app/profile/gkathy.bsky.social"><i class="fab fa-bluesky"></i> Bluesky</a>
+        </div>
+        <div class="mentor-note" data-i18n="mentor">🎓 <span><b>Mentorship</b> — <a href="https://fli.stanford.edu/">first-gen</a> Latina, happy to chat about research, grad school, or careers!</span></div>
+      </div>
+    </section>
+
+    <!-- ── News ─────────────────────────────────────── -->
+    <section class="section" id="news">
+      <div class="news-wrap">
+        <div class="news-main">
+          <h2 class="section-title" data-i18n="news_title">news</h2>
+          <ul class="news-list" id="news-list">
+            <li class="hot"><span class="news-date">Oct 2026</span><span>📄 New preprint on the <a href="latent_dimensions.html">latent dimensions supporting dynamic social scene perception</a>!<span class="news-new">new</span></span></li>
+            <li class="hot"><span class="news-date">Sep 2026</span><span>🏆 <a href="video_alignment.html">Behavioral Geometric Supervision (BGS)</a> accepted as an <b>Oral at NeurIPS 2026</b> — fewer than 0.4% of all submissions!</span></li>
+            <li class="hot"><span class="news-date">Aug 2026</span><span>🧠 Presented my work on the <a href="https://2026.ccneuro.org/poster/?id=X1NIOuzwZR">latent dimensions underlying dynamic social vision</a> at CCN 2026 in New York.</span></li>
+            <li class="hot"><span class="news-date">May 2026</span><span>🎤 Presented <a href="https://www.visionsciences.org/presentation/?id=4148">behavior-guided fine-tuning of video models</a> (BGS) at VSS 2026.</span></li>
+            <li><span class="news-date">Oct 2025</span><span>📄 New preprint on <a href="video_alignment.html">aligning video models with human social judgments</a>!</span></li>
+            <li><span class="news-date">Sep 2025</span><span>🎉 Paper accepted at the <a href="social_tokens.html">NeurIPS 2025 UniReps Workshop</a> on social tokens for grounding LLMs!</span></li>
+            <li><span class="news-date">Aug 2025</span><span>🧠 Selected for the <a href="https://bmm.mit.edu/2025-2/">MIT Brains, Minds &amp; Machines Summer Course</a> — research led to a new paper!</span></li>
+            <li><span class="news-date">Jul 2025</span><span>🏆 Inducted into the <a href="https://www.sigmaxi.org">Sigma Xi Scientific Research Honor Society</a>!</span></li>
+            <li><span class="news-date">May 2025</span><span>📰 Featured in <a href="https://archive.is/wAcZZ">The Wall Street Journal</a> on AI and social perception!</span></li>
+            <li><span class="news-date">Apr 2025</span><span>📰 Featured in <a href="https://hub.jhu.edu/2025/04/24/humans-better-than-ai-at-reading-the-room/">Johns Hopkins Hub</a> on reading social cues!</span></li>
+            <li><span class="news-date">Feb 2025</span><span>🏆 Awarded the <a href="https://www.visionsciences.org">John I. Yellott Travel Award</a> for VSS 2025!</span></li>
+            <li><span class="news-date">Feb 2025</span><span>🏆 Received the <a href="https://www.nei.nih.gov">NEI Early Career Scientist Travel Grant</a>!</span></li>
+            <li><span class="news-date">Feb 2025</span><span>🎤 Talk accepted at <a href="https://www.visionsciences.org/talk-session/?id=416">VSS 2025</a> on social scene perception!</span></li>
+            <li><span class="news-date">Jan 2025</span><span>🎉 Paper accepted at <a href="https://openreview.net/pdf?id=wAXsx2MYgV">ICLR 2025</a> on dynamic social vision!</span></li>
+            <li><span class="news-date">Aug 2024</span><span>🎤 Delivered a talk at <a href="https://2024.ccneuro.org/contributed-talk/?id=32">CCN 2024</a> on deep learning vs. human vision!</span></li>
+            <li><span class="news-date">Jul 2024</span><span>🥇 Won Best Oral Presentation at <a href="https://icml.cc/virtual/2024/affinity-workshop/29959">LatinX in AI @ ICML 2024</a>!</span></li>
+            <li><span class="news-date">Jul 2024</span><span>🎤 Delivered a talk at <a href="https://icml.cc/virtual/2024/38087">LatinX in AI @ ICML 2024</a> on social vision models!</span></li>
+            <li><span class="news-date">Jun 2024</span><span>📄 New preprint on <a href="https://icml.cc/virtual/2024/38087">dynamic social vision</a> now available!</span></li>
+            <li><span class="news-date">May 2024</span><span>🏆 Received the <a href="https://www.foveavision.org">FoVea 2024 Travel Award</a>!</span></li>
+            <li><span class="news-date">May 2024</span><span>🎤 Delivered a talk at <a href="https://www.visionsciences.org/talk-session/?id=249">VSS 2024</a> on neural benchmarking!</span></li>
+            <li><span class="news-date">Apr 2024</span><span>🎤 Gave a brown bag talk at JHU Cognitive Science on DNN benchmarking!</span></li>
+            <li><span class="news-date">Apr 2024</span><span>🎓 Awarded the <a href="https://www.nsfgrfp.org">NSF GRFP</a>!</span></li>
+            <li><span class="news-date">Sep 2021</span><span>🎓 Awarded the Kelly Miller Fellowship at Johns Hopkins University!</span></li>
           </ul>
-          <div class="toggle-buttons" style="justify-content: center; margin-top: 15px;">
-            <button class="toggle-btn theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">
-              🌙
-            </button>
-            <button class="toggle-btn lang-toggle" onclick="toggleLanguage()" title="Toggle English/Spanish">
-              ES
-            </button>
+          <button class="more-btn" id="news-more" aria-expanded="false"></button>
+        </div>
+        <aside class="news-media" aria-label="Featured work">
+          <a class="media-card" href="video_alignment.html">
+            <figure>
+              <div class="thumb"><img src="static/figures/bgs/fig1.png" alt="BGS method overview" loading="lazy"></div>
+              <figcaption><b>NeurIPS 2026 · Oral</b>Behavioral geometric supervision aligns video models with human social perception.</figcaption>
+            </figure>
+          </a>
+          <a class="media-card" href="latent_dimensions.html">
+            <figure>
+              <div class="thumb"><img src="images/latent_dims.svg" alt="Latent dimensions illustration" loading="lazy"></div>
+              <figcaption><b>New preprint · CCN 2026</b>The latent dimensions supporting dynamic social scene perception.</figcaption>
+            </figure>
+          </a>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ── Research ─────────────────────────────────── -->
+    <section class="section statement" id="research">
+      <h2 class="section-title" data-i18n="research_title">research</h2>
+      <p data-i18n="research1">
+        <span class="hl">Humans read social scenes in a glance; AI still struggles.</span> I use large-scale behavior, fMRI, and deep learning to understand
+        how people perceive dynamic social interactions — and then use that human data to build models that see the social world the way we do.
+      </p>
+      <div class="pillars">
+        <div class="pillar reveal">
+          <div class="pillar-num">01 · MEASURE</div>
+          <h3>How do humans organize social scenes?</h3>
+          <p>Tens of thousands of odd-one-out judgments reveal the latent dimensions behind social perception.</p>
+          <ul>
+            <li><a href="latent_dimensions.html">Latent dimensions</a> <span class="meta">2026</span></li>
+            <li><a href="similarity_judgments.html">Social scene judgments</a> <span class="meta">VSS 2025</span></li>
+          </ul>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-num">02 · BENCHMARK</div>
+          <h3>Where do AI models fall short?</h3>
+          <p>350+ image, video, and language models tested against human brain and behavior.</p>
+          <ul>
+            <li><a href="modeling_dynamic.html">Modeling dynamic social vision</a> <span class="meta">ICLR 2025</span></li>
+            <li><a href="lsbm.html">Large-scale DNN benchmarking</a> <span class="meta">VSS/CCN 2024</span></li>
+          </ul>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-num">03 · ALIGN</div>
+          <h3>Can human data close the gap?</h3>
+          <p>A compact behavioral signal steers video and language models toward human social understanding.</p>
+          <ul>
+            <li><a href="video_alignment.html">Behavioral geometric supervision</a> <span class="meta">NeurIPS 2026 Oral</span></li>
+            <li><a href="social_tokens.html">Social tokens for LLMs</a> <span class="meta">NeurIPS 2025 WS</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="strip" aria-label="Project pages">
+        <div class="strip-label"><span class="strip-dot"></span>projects</div>
+        <div class="strip-fade"></div>
+        <div class="strip-viewport">
+          <div class="strip-track" id="strip-track">
+            <a class="p-card" href="video_alignment.html">
+              <div class="p-thumb"><img src="static/figures/bgs/fig1.png" alt="" loading="lazy"><span class="p-tag badge gold">NeurIPS'26 Oral</span></div>
+              <div class="p-body"><span class="p-name">Behavioral Geometric Supervision</span><p class="p-desc">49k human judgments nearly triple video-model alignment.</p></div>
+            </a>
+            <a class="p-card" href="latent_dimensions.html">
+              <div class="p-thumb"><img src="images/latent_dims.svg" alt="" loading="lazy"><span class="p-tag badge">Preprint '26</span></div>
+              <div class="p-body"><span class="p-name">Latent Social Dimensions</span><p class="p-desc">A compact map of social scenes that also predicts the brain.</p></div>
+            </a>
+            <a class="p-card" href="social_tokens.html">
+              <div class="p-thumb"><img src="images/social_tokens_overview.png" alt="" loading="lazy"><span class="p-tag badge">NeurIPS'25 WS</span></div>
+              <div class="p-body"><span class="p-name">Social Tokens</span><p class="p-desc">Grounding frozen LLMs in visual social interactions.</p></div>
+            </a>
+            <a class="p-card" href="similarity_judgments.html">
+              <div class="p-thumb"><img src="static/figures/sim_judg/task_design.png" alt="" loading="lazy"><span class="p-tag badge">VSS'25 Talk</span></div>
+              <div class="p-body"><span class="p-name">Social Scene Judgments</span><p class="p-desc">What drives human similarity in dynamic social videos?</p></div>
+            </a>
+            <a class="p-card" href="modeling_dynamic.html">
+              <div class="p-thumb"><img src="static/figures/neurips/neurips_fig1.jpeg" alt="" loading="lazy"><span class="p-tag badge">ICLR'25</span></div>
+              <div class="p-body"><span class="p-name">Modeling Dynamic Social Vision</span><p class="p-desc">350+ models vs. human brain and behavior.</p></div>
+            </a>
+            <a class="p-card" href="lsbm.html">
+              <div class="p-thumb"><img src="images/resized/paper1fig1.jpg" alt="" loading="lazy"><span class="p-tag badge">VSS/CCN'24</span></div>
+              <div class="p-body"><span class="p-name">Lateral-Stream Benchmarking</span><p class="p-desc">Hierarchical DNN–brain correspondence in the lateral stream.</p></div>
+            </a>
           </div>
         </div>
       </div>
-    </nav>
-    
-    <!-- Hidden floating decorations - only visible in dark mode -->
-    <div class="floating-icon dark-only" style="top: 15%; left: 5%;">🧠</div>
-    <div class="floating-icon dark-only" style="top: 45%; right: 8%; animation-delay: 2s;">🤖</div>
-    <div class="floating-icon dark-only" style="top: 75%; left: 10%; animation-delay: 4s;">⚡</div>
-    <div class="floating-icon dark-only" style="top: 25%; right: 15%; animation-delay: 1s;">🧠</div>
-    <div class="floating-icon dark-only" style="top: 65%; left: 85%; animation-delay: 3s;">🤖</div>
-    <div class="floating-icon dark-only" style="top: 35%; left: 15%; animation-delay: 5s;">🔮</div>
-    <div class="floating-icon dark-only" style="top: 55%; right: 25%; animation-delay: 1.5s;">🧠</div>
-    <div class="floating-icon dark-only" style="top: 85%; right: 5%; animation-delay: 3.5s;">⚙️</div>
-    <div class="floating-icon dark-only" style="top: 10%; left: 85%; animation-delay: 0.5s;">💫</div>
-    <div class="floating-icon dark-only" style="top: 60%; left: 3%; animation-delay: 2.5s;">🤖</div>
-    <div class="floating-icon dark-only" style="top: 30%; left: 75%; animation-delay: 4.5s;">🧠</div>
-    <div class="floating-icon dark-only" style="top: 80%; left: 50%; animation-delay: 1.8s;">⚡</div>
-    
-    <div class="content-wrapper">
-    <table class="main-table" style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-      <tbody>
-        <tr style="padding:0px">
-          <td style="padding:0px">
-            <!-- Profile Section -->
-            <div class="profile-section" id="about">
-              <div class="profile-text">
-                <p class="name" style="text-align: left;">
-                  <b>Kathy Garcia</b>
-                </p>
-                <p style="text-align: left; color: #666; font-size: 0.85em; margin-top: 3px; margin-bottom: 12px;">
-                  NSF Fellow (12%) • Published ICLR (25%) • Best Oral ICML LatinX • 2x VSS Talks (15%) • CCN Talk (25%) • 350+ models benchmarked  • WSJ, PopSci  Features
-                </p>
-                <p>
-                  <strong>Building human-aligned AI through computational cognitive neuroscience.</strong>
-                </p>
-                <p>
-                  I am a 4<sup>th</sup> year Ph.D. student in Computational Cognitive Science at <a href="https://cogsci.jhu.edu/people/graduate-students/">Johns Hopkins University</a>, where I investigate how humans and machines understand social interactions in the <a href="https://www.isiklab.org">Computational Cognitive Neuroscience Lab</a> with <a href="https://cogsci.jhu.edu/directory/leyla-isik/">Professor Leyla Isik</a>.
-                </p>
-                <p>
-                  I am fortunate enough to have had my research published at top-tier venues including at ICLR and featured in
-                  <em>The Wall Street Journal</em>. I develop computational models that bridge human vision and
-                  artificial intelligence, with a focus on creating socially intelligent systems that understand dynamic
-                  human behavior.
-                </p>
-                <p>
-                  Previously, I earned my B.S. at <a href="https://www.stanford.edu/">Stanford University</a> and completed an NIH Postbac Fellowship in affective neuroscience at <a href="https://www.feinberg.northwestern.edu/sites/nu-prep/scholars/alumni.html">Northwestern University</a>, mentored by Professor Robin Nusslock, Dr. Zachary Anderson, and Dr. Cassandra VanDunk.
-                </p>
-              </div>
-              <div class="profile-image" style="margin-top: 60px;">
-                <img style="width:250px;object-fit: cover;border-radius:8%; height:320px; box-shadow: 0 4px 12px var(--shadow-color); transition: transform 0.4s ease, box-shadow 0.4s ease; cursor: pointer;" src="images/Garcia-Kathy-187x271.png" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 12px 32px rgba(0,0,0,0.25)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 12px var(--shadow-color)'"/>
-              </div>
-            </div>
-            
-            <!-- Social Icons and Mentorship -->
-            <div style="text-align: center; padding-top: 8px; padding-bottom: 4px;">
-              <div class="social-icons" style="margin-bottom: 5px;">
-                <a href="mailto:kgarci18@jhu.edu" style="text-decoration:none;"><i class="fas fa-envelope" style="font-size:24px; color:#4a90e2;"></i></a>
-                <a href="data/Kathy_CV (1).pdf" style="text-decoration:none;"><i class="fas fa-file-alt" style="font-size:24px; color:#4a90e2;"></i></a>
-                <a href="https://www.linkedin.com/in/kathy-garcia-01/" style="text-decoration:none;"><i class="fab fa-linkedin" style="font-size:24px; color:#4a90e2;"></i></a>
-                <a href="https://twitter.com/NeuroKathyG" style="text-decoration:none;"><i class="fab fa-x-twitter" style="font-size:24px; color:#4a90e2;"></i></a>
-                <a href="https://bsky.app/profile/gkathy.bsky.social" style="text-decoration:none;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#4a90e2" style="vertical-align: text-bottom; display: inline-block;">
-                    <path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"/>
-                  </svg>
-                </a>
-                <a href="https://github.com/garciakathy/" style="text-decoration:none;"><i class="fab fa-github" style="font-size:24px; color:#4a90e2;"></i></a>
-                <a href="https://scholar.google.com/citations?user=AcxvrQEAAAAJ&hl=en&oi=sra" style="text-decoration:none;"><i class="fas fa-graduation-cap" style="font-size:24px; color:#4a90e2;"></i></a>
-              </div>
-              <div class="mentorship-box" style="margin: 0 auto; max-width: 400px;">
-                <strong style="font-size: 1.1em;">🎓 Mentorship</strong> – <a href="https://fli.stanford.edu/" style="text-decoration: none; color: inherit;">First-gen</a> Latina | Happy to chat about research, grad school, or careers!
-              </div>
-            </div>
-            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto; text-align: justify;" class="major-section">
-              <tbody>
-                <tr>
-                  <td style="padding-top:10px;padding-left:20px;padding-right:20px;width:100%;vertical-align:top">
-                    <h2 id="news">News</h2>
-                    <div class="news-container">
-                      <div class="news">
-                        <div class="news-item">
-                          <span class="date">[Oct 2025]</span>
-                          <span class="text">📄 New preprint on <a href="video_alignment.html">aligning video models with human social judgments</a>!</span>
-                        </div>
-                        <div class="news-item">
-                          <span class="date">[Sept 2025]</span>
-                          <span class="text">🎉 Paper accepted at <a href="social_tokens.html">NeurIPS 2025 UniReps Workshop</a> on social tokens for grounding LLMs!</span>
-                        </div>
-                        <div class="news-item">
-                          <span class="date">[Aug 2025]</span>
-                          <span class="text">🧠 Selected for <a href="https://bmm.mit.edu/2025-2/">MIT Brains, Minds & Machines Summer Course</a> - research led to new paper!</span>
-                        </div>
-                        <div class="news-item">
-                          <span class="date">[July 2025]</span>
-                          <span class="text">🏆 Inducted into <a href="https://www.sigmaxi.org">Sigma Xi Scientific Research Honor Society</a>!</span>
-                        </div>
-                        <div class="news-item">
-                          <span class="date">[May 2025]</span>
-                          <span class="text">📰 Featured in <a href="https://archive.is/wAcZZ" target="_blank">The Wall Street Journal</a> on AI and social perception!</span>
-                        </div>
-                        <div class="news-item">
-                          <span class="date">[Apr 2025]</span>
-                          <span class="text">📰 Featured in <a href="https://hub.jhu.edu/2025/04/24/humans-better-than-ai-at-reading-the-room/" target="_blank">Johns Hopkins Hub</a> on reading social cues!</span>
-                        </div>
-                        <div class="news-item">
-                          <span class="date">[Feb 2025]</span>
-                          <span class="text">🏆 Awarded <a href="https://www.visionsciences.org">John I. Yellott Travel Award</a> for VSS 2025!</span>
-                        </div>
-                        <div class="news-item">
-                          <span class="date">[Feb 2025]</span>
-                          <span class="text">🏆 Received <a href="https://www.nei.nih.gov">NEI Early Career Scientist Travel Grant</a>!</span>
-                        </div>
-                        <div class="news-item">
-                          <span class="date">[Feb 2025]</span>
-                          <span class="text">🎤 Talk accepted at <a href="https://www.visionsciences.org/talk-session/?id=416">VSS 2025</a> on social scene perception!</span>
-                        </div>
-                        <div class="news-item">
-                          <span class="date">[Jan 2025]</span>
-                          <span class="text">🎉 Paper accepted at <a href="https://openreview.net/pdf?id=wAXsx2MYgV">ICLR 2025</a> on dynamic social vision!</span>
-                        </div>
-                        <div class="news-item">
-                          <span class="date">[Aug 2024]</span>
-                          <span class="text">🎤 Delivered a talk at <a href="https://2024.ccneuro.org/contributed-talk/?id=32">CCN 2024</a> on deep learning vs. human vision!</span>
-                        </div>
-                        <div class="news-item">
-                          <span class="date">[July 2024]</span>
-                          <span class="text">🥇 Won Best Oral Presentation at <a href="https://icml.cc/virtual/2024/affinity-workshop/29959">LatinX in AI @ ICML 2024</a>!</span>
-                        </div>
-                        <div class="news-item">
-                          <span class="date">[July 2024]</span>
-                          <span class="text">🎤 Delivered a talk at <a href="https://icml.cc/virtual/2024/38087">LatinX in AI @ ICML 2024</a> on social vision models!</span>
-                        </div>
-                        <div class="news-item">
-                          <span class="date">[June 2024]</span>
-                          <span class="text">📄 New preprint on <a href="https://icml.cc/virtual/2024/38087">dynamic social vision</a> now available!</span>
-                        </div>
-                        <div class="news-item">
-                          <span class="date">[May 2024]</span>
-                          <span class="text">🏆 Received <a href="https://www.foveavision.org">FOVEA 2024 Travel Award</a>!</span>
-                        </div>
-                        <div class="news-item">
-                          <span class="date">[May 2024]</span>
-                          <span class="text">🎤 Delivered a talk at <a href="https://www.visionsciences.org/talk-session/?id=249">VSS 2024</a> on neural benchmarking!</span>
-                        </div>
-                        <div class="news-item">
-                          <span class="date">[Apr 2024]</span>
-                          <span class="text">🎤 Gave brown bag talk at JHU Cognitive Science on DNN benchmarking!</span>
-                        </div>
-                        <div class="news-item">
-                          <span class="date">[Apr 2024]</span>
-                          <span class="text">🎓 Awarded the prestigious <a href="https://www.nsfgrfp.org">NSF GRFP</a>!</span>
-                        </div>
-                        <div class="news-item">
-                          <span class="date">[Sept 2021]</span>
-                          <span class="text">🎓 Awarded the Kelly Miller Fellowship at Johns Hopkins University!</span>
-                        </div>
-                      </div>
-                    </div>
 
-                    <div class="media-callout">
-                      <h3>📰 Featured in Media</h3>
-                      <p><a href="https://www.wsj.com/tech/ai/ai-body-language-analysis-johns-hopkins-2f11362a" target="_blank">WSJ</a>, <a href="https://hub.jhu.edu/2025/04/24/humans-better-than-ai-at-reading-the-room/" target="_blank">JHU Hub</a>, <a href="https://www.popsci.com/technology/ai-vs-human-social-cues-study/" target="_blank">PopSci</a>, <a href="https://www.marketplace.org/episode/2025/04/28/ai-cant-read-the-room" target="_blank">Marketplace</a>, <a href="https://cisac.fsi.stanford.edu/news/obama-stanford-ceos-must-commit-cyber-security" target="_blank">CISAC News</a></p>
-                    </div>
+      <div class="logos" aria-label="Affiliations">
+        <img src="images/mitlogo.png" alt="MIT">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Seal_of_Leland_Stanford_Junior_University.svg" alt="Stanford">
+        <img src="images/JHU.png" alt="Johns Hopkins">
+      </div>
+    </section>
 
-                    <h2 id="research" class="research-accent section-accent">Research</h2>
-                    <p>
-                      <strong>Building the next generation of socially intelligent AI systems.</strong> I bridge human cognition and artificial intelligence by developing computational models that understand social interactions the way humans do. My research agenda focuses on closing the gap between human social perception and AI capabilities through neural benchmarking, multimodal learning, and cognitively-inspired architectures.
-                    </p>
-                    <p>
-                      Working with researchers across <strong>MIT, Stanford, and Johns Hopkins</strong>, I develop methods that enable AI systems to perceive, interpret, and predict complex social dynamics. This work spans computer vision, natural language processing, and cognitive neuroscience — positioning AI systems to become truly collaborative partners in human social environments.
-                    </p>
-                    <div style="text-align: center; margin: 20px 0; padding: 15px; position: relative;">
-                      <div class="neural-decoration dark-only" style="top: 5px; left: 10px;">🧠⚡🤖</div>
-                      <div class="neural-decoration dark-only" style="bottom: 5px; right: 10px;">💫⚙️🔮</div>
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/MIT_logo.svg" alt="MIT" style="height: 50px; margin: 0 20px; opacity: 0.8; vertical-align: middle;"/>
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Seal_of_Leland_Stanford_Junior_University.svg" alt="Stanford" style="height: 55px; margin: 0 20px; opacity: 0.8; vertical-align: middle;"/>
-                      <img src="images/JHU.png" alt="Johns Hopkins" style="height: 55px; margin: 0 20px; opacity: 0.8; vertical-align: middle;"/>
-                    </div>
+    <!-- ── Publications / projects ──────────────────── -->
+    <section class="section" id="publications">
+      <h2 class="section-title" data-i18n="pubs_title">research projects</h2>
+      <div class="filters" role="toolbar" aria-label="Filter publications">
+        <button class="filter" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter" data-filter="conference" aria-pressed="false">Conference</button>
+        <button class="filter" data-filter="preprint" aria-pressed="false">Preprint</button>
+        <button class="filter" data-filter="workshop" aria-pressed="false">Workshop</button>
+        <button class="filter" data-filter="talk" aria-pressed="false">Talks &amp; abstracts</button>
+      </div>
 
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;" class="major-section">
-              <tbody>
-                <tr>
-                  <td style="padding-top:20px;padding-left:20px;padding-right:20px;width:100%;vertical-align:top">
-                    <h2 id="publications" style="margin-top: 20px; margin-bottom: 30px; font-size: 1.8em;">Research Projects</h2>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="publication-row" style="padding:0;width:100%;vertical-align:top">
-                    <div class="publication-image">
-                      <div style="position: relative;">
-                        <img src="images/social_tokens_overview.png" height="150" width="190" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);"/>
-                        <div style="position: absolute; top: 5px; right: 5px; background: #667eea; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.7em; font-weight: bold;">NeurIPS 2025</div>
-                      </div>
-                    </div>
-                    <div class="publication-content">
-                      <p>
-                        <a href="social_tokens.html">
-                          <span class="papertitle" style="font-size: 1.15em;">Look, Then Speak: Social Tokens for Grounding LLMs in Visual Interactions</span>
-                          <span style="display: block; height: 0.5em;"></span>
-                        </a>
-                        <span class="author-highlight">Kathy Garcia</span>,
-                        <a href="https://vsubramaniam851.github.io">Vighnesh Subramaniam</a>,
-                        <a href="https://people.csail.mit.edu/boris/boris.html">Boris Katz</a>,
-                        <a href="https://briancheung.github.io">Brian Cheung</a> <br>
-                        <em>
-                            Accepted at UniReps Workshop, NeurIPS 2025
-                        </em>
-                        <br>
-                      </p>
-                      <p style="margin: 10px 0 0 0;">
-                        <a href="https://openreview.net/pdf?id=tdz8HrfthW" target="_blank" style="display: inline-block; padding: 3px 10px; background: #4a90e2; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">PDF</a>
-                        <a href="social_tokens.html" style="display: inline-block; margin-left: 5px; padding: 3px 10px; background: #666; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">Project Page</a>
-                        <a href="https://openreview.net/forum?id=tdz8HrfthW" target="_blank" style="display: inline-block; margin-left: 5px; padding: 3px 10px; background: #666; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">BibTeX</a>
-                        <a href="https://openreview.net/forum?id=tdz8HrfthW#discussion" target="_blank" style="display: inline-block; margin-left: 5px; padding: 3px 10px; background: #666; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">Discussion</a>
-                      </p>
-                      <p>
-                        We introduce <b>social tokens</b>: visual features extracted from video frames &amp; strategically inserted into language models to enhance their comprehension of social interactions. This method significantly improves LLM performance on social tasks by enabling richer integration of social cues. Our results demonstrate that social tokens help bridge the gap between human and model understanding of complex social dynamics.
-                      </p>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="publication-row" style="padding:0;width:100%;vertical-align:top">
-                    <div class="publication-image">
-                      <div style="position: relative;">
-                        <img src="static/figures/video_align/figure1.png" height="150" width="190" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);"/>
-                        <div style="position: absolute; top: 5px; right: 5px; background: #ff6b6b; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.7em; font-weight: bold;">Preprint</div>
-                      </div>
-                    </div>
-                    <div class="publication-content">
-                      <p>
-                        <a href="video_alignment.html">
-                          <span class="papertitle" style="font-size: 1.15em;">Aligning Video Models with Human Social Judgments via Behavior-Guided Fine-Tuning</span>
-                          <span style="display: block; height: 0.5em;"></span>
-                        </a>
-                        <span class="author-highlight">Kathy Garcia</span>,
-                        <a href="https://www.isiklab.org">Leyla Isik</a> <br>
-                        <em>arXiv preprint, 2025</em>
-                        <br>
-                      </p>
-                      <p style="margin: 10px 0 0 0;">
-                        <a href="https://arxiv.org/pdf/2510.01502" target="_blank" style="display: inline-block; padding: 3px 10px; background: #4a90e2; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">PDF</a>
-                        <a href="https://arxiv.org/abs/2510.01502" target="_blank" style="display: inline-block; margin-left: 5px; padding: 3px 10px; background: #4a90e2; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">arXiv</a>
-                        <a href="video_alignment.html" style="display: inline-block; margin-left: 5px; padding: 3px 10px; background: #666; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">Project Page</a>
-                      </p>
-                      <p>
-                        We introduce <b>behavior-guided fine-tuning</b> to align video models with human social perception. Using 49,000+ human similarity judgments, we fine-tune video models via a hybrid triplet-RSA loss, significantly improving alignment with how humans perceive social interactions while maintaining performance on downstream tasks.
-                      </p>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="publication-row" style="padding:0;width:100%;vertical-align:top">
-                    <div class="publication-image">
-                      <img src="images/method_logo.png" height="150" width="190" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);"/>
-                    </div>
-                    <div class="publication-content">
-                      <p>
-                        <a href="similarity_judgments.html">
-                          <span class="papertitle" style="font-size: 1.15em;">A Large-Scale Study of Social Scene Judgments: Alignment with Deep Neural Networks and Social-Affective Features</span>
-                          <span style="display: block; height: 0.5em;"></span>
-                        </a>
-                        <span class="author-highlight">Kathy Garcia</span>,
-                        <a href="https://www.isiklab.org">Leyla Isik</a> <br>
-                        <em>
-                          <a href="https://www.visionsciences.org/talk-session/?id=416#:~:text=Talk%204%2C%203,dynamic%20social%20scenes.">
-                            Vision Sciences Society (VSS), 2025 (Talk Presentation)
-                          </a>
-                        </em>
-                        <br>
-                      </p>
-                      <p style="margin: 10px 0 0 0;">
-                        <a href="https://doi.org/10.1167/jov.25.9.2621" target="_blank" style="display: inline-block; padding: 3px 10px; background: #4a90e2; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">DOI</a>
-                        <a href="similarity_judgments.html" style="display: inline-block; margin-left: 5px; padding: 3px 10px; background: #666; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">Project Page</a>
-                      </p>
-                      <div class="award-badge">
-                        🎤 VSS 2025 Talk (15% acceptance)
-                      </div>
-                      <p>
-                        We benchmark how closely deep neural networks capture the social understanding reflected in human judgments and brain responses to real-world interactions.
-                        Our dataset and framework reveal that while AI models are closing the gap, humans still rely on uniquely social cues to interpret complex social scenes.
-                      </p>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="publication-row" style="padding:0;width:100%;vertical-align:top">
-                    <div class="publication-image">
-                      <div style="position: relative;">
-                        <img src="images/resized/neurips.png" height="90" width="190" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);"/>
-                        <div style="position: absolute; top: 5px; right: 5px; background: #c41e3a; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.7em; font-weight: bold;">ICLR 2025</div>
-                      </div>
-                    </div>
-                    <div class="publication-content">
-                      <p>
-                        <a href="modeling_dynamic.html">
-                          <span class="papertitle" style="font-size: 1.15em;">Modeling Dynamic Social Vision Highlights Gaps Between Deep Learning and Humans</span>
-                        </a>
-                        <span style="display: block; height: 0.5em;"></span>
-                        <span class="author-highlight">Kathy Garcia</span>,
-                        <a href="https://emaliemcmahon.github.io">Emalie McMahon</a>,
-                        <a href="https://colinconwell.com">Colin Conwell</a>,
-                        <a href="https://www.bonnerlab.org">Michael F. Bonner</a>,
-                        <a href="https://www.isiklab.org">Leyla Isik</a>
-                        <br>
-                        <em>International Conference on Learning Representations (ICLR), 2025</em>
-                      </p>
-                      <p style="margin: 10px 0 0 0;">
-                        <a href="https://openreview.net/pdf?id=wAXsx2MYgV" target="_blank" style="display: inline-block; padding: 3px 10px; background: #4a90e2; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">PDF</a>
-                        <a href="data/Garcia_ICLR_Poster.pdf" target="_blank" style="display: inline-block; margin-left: 5px; padding: 3px 10px; background: #4a90e2; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">Poster</a>
-                        <a href="modeling_dynamic.html" style="display: inline-block; margin-left: 5px; padding: 3px 10px; background: #666; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">Project Page</a>
-                        <a href="https://github.com/Isik-lab/SIfMRI_modeling" target="_blank" style="display: inline-block; margin-left: 5px; padding: 3px 10px; background: #666; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">Code & Data</a>
-                        <a href="https://openreview.net/forum?id=wAXsx2MYgV" target="_blank" style="display: inline-block; margin-left: 5px; padding: 3px 10px; background: #666; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">BibTeX</a>
-                      </p>
-                      <div class="award-badge">
-                        🏆 Best Oral @ ICML LatinX 2024 • 📰 WSJ, JHU Hub, PopSci, Marketplace
-                      </div>
-                      <p>
-                        We present a dataset of natural videos and captions involving complex multi-agent interactions, and we benchmark 350+ image, video,
-                        and language models on behavioral and neural responses to the videos. Together these results identify a major gap in AI's ability
-                        to match the human brain and behavior and highlight the importance of studying vision in dynamic, natural contexts.
-                      </p>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="publication-row" style="padding:0;width:100%;vertical-align:top">
-                    <div class="publication-image">
-                      <img src="images/resized/paper1fig1.jpg">
-                    </div>
-                    <div class="publication-content">
-                      <a href="lsbm.html">
-                       <span class="papertitle" style="font-size: 1.15em;">Large-scale Deep Neural Network Benchmarking in Dynamic Social Vision</span>
-                      </a>
-                      <span style="display: block; height: 0.5em;"></span>
-                      <span class="author-highlight">Kathy Garcia</span>,
-                      <a href="https://colinconwell.com">Colin Conwell</a>,
-                      <a href="https://emaliemcmahon.github.io">Emalie McMahon</a>,
-                      <a href="https://www.bonnerlab.org">Michael F. Bonner</a>,
-                      <a href="https://www.isiklab.org">Leyla Isik</a>
-                      <br>
-                      <em>
-                        <a href="https://www.visionsciences.org/presentation/?id=716">Vision Sciences Society (VSS), 2024</a> • <a href="https://2024.ccneuro.org/contributed-talk/?id=32">Cognitive Computational Neuroscience (CCN), 2024</a>
-                      </em>
-                      <br>
-                      <p style="margin: 10px 0 0 0;">
-                        <a href="https://doi.org/10.1167/jov.24.10.716" target="_blank" style="display: inline-block; padding: 3px 10px; background: #4a90e2; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">DOI</a>
-                        <a href="lsbm.html" style="display: inline-block; margin-left: 5px; padding: 3px 10px; background: #666; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">Project Page</a>
-                      </p>
-                      <div class="award-badge">
-                        🎤 VSS 2024 Talk (15% acceptance) • CCN 2024 Contributed Talk (25% acceptance)
-                      </div>
-                      <p>
-                        Large-scale benchmarking of 300+ DNNs with diverse architectures, objectives, and training sets, against fMRI responses to a curated dataset of 200 naturalistic social videos, with a focus on the "lateral" visual stream.
-                      </p>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="publication-row" style="padding:0;width:100%;vertical-align:top">
-                    <div class="publication-image">
-                      <img src="images/sfn_logo.png" height="90" width="190"/>
-                    </div>
-                    <div class="publication-content">
-                      <a href="https://garciakathy.github.io/fmri_svr.html">
-                        <span class="papertitle" style="font-size: 1.15em;">Predicting Dimensional Symptoms of Psychopathology from Task-Based fMRI using Support Vector Regression</span>
-                      </a>
-                        <span style="display: block; height: 0.5em;"></span>
-                        <span class="author-highlight">Kathy Garcia</span>,
-                        Zach Anderson,&nbsp;
-                        Iris Ka-Yi Chat,&nbsp;
-                        Katherine S.F. Damme,&nbsp;
-                        Katherine Young,
-                        Susan Y. Bookheimer,&nbsp;
-                        Richard Zinbarg,&nbsp;
-                        Michelle Craske,&nbsp;
-                        Robin Nusslock&nbsp;
-                        <br>
-                        <em>SfN Global Connectome, 2021 (Virtual poster presentation)</em>
-                        <br>
-                      <p>
-                        This study develops a novel machine learning approach using Support Vector Regression (SVR) to explore potential biomarkers in fMRI data for symptoms of anxiety and depression,
-                        finding that MID task-fMRI data does not accurately predict these symptoms, with results indicating a poor model fit.
-                      </p>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto; text-align: justify;" class="major-section">
-              <tbody>
-                <tr>
-                  <td style="padding-top:10px;padding-left:20px;padding-right:20px;width:100%;vertical-align:top">
-                    <h2 id="publications-list" class="section-accent">Publications</h2>
-                    <div style="margin-left: 20px; margin-bottom: 25px; font-size: 0.9em; line-height: 1.6;">
-                      <p style="margin: 15px 0;">
-                        <span class="author-highlight">Garcia, K.</span>, Subramaniam, V., Katz, B., & Cheung, B. (2025). Look, Then Speak: Social Tokens for Grounding LLMs in Visual Interactions. In <em>NeurIPS 2025 Workshop on Unifying Representations in Neural Models (UniReps)</em>.
-                        <br>
-                        <a href="https://openreview.net/pdf?id=tdz8HrfthW" target="_blank" style="display: inline-block; margin-top: 5px; padding: 3px 10px; background: #4a90e2; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">PDF</a>
-                        <a href="https://openreview.net/forum?id=tdz8HrfthW" target="_blank" style="display: inline-block; margin-top: 5px; margin-left: 5px; padding: 3px 10px; background: #666; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">BibTeX</a>
-                      </p>
-                      <p style="margin: 15px 0;">
-                        <span class="author-highlight">Garcia, K.</span>, & Isik, L. (2025). Aligning Video Models with Human Social Judgments via Behavior-Guided Fine-Tuning. <em>arXiv preprint arXiv:2510.01502</em>.
-                        <br>
-                        <a href="https://arxiv.org/pdf/2510.01502" target="_blank" style="display: inline-block; margin-top: 5px; padding: 3px 10px; background: #4a90e2; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">PDF</a>
-                      </p>
-                      <p style="margin: 15px 0;">
-                        <span class="author-highlight">Garcia, K.</span>, & Isik, L. (2025). Semantic and Social Features Drive Human Grouping of Dynamic, Visual Events in Large-Scale Similarity Judgements. <em>Journal of Vision, 25</em>(9), 2621.
-                        <br>
-                        <a href="https://doi.org/10.1167/jov.25.9.2621" target="_blank" style="display: inline-block; margin-top: 5px; padding: 3px 10px; background: #4a90e2; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">DOI</a>
-                      </p>
-                      <p style="margin: 15px 0;">
-                        <span class="author-highlight">Garcia, K.</span>, McMahon, E., Conwell, C., Bonner, M. F., & Isik, L. (2025). Modeling Dynamic Social Vision Highlights Gaps Between Deep Learning and Humans. In <em>International Conference on Learning Representations (ICLR)</em>.
-                        <br>
-                        <a href="https://openreview.net/pdf?id=wAXsx2MYgV" target="_blank" style="display: inline-block; margin-top: 5px; padding: 3px 10px; background: #4a90e2; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">PDF</a>
-                        <a href="https://openreview.net/forum?id=wAXsx2MYgV" target="_blank" style="display: inline-block; margin-top: 5px; margin-left: 5px; padding: 3px 10px; background: #666; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">BibTeX</a>
-                      </p>
-                      <p style="margin: 15px 0;">
-                        <span class="author-highlight">Garcia, K.</span>, Conwell, C., McMahon, E., Bonner, M. F., & Isik, L. (2024). Large-scale Deep Neural Network Benchmarking in Dynamic Social Vision. <em>Journal of Vision, 24</em>(10), 716.
-                        <br>
-                        <a href="https://doi.org/10.1167/jov.24.10.716" target="_blank" style="display: inline-block; margin-top: 5px; padding: 3px 10px; background: #4a90e2; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">DOI</a>
-                      </p>
-                      <p style="margin: 15px 0;">
-                        McMahon, E., Conwell, C., <span class="author-highlight">Garcia, K.</span>, Bonner, M. F., & Isik, L. (2024). Language model prediction of visual cortex responses to dynamic social scenes. <em>Journal of Vision, 24</em>(10), 904.
-                        <br>
-                        <a href="https://doi.org/10.1167/jov.24.10.904" target="_blank" style="display: inline-block; margin-top: 5px; padding: 3px 10px; background: #4a90e2; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">DOI</a>
-                      </p>
-                      <p style="margin: 15px 0;">
-                        <span class="author-highlight">Garcia, K.</span>, McMahon, E., Conwell, C., Bonner, M. F., & Isik, L. (2024). Dynamic, social vision highlights gaps between deep learning and human behavior and neural responses. <em>Cognitive Computational Neuroscience (CCN)</em>.
-                        <br>
-                        <a href="https://2024.ccneuro.org/pdf/417_Paper_authored_Garcia_CCN2024.pdf" target="_blank" style="display: inline-block; margin-top: 5px; padding: 3px 10px; background: #4a90e2; color: white; text-decoration: none; border-radius: 3px; font-size: 0.85em;">PDF</a>
-                      </p>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto; text-align: justify;" class="major-section">
-              <tbody>
-                <tr>
-                  <td style="padding-top:10px;padding-left:20px;padding-right:20px;width:100%;vertical-align:top">
-                    <h2 id="media" class="section-accent">Media Coverage</h2>
-                    <p style="margin-left: 20px; margin-bottom: 15px;">
-                      I have been fortunate to have some of my research work covered by popular media:
-                    </p>
-                    <div style="margin-left: 20px; margin-bottom: 25px; font-size: 0.9em; line-height: 1.8;">
-                      <p style="margin: 8px 0;">
-                        <strong>The Wall Street Journal</strong> (2025) - <a href="https://www.wsj.com/tech/ai/ai-body-language-analysis-johns-hopkins-2f11362a" target="_blank">Who's Better at Reading the Room—Humans or AI?</a>
-                      </p>
-                      <p style="margin: 8px 0;">
-                        <strong>Johns Hopkins Hub</strong> (2025) - <a href="https://hub.jhu.edu/2025/04/24/humans-better-than-ai-at-reading-the-room/" target="_blank">When it comes to reading the room, humans are still better than AI</a>
-                      </p>
-                      <p style="margin: 8px 0;">
-                        <strong>Popular Science</strong> (2025) - <a href="https://www.popsci.com/technology/ai-vs-human-social-cues-study/" target="_blank">AI still can't beat humans at reading social cues</a>
-                      </p>
-                      <p style="margin: 8px 0;">
-                        <strong>Marketplace (NPR)</strong> (2025) - <a href="https://www.marketplace.org/episode/2025/04/28/ai-cant-read-the-room" target="_blank">AI can't read the room</a>
-                      </p>
-                      <p style="margin: 8px 0;">
-                        <strong>SciTech Daily</strong> (2025) - <a href="https://scitechdaily.com/ai-fails-the-social-test-new-study-reveals-major-blind-spot/" target="_blank">AI Fails the Social Test: New Study Reveals Major Blind Spot</a>
-                      </p>
-                      <p style="margin: 8px 0;">
-                        <strong>Bloomberg Law</strong> (2025) - <a href="https://news.bloomberglaw.com/artificial-intelligence/ai-falls-short-in-interpreting-social-interactions-study-shows" target="_blank">AI Falls Short in Interpreting Social Interactions, Study Shows</a>
-                      </p>
-                      <p style="margin: 8px 0;">
-                        <strong>Technology Inquirer</strong> (2025) - <a href="https://technology.inquirer.net/141891/ai-understands-many-things-except-for-human-social-interactions" target="_blank">AI understand many things... except for human social interactions</a>
-                      </p>
-                      <p style="margin: 8px 0;">
-                        <strong>Fast Company</strong> (2025) - <a href="https://www.fastcompany.com/91324372/ai-is-really-bad-at-picking-up-on-social-cues-artificial-intelligence-study" target="_blank">Turns out AI is really bad at picking up on social cues</a>
-                      </p>
-                      <p style="margin: 8px 0;">
-                        <strong>Stanford CISAC News</strong> (2013) - <a href="https://cisac.fsi.stanford.edu/news/obama-stanford-ceos-must-commit-cyber-security" target="_blank">Obama at Stanford: Industry, government must cooperate on cybersecurity</a>
-                      </p>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto; text-align: justify;" class="major-section">
-              <tbody>
-                <tr>
-                  <td style="padding-top:10px;padding-left:20px;padding-right:20px;width:100%;vertical-align:top">
-                    <h2 id="honors" class="section-accent">Selected Honors</h2>
-                    <div class="honors-list" style="margin-left: 20px; margin-bottom: 25px;">
-                      <p style="margin: 8px 0;"><strong>Best Oral Presentation Award</strong>, LatinX in AI Workshop, ICML (2024)</p>
-                      <p style="margin: 8px 0;"><strong>Sigma Xi Scientific Research Honor Society</strong> (2025)</p>
-                      <p style="margin: 8px 0;"><strong>National Eye Institute Early Career Scientist Travel Grant</strong> (2025)</p>
-                      <p style="margin: 8px 0;"><strong>John I. Yellott Travel Award for Vision Science</strong>, VSS (2025)</p>
-                      <p style="margin: 8px 0;"><strong>FoVea Travel and Networking Award</strong> (2024)</p>
-                      <p style="margin: 8px 0;"><strong>Kelly Miller Fellowship</strong>, Johns Hopkins University (2021-2025)</p>
-                      <p style="margin: 8px 0;"><strong>Northwestern University Interdepartmental Neuroscience Research Fellowship</strong> (2020)</p>
-                      <p style="margin: 8px 0;"><strong>Stanford University El Centro Latino Acknowledgement</strong> (2017)</p>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-              <tbody>
-                <tr>
-                  <td style="padding-top:20px;padding-left:20px;vertical-align:top">
-                    <h2>Miscellaneous</h2>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="misc-section" style="padding:0;width:100%;vertical-align:top">
-                    <div class="misc-image">
-                      <img style="object-fit: cover; height:140px; width:140px;" src="images/resized/JHU.jpg">
-                    </div>
-                    <div class="misc-content">
-                      <p>Teaching Assistant, Cognitive Neuropsychology of Visual Perception - Spring 2024</p>
-                      <p>Teaching Assistant, Neuroimaging Methods in High-Level Vision - Fall 2023</p>
-                      <p>Teaching Assistant, Computational Cognitive Neuroscience of Vision - Spring 2023</p>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    </div>
-    <footer>
-      <p style="text-align: center;">&copy; 2024 Kathy Garcia | Hosted by <a href="https://pages.github.com/">GitHub Pages</a>. </p>
-    </footer>
-  </body>
+      <article class="pub featured reveal" data-type="conference preprint talk">
+        <a class="pub-thumb" href="video_alignment.html"><img src="static/figures/bgs/fig1.png" alt="BGS overview" loading="lazy"></a>
+        <div>
+          <a class="pub-title" href="video_alignment.html">Behavioral Geometric Supervision Aligns Video Foundation Models with Human Social Perception</a>
+          <div class="pub-authors"><span class="me">Kathy Garcia</span>, <a href="https://www.isiklab.org">Leyla Isik</a></div>
+          <div class="pub-venue"><b>NeurIPS</b> 2026 <span class="badge gold">Oral · &lt;0.4% of submissions</span> <span class="badge plain">VSS 2026</span></div>
+          <p class="pub-tldr">A compact human signal — 49,484 odd-one-out judgments — reshapes video-model geometry: V-JEPA 2.1 nearly triples its alignment with human social perception, beats caption-based language models, and transfers zero-shot to abstract social interactions.</p>
+          <div class="pub-links"><a href="video_alignment.html">Project</a><a href="https://arxiv.org/abs/2510.01502">arXiv</a><a href="https://arxiv.org/pdf/2510.01502">PDF</a><a href="video_alignment.html#bibtex">BibTeX</a></div>
+        </div>
+      </article>
+
+      <article class="pub reveal" data-type="preprint talk">
+        <a class="pub-thumb" href="latent_dimensions.html"><img src="images/latent_dims.svg" alt="Latent dimensions illustration" loading="lazy"></a>
+        <div>
+          <a class="pub-title" href="latent_dimensions.html">The Latent Dimensions Supporting Dynamic Social Scene Perception</a>
+          <div class="pub-authors"><span class="me">Kathy Garcia</span>, <a href="https://www.isiklab.org">Leyla Isik</a></div>
+          <div class="pub-venue"><b>Preprint</b> 2026 <span class="badge">New</span> <span class="badge plain">CCN 2026</span></div>
+          <p class="pub-tldr">54,000 similarity judgments reveal a compact set of interpretable social dimensions — conversation, caregiving, cooking, play, music — that beat theory-driven ratings at predicting both behavior and visual-cortex fMRI.</p>
+          <!-- TODO: add the preprint link once it is posted (Oct 2026). -->
+          <div class="pub-links"><a href="latent_dimensions.html">Project</a><a href="https://2026.ccneuro.org/poster/?id=X1NIOuzwZR">CCN 2026</a><span class="soon">preprint link coming soon</span></div>
+        </div>
+      </article>
+
+      <article class="pub reveal" data-type="workshop">
+        <a class="pub-thumb" href="social_tokens.html"><img src="images/social_tokens_overview.png" alt="Social tokens overview" loading="lazy"></a>
+        <div>
+          <a class="pub-title" href="social_tokens.html">Look, Then Speak: Social Tokens for Grounding LLMs in Visual Interactions</a>
+          <div class="pub-authors"><span class="me">Kathy Garcia</span>, <a href="https://vsubramaniam851.github.io">Vighnesh Subramaniam</a>, <a href="https://people.csail.mit.edu/boris/boris.html">Boris Katz</a>, <a href="https://briancheung.github.io">Brian Cheung</a></div>
+          <div class="pub-venue"><b>NeurIPS 2025</b> Workshop on Unifying Representations (UniReps)</div>
+          <p class="pub-tldr">Socially grounded visual tokens inserted into a frozen LLM sharply reduce perplexity on social dialogue and draw high attention at socially salient moments.</p>
+          <div class="pub-links"><a href="social_tokens.html">Project</a><a href="https://openreview.net/pdf?id=tdz8HrfthW">PDF</a><a href="https://openreview.net/forum?id=tdz8HrfthW">OpenReview</a><a href="social_tokens.html#bibtex">BibTeX</a></div>
+        </div>
+      </article>
+
+      <article class="pub reveal" data-type="talk">
+        <a class="pub-thumb" href="similarity_judgments.html"><img src="static/figures/sim_judg/task_design.png" alt="Odd-one-out task" loading="lazy"></a>
+        <div>
+          <a class="pub-title" href="similarity_judgments.html">A Large-Scale Study of Social Scene Judgments: Alignment with Deep Neural Networks and Social-Affective Features</a>
+          <div class="pub-authors"><span class="me">Kathy Garcia</span>, <a href="https://www.isiklab.org">Leyla Isik</a></div>
+          <div class="pub-venue"><b>VSS</b> 2025 <span class="badge">Talk · 15% acceptance</span></div>
+          <p class="pub-tldr">Caption embeddings — how people describe a scene — best match human similarity judgments, followed by intimacy ratings; judgments track body- and object-selective cortex, not scene areas.</p>
+          <div class="pub-links"><a href="similarity_judgments.html">Project</a><a href="https://doi.org/10.1167/jov.25.9.2621">DOI</a><a href="https://www.visionsciences.org/talk-session/?id=416">VSS talk</a></div>
+        </div>
+      </article>
+
+      <article class="pub reveal" data-type="conference">
+        <a class="pub-thumb" href="modeling_dynamic.html"><img src="static/figures/neurips/neurips_fig1.jpeg" alt="Benchmarking overview" loading="lazy"></a>
+        <div>
+          <a class="pub-title" href="modeling_dynamic.html">Modeling Dynamic Social Vision Highlights Gaps Between Deep Learning and Humans</a>
+          <div class="pub-authors"><span class="me">Kathy Garcia</span>*, <a href="https://emaliemcmahon.github.io">Emalie McMahon</a>*, <a href="https://colinconwell.com">Colin Conwell</a>, <a href="https://www.bonnerlab.org">Michael F. Bonner</a>, <a href="https://www.isiklab.org">Leyla Isik</a></div>
+          <div class="pub-venue"><b>ICLR</b> 2025 <span class="badge">Best Oral · LatinX in AI @ ICML 2024</span> <span class="badge plain">WSJ · PopSci · Marketplace</span></div>
+          <p class="pub-tldr">Benchmarking 350+ image, video, and language models on social videos reveals a major gap in matching human social vision, especially in the lateral visual stream.</p>
+          <div class="pub-links"><a href="modeling_dynamic.html">Project</a><a href="https://openreview.net/pdf?id=wAXsx2MYgV">PDF</a><a href="data/Garcia_ICLR_Poster.pdf">Poster</a><a href="https://github.com/Isik-lab/SIfMRI_modeling">Code &amp; data</a><a href="modeling_dynamic.html#bibtex">BibTeX</a></div>
+        </div>
+      </article>
+
+      <article class="pub reveal" data-type="talk">
+        <a class="pub-thumb" href="lsbm.html"><img src="images/resized/paper1fig1.jpg" alt="Lateral stream benchmarking" loading="lazy"></a>
+        <div>
+          <a class="pub-title" href="lsbm.html">Large-Scale Deep Neural Network Benchmarking in Dynamic Social Vision</a>
+          <div class="pub-authors"><span class="me">Kathy Garcia</span>, <a href="https://colinconwell.com">Colin Conwell</a>, <a href="https://emaliemcmahon.github.io">Emalie McMahon</a>, <a href="https://www.bonnerlab.org">Michael F. Bonner</a>, <a href="https://www.isiklab.org">Leyla Isik</a></div>
+          <div class="pub-venue"><b>VSS</b> 2024 <span class="badge">Talk · 15%</span> <b>CCN</b> 2024 <span class="badge">Contributed talk · 25%</span></div>
+          <p class="pub-tldr">300+ DNNs show a feed-forward hierarchy in the lateral stream — but fall well short of the noise ceiling there, unlike in the ventral stream.</p>
+          <div class="pub-links"><a href="lsbm.html">Project</a><a href="https://doi.org/10.1167/jov.24.10.716">DOI</a><a href="https://2024.ccneuro.org/pdf/417_Paper_authored_Garcia_CCN2024.pdf">CCN paper</a></div>
+        </div>
+      </article>
+
+      <article class="pub reveal" data-type="talk">
+        <a class="pub-thumb" href="fmri_svr.html"><img src="static/figures/web/proj2_fig1.png" alt="SVR workflow" loading="lazy"></a>
+        <div>
+          <a class="pub-title" href="fmri_svr.html">Predicting Dimensional Symptoms of Psychopathology from Task-Based fMRI using Support Vector Regression</a>
+          <div class="pub-authors"><span class="me">Kathy Garcia</span>, Zach Anderson, Iris Ka-Yi Chat, Katherine S.F. Damme, Katherine Young, Susan Y. Bookheimer, Richard Zinbarg, Michelle Craske, Robin Nusslock</div>
+          <div class="pub-venue"><b>SfN Global Connectome</b> 2021 <span class="badge plain">Poster</span></div>
+          <p class="pub-tldr">Reward-task fMRI features do not reliably predict dimensional anxiety and depression symptoms under linear SVR.</p>
+          <div class="pub-links"><a href="fmri_svr.html">Project</a></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section" id="publications-list">
+      <h2 class="section-title" data-i18n="cites_title">all publications</h2>
+      <ol class="cite-list">
+        <li><span class="me">Garcia, K.</span>, &amp; Isik, L. (2026). Behavioral Geometric Supervision Aligns Video Foundation Models with Human Social Perception. <em>Advances in Neural Information Processing Systems (NeurIPS)</em>. <b>Oral.</b> <a class="tiny" href="https://arxiv.org/abs/2510.01502">arXiv</a></li>
+        <li><span class="me">Garcia, K.</span>, &amp; Isik, L. (2026). The Latent Dimensions Supporting Dynamic Social Scene Perception. <em>Preprint</em>; <em>Cognitive Computational Neuroscience (CCN)</em>. <a class="tiny" href="https://2026.ccneuro.org/poster/?id=X1NIOuzwZR">CCN</a></li>
+        <li><span class="me">Garcia, K.</span>, &amp; Isik, L. (2026). Behavior-Guided Fine-Tuning Makes Vision Models More Human-Like in Social Perception. <em>Vision Sciences Society (VSS)</em>. <a class="tiny" href="https://www.visionsciences.org/presentation/?id=4148">VSS</a></li>
+        <li><span class="me">Garcia, K.</span>, Subramaniam, V., Katz, B., &amp; Cheung, B. (2025). Look, Then Speak: Social Tokens for Grounding LLMs in Visual Interactions. <em>NeurIPS 2025 Workshop on Unifying Representations in Neural Models (UniReps)</em>. <a class="tiny" href="https://openreview.net/pdf?id=tdz8HrfthW">PDF</a></li>
+        <li><span class="me">Garcia, K.</span>, &amp; Isik, L. (2025). Semantic and Social Features Drive Human Grouping of Dynamic, Visual Events in Large-Scale Similarity Judgements. <em>Journal of Vision, 25</em>(9), 2621. <a class="tiny" href="https://doi.org/10.1167/jov.25.9.2621">DOI</a></li>
+        <li><span class="me">Garcia, K.</span>, McMahon, E., Conwell, C., Bonner, M. F., &amp; Isik, L. (2025). Modeling Dynamic Social Vision Highlights Gaps Between Deep Learning and Humans. <em>International Conference on Learning Representations (ICLR)</em>. <a class="tiny" href="https://openreview.net/pdf?id=wAXsx2MYgV">PDF</a></li>
+        <li><span class="me">Garcia, K.</span>, Conwell, C., McMahon, E., Bonner, M. F., &amp; Isik, L. (2024). Large-scale Deep Neural Network Benchmarking in Dynamic Social Vision. <em>Journal of Vision, 24</em>(10), 716. <a class="tiny" href="https://doi.org/10.1167/jov.24.10.716">DOI</a></li>
+        <li>McMahon, E., Conwell, C., <span class="me">Garcia, K.</span>, Bonner, M. F., &amp; Isik, L. (2024). Language model prediction of visual cortex responses to dynamic social scenes. <em>Journal of Vision, 24</em>(10), 904. <a class="tiny" href="https://doi.org/10.1167/jov.24.10.904">DOI</a></li>
+        <li><span class="me">Garcia, K.</span>, McMahon, E., Conwell, C., Bonner, M. F., &amp; Isik, L. (2024). Dynamic, social vision highlights gaps between deep learning and human behavior and neural responses. <em>Cognitive Computational Neuroscience (CCN)</em>. <a class="tiny" href="https://2024.ccneuro.org/pdf/417_Paper_authored_Garcia_CCN2024.pdf">PDF</a></li>
+      </ol>
+    </section>
+
+    <!-- ── Talks ────────────────────────────────────── -->
+    <section class="section" id="talks">
+      <h2 class="section-title" data-i18n="talks_title">talks &amp; presentations</h2>
+      <ol class="timeline">
+        <li class="star"><span class="when">Dec 2026</span><b>NeurIPS 2026 — Oral.</b> Behavioral geometric supervision for social video alignment.</li>
+        <li><span class="when">Aug 2026</span><b>CCN 2026</b>, New York. <a href="https://2026.ccneuro.org/poster/?id=X1NIOuzwZR">The latent dimensions supporting dynamic social scene perception</a>.</li>
+        <li><span class="when">May 2026</span><b>VSS 2026.</b> <a href="https://www.visionsciences.org/presentation/?id=4148">Behavior-guided fine-tuning makes vision models more human-like in social perception</a>.</li>
+        <li class="star"><span class="when">May 2025</span><b>VSS 2025 — Talk.</b> <a href="https://www.visionsciences.org/talk-session/?id=416">Semantic and social features drive human grouping of dynamic visual events</a>.</li>
+        <li><span class="when">Apr 2025</span><b>ICLR 2025 — Poster.</b> <a href="data/Garcia_ICLR_Poster.pdf">Modeling dynamic social vision</a>.</li>
+        <li class="star"><span class="when">Aug 2024</span><b>CCN 2024 — Contributed talk.</b> <a href="https://2024.ccneuro.org/contributed-talk/?id=32">Dynamic, social vision highlights gaps between deep learning and humans</a>.</li>
+        <li class="star"><span class="when">Jul 2024</span><b>LatinX in AI @ ICML 2024 — Oral (Best Oral Award).</b> <a href="https://icml.cc/virtual/2024/38087">Social vision models</a>.</li>
+        <li class="star"><span class="when">May 2024</span><b>VSS 2024 — Talk.</b> <a href="https://www.visionsciences.org/talk-session/?id=249">Large-scale deep neural benchmarking of dynamic social vision</a>.</li>
+        <li><span class="when">Apr 2024</span><b>JHU Cognitive Science</b> brown bag — DNN benchmarking.</li>
+        <li><span class="when">2021</span><b>SfN Global Connectome — Poster.</b> <a href="fmri_svr.html">Predicting dimensional symptoms of psychopathology from fMRI</a>.</li>
+      </ol>
+    </section>
+
+    <!-- ── Honors & media ───────────────────────────── -->
+    <section class="section two-col">
+      <div id="honors">
+        <h2 class="section-title" data-i18n="honors_title">honors &amp; awards</h2>
+        <ul class="clean">
+          <li><b>NeurIPS 2026 Oral</b> <span class="meta">(&lt;0.4% of submissions)</span></li>
+          <li><b>NSF Graduate Research Fellowship</b> <span class="meta">(2024)</span></li>
+          <li><b>Best Oral Presentation Award</b>, LatinX in AI Workshop, ICML <span class="meta">(2024)</span></li>
+          <li><b>Sigma Xi</b> Scientific Research Honor Society <span class="meta">(2025)</span></li>
+          <li><b>NEI Early Career Scientist Travel Grant</b> <span class="meta">(2025)</span></li>
+          <li><b>John I. Yellott Travel Award</b> for Vision Science, VSS <span class="meta">(2025)</span></li>
+          <li><b>FoVea Travel and Networking Award</b> <span class="meta">(2024)</span></li>
+          <li><b>Kelly Miller Fellowship</b>, Johns Hopkins University <span class="meta">(2021–2025)</span></li>
+          <li><b>Northwestern Interdepartmental Neuroscience Research Fellowship</b> <span class="meta">(2020)</span></li>
+          <li><b>Stanford El Centro Latino Acknowledgement</b> <span class="meta">(2017)</span></li>
+        </ul>
+      </div>
+      <div id="media">
+        <h2 class="section-title" data-i18n="media_title">media coverage</h2>
+        <ul class="clean">
+          <li><b>The Wall Street Journal</b> — <a href="https://www.wsj.com/tech/ai/ai-body-language-analysis-johns-hopkins-2f11362a">Who's Better at Reading the Room—Humans or AI?</a> <span class="meta">(2025)</span></li>
+          <li><b>Johns Hopkins Hub</b> — <a href="https://hub.jhu.edu/2025/04/24/humans-better-than-ai-at-reading-the-room/">When it comes to reading the room, humans are still better than AI</a> <span class="meta">(2025)</span></li>
+          <li><b>Popular Science</b> — <a href="https://www.popsci.com/technology/ai-vs-human-social-cues-study/">AI still can't beat humans at reading social cues</a> <span class="meta">(2025)</span></li>
+          <li><b>Marketplace (NPR)</b> — <a href="https://www.marketplace.org/episode/2025/04/28/ai-cant-read-the-room">AI can't read the room</a> <span class="meta">(2025)</span></li>
+          <li><b>SciTech Daily</b> — <a href="https://scitechdaily.com/ai-fails-the-social-test-new-study-reveals-major-blind-spot/">AI Fails the Social Test</a> <span class="meta">(2025)</span></li>
+          <li><b>Bloomberg Law</b> — <a href="https://news.bloomberglaw.com/artificial-intelligence/ai-falls-short-in-interpreting-social-interactions-study-shows">AI Falls Short in Interpreting Social Interactions</a> <span class="meta">(2025)</span></li>
+          <li><b>Fast Company</b> — <a href="https://www.fastcompany.com/91324372/ai-is-really-bad-at-picking-up-on-social-cues-artificial-intelligence-study">Turns out AI is really bad at picking up on social cues</a> <span class="meta">(2025)</span></li>
+          <li><b>Technology Inquirer</b> — <a href="https://technology.inquirer.net/141891/ai-understands-many-things-except-for-human-social-interactions">AI understands many things… except human social interactions</a> <span class="meta">(2025)</span></li>
+          <li><b>Stanford CISAC News</b> — <a href="https://cisac.fsi.stanford.edu/news/obama-stanford-ceos-must-commit-cyber-security">Obama at Stanford: industry, government must cooperate on cybersecurity</a> <span class="meta">(2013)</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="teaching">
+      <h2 class="section-title" data-i18n="teaching_title">teaching</h2>
+      <ul class="clean">
+        <li data-i18n="ta1"><b>Teaching Assistant</b>, Cognitive Neuropsychology of Visual Perception <span class="meta">— Spring 2024</span></li>
+        <li data-i18n="ta2"><b>Teaching Assistant</b>, Neuroimaging Methods in High-Level Vision <span class="meta">— Fall 2023</span></li>
+        <li data-i18n="ta3"><b>Teaching Assistant</b>, Computational Cognitive Neuroscience of Vision <span class="meta">— Spring 2023</span></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">&copy; 2026 Kathy Garcia · Hosted on <a href="https://pages.github.com/">GitHub Pages</a></div>
+  </footer>
+
+  <script>
+    window.I18N = {
+      es: {
+        nav_about: 'Acerca de', nav_news: 'Noticias', nav_research: 'Investigación', nav_pubs: 'Publicaciones',
+        nav_talks: 'Charlas', nav_honors: 'Reconocimientos',
+        tagline: 'Construyendo IA alineada con los humanos a través de la neurociencia cognitiva computacional.',
+        bio1: 'Soy <a href="https://cogsci.jhu.edu/2024/04/25/two-cogsci-students-receive-nsf-grfs/">becaria NSF</a> y estudiante de doctorado en Ciencias Cognitivas Computacionales en <a href="https://cogsci.jhu.edu/people/graduate-students/">Johns Hopkins University</a>, donde investigo cómo los humanos y las máquinas entienden las interacciones sociales en el <a href="https://www.isiklab.org">Laboratorio de Neurociencia Cognitiva Computacional</a> con la <a href="https://cogsci.jhu.edu/directory/leyla-isik/">Profesora Leyla Isik</a>.',
+        bio2: 'Mido cómo las personas perciben escenas sociales dinámicas, comparo modelos de IA con el <strong>cerebro y el comportamiento</strong> humano, y uso esos datos para <strong>alinear modelos de video y lenguaje</strong> con la percepción social humana. Mi trabajo ha sido publicado en <strong>NeurIPS</strong> (oral) e <strong>ICLR</strong>, y destacado en <em>The Wall Street Journal</em>.',
+        bio3: 'Anteriormente, obtuve mi B.S. en <a href="https://www.stanford.edu/">Stanford University</a>, trabajé como científica de datos en fintech para empresas Fortune 500 y completé una Beca Postbac del NIH en neurociencia afectiva y aprendizaje automático en <a href="https://www.feinberg.northwestern.edu/sites/nu-prep/scholars/alumni.html">Northwestern University</a>, bajo la mentoría del Profesor Robin Nusslock, el Dr. Zachary Anderson y la Dra. Cassandra VanDunk.',
+        mentor: '🎓 <span><b>Mentoría</b> — Latina de <a href="https://fli.stanford.edu/">primera generación</a>, ¡encantada de platicar sobre investigación, posgrado o carreras!</span>',
+        news_title: 'noticias', research_title: 'investigación',
+        research1: '<span class="hl">Los humanos entienden escenas sociales en un instante; la IA todavía no.</span> Uso comportamiento a gran escala, fMRI y aprendizaje profundo para entender cómo las personas perciben interacciones sociales dinámicas, y luego uso esos datos humanos para construir modelos que vean el mundo social como nosotros.',
+        pubs_title: 'proyectos de investigación', cites_title: 'todas las publicaciones', talks_title: 'charlas y presentaciones',
+        honors_title: 'reconocimientos', media_title: 'en los medios', teaching_title: 'docencia',
+        ta1: '<b>Asistente de Cátedra</b>, Neuropsicología Cognitiva de la Percepción Visual <span class="meta">— Primavera 2024</span>',
+        ta2: '<b>Asistente de Cátedra</b>, Métodos de Neuroimagen en Visión de Alto Nivel <span class="meta">— Otoño 2023</span>',
+        ta3: '<b>Asistente de Cátedra</b>, Neurociencia Cognitiva Computacional de la Visión <span class="meta">— Primavera 2023</span>'
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', function () {
+      // News: show the latest items, expand on demand
+      var VISIBLE = 9;
+      var items = document.querySelectorAll('#news-list li');
+      var btn = document.getElementById('news-more');
+      var expanded = false;
+      function renderNews() {
+        items.forEach(function (li, i) { li.classList.toggle('hidden', !expanded && i >= VISIBLE); });
+        btn.textContent = expanded ? 'Show less ↑' : 'Show all ' + items.length + ' news items ↓';
+        btn.setAttribute('aria-expanded', expanded);
+      }
+      btn.addEventListener('click', function () { expanded = !expanded; renderNews(); });
+      renderNews();
+
+      // Project strip: duplicate the cards so the loop is seamless
+      var track = document.getElementById('strip-track');
+      Array.prototype.slice.call(track.children).forEach(function (card) {
+        var clone = card.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        clone.setAttribute('tabindex', '-1');
+        track.appendChild(clone);
+      });
+
+      // Publication filters
+      var pubs = document.querySelectorAll('#publications .pub');
+      var filters = document.querySelectorAll('.filter');
+      filters.forEach(function (f) {
+        var key = f.getAttribute('data-filter');
+        var n = key === 'all' ? pubs.length : document.querySelectorAll('#publications .pub[data-type~="' + key + '"]').length;
+        f.insertAdjacentHTML('beforeend', '<span class="count">' + n + '</span>');
+        f.addEventListener('click', function () {
+          filters.forEach(function (o) { o.setAttribute('aria-pressed', o === f); });
+          pubs.forEach(function (p) {
+            var show = key === 'all' || (' ' + p.getAttribute('data-type') + ' ').indexOf(' ' + key + ' ') > -1;
+            p.classList.toggle('is-hidden', !show);
+            if (show) p.classList.add('in');
+          });
+        });
+      });
+
+      console.log('%c🤖🧠 Hi, fellow developer! Toggle dark mode to find the floating brains.', 'color:#4a90e2;font-weight:bold');
+    });
+  </script>
+  <script src="static/js/site.js"></script>
+</body>
 </html>
